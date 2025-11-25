@@ -1,113 +1,101 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Check, Code2, Database, Shield } from "lucide-react";
-import dashboardImage from "@assets/generated_images/minimalist_saas_dashboard_showing_analytics.png";
+import { ArrowRight, Play } from "lucide-react";
 import { motion } from "framer-motion";
+import dashboardImage from "@assets/generated_images/minimalist_saas_dashboard_showing_analytics.png";
 
 export function Hero() {
   return (
-    <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none">
-        <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px]" />
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[100px]" />
-      </div>
+    <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden min-h-screen flex items-center">
+      {/* Background Particles/Stars effect would go here - keeping it simple for CSS */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white/5 via-background to-background pointer-events-none" />
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="max-w-2xl"
-          >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-primary mb-6">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-              </span>
-              Accepting new projects for Q4
-            </div>
-            
-            <h1 className="text-5xl md:text-7xl font-display font-bold tracking-tight text-white leading-[1.1] mb-6">
-              LaunchForge — <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/50">
-                Ship production Web2 products, fast.
-              </span>
-            </h1>
-            
-            <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed max-w-lg">
-              You innovate. We build the product, integrate payments, set up hosting & monitoring, and hand you the source code. Launch in weeks, not months.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 mb-8">
-              <Button size="lg" className="bg-primary hover:bg-primary/90 text-white h-12 px-8 rounded-xl text-base shadow-xl shadow-primary/20 transition-all hover:scale-105">
-                Reserve a Spot — $500
-              </Button>
-              <Button size="lg" variant="outline" className="border-white/10 bg-white/5 hover:bg-white/10 text-white h-12 px-8 rounded-xl text-base backdrop-blur-sm">
-                See Demo
-              </Button>
-            </div>
-
-            <div className="flex items-center gap-6 text-sm text-muted-foreground border-t border-white/5 pt-6">
-              <span className="flex items-center gap-2">
-                <Check className="text-primary w-4 h-4" /> No vendor lock-in
-              </span>
-              <span className="flex items-center gap-2">
-                <Check className="text-primary w-4 h-4" /> Source code ownership
-              </span>
-            </div>
-          </motion.div>
-
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="relative hidden lg:block"
-          >
-            <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/50 bg-card/50 backdrop-blur-xl group">
-              <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <img 
-                src={dashboardImage} 
-                alt="Platform Dashboard" 
-                className="w-full h-auto rounded-2xl transform group-hover:scale-[1.02] transition-transform duration-700"
-              />
+        <div className="grid lg:grid-cols-12 gap-12 items-center">
+          
+          {/* Left Content */}
+          <div className="lg:col-span-7">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <div className="text-sm md:text-base text-muted-foreground mb-6 tracking-wide">
+                You innovate, <br />
+                <span className="text-white font-medium">we automate.</span>
+              </div>
               
-              {/* Floating Elements */}
-              <motion.div 
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.6 }}
-                className="absolute -bottom-6 -left-6 bg-card border border-white/10 p-4 rounded-xl shadow-xl backdrop-blur-md"
-              >
-                <div className="flex items-center gap-3 mb-2">
-                  <div className="p-2 rounded-lg bg-green-500/20 text-green-500">
-                    <Shield size={16} />
-                  </div>
-                  <div>
-                    <div className="text-xs text-muted-foreground">System Status</div>
-                    <div className="text-sm font-bold text-white">99.99% Uptime</div>
-                  </div>
-                </div>
-              </motion.div>
+              <h1 className="text-6xl md:text-8xl font-bold tracking-tighter text-white leading-[0.9] mb-12">
+                — The smarter way <br/>
+                to <span className="text-primary">build</span>, <span className="text-primary">run</span>, and <br/>
+                scale your business.
+              </h1>
 
-              <motion.div 
-                initial={{ y: -20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.8 }}
-                className="absolute -top-6 -right-6 bg-card border border-white/10 p-4 rounded-xl shadow-xl backdrop-blur-md"
-              >
-                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-primary/20 text-primary">
-                    <Code2 size={16} />
-                  </div>
-                  <div>
-                    <div className="text-xs text-muted-foreground">Deployment</div>
-                    <div className="text-sm font-bold text-white">Success</div>
-                  </div>
+              <div className="flex flex-col md:flex-row items-start md:items-center gap-8">
+                <div className="max-w-xs">
+                  <h3 className="text-white font-medium mb-1">See Platform in action</h3>
+                  <p className="text-sm text-muted-foreground">Join our guided tour and explore all features live.</p>
                 </div>
-              </motion.div>
-            </div>
-          </motion.div>
+                
+                {/* Connecting Line Visual */}
+                <div className="hidden md:block h-[1px] w-24 bg-white/20 relative">
+                  <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1 h-1 bg-white/50 rounded-full" />
+                </div>
+
+                <Button size="lg" className="bg-primary hover:bg-primary/90 text-white h-14 px-8 rounded-2xl text-base font-medium">
+                  <span className="mr-2">📅</span> Book a Demo
+                </Button>
+              </div>
+            </motion.div>
+            
+            {/* Stats Row */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+              className="mt-20 flex gap-16"
+            >
+              <div>
+                <div className="text-4xl font-bold text-primary tracking-tighter">97.8<span className="text-xl align-top">%</span></div>
+                <div className="text-sm font-medium text-white mt-1">Uptime</div>
+                <div className="text-xs text-muted-foreground">30-day monitoring</div>
+              </div>
+              <div>
+                <div className="text-4xl font-bold text-primary tracking-tighter">+31.2<span className="text-xl align-top">%</span></div>
+                <div className="text-sm font-medium text-white mt-1">Performance</div>
+                <div className="text-xs text-muted-foreground">AI optimized bundle</div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Right Content - Floating Cards */}
+          <div className="lg:col-span-5 relative h-[600px] hidden lg:block">
+            <motion.div 
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="absolute top-0 right-0 w-full"
+            >
+              {/* Main Card */}
+              <div className="relative z-10 rounded-3xl overflow-hidden border border-white/10 bg-card/50 backdrop-blur-xl aspect-[4/3]">
+                 <img src={dashboardImage} alt="Dashboard" className="w-full h-full object-cover opacity-80" />
+                 <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
+                   <div className="flex justify-between items-end">
+                     <div>
+                       <div className="text-xs text-muted-foreground mb-1">Neural Network</div>
+                       <div className="text-sm text-white font-mono">// Latest Release</div>
+                     </div>
+                     <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white">
+                       <ArrowRight size={16} />
+                     </div>
+                   </div>
+                 </div>
+              </div>
+
+              {/* Floating Element Behind/Below */}
+              <div className="absolute -bottom-20 -left-10 w-64 h-64 bg-primary rounded-full blur-[100px] opacity-20 pointer-events-none" />
+            </motion.div>
+          </div>
+
         </div>
       </div>
     </section>

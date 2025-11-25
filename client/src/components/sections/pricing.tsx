@@ -8,103 +8,100 @@ export function Pricing() {
       name: "Studio",
       price: "49",
       desc: "For growing teams",
-      features: ["Smart Deployment", "Basic Monitoring", "Core Security", "Email Support", "5 team seats", "Standard API"],
+      features: ["Smart Deployment", "Basic Monitoring", "Core Security", "Email Support"],
       highlight: false,
+      image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop"
     },
     {
       name: "Scale",
       price: "89",
       desc: "Advanced infrastructure",
-      features: ["All Studio features", "AI optimization", "Advanced monitoring", "24/7 support", "Auto-scaling", "Full analytics"],
+      features: ["All Studio features", "AI optimization", "Advanced monitoring", "24/7 support"],
       highlight: true,
+      image: "https://images.unsplash.com/photo-1614850523060-8da1d56fa167?q=80&w=2670&auto=format&fit=crop"
     },
     {
       name: "Supreme",
       price: "249",
       desc: "Enterprise grade",
-      features: ["Dedicated support", "Private hosting", "Custom security", "Training included", "Priority features", "Enterprise SLA"],
+      features: ["Dedicated support", "Private hosting", "Custom security", "Enterprise SLA"],
       highlight: false,
+      image: "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2670&auto=format&fit=crop"
     },
   ];
 
   return (
-    <section id="pricing" className="py-24 bg-background">
+    <section id="pricing" className="py-32 bg-background border-t border-white/5">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-sm font-medium text-primary mb-2 tracking-widest uppercase">Pricing</h2>
-          <h3 className="text-3xl md:text-4xl font-display font-bold text-white mb-4">
+        
+        <div className="flex items-center gap-4 mb-12">
+          <span className="font-mono text-xs text-muted-foreground">005</span>
+          <div className="h-[1px] w-12 bg-white/10" />
+          <h2 className="text-2xl font-medium text-white">Pricing</h2>
+        </div>
+
+        <div className="mb-20 max-w-xl">
+          <h3 className="text-4xl md:text-5xl font-bold tracking-tighter text-white mb-4">
             Flexible, transparent plans.
           </h3>
-          <p className="text-muted-foreground text-lg max-w-xl mx-auto">
-            Choose only what you need — nothing locked in.
+          <p className="text-muted-foreground">
+            Scale at your own pace – choose only what you need.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-8">
           {plans.map((plan, idx) => (
             <div 
               key={idx}
               className={cn(
-                "rounded-3xl p-8 border flex flex-col relative transition-all duration-300",
+                "rounded-3xl p-2 border transition-all duration-300 group",
                 plan.highlight 
-                  ? "bg-card/80 border-primary/50 shadow-2xl shadow-primary/10 scale-105 z-10" 
-                  : "bg-card/30 border-white/10 hover:border-white/20"
+                  ? "bg-card border-primary/50" 
+                  : "bg-card border-white/10"
               )}
             >
-              {plan.highlight && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full">
-                  RECOMMENDED
-                </div>
-              )}
-              
-              <div className="mb-8">
-                <h4 className="text-xl font-bold text-white mb-2">{plan.name}</h4>
-                <p className="text-muted-foreground text-sm mb-6">{plan.desc}</p>
-                <div className="flex items-baseline">
-                  <span className="text-4xl font-display font-bold text-white">${plan.price}</span>
-                  <span className="text-muted-foreground ml-2">/mo</span>
-                </div>
+              {/* Card Image Top */}
+              <div className="h-48 rounded-2xl overflow-hidden mb-6 relative">
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10" />
+                <img src={plan.image} alt={plan.name} className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" />
               </div>
 
-              <ul className="space-y-4 mb-8 flex-1">
-                {plan.features.map((feat, i) => (
-                  <li key={i} className="flex items-center gap-3 text-sm text-muted-foreground">
-                    <div className={cn("w-5 h-5 rounded-full flex items-center justify-center", plan.highlight ? "bg-primary/20 text-primary" : "bg-white/5 text-white")}>
-                      <Check size={12} />
-                    </div>
-                    {feat}
-                  </li>
-                ))}
-              </ul>
+              <div className="px-6 pb-6">
+                <div className="flex justify-between items-start mb-6">
+                  <div>
+                    <h4 className="text-xl font-bold text-white mb-1">{plan.name}</h4>
+                    <p className="text-xs text-muted-foreground">{plan.desc}</p>
+                  </div>
+                  <div className="text-right">
+                     <div className="text-2xl font-bold text-white">${plan.price}</div>
+                     <div className="text-xs text-muted-foreground">/mo</div>
+                  </div>
+                </div>
 
-              <Button 
-                className={cn(
-                  "w-full py-6 rounded-xl font-bold",
-                  plan.highlight 
-                    ? "bg-primary hover:bg-primary/90 text-white" 
-                    : "bg-white/5 hover:bg-white/10 text-white border border-white/10"
-                )}
-              >
-                Select Plan
-              </Button>
+                <ul className="space-y-3 mb-8">
+                  {plan.features.map((feat, i) => (
+                    <li key={i} className="flex items-center gap-3 text-xs text-muted-foreground">
+                      <div className="w-4 h-4 rounded-full bg-white/5 flex items-center justify-center text-white">
+                        <Check size={10} />
+                      </div>
+                      {feat}
+                    </li>
+                  ))}
+                </ul>
+
+                <Button 
+                  className={cn(
+                    "w-full rounded-xl font-bold",
+                    plan.highlight 
+                      ? "bg-primary hover:bg-primary/90 text-white" 
+                      : "bg-white/5 hover:bg-white/10 text-white border border-white/10"
+                  )}
+                >
+                  Select Plan
+                </Button>
+              </div>
             </div>
           ))}
-        </div>
-
-        <div className="mt-20 p-8 rounded-3xl bg-card/50 border border-white/10 max-w-4xl mx-auto">
-           <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-             <div>
-               <h4 className="text-xl font-bold text-white mb-2">LaunchForge Starter Package</h4>
-               <p className="text-muted-foreground">One-time payment for the complete launch service.</p>
-             </div>
-             <div className="text-right">
-                <div className="text-3xl font-bold text-white mb-1">$2,500</div>
-                <div className="text-sm text-primary">Refundable $500 deposit</div>
-             </div>
-             <Button className="bg-white text-black hover:bg-gray-200 px-8 py-6 rounded-xl font-bold">
-               Reserve Launch
-             </Button>
-           </div>
         </div>
       </div>
     </section>

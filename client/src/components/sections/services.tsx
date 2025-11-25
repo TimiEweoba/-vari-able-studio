@@ -1,75 +1,79 @@
-import { Box, CreditCard, LayoutDashboard, Rocket, Server, Smartphone } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 export function Services() {
   const services = [
     {
+      id: "01",
       title: "Productized Templates",
-      desc: "Vertical starter kits (Real Estate, Booking, Agency CRM) to cut build time.",
-      icon: <Box className="w-6 h-6" />,
+      desc: "Vertical starter kits to cut build time.",
+      image: "https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=2532&auto=format&fit=crop",
+      active: true
     },
     {
+      id: "02",
       title: "Payments & Billing",
-      desc: "Stripe subscriptions, coupons, invoices, reconciliation flows.",
-      icon: <CreditCard className="w-6 h-6" />,
+      desc: "Stripe subscriptions & invoices.",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2670&auto=format&fit=crop",
+      active: false
     },
     {
+      id: "03",
       title: "Admin Dashboards",
-      desc: "Role-based access, metrics, user management, and export tools.",
-      icon: <LayoutDashboard className="w-6 h-6" />,
+      desc: "Role-based access & metrics.",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2670&auto=format&fit=crop",
+      active: false
     },
     {
-      title: "Onboarding & UX",
-      desc: "Email flows, product tours, conversion-focused UX.",
-      icon: <Smartphone className="w-6 h-6" />,
-    },
-    {
+      id: "04",
       title: "Hosting & Infra",
-      desc: "Deployment scripts, CI, SSL, backups, and basic monitoring.",
-      icon: <Server className="w-6 h-6" />,
-    },
-    {
-      title: "Analytics & Logs",
-      desc: "Real-time dashboards, event tracking and performance insights.",
-      icon: <Rocket className="w-6 h-6" />,
-    },
+      desc: "Deployment scripts & monitoring.",
+      image: "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?q=80&w=2574&auto=format&fit=crop",
+      active: false
+    }
   ];
 
   return (
-    <section id="services" className="py-24 bg-card/30 border-y border-white/5">
+    <section id="services" className="py-32 bg-background border-t border-white/5">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="mb-16 text-center max-w-3xl mx-auto">
-          <h2 className="text-sm font-medium text-primary mb-2 tracking-widest uppercase">Our Services</h2>
-          <h3 className="text-3xl md:text-4xl font-display font-bold text-white mb-6">
-            Flexible solutions for building modern Web2 products.
-          </h3>
-          <p className="text-muted-foreground text-lg">
-            Future-proof systems that scale seamlessly.
-          </p>
+        
+        <div className="flex items-center gap-4 mb-12">
+          <span className="font-mono text-xs text-muted-foreground">002</span>
+          <div className="h-[1px] w-12 bg-white/10" />
+          <h2 className="text-2xl font-medium text-white">Our Services</h2>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="mb-20 max-w-2xl">
+           <h3 className="text-4xl md:text-5xl font-bold tracking-tighter text-white mb-6">
+             Flexible solutions for building modern digital infrastructure.
+           </h3>
+           <p className="text-muted-foreground">Future-proof systems that scale seamlessly.</p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 h-[500px]">
           {services.map((service, idx) => (
-            <motion.div
+            <motion.div 
               key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.1 }}
-              viewport={{ once: true }}
-              className="p-8 rounded-2xl bg-background border border-white/5 hover:border-primary/50 transition-all group hover:shadow-2xl hover:shadow-primary/5"
+              className={`relative rounded-3xl overflow-hidden p-8 flex flex-col justify-between transition-all duration-500 cursor-pointer group ${service.active ? 'bg-primary' : 'bg-card border border-white/10'}`}
+              whileHover={{ y: -10 }}
             >
-              <div className="mb-6 p-3 w-12 h-12 rounded-xl bg-card border border-white/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
-                {service.icon}
+              <div className="flex justify-between items-start">
+                <div className="text-lg font-mono font-bold opacity-50 group-hover:opacity-100 transition-opacity text-white">↗ {service.id}</div>
               </div>
-              <h4 className="text-xl font-bold text-white mb-3 group-hover:text-primary transition-colors">
-                {service.title}
-              </h4>
-              <p className="text-muted-foreground leading-relaxed">
-                {service.desc}
-              </p>
+
+              <div className="relative z-10">
+                <h4 className={`text-2xl font-bold mb-2 leading-tight ${service.active ? 'text-white' : 'text-white'}`}>{service.title}</h4>
+                <p className={`text-sm ${service.active ? 'text-white/80' : 'text-muted-foreground'}`}>{service.desc}</p>
+              </div>
+
+              {/* Background Image for "active" or visual interest */}
+              <div className="absolute inset-0 z-0">
+                 <img src={service.image} alt="" className={`w-full h-full object-cover transition-opacity duration-500 ${service.active ? 'opacity-20 mix-blend-overlay' : 'opacity-0 group-hover:opacity-10'}`} />
+              </div>
             </motion.div>
           ))}
         </div>
+
       </div>
     </section>
   );

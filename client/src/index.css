@@ -3,39 +3,40 @@
 
 @theme inline {
   --font-sans: "Inter", sans-serif;
-  --font-display: "Space Grotesk", sans-serif;
+  
+  /* Colors from branding.json & screenshot analysis */
+  --color-background: hsl(220 6% 9%); /* #161719 */
+  --color-foreground: hsl(0 0% 96%); 
 
-  --color-background: hsl(220 6% 8%); /* #141517 */
-  --color-foreground: hsl(0 0% 96%); /* #f5f5f5 */
-
-  --color-card: hsl(220 4% 14%); /* #232426 */
+  --color-card: hsl(225 6% 13%); /* #212225 */
   --color-card-foreground: hsl(0 0% 96%);
 
-  --color-popover: hsl(220 4% 14%);
+  --color-popover: hsl(225 6% 13%);
   --color-popover-foreground: hsl(0 0% 96%);
 
-  --color-primary: hsl(14 88% 62%); /* #f47047 - Warm Orange */
+  --color-primary: hsl(14 94% 62%); /* #FA6E43 */
   --color-primary-foreground: hsl(0 0% 100%);
 
-  --color-secondary: hsl(220 4% 14%); /* Dark Charcoal */
+  --color-secondary: hsl(225 6% 13%);
   --color-secondary-foreground: hsl(0 0% 96%);
 
-  --color-muted: hsl(240 1% 44%); /* #7f7f81 - Neutral Gray */
-  --color-muted-foreground: hsl(30 4% 68%); /* #b2aba8 - Light Warm Gray */
+  --color-muted: hsl(240 1% 44%);
+  --color-muted-foreground: hsl(240 5% 65%);
 
-  --color-accent: hsl(14 88% 62%);
+  --color-accent: hsl(14 94% 62%);
   --color-accent-foreground: hsl(0 0% 100%);
 
   --color-destructive: hsl(0 62.8% 30.6%);
   --color-destructive-foreground: hsl(0 0% 98%);
 
-  --color-border: hsl(240 1% 25%); /* Darker gray for borders */
+  --color-border: hsl(0 0% 20%); /* Subtle borders */
   --color-input: hsl(240 1% 25%);
-  --color-ring: hsl(14 88% 62%);
+  --color-ring: hsl(14 94% 62%);
 
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 12px;
+  --radius-xl: 24px;
 }
 
 @layer base {
@@ -44,27 +45,25 @@
   }
   body {
     @apply font-sans antialiased bg-background text-foreground;
-    background-image: 
-      radial-gradient(circle at 50% 0%, rgba(244, 112, 71, 0.08) 0%, transparent 40%),
-      radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.03) 0%, transparent 20%);
-    background-attachment: fixed;
+    /* Subtle grain or noise could be added here if needed, but keeping it clean for now */
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display tracking-tight;
+    @apply font-sans tracking-tighter;
   }
 }
 
 @layer utilities {
-  .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-white to-white/60;
-  }
-  
-  .glass-card {
-    @apply bg-card/50 backdrop-blur-md border border-white/5;
-  }
-
   .text-balance {
     text-wrap: balance;
+  }
+  
+  /* Utility for the reference site's distinct thin borders */
+  .border-thin {
+    @apply border border-white/10;
+  }
+
+  .glass-panel {
+    @apply bg-card/80 backdrop-blur-xl border-thin;
   }
 }
