@@ -60,7 +60,8 @@
   
   /* Utility for the reference site's distinct thin borders */
   .border-thin {
-    @apply border border-white/10;
+    border-width: 1px;
+    border-color: rgba(255, 255, 255, 0.1);
   }
 
   .glass-panel {
