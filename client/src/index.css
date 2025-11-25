@@ -45,7 +45,6 @@
   }
   body {
     @apply font-sans antialiased bg-background text-foreground;
-    /* Subtle grain or noise could be added here if needed, but keeping it clean for now */
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -58,13 +57,11 @@
     text-wrap: balance;
   }
   
-  /* Utility for the reference site's distinct thin borders */
   .border-thin {
-    border-width: 1px;
-    border-color: rgba(255, 255, 255, 0.1);
+    @apply border border-white/10;
   }
 
   .glass-panel {
-    @apply bg-card/80 backdrop-blur-xl border-thin;
+    @apply bg-card/80 backdrop-blur-xl border border-white/10;
   }
 }
