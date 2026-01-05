@@ -61,5 +61,11 @@ export async function setupVite(app: Express, server: Server) {
 }
 
 (async () => {
-  await runApp(setupVite);
+  console.log("Starting server...");
+  try {
+    await runApp(setupVite);
+    console.log("Server started successfully");
+  } catch (e) {
+    console.error("Failed to start server:", e);
+  }
 })();

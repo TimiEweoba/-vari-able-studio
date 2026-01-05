@@ -1,5 +1,4 @@
 import { Navbar } from "@/components/layout/navbar";
-import { Footer } from "@/components/layout/footer";
 import { Hero } from "@/components/sections/hero";
 import { Intro } from "@/components/sections/intro";
 import { Work } from "@/components/sections/work";
@@ -10,11 +9,16 @@ import { Pricing } from "@/components/sections/pricing";
 import { FAQ } from "@/components/sections/faq";
 import { Team } from "@/components/sections/team";
 import { Testimonials } from "@/components/sections/testimonials";
+import { Labs } from "@/components/sections/labs";
+import { NameAnimation } from "@/components/sections/name-animation";
 import { CTA } from "@/components/sections/cta";
+
+import { ParticleBackground } from "@/components/ui/particle-background";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background text-foreground font-sans selection:bg-primary/30">
+    <div className="min-h-screen text-foreground font-sans selection:bg-primary/30 relative">
+      <ParticleBackground />
       <Navbar />
       <main>
         <Hero />
@@ -27,9 +31,10 @@ export default function Home() {
         <FAQ />
         <Team />
         <Testimonials />
+        <Labs />
+        <NameAnimation />
         <CTA />
       </main>
-      <Footer />
     </div>
   );
 }

@@ -4,22 +4,20 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-card border-t border-border py-16">
+    <footer className="bg-background border-t border-white/5 py-16">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
           <div className="col-span-1 md:col-span-2">
-            <Link href="/" className="text-xl font-display font-bold tracking-tight text-white flex items-center gap-2 mb-4">
-                <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center">
-                  <div className="w-2.5 h-2.5 rounded-full bg-primary" />
-                </div>
-                LaunchForge
+            <Link href="/" className="text-xl font-bold tracking-tight text-white flex items-center gap-2 mb-4">
+              <img src="/images/logo.png" alt="vari—able Logo" className="w-8 h-8 object-contain" />
+              vari—able
             </Link>
             <p className="text-muted-foreground text-sm max-w-sm">
-              Ship production Web2 products, fast. We build, you grow. 
-              No vendor lock-in. Just practical product builds.
+              An end-to-end digital product studio. We build the products of tomorrow in record time.
+              Full source ownership. No lock-in.
             </p>
           </div>
-          
+
           <div>
             <h4 className="text-sm font-semibold text-white mb-4">Company</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
@@ -39,10 +37,10 @@ export function Footer() {
             </ul>
           </div>
         </div>
-        
-        <div className="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+
+        <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs text-muted-foreground">
-            © {currentYear} LaunchForge. Built for builders.
+            © {currentYear} vari—able. Built for builders.
           </p>
           <div className="flex items-center gap-4">
             <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>

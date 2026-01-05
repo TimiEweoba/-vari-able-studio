@@ -1,103 +1,108 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Play } from "lucide-react";
+import { Link } from "wouter";
 import { motion } from "framer-motion";
-import dashboardImage from "@assets/generated_images/minimalist_saas_dashboard_showing_analytics.png";
+import { ArrowRight, Calendar, Activity, Zap } from "lucide-react";
 
 export function Hero() {
-  return (
-    <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden min-h-screen flex items-center">
-      {/* Background Particles/Stars effect would go here - keeping it simple for CSS */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white/5 via-background to-background pointer-events-none" />
+    const fadeInUp = {
+        hidden: { opacity: 0, y: 30 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const } }
+    };
 
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="grid lg:grid-cols-12 gap-12 items-center">
-          
-          {/* Left Content */}
-          <div className="lg:col-span-7">
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <div className="text-sm md:text-base text-muted-foreground mb-6 tracking-wide">
-                You innovate, <br />
-                <span className="text-white font-medium">we automate.</span>
-              </div>
-              
-              <h1 className="text-6xl md:text-8xl font-bold tracking-tighter text-white leading-[0.9] mb-12">
-                — The smarter way <br/>
-                to <span className="text-primary">build</span>, <span className="text-primary">run</span>, and <br/>
-                scale your business.
-              </h1>
+    return (
+        <section className="relative min-h-screen flex flex-col justify-center pt-32 pb-16 md:pt-48 md:pb-32 overflow-hidden">
 
-              <div className="flex flex-col md:flex-row items-start md:items-center gap-8">
-                <div className="max-w-xs">
-                  <h3 className="text-white font-medium mb-1">See Platform in action</h3>
-                  <p className="text-sm text-muted-foreground">Join our guided tour and explore all features live.</p>
+            <div className="container mx-auto px-4 md:px-6 relative z-10">
+
+                {/* Top Tagline */}
+                <motion.div
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.2 }}
+                    className="absolute top-0 left-4 md:left-6 text-muted-foreground/60 text-sm hidden md:block"
+                >
+                    You innovate, we automate.
+                </motion.div>
+
+                {/* Main Content Grid */}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start">
+
+                    {/* Main Headline */}
+                    <div className="lg:col-span-12">
+                        <motion.h1
+                            initial="hidden"
+                            animate="visible"
+                            variants={fadeInUp}
+                            className="text-[11vw] md:text-[8.5vw] lg:text-[7.5vw] font-bold tracking-tighter text-white leading-[0.85] mb-8"
+                        >
+                            <span className="block border-t-4 border-primary w-24 mb-6 md:mb-8"></span>
+                            Launch <br />
+                            production-ready <br />
+                            products in <br />
+                            <span className="text-primary">7–14 days.</span>
+                        </motion.h1>
+                    </div>
                 </div>
-                
-                {/* Connecting Line Visual */}
-                <div className="hidden md:block h-[1px] w-24 bg-white/20 relative">
-                  <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1 h-1 bg-white/50 rounded-full" />
+
+                {/* Bottom Section */}
+                <div className="mt-20 lg:mt-32 grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
+
+                    {/* Action Area */}
+                    <div className="lg:col-span-6 space-y-6">
+                        <motion.div
+                            initial="hidden"
+                            animate="visible"
+                            variants={fadeInUp}
+                            transition={{ delay: 0.3 }}
+                        >
+                            <h3 className="text-2xl md:text-3xl font-medium text-white mb-2">See vari—able in action</h3>
+                            <p className="text-muted-foreground max-w-lg leading-relaxed mb-8">
+                                Join our guided tour and explore the product, billing flow, and deployment live. We convert services into monetizable products — white-label code, Stripe billing, one-click deploys, and 30-day priority support.
+                            </p>
+
+                            <div className="flex flex-col sm:flex-row gap-4">
+                                <Link href="/book">
+                                    <Button size="lg" className="h-14 px-8 text-lg rounded-xl bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/25 flex items-center gap-2 group">
+                                        <Calendar className="w-5 h-5" />
+                                        Book a Demo
+                                        <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                                    </Button>
+                                </Link>
+                                <Link href="/reserve">
+                                    <Button size="lg" variant="outline" className="h-14 px-6 text-base rounded-xl border-white/10 bg-white/5 text-white hover:bg-white/10 hover:text-primary transition-colors">
+                                        Reserve a Spot — $500
+                                    </Button>
+                                </Link>
+                            </div>
+                        </motion.div>
+                    </div>
+
+                    {/* Stats Area */}
+                    <div className="lg:col-span-6 flex flex-col md:flex-row gap-8 lg:gap-12 border-t border-white/10 pt-8 lg:border-t-0 lg:pt-0 justify-end">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.5 }}
+                        >
+                            <h4 className="text-white font-medium text-lg mb-1">Average launch time</h4>
+                            <p className="text-3xl font-bold text-primary">7–14 days <span className="text-base font-normal text-muted-foreground">(pilot)</span></p>
+                        </motion.div>
+
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.6 }}
+                            className="flex flex-col justify-center"
+                        >
+                            <h4 className="text-white font-medium text-lg mb-1">Includes</h4>
+                            <p className="text-muted-foreground">White-label ownership</p>
+                            <p className="text-muted-foreground">30-day priority support</p>
+                        </motion.div>
+                    </div>
+
                 </div>
 
-                <Button size="lg" className="bg-primary hover:bg-primary/90 text-white h-14 px-8 rounded-2xl text-base font-medium">
-                  <span className="mr-2">📅</span> Book a Demo
-                </Button>
-              </div>
-            </motion.div>
-            
-            {/* Stats Row */}
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4, duration: 0.5 }}
-              className="mt-20 flex gap-16"
-            >
-              <div>
-                <div className="text-4xl font-bold text-primary tracking-tighter">97.8<span className="text-xl align-top">%</span></div>
-                <div className="text-sm font-medium text-white mt-1">Uptime</div>
-                <div className="text-xs text-muted-foreground">30-day monitoring</div>
-              </div>
-              <div>
-                <div className="text-4xl font-bold text-primary tracking-tighter">+31.2<span className="text-xl align-top">%</span></div>
-                <div className="text-sm font-medium text-white mt-1">Performance</div>
-                <div className="text-xs text-muted-foreground">AI optimized bundle</div>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Right Content - Floating Cards */}
-          <div className="lg:col-span-5 relative h-[600px] hidden lg:block">
-            <motion.div 
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className="absolute top-0 right-0 w-full"
-            >
-              {/* Main Card */}
-              <div className="relative z-10 rounded-3xl overflow-hidden border border-white/10 bg-card/50 backdrop-blur-xl aspect-[4/3]">
-                 <img src={dashboardImage} alt="Dashboard" className="w-full h-full object-cover opacity-80" />
-                 <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
-                   <div className="flex justify-between items-end">
-                     <div>
-                       <div className="text-xs text-muted-foreground mb-1">Neural Network</div>
-                       <div className="text-sm text-white font-mono">// Latest Release</div>
-                     </div>
-                     <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white">
-                       <ArrowRight size={16} />
-                     </div>
-                   </div>
-                 </div>
-              </div>
-
-              {/* Floating Element Behind/Below */}
-              <div className="absolute -bottom-20 -left-10 w-64 h-64 bg-primary rounded-full blur-[100px] opacity-20 pointer-events-none" />
-            </motion.div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-  );
+            </div>
+        </section>
+    );
 }
