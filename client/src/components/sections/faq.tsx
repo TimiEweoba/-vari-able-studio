@@ -79,33 +79,30 @@ export function FAQ() {
       <div className="container mx-auto px-4 md:px-6">
 
         {/* Header Section */}
-        <div className="mb-20">
+        <div className="mb-24">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-[12vw] leading-[0.8] font-medium tracking-tighter text-[#52525B] mb-12"
+            className="text-[12vw] leading-[0.8] font-medium tracking-tighter text-[#1C1D20] mb-12 select-none"
           >
-            Questions & Answers
+            Question & Answer
           </motion.h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start border-l-2 border-primary/20 pl-6 md:pl-0 md:border-l-0">
-            <div className="md:col-span-2 hidden md:block border-l-2 border-primary pl-6">
-              <span className="block text-2xl font-bold mb-1">006</span>
-              <span className="text-sm text-muted-foreground">vari—able</span>
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+            <div className="md:col-span-2 hidden md:block border-l-2 border-primary pl-6 h-12 flex flex-col justify-center">
+              <span className="block text-2xl font-bold mb-1 text-white leading-none">006</span>
+              <span className="text-[10px] text-muted-foreground uppercase tracking-[0.3em] font-black underline decoration-primary decoration-2 underline-offset-4">Insights</span>
             </div>
             <div className="md:col-span-6">
               <h3 className="text-3xl md:text-5xl font-medium tracking-tight text-white leading-tight">
                 Simple answers so you can move faster.
               </h3>
             </div>
-            <div className="md:col-span-4 flex items-end justify-end">
-              <p className="text-muted-foreground text-right max-w-[200px]">
-                Spend less time guessing and more time building.
+            <div className="md:col-span-4 flex items-end justify-end md:h-full">
+              <p className="text-white/50 text-right max-w-[280px] text-sm leading-relaxed border-r-2 border-primary/20 pr-6 italic">
+                Spend less time guessing and more time building. Let's cover your specific requirements.
               </p>
-              <div className="ml-8 hidden md:block">
-                <Button className="bg-primary hover:bg-primary/90 text-white rounded-xl">Book Demo</Button>
-              </div>
             </div>
           </div>
         </div>
@@ -129,7 +126,7 @@ export function FAQ() {
                   className="flex justify-between items-center p-6 cursor-pointer hover:bg-white/5 transition-colors"
                 >
                   <h4 className="text-lg font-bold text-white pr-4">{faq.q}</h4>
-                  <div className="text-[#FA6E43]">
+                  <div className="text-primary">
                     {openIndex === idx ? <Minus className="w-5 h-5" /> : <Plus className="w-5 h-5" />}
                   </div>
                 </div>
@@ -158,43 +155,64 @@ export function FAQ() {
           </div>
 
           {/* Right Column: Visual + CTA Card */}
-          <div className="lg:col-span-5 flex flex-col gap-8 h-full sticky top-24">
-            {/* Top Image */}
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeInUp}
-              className="rounded-2xl overflow-hidden border border-white/5 h-[200px] lg:h-[300px] relative hidden lg:block"
-            >
-              <div className="absolute inset-0 bg-black/20 z-10" />
-              <img
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2670&auto=format&fit=crop"
-                alt="Team working"
-                className="w-full h-full object-cover grayscale opacity-80"
-              />
-            </motion.div>
+          <div className="lg:col-span-5 flex flex-col gap-6">
+            <div className="sticky top-24 space-y-6">
+              {/* Top Image */}
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeInUp}
+                className="rounded-3xl overflow-hidden border border-white/5 h-[240px] relative hidden lg:block group"
+              >
+                <div className="absolute inset-0 bg-primary/10 mix-blend-overlay z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent z-10" />
+                <img
+                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2670&auto=format&fit=crop"
+                  alt="Team working"
+                  className="w-full h-full object-cover grayscale opacity-60 group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute bottom-6 left-6 z-20">
+                  <div className="flex items-center gap-2 text-white/40 text-[10px] uppercase tracking-[0.2em] font-black">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                    Support Team
+                  </div>
+                </div>
+              </motion.div>
 
-            {/* Bottom CTA Card */}
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={{ ...fadeInUp, visible: { ...fadeInUp.visible, transition: { delay: 0.2, ...fadeInUp.visible.transition } } }}
-              className="bg-[#1C1D20] border border-white/5 rounded-2xl p-8 lg:p-12 flex-1 flex flex-col justify-center"
-            >
-              <h3 className="text-3xl md:text-3xl font-medium text-white mb-6">Still have questions?</h3>
-              <p className="text-muted-foreground leading-relaxed mb-10 max-w-sm">
-                Every team's needs are different. Let's cover your specific requirements in a short call.
-              </p>
+              {/* Bottom CTA Card */}
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={{ ...fadeInUp, visible: { ...fadeInUp.visible, transition: { delay: 0.2, ...fadeInUp.visible.transition } } }}
+                className="bg-[#1C1D20] border border-white/5 rounded-[2.5rem] p-10 lg:p-12 relative overflow-hidden shadow-2xl"
+              >
+                {/* Visual Accent */}
+                <div className="absolute -top-12 -right-12 w-40 h-40 bg-primary/5 blur-[80px] rounded-full" />
 
-              <div>
-                <button className="w-full flex items-center justify-center gap-2 bg-[#FA6E43] hover:bg-[#FA6E43]/90 text-white px-6 py-4 rounded-xl font-medium transition-all group">
-                  Let's have a quick call (15 min)
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <h3 className="text-3xl font-bold text-white mb-4 tracking-tight">Still have questions?</h3>
+                <p className="text-white/40 leading-relaxed mb-10 text-sm max-w-[300px]">
+                  Every team's needs are different. Let's cover your specific technical requirements and timeline in a short discovery call.
+                </p>
+
+                <button className="w-full h-16 flex items-center justify-center gap-3 bg-primary hover:bg-primary/90 text-white rounded-2xl font-bold text-base transition-all active:scale-95 group shadow-xl shadow-primary/30">
+                  Schedule a 15-min call
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </button>
-              </div>
-            </motion.div>
+
+                <div className="mt-8 pt-8 border-t border-white/5 flex items-center gap-4">
+                  <div className="flex -space-x-2">
+                    {[1, 2, 3].map(i => (
+                      <div key={i} className="w-8 h-8 rounded-full border-2 border-[#1C1D20] bg-white/10 overflow-hidden">
+                        <img src={`https://i.pravatar.cc/100?img=${i + 10}`} alt="avatar" className="w-full h-full object-cover grayscale" />
+                      </div>
+                    ))}
+                  </div>
+                  <span className="text-[10px] text-white/20 uppercase tracking-widest font-black">Join 50+ founders</span>
+                </div>
+              </motion.div>
+            </div>
           </div>
 
         </div>

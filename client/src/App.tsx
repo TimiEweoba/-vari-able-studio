@@ -15,11 +15,18 @@ function Router() {
   );
 }
 
+import { CustomCursor } from "@/components/ui/custom-cursor";
+import { ThemeSettings } from "@/components/ui/theme-settings";
+import { TerminalView } from "@/components/ui/terminal-view";
+
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
+        <CustomCursor />
+        <ThemeSettings />
+        <TerminalView />
         <Router />
       </TooltipProvider>
     </QueryClientProvider>

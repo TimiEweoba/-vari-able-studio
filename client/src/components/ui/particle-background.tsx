@@ -131,7 +131,8 @@ export function ParticleBackground() {
                     const dy = mouse.y - p.y;
                     const dist = Math.sqrt(dx * dx + dy * dy);
                     if (dist < 120) {
-                        ctx.strokeStyle = `rgba(250, 110, 67, ${1 - dist / 120})`; // Primary color highlight
+                        const primaryRGB = getComputedStyle(document.documentElement).getPropertyValue('--primary-rgb').trim() || "250, 110, 67";
+                        ctx.strokeStyle = `rgba(${primaryRGB}, ${1 - dist / 120})`;
                         ctx.lineWidth = 0.5;
                         ctx.beginPath();
                         ctx.moveTo(p.x, p.y);

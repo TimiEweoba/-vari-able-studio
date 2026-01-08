@@ -50,23 +50,23 @@ export function Services() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-[12vw] leading-[0.8] font-medium tracking-tighter text-[#52525B] mb-12"
+            className="text-[12vw] leading-[0.8] font-medium tracking-tighter text-[#1C1D20] mb-12 select-none"
           >
             Our Services
           </motion.h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start border-l-2 border-primary/20 pl-6 md:pl-0 md:border-l-0">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
             <div className="md:col-span-2 hidden md:block border-l-2 border-primary pl-6">
               <span className="block text-2xl font-bold mb-1">002</span>
-              <span className="text-sm text-muted-foreground">vari-able</span>
+              <span className="text-[10px] text-muted-foreground uppercase tracking-[0.3em] font-black underline decoration-primary decoration-2 underline-offset-4">Solutions</span>
             </div>
             <div className="md:col-span-6">
               <h3 className="text-3xl md:text-5xl font-medium tracking-tight text-white leading-tight">
                 Productized services for faster launches.
               </h3>
             </div>
-            <div className="md:col-span-4 flex items-end justify-end">
-              <p className="text-muted-foreground text-right max-w-[200px]">
+            <div className="md:col-span-4 flex items-end justify-end md:h-full">
+              <p className="text-white/50 text-right max-w-[280px] text-sm leading-relaxed border-r-2 border-primary/20 pr-6 italic">
                 Future-proof, modular solutions that scale with your business. Pick the modules you need and get a working product — fast.
               </p>
             </div>
@@ -156,17 +156,45 @@ export function Services() {
                 <span className="text-sm text-muted-foreground">Core Services</span>
                 <span className="text-sm text-muted-foreground">4/4</span>
               </div>
-              <h3 className="text-4xl font-medium tracking-tight text-white mb-6">
+              <motion.h3
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                className="text-4xl font-medium tracking-tight text-white mb-6"
+              >
                 Modular, flexible solutions for building productized digital products.
-              </h3>
+              </motion.h3>
               <p className="text-muted-foreground text-sm leading-relaxed mb-12">
                 vari—able's key capabilities include: design, build, launch, and maintain.
               </p>
 
               {/* Dot Grid Graphic */}
-              <div className="grid grid-cols-4 gap-4 w-fit mx-auto xl:mx-0 opacity-50">
+              {/* Dot Grid Graphic */}
+              <div className="grid grid-cols-4 gap-6 w-fit mx-auto xl:mx-0">
                 {[...Array(16)].map((_, i) => (
-                  <div key={i} className={`w-1 h-1 rounded-full ${i === 5 || i === 11 ? 'bg-primary' : 'bg-white/20'}`} />
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, scale: 0, backgroundColor: "rgba(255,255,255,0.2)" }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    animate={{
+                      backgroundColor: ["rgba(255,255,255,0.2)", "var(--primary)", "rgba(255,255,255,0.2)"],
+                      scale: [1, 1.5, 1], // Pulse effect
+                      boxShadow: ["0 0 0px var(--primary)", "0 0 10px var(--primary)", "0 0 0px var(--primary)"]
+                    }}
+                    viewport={{ once: true }}
+                    transition={{
+                      opacity: { delay: i * 0.05, duration: 0.5 },
+                      default: {
+                        duration: 4, // Slower cycle for elegance
+                        repeat: Infinity,
+                        delay: i * 0.2, // Sequential staggered delay
+                        ease: "easeInOut",
+                        times: [0, 0.1, 1] // Sharp attack, slow decay
+                      }
+                    }}
+                    className="w-2 h-2 rounded-full"
+                  />
                 ))}
               </div>
               <div className="mt-4 text-xs text-muted-foreground/50 text-center xl:text-left">

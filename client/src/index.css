@@ -2,29 +2,37 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+:root {
+  --primary: #FA6E43;
+  --primary-rgb: 250, 110, 67;
+  --accent: #FA6E43;
+  --background: #161719;
+  --foreground: #E3DBD8;
+}
+
 @theme inline {
   --font-sans: "Inter", sans-serif;
 
   /* Colors from vari-able.framer.ai */
-  --color-background: #161719;
-  --color-foreground: #E3DBD8;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
 
   --color-card: rgba(255, 255, 255, 0.03);
-  --color-card-foreground: #E3DBD8;
+  --color-card-foreground: var(--foreground);
 
-  --color-popover: #161719;
-  --color-popover-foreground: #E3DBD8;
+  --color-popover: var(--background);
+  --color-popover-foreground: var(--foreground);
 
-  --color-primary: #FA6E43;
+  --color-primary: var(--primary);
   --color-primary-foreground: #FFFFFF;
 
   --color-secondary: rgba(255, 255, 255, 0.05);
-  --color-secondary-foreground: #E3DBD8;
+  --color-secondary-foreground: var(--foreground);
 
   --color-muted: #9CA3AF;
   --color-muted-foreground: #6B7280;
 
-  --color-accent: #FA6E43;
+  --color-accent: var(--accent);
   --color-accent-foreground: #FFFFFF;
 
   --color-destructive: hsl(0 62.8% 30.6%);
@@ -32,7 +40,7 @@
 
   --color-border: rgba(255, 255, 255, 0.08);
   --color-input: rgba(255, 255, 255, 0.08);
-  --color-ring: #FA6E43;
+  --color-ring: var(--primary);
 
   --radius-sm: 4px;
   --radius-md: 8px;

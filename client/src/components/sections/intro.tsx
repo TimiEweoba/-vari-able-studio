@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import { useScroll, useMotionValueEvent } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 export function Intro() {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -14,7 +15,8 @@ export function Intro() {
         setProgress(latest);
     });
 
-    const text = "We run your product launches so you can focus on growth. vari—able is a digital product studio delivering template-first builds, production engineering, and payment integrations — clean, tested, and ready to scale in 14 days.";
+    const text = "We build high-performance digital products at extraordinary velocity. vari—able is your competitive edge in shipping and scaling the future of software.";
+    const emphasizedWords = ["high-performance", "velocity.", "competitive", "edge", "shipping", "scaling"];
     const words = text.split(" ");
 
     let charCounter = 0;
@@ -25,23 +27,28 @@ export function Intro() {
             className="py-32 md:py-48 min-h-[80vh] flex items-center bg-[#161719]"
         >
             <div className="container mx-auto px-4 md:px-8">
-                <p className="text-[11vw] md:text-[8.5vw] lg:text-[7.5vw] font-bold tracking-tighter leading-[0.85] -ml-[0.05em] flex flex-wrap gap-x-[0.25em] gap-y-2">
+                <p className="text-[9vw] md:text-[7vw] lg:text-[6.5vw] font-bold tracking-tighter leading-[0.9] -ml-[0.05em] flex flex-wrap gap-x-[0.3em] gap-y-2">
                     {words.map((word, wordIndex) => {
                         const wordChars = word.split("");
+                        const isEmphasized = emphasizedWords.includes(word.replace(/[,.]/g, ""));
+
                         return (
-                            <span key={wordIndex} className="inline-block whitespace-nowrap">
+                            <span key={wordIndex} className={cn(
+                                "inline-block whitespace-nowrap transition-all duration-700",
+                                isEmphasized ? "text-primary italic" : "text-white"
+                            )}>
                                 {wordChars.map((char, charIndex) => {
                                     const globalIndex = charCounter;
-                                    charCounter++; // Increment for this character
+                                    charCounter++;
 
                                     const start = globalIndex / text.length;
-                                    const hardOpacity = progress > start ? 1 : 0.1;
+                                    const hardOpacity = progress > start ? 1 : 0.15;
 
                                     return (
                                         <span
                                             key={charIndex}
                                             style={{ opacity: hardOpacity }}
-                                            className="text-white transition-opacity duration-75"
+                                            className="transition-opacity duration-150"
                                         >
                                             {char}
                                         </span>

@@ -49,7 +49,7 @@ const MarqueeRow = ({
 export function NameAnimation() {
     return (
         <>
-            <section className="py-16 md:py-24 bg-[#FA6E43] text-white overflow-hidden flex flex-col gap-4 md:gap-8 select-none border-t border-white/10">
+            <section className="py-16 md:py-24 bg-primary text-white overflow-hidden flex flex-col gap-4 md:gap-8 select-none border-t border-white/10">
 
                 {/* Top Row - Small */}
                 <MarqueeRow

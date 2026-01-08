@@ -54,28 +54,28 @@ export function Pricing() {
       <div className="container mx-auto px-4 md:px-6">
 
         {/* Header Section */}
-        <div className="mb-20">
+        <div className="mb-24">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-[12vw] leading-[0.8] font-medium tracking-tighter text-[#52525B] mb-12"
+            className="text-[12vw] leading-[0.8] font-medium tracking-tighter text-[#1C1D20] mb-12 select-none"
           >
             Pricing
           </motion.h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start border-l-2 border-primary/20 pl-6 md:pl-0 md:border-l-0">
-            <div className="md:col-span-2 hidden md:block border-l-2 border-primary pl-6">
-              <span className="block text-2xl font-bold mb-1">005</span>
-              <span className="text-sm text-muted-foreground">vari-able</span>
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+            <div className="md:col-span-2 hidden md:block border-l-2 border-primary pl-6 h-12 flex flex-col justify-center">
+              <span className="block text-2xl font-bold mb-1 text-white leading-none">005</span>
+              <span className="text-[10px] text-muted-foreground uppercase tracking-[0.3em] font-black underline decoration-primary decoration-2 underline-offset-4">Economics</span>
             </div>
             <div className="md:col-span-6">
               <h3 className="text-3xl md:text-5xl font-medium tracking-tight text-white leading-tight">
                 Transparent, outcome-focused pricing.
               </h3>
             </div>
-            <div className="md:col-span-4 flex items-end justify-end">
-              <p className="text-muted-foreground text-right max-w-[200px]">
+            <div className="md:col-span-4 flex items-end justify-end md:h-full">
+              <p className="text-white/50 text-right max-w-[280px] text-sm leading-relaxed border-r-2 border-primary/20 pr-6 italic">
                 One-time launch packages + optional monthly support. Reserve a slot with a refundable $500 deposit.
               </p>
             </div>
@@ -97,26 +97,28 @@ export function Pricing() {
             <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[250px]">
               {/* Info */}
               <div className="lg:col-span-4 p-8 border-b lg:border-b-0 lg:border-r border-white/5 flex flex-col justify-center">
-                <h4 className="text-2xl font-bold text-white mb-2">Starter</h4>
-                <p className="text-muted-foreground text-sm">Perfect for proofs of concept and solo founders.</p>
+                <h4 className="text-2xl font-bold text-white mb-2 font-display">Starter</h4>
+                <p className="text-white/40 text-sm leading-relaxed">Perfect for proofs of concept and solo founders looking to validate fast.</p>
               </div>
               {/* Price */}
-              <div className="lg:col-span-3 p-8 border-b lg:border-b-0 lg:border-r border-white/5 flex flex-col justify-center items-center">
-                <div className="text-4xl font-bold text-white">$2,500</div>
-                <span className="text-xs text-muted-foreground mt-1">One-time payment</span>
+              <div className="lg:col-span-2 p-8 border-b lg:border-b-0 lg:border-r border-white/5 flex flex-col justify-center items-center">
+                <div className="text-4xl font-bold text-white font-display">$2,500</div>
+                <span className="text-[10px] text-white/20 uppercase tracking-widest font-black mt-2">One-time</span>
               </div>
               {/* Features */}
               <div className="lg:col-span-3 p-8 border-b lg:border-b-0 lg:border-r border-white/5 flex items-center">
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li className="flex gap-2"><Check className="w-4 h-4 text-primary" /> Template setup</li>
-                  <li className="flex gap-2"><Check className="w-4 h-4 text-primary" /> Stripe & Auth</li>
-                  <li className="flex gap-2"><Check className="w-4 h-4 text-primary" /> Basic Admin</li>
-                  <li className="flex gap-2"><Check className="w-4 h-4 text-primary" /> 7 days support</li>
+                <ul className="space-y-3 text-sm text-white/50">
+                  <li className="flex gap-3 items-center"><Check className="w-4 h-4 text-primary shrink-0" /> <span className="truncate">Template setup</span></li>
+                  <li className="flex gap-3 items-center"><Check className="w-4 h-4 text-primary shrink-0" /> <span className="truncate">Stripe & Auth</span></li>
+                  <li className="flex gap-3 items-center"><Check className="w-4 h-4 text-primary shrink-0" /> <span className="truncate">Basic Admin</span></li>
+                  <li className="flex gap-3 items-center"><Check className="w-4 h-4 text-primary shrink-0" /> <span className="truncate">7 days support</span></li>
                 </ul>
               </div>
               {/* CTA */}
-              <div className="lg:col-span-2 p-8 flex items-center justify-center">
-                <Button className="w-full bg-white/5 hover:bg-white/10 text-white border border-white/10">Reserve - $500</Button>
+              <div className="lg:col-span-3 p-8 flex items-center justify-center">
+                <Button className="w-full h-14 bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-2xl font-bold text-sm tracking-tight transition-all active:scale-95">
+                  Reserve Slot — $500
+                </Button>
               </div>
             </div>
           </motion.div>
@@ -133,28 +135,30 @@ export function Pricing() {
             <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[250px]">
               {/* Info */}
               <div className="lg:col-span-4 p-8 border-b lg:border-b-0 lg:border-r border-white/5 flex flex-col justify-center">
-                <h4 className="text-2xl font-bold text-white mb-2">Scale</h4>
-                <p className="text-muted-foreground text-sm">Best for teams going after paying users.</p>
+                <h4 className="text-2xl font-bold text-white mb-2 font-display">Scale</h4>
+                <p className="text-white/40 text-sm leading-relaxed">Best for teams going after paying users and traction.</p>
               </div>
               {/* Price */}
-              <div className="lg:col-span-3 p-8 border-b lg:border-b-0 lg:border-r border-white/5 flex flex-col justify-center items-center">
-                <div className="text-4xl font-bold text-white">$7,500</div>
-                <span className="text-xs text-muted-foreground mt-1">One-time payment</span>
+              <div className="lg:col-span-2 p-8 border-b lg:border-b-0 lg:border-r border-white/5 flex flex-col justify-center items-center">
+                <div className="text-4xl font-bold text-white font-display">$7,500</div>
+                <span className="text-[10px] text-white/20 uppercase tracking-widest font-black mt-2">One-time</span>
               </div>
               {/* Features */}
               <div className="lg:col-span-3 p-8 border-b lg:border-b-0 lg:border-r border-white/5 flex items-center">
-                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 text-sm text-muted-foreground w-full">
-                  <li className="flex gap-2"><Check className="w-4 h-4 text-primary" /> Custom branding</li>
-                  <li className="flex gap-2"><Check className="w-4 h-4 text-primary" /> Advanced analytics</li>
-                  <li className="flex gap-2"><Check className="w-4 h-4 text-primary" /> Priority support</li>
-                  <li className="flex gap-2"><Check className="w-4 h-4 text-primary" /> 14-day launch</li>
-                  <li className="flex gap-2"><Check className="w-4 h-4 text-primary" /> Deploy scripts</li>
-                  <li className="flex gap-2"><Check className="w-4 h-4 text-primary" /> Stripe advanced</li>
+                <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-x-4 gap-y-2 text-sm text-white/50 w-full">
+                  <li className="flex gap-3 items-center"><Check className="w-4 h-4 text-primary shrink-0" /> <span className="truncate">Custom branding</span></li>
+                  <li className="flex gap-3 items-center"><Check className="w-4 h-4 text-primary shrink-0" /> <span className="truncate">Advanced analytics</span></li>
+                  <li className="flex gap-3 items-center"><Check className="w-4 h-4 text-primary shrink-0" /> <span className="truncate">Priority support</span></li>
+                  <li className="flex gap-3 items-center"><Check className="w-4 h-4 text-primary shrink-0" /> <span className="truncate">14-day launch</span></li>
+                  <li className="flex gap-3 items-center"><Check className="w-4 h-4 text-primary shrink-0" /> <span className="truncate">Deploy scripts</span></li>
+                  <li className="flex gap-3 items-center"><Check className="w-4 h-4 text-primary shrink-0" /> <span className="truncate">Stripe advanced</span></li>
                 </ul>
               </div>
               {/* CTA */}
-              <div className="lg:col-span-2 p-8 flex items-center justify-center">
-                <Button className="w-full bg-primary hover:bg-primary/90 text-white">Reserve - $500</Button>
+              <div className="lg:col-span-3 p-8 flex items-center justify-center">
+                <Button className="w-full h-14 bg-primary hover:bg-primary/90 text-white rounded-2xl font-bold text-sm tracking-tight transition-all active:scale-95 shadow-xl shadow-primary/30">
+                  Reserve Slot — $500
+                </Button>
               </div>
             </div>
           </motion.div>
@@ -170,26 +174,28 @@ export function Pricing() {
             <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[250px]">
               {/* Info */}
               <div className="lg:col-span-4 p-8 border-b lg:border-b-0 lg:border-r border-white/5 flex flex-col justify-center">
-                <h4 className="text-2xl font-bold text-white mb-2">Enterprise</h4>
-                <p className="text-muted-foreground text-sm">For complex requirements and custom integrations.</p>
+                <h4 className="text-2xl font-bold text-white mb-2 font-display">Enterprise</h4>
+                <p className="text-white/40 text-sm leading-relaxed">For complex requirements and custom heavy lifting.</p>
               </div>
               {/* Price */}
-              <div className="lg:col-span-3 p-8 border-b lg:border-b-0 lg:border-r border-white/5 flex flex-col justify-center items-center">
-                <div className="text-4xl font-bold text-white">Custom</div>
-                <span className="text-xs text-muted-foreground mt-1">Contact us</span>
+              <div className="lg:col-span-2 p-8 border-b lg:border-b-0 lg:border-r border-white/5 flex flex-col justify-center items-center">
+                <div className="text-4xl font-bold text-white font-display">Custom</div>
+                <span className="text-[10px] text-white/20 uppercase tracking-widest font-black mt-2">Bespoke</span>
               </div>
               {/* Features */}
               <div className="lg:col-span-3 p-8 border-b lg:border-b-0 lg:border-r border-white/5 flex items-center">
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li className="flex gap-2"><Check className="w-4 h-4 text-primary" /> Dedicated engineer</li>
-                  <li className="flex gap-2"><Check className="w-4 h-4 text-primary" /> Private hosting</li>
-                  <li className="flex gap-2"><Check className="w-4 h-4 text-primary" /> Integrations</li>
-                  <li className="flex gap-2"><Check className="w-4 h-4 text-primary" /> SLA & training</li>
+                <ul className="space-y-3 text-sm text-white/50">
+                  <li className="flex gap-3 items-center"><Check className="w-4 h-4 text-primary shrink-0" /> <span className="truncate">Dedicated engineer</span></li>
+                  <li className="flex gap-3 items-center"><Check className="w-4 h-4 text-primary shrink-0" /> <span className="truncate">Private hosting</span></li>
+                  <li className="flex gap-3 items-center"><Check className="w-4 h-4 text-primary shrink-0" /> <span className="truncate">Complex Integrations</span></li>
+                  <li className="flex gap-3 items-center"><Check className="w-4 h-4 text-primary shrink-0" /> <span className="truncate">SLA & training</span></li>
                 </ul>
               </div>
               {/* CTA */}
-              <div className="lg:col-span-2 p-8 flex items-center justify-center">
-                <Button className="w-full bg-white/5 hover:bg-white/10 text-white border border-white/10">Contact Sales</Button>
+              <div className="lg:col-span-3 p-8 flex items-center justify-center">
+                <Button className="w-full h-14 bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-2xl font-bold text-sm tracking-tight transition-all active:scale-95">
+                  Contact Sales
+                </Button>
               </div>
             </div>
           </motion.div>

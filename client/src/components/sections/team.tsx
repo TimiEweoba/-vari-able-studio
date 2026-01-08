@@ -41,28 +41,28 @@ export function Team() {
       <div className="container mx-auto px-4 md:px-6">
 
         {/* Header Section */}
-        <div className="mb-20">
+        <div className="mb-24">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-[12vw] leading-[0.8] font-medium tracking-tighter text-[#52525B] mb-12"
+            className="text-[12vw] leading-[0.8] font-medium tracking-tighter text-[#1C1D20] mb-12 select-none"
           >
             Meet the Team
           </motion.h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start border-l-2 border-primary/20 pl-6 md:pl-0 md:border-l-0">
-            <div className="md:col-span-2 hidden md:block border-l-2 border-primary pl-6">
-              <span className="block text-2xl font-bold mb-1">007</span>
-              <span className="text-sm text-muted-foreground">vari-able</span>
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+            <div className="md:col-span-2 hidden md:block border-l-2 border-primary pl-6 h-12 flex flex-col justify-center">
+              <span className="block text-2xl font-bold mb-1 text-white leading-none">007</span>
+              <span className="text-[10px] text-muted-foreground uppercase tracking-[0.3em] font-black underline decoration-primary decoration-2 underline-offset-4">Makers</span>
             </div>
             <div className="md:col-span-6">
               <h3 className="text-3xl md:text-5xl font-medium tracking-tight text-white leading-tight">
                 Makers, thinkers, and problem solvers who ship product.
               </h3>
             </div>
-            <div className="md:col-span-4 flex items-end justify-end">
-              <p className="text-muted-foreground text-right max-w-[200px]">
+            <div className="md:col-span-4 flex items-end justify-end md:h-full">
+              <p className="text-white/50 text-right max-w-[280px] text-sm leading-relaxed border-r-2 border-primary/20 pr-6 italic">
                 We keep the team small and focused so we can move fast and keep quality high.
               </p>
             </div>
@@ -82,7 +82,7 @@ export function Team() {
                   <button
                     key={i}
                     onClick={() => setActiveMember(i)}
-                    className={`h-1.5 rounded-full transition-all duration-300 ${i === activeMember ? 'w-12 bg-[#FA6E43]' : 'w-2 bg-white/10 hover:bg-white/30'}`}
+                    className={`h-1.5 rounded-full transition-all duration-300 ${i === activeMember ? 'w-12 bg-primary' : 'w-2 bg-white/10 hover:bg-white/30'}`}
                   />
                 ))}
               </div>
@@ -119,6 +119,7 @@ export function Team() {
               <img
                 src={team[activeMember].image}
                 alt={team[activeMember].name}
+                loading="lazy"
                 className={cn(
                   "w-full h-full object-cover transition-all duration-700",
                   // Enhanced normalization to mimic Timi's studio photo look
@@ -132,11 +133,17 @@ export function Team() {
               <div className="absolute inset-0 ring-1 ring-inset ring-white/10" />
             </motion.div>
 
-            {/* Social Sidebar (overlay on mobile, sidebar on desktop) */}
-            <div className="absolute top-0 right-0 bottom-0 w-24 bg-[#161719]/90 border-l border-white/5 hidden lg:flex flex-col items-center justify-center gap-12 z-10 backdrop-blur-sm">
-              <a href="#" className="text-white hover:text-[#FA6E43] transition-colors"><Linkedin className="w-6 h-6" /></a>
-              <a href="#" className="text-white hover:text-[#FA6E43] transition-colors"><Twitter className="w-6 h-6" /></a>
-              <a href="#" className="text-white hover:text-[#FA6E43] transition-colors"><Instagram className="w-6 h-6" /></a>
+            {/* Social Links */}
+            <div className="absolute bottom-6 right-6 lg:top-0 lg:right-0 lg:bottom-0 lg:w-24 flex lg:flex-col items-center justify-center gap-6 lg:gap-12 z-10 lg:bg-[#161719]/90 lg:border-l lg:border-white/5 lg:backdrop-blur-sm">
+              <a href="#" className="text-white/80 hover:text-primary transition-all p-2 bg-black/40 lg:bg-transparent rounded-full backdrop-blur-md lg:backdrop-blur-none hover:scale-110 active:scale-95">
+                <Linkedin className="w-5 h-5 lg:w-6 lg:h-6" />
+              </a>
+              <a href="#" className="text-white/80 hover:text-primary transition-all p-2 bg-black/40 lg:bg-transparent rounded-full backdrop-blur-md lg:backdrop-blur-none hover:scale-110 active:scale-95">
+                <Twitter className="w-5 h-5 lg:w-6 lg:h-6" />
+              </a>
+              <a href="#" className="text-white/80 hover:text-primary transition-all p-2 bg-black/40 lg:bg-transparent rounded-full backdrop-blur-md lg:backdrop-blur-none hover:scale-110 active:scale-95">
+                <Instagram className="w-5 h-5 lg:w-6 lg:h-6" />
+              </a>
             </div>
           </div>
         </div>
@@ -148,13 +155,15 @@ export function Team() {
               key={idx}
               onClick={() => setActiveMember(idx)}
               className={cn(
-                "w-24 h-32 shrink-0 rounded-xl overflow-hidden cursor-pointer transition-all duration-300 relative border",
-                idx === activeMember ? "border-[#FA6E43] opacity-100" : "border-transparent opacity-40 hover:opacity-80"
+                "w-24 h-32 shrink-0 rounded-xl overflow-hidden cursor-pointer transition-all duration-300 relative border interactive",
+                idx === activeMember ? "border-primary opacity-100" : "border-transparent opacity-40 hover:opacity-80"
               )}
+              data-cursor="Member"
             >
               <img
                 src={member.image}
                 alt={member.name}
+                loading="lazy"
                 className={cn(
                   "w-full h-full object-cover grayscale",
                   member.image.endsWith(".jpg") && "brightness-[0.8] contrast-[1.2]"

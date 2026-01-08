@@ -76,21 +76,21 @@ export function Analytics() {
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
 
-        {/* Header Section (Restored Site Consistency) */}
+        {/* Header Section */}
         <div className="mb-24">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-[12vw] leading-[0.8] font-medium tracking-tighter text-[#52525B] mb-12"
+            className="text-[12vw] leading-[0.8] font-medium tracking-tighter text-[#1C1D20] mb-12 select-none"
           >
             Analytics
           </motion.h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start border-l-2 border-primary/20 pl-6 md:pl-0 md:border-l-0">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
             <div className="md:col-span-2 hidden md:block border-l-2 border-primary pl-6">
               <span className="block text-2xl font-bold mb-1 font-display">004</span>
-              <span className="text-sm text-muted-foreground uppercase tracking-widest font-semibold">Metrics</span>
+              <span className="text-[10px] text-muted-foreground uppercase tracking-[0.3em] font-black underline decoration-primary decoration-2 underline-offset-4">Metrics</span>
             </div>
             <div className="md:col-span-6">
               <h3 className="text-3xl md:text-5xl font-medium tracking-tight text-white leading-tight">
@@ -98,8 +98,8 @@ export function Analytics() {
                 if your launch is actually working.
               </h3>
             </div>
-            <div className="md:col-span-4 flex items-end justify-end">
-              <p className="text-muted-foreground text-right max-w-[200px] text-sm leading-relaxed italic">
+            <div className="md:col-span-4 flex items-end justify-end md:h-full">
+              <p className="text-white/50 text-right max-w-[280px] text-sm leading-relaxed border-r-2 border-primary/20 pr-6 italic">
                 Signups, conversions, uptime and performance. No vanity figures. Just the signals that define traction.
               </p>
             </div>
@@ -187,7 +187,7 @@ export function Analytics() {
           >
             <div className="relative z-10">
               <div className="flex items-center justify-between mb-12">
-                <div className="w-14 h-14 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-[0_10px_30px_rgba(250,110,67,0.2)]">
+                <div className="w-14 h-14 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-xl shadow-primary/20">
                   <CreditCard className="w-7 h-7" />
                 </div>
                 <Tooltip text="Shows transactional totals and refunds via Stripe — not accounting.">
@@ -324,7 +324,7 @@ export function Analytics() {
                     initial={{ opacity: 0, scale: 0 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 1 }}
-                    className="bg-primary text-[7px] font-black text-white px-2 py-1 rounded-md tracking-tighter shadow-[0_5px_15px_rgba(250,110,67,0.4)] z-20"
+                    className="bg-primary text-[7px] font-black text-white px-2 py-1 rounded-md tracking-tighter shadow-lg shadow-primary/40 z-20"
                   >
                     DEPLOY v2.4
                   </motion.div>
@@ -409,7 +409,7 @@ export function Analytics() {
             >
               <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
               <span className="text-white font-black text-xl tracking-tight relative z-10 uppercase">Launch Metrics Demo</span>
-              <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white group-hover:rotate-45 transition-transform duration-700 relative z-10 shadow-[0_10px_20px_rgba(250,110,67,0.4)]">
+              <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white group-hover:rotate-45 transition-transform duration-700 relative z-10 shadow-xl shadow-primary/40">
                 <ArrowUpRight className="w-6 h-6" />
               </div>
             </a>
