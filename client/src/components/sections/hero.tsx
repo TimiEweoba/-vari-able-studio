@@ -21,7 +21,7 @@ export function Hero() {
                     transition={{ delay: 0.2 }}
                     className="absolute top-0 left-4 md:left-6 text-muted-foreground/60 text-sm hidden md:block"
                 >
-                    You innovate, we automate.
+                    Building the future of digital.
                 </motion.div>
 
                 {/* Main Content Grid */}

@@ -51,7 +51,7 @@ export function CustomCursor() {
 
     return (
         <motion.div
-            className={`fixed top-0 left-0 w-8 h-8 rounded-full bg-primary mix-blend-difference pointer-events-none z-[9999] flex items-center justify-center overflow-hidden transition-opacity duration-300 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+            className={`fixed top-0 left-0 w-8 h-8 rounded-full bg-primary mix-blend-difference pointer-events-none z-[9999] hidden md:flex items-center justify-center overflow-hidden transition-opacity duration-300 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
             style={{
                 x: cursorX,
                 y: cursorY,

@@ -53,12 +53,12 @@ export function Navbar() {
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden xl:flex items-center gap-8 text-nowrap">
+          <div className="hidden xl:flex items-center gap-4 2xl:gap-8 text-nowrap">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="text-[13px] font-medium text-white/60 hover:text-white transition-all relative group py-2"
+                className="text-xs 2xl:text-[13px] font-medium text-white/60 hover:text-white transition-all relative group py-2"
               >
                 {link.name}
                 <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-primary transition-all duration-300 group-hover:w-full" />
