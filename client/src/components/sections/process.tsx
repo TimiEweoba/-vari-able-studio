@@ -9,9 +9,9 @@ const steps = [
     step: "Step 01",
     title: "Discover & Align",
     time: "Day 0",
-    description: "Objective: pick the right template and lock scope. We ship what they actually need — no nice-to-haves without agreement.",
+    description: "Objective: define the brief and lock scope. We ship what you actually need — no nice-to-haves without agreement.",
     details: [
-      "Deliverables: project brief, prioritized feature list.",
+      "Deliverables: project brief, technical roadmap.",
       "Client deliverable: brand assets, billing decision.",
       "Success criteria: signed SOW + $500 deposit."
     ],
@@ -26,9 +26,9 @@ const steps = [
     step: "Step 02",
     title: "Build & Brand",
     time: "Days 1–7",
-    description: "Objective: implement the template, connect Stripe, and brand the UI. Design → build → test. We show you progress, not excuses.",
+    description: "Objective: rapid implementation of the locked brief. Design → build → test. We show you progress, not excuses.",
     details: [
-      "Deliverables: staging URL, branded landing, auth.",
+      "Deliverables: staging URL, core feature implementation, auth.",
       "Stripe test integration & admin panel stub.",
       "Success criteria: internal QA pass."
     ],
@@ -94,7 +94,7 @@ export function Process() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-[12vw] leading-[0.8] font-medium tracking-tighter text-[#1C1D20] mb-12 select-none"
+            className="text-[12vw] leading-[0.8] font-medium tracking-tighter text-white/[0.15] md:text-[#1C1D20] mb-12 select-none"
           >
             Our Process
           </motion.h2>
@@ -106,7 +106,7 @@ export function Process() {
             </div>
             <div className="md:col-span-6">
               <h3 className="text-4xl md:text-6xl font-medium tracking-tight text-white leading-[1.1]">
-                A template-first playbook for <span className="text-primary italic">predictable</span> success.
+                A scope-first playbook for <span className="text-primary italic">predictable</span> success.
               </h3>
             </div>
             <div className="md:col-span-4 flex items-end justify-end md:h-full">
@@ -271,9 +271,11 @@ export function Process() {
               </div>
               <div className="flex gap-2">
                 {steps.map((_, idx) => (
-                  <button
+                  <motion.button
                     key={idx}
                     onClick={() => setCurrentStep(idx)}
+                    whileHover={{ scale: 1.2 }}
+                    whileTap={{ scale: 0.8 }}
                     className="group py-2 px-1 focus:outline-none"
                   >
                     <motion.div
@@ -281,7 +283,7 @@ export function Process() {
                       animate={{ width: idx === currentStep ? 32 : 12 }}
                       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                     />
-                  </button>
+                  </motion.button>
                 ))}
               </div>
             </div>
@@ -344,18 +346,22 @@ export function Process() {
                 </div>
               </div>
               <div className="p-4 lg:px-10 flex items-center justify-center gap-3 shrink-0 bg-black/10 sm:bg-transparent">
-                <button
+                <motion.button
                   onClick={prevStep}
-                  className="w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/30 hover:text-white hover:bg-primary hover:border-primary transition-all duration-500 active:scale-90"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/30 hover:text-white hover:bg-primary hover:border-primary transition-all duration-500 shadow-lg hover:shadow-primary/20"
                 >
                   <ArrowLeft className="w-5 h-5" />
-                </button>
-                <button
+                </motion.button>
+                <motion.button
                   onClick={nextStep}
-                  className="w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/30 hover:text-white hover:bg-primary hover:border-primary transition-all duration-500 active:scale-90"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/30 hover:text-white hover:bg-primary hover:border-primary transition-all duration-500 shadow-lg hover:shadow-primary/20"
                 >
                   <ArrowRight className="w-5 h-5" />
-                </button>
+                </motion.button>
               </div>
             </div>
           </div>
@@ -372,13 +378,15 @@ export function Process() {
               <p className="text-sm text-white/40">Lock in your launch date today.</p>
             </div>
           </div>
-          <Button
-            onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-            className="bg-white text-black hover:bg-primary hover:text-white px-10 h-16 rounded-2xl font-bold text-lg transition-all group shadow-2xl flex items-center gap-4"
-          >
-            Start Your Journey
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </Button>
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Button
+              onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+              className="bg-white text-black hover:bg-primary hover:text-white px-10 h-16 rounded-2xl font-bold text-lg transition-all group shadow-2xl flex items-center gap-4"
+            >
+              Start Your Journey
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </Button>
+          </motion.div>
         </div>
 
       </div>

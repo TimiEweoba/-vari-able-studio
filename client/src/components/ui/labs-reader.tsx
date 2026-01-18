@@ -25,7 +25,7 @@ export function LabsReader({ isOpen, onClose, article }: LabsReaderProps) {
 
         const shareData = {
             title: article.title,
-            text: `Read "${article.title}" by ${article.author} on vari—able Labs.`,
+            text: `Read "${article.title}" by ${article.author} on veri—able Labs.`,
             url: window.location.href,
         };
 
@@ -159,7 +159,7 @@ export function LabsReader({ isOpen, onClose, article }: LabsReaderProps) {
           
           const ship = async (payload) => {
             setStatus('SYNCING_LAYERS');
-            const res = await variableCore.deploy({
+            const res = await veriableCore.deploy({
               region: 'LAGOS_NODE_01',
               layers: ['AUTH', 'BILLING', 'DASHBOARD'],
               ...payload

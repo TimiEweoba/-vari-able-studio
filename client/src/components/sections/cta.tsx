@@ -81,25 +81,27 @@ export function CTA() {
                   <h3 className="text-sm font-medium text-white/50 mb-6 uppercase tracking-wider">Follow us</h3>
                   <div className="flex gap-3">
                     {[Linkedin, Twitter, Instagram, MessageCircle, Youtube, MessageCircle].map((Icon, i) => (
-                      <a
+                      <motion.a
                         key={i}
                         href="#"
-                        className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:border-primary hover:bg-primary/10 transition-all"
+                        whileHover={{ scale: 1.1, backgroundColor: "rgba(235, 81, 96, 0.1)", borderColor: "var(--color-primary)" }}
+                        whileTap={{ scale: 0.9 }}
+                        className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center transition-all"
                       >
                         <Icon className="w-4 h-4" />
-                      </a>
+                      </motion.a>
                     ))}
                   </div>
                 </motion.div>
 
-                {/* Why Build with vari—able */}
+                {/* Why Build with veri—able */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.2 }}
                 >
-                  <h3 className="text-sm font-medium text-white/50 mb-6 uppercase tracking-wider">Why founders build with vari—able</h3>
+                  <h3 className="text-sm font-medium text-white/50 mb-6 uppercase tracking-wider">Why founders build with veri—able</h3>
                   <ul className="space-y-3 text-white/70">
                     <li className="flex items-start gap-3">
                       <span className="text-primary text-xl leading-none">•</span>
@@ -163,8 +165,8 @@ export function CTA() {
                 </AnimatePresence>
 
                 <div className="mb-8">
-                  <h3 className="text-2xl md:text-3xl font-medium text-white mb-3">Ready to ship something real?</h3>
-                  <p className="text-white/50 text-sm">Tell us about your product idea — we'll get back to you with a roadmap.</p>
+                  <h3 className="text-2xl md:text-3xl font-medium text-white mb-3">Ready to lock your scope?</h3>
+                  <p className="text-white/50 text-sm">Send us your brief — we'll jump on a scoping call within 24 hours.</p>
                 </div>
 
                 <form onSubmit={form.handleSubmit((data) => mutation.mutate(data))} className="space-y-5">
@@ -223,9 +225,11 @@ export function CTA() {
                     )}
                   </div>
 
-                  <button
+                  <motion.button
                     type="submit"
                     disabled={mutation.isPending}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
                     className="w-full bg-primary hover:bg-primary/90 text-white h-12 rounded-lg font-medium transition-all mt-6 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed group relative overflow-hidden"
                   >
                     {mutation.isPending ? (
@@ -239,7 +243,7 @@ export function CTA() {
                         <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                       </>
                     )}
-                  </button>
+                  </motion.button>
                 </form>
               </motion.div>
 
@@ -267,8 +271,8 @@ export function CTA() {
                 {/* Logo & Tagline */}
                 <div>
                   <div className="mb-6">
-                    <img src="/images/logo.png" alt="vari—able Logo" className="w-12 h-12 object-contain mb-4" />
-                    <div className="text-2xl font-bold tracking-tighter text-white mb-2">vari—able</div>
+                    <img src="/images/logo.png" alt="veri—able Logo" className="w-12 h-12 object-contain mb-4" />
+                    <div className="text-2xl font-bold tracking-tighter text-white mb-2">veri—able</div>
                     <div className="text-xs text-white/40 mb-2">// End-to-end digital product studio</div>
                   </div>
                   <p className="text-white/50 text-sm leading-relaxed max-w-xs mb-8">
@@ -277,7 +281,7 @@ export function CTA() {
 
                   {/* Address */}
                   <div className="space-y-1 text-sm text-white/50">
-                    <p className="text-primary text-xl font-bold mb-2">vari—able</p>
+                    <p className="text-primary text-xl font-bold mb-2">veri—able</p>
                     <p>Banana Island</p>
                     <p>Ikoyi, Lagos</p>
                     <p>Nigeria</p>
@@ -312,7 +316,7 @@ export function CTA() {
                         The Team
                       </a>
                     </li>
-                    <li><a href="#labs" className="text-white/60 hover:text-primary transition-colors pl-4">vari—able Lab®</a></li>
+                    <li><a href="#labs" className="text-white/60 hover:text-primary transition-colors pl-4">veri—able Lab®</a></li>
                     <li><a href="#contact" className="text-white/60 hover:text-primary transition-colors pl-4">Contact</a></li>
                     <li><a href="#" className="text-white/60 hover:text-primary transition-colors pl-4">Terms & Service</a></li>
                     <li><a href="#" className="text-white/60 hover:text-primary transition-colors pl-4">Privacy Policy</a></li>
@@ -340,9 +344,13 @@ export function CTA() {
                       placeholder="Your Email"
                       className="flex-1 bg-transparent border-b border-white/10 pb-3 text-white placeholder:text-white/30 focus:outline-none focus:border-primary transition-colors"
                     />
-                    <button className="w-12 h-12 bg-primary hover:bg-primary/90 rounded-lg flex items-center justify-center transition-colors">
+                    <motion.button
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      className="w-12 h-12 bg-primary hover:bg-primary/90 rounded-lg flex items-center justify-center transition-colors"
+                    >
                       <ArrowRight className="w-5 h-5 text-white" />
-                    </button>
+                    </motion.button>
                   </div>
                   <p className="text-xs text-white/40">
                     By submitting, you agree to our <a href="#" className="text-primary hover:underline">Terms & Service</a>.
@@ -352,27 +360,35 @@ export function CTA() {
 
               {/* Bottom Bar */}
               <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
-                <p className="text-xs text-white/30">2026 © | vari—able Studio | Managed by founders, built for makers.</p>
+                <p className="text-xs text-white/30">2026 © | veri—able Studio | Managed by founders, built for makers.</p>
 
                 <div className="flex gap-4">
                   {[Linkedin, Twitter, Instagram, Youtube, MessageCircle].map((Icon, i) => (
-                    <a key={i} href="#" className="text-white/30 hover:text-primary transition-colors">
+                    <motion.a
+                      key={i}
+                      href="#"
+                      whileHover={{ scale: 1.2, color: "var(--color-primary)" }}
+                      whileTap={{ scale: 0.8 }}
+                      className="text-white/30 transition-colors"
+                    >
                       <Icon className="w-4 h-4" />
-                    </a>
+                    </motion.a>
                   ))}
                 </div>
 
-                <button
+                <motion.button
                   onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                  className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:border-primary hover:text-primary transition-colors"
+                  whileHover={{ scale: 1.1, borderColor: "var(--color-primary)", color: "var(--color-primary)" }}
+                  whileTap={{ scale: 0.9 }}
+                  className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center transition-colors"
                 >
                   <ChevronDown className="w-5 h-5 rotate-180" />
-                </button>
+                </motion.button>
               </div>
 
               {/* Company Description */}
               <div className="mt-8 text-xs text-white/20 max-w-3xl">
-                <p>vari—able Studio, registered in Nigeria, is a digital product studio specializing in high-performance infrastructure, high-fidelity design, and rapid scale implementation.</p>
+                <p>veri—able Studio, registered in Nigeria, is a digital product studio specializing in high-performance infrastructure, high-fidelity design, and rapid scale implementation.</p>
               </div>
 
             </div>

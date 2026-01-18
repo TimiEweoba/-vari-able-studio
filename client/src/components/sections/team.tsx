@@ -46,7 +46,7 @@ export function Team() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-[12vw] leading-[0.8] font-medium tracking-tighter text-[#1C1D20] mb-12 select-none"
+            className="text-[12vw] leading-[0.8] font-medium tracking-tighter text-white/[0.15] md:text-[#1C1D20] mb-12 select-none"
           >
             Meet the Team
           </motion.h2>
@@ -75,15 +75,23 @@ export function Team() {
           {/* Left Column: Details */}
           <div className="lg:w-1/2 p-8 md:p-16 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-white/5 order-2 lg:order-1">
             <div>
-              <h5 className="text-muted-foreground mb-4 text-lg">Team vari—able</h5>
+              <h5 className="text-muted-foreground mb-4 text-lg">Team veri—able</h5>
 
-              <div className="flex gap-2 mb-12">
+              <div className="flex gap-3 mb-12">
                 {team.map((_, i) => (
                   <button
                     key={i}
                     onClick={() => setActiveMember(i)}
-                    className={`h-1.5 rounded-full transition-all duration-300 ${i === activeMember ? 'w-12 bg-primary' : 'w-2 bg-white/10 hover:bg-white/30'}`}
-                  />
+                    className={cn(
+                      "h-1 px-4 py-3 rounded-xl transition-all duration-500 relative flex items-center justify-center group/dot",
+                      i === activeMember ? "bg-primary/20" : "bg-transparent hover:bg-white/5"
+                    )}
+                  >
+                    <div className={cn(
+                      "h-1.5 rounded-full transition-all duration-500",
+                      i === activeMember ? "w-8 bg-primary shadow-[0_0_10px_var(--color-primary)]" : "w-1.5 bg-white/20 group-hover/dot:bg-white/40"
+                    )} />
+                  </button>
                 ))}
               </div>
 
@@ -151,12 +159,16 @@ export function Team() {
         {/* Thumbnails Navigation Strip */}
         <div className="mt-8 flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
           {team.map((member, idx) => (
-            <div
+            <motion.div
               key={idx}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               onClick={() => setActiveMember(idx)}
               className={cn(
-                "w-24 h-32 shrink-0 rounded-xl overflow-hidden cursor-pointer transition-all duration-300 relative border interactive",
-                idx === activeMember ? "border-primary opacity-100" : "border-transparent opacity-40 hover:opacity-80"
+                "w-24 h-32 shrink-0 rounded-xl overflow-hidden cursor-pointer transition-all duration-500 relative border-2 interactive",
+                idx === activeMember
+                  ? "border-primary shadow-lg shadow-primary/20 scale-105 z-10"
+                  : "border-white/5 opacity-50 grayscale hover:opacity-100 hover:grayscale-0 hover:border-white/20"
               )}
               data-cursor="Member"
             >
@@ -165,11 +177,16 @@ export function Team() {
                 alt={member.name}
                 loading="lazy"
                 className={cn(
-                  "w-full h-full object-cover grayscale",
-                  member.image.endsWith(".jpg") && "brightness-[0.8] contrast-[1.2]"
+                  "w-full h-full object-cover transition-all duration-700",
+                  idx === activeMember ? "scale-110" : "scale-100",
+                  member.image.endsWith(".jpg") && "brightness-[0.9] contrast-[1.1]"
                 )}
               />
-            </div>
+              <div className={cn(
+                "absolute inset-0 transition-opacity duration-500",
+                idx === activeMember ? "bg-primary/10 opacity-100" : "bg-black/20 opacity-0 group-hover:opacity-100"
+              )} />
+            </motion.div>
           ))}
         </div>
 

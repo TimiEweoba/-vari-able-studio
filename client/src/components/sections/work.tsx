@@ -35,9 +35,13 @@ const ProjectCard = ({ project, fadeInUp, index }: WorkCardProps) => {
           <p className="text-white/80 max-w-md">{project.description}</p>
         </div>
         <div className="absolute bottom-8 left-8 z-20">
-          <button className="flex items-center gap-2 text-sm font-medium bg-white/10 hover:bg-white/20 backdrop-blur-md text-white px-4 py-2 rounded-full transition-colors">
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="flex items-center gap-2 text-sm font-medium bg-white/10 hover:bg-white/20 backdrop-blur-md text-white px-4 py-2 rounded-full transition-all"
+          >
             Learn More <ArrowRight className="w-4 h-4" />
-          </button>
+          </motion.button>
         </div>
       </motion.div>
     );
@@ -63,9 +67,13 @@ const ProjectCard = ({ project, fadeInUp, index }: WorkCardProps) => {
       </div>
 
       <div className="absolute bottom-6 left-6 z-20">
-        <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center text-white transition-transform group-hover:scale-110 shadow-lg shadow-primary/20">
+        <motion.div
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center text-white transition-all shadow-lg shadow-primary/20"
+        >
           <ArrowRight className="w-5 h-5" />
-        </div>
+        </motion.div>
       </div>
     </motion.div>
   );
@@ -98,7 +106,7 @@ export function Work() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-[12vw] leading-[0.8] font-medium tracking-tighter text-[#1C1D20] mb-12 select-none"
+            className="text-[12vw] leading-[0.8] font-medium tracking-tighter text-white/[0.15] md:text-[#1C1D20] mb-12 select-none"
           >
             Our Work
           </motion.h2>
@@ -115,7 +123,7 @@ export function Work() {
             </div>
             <div className="md:col-span-4 flex items-end justify-end md:h-full">
               <p className="text-white/50 text-right max-w-[280px] text-sm leading-relaxed border-r-2 border-primary/20 pr-6 italic">
-                Every solution solves a real business problem — practical value, not decoration. We ship templates, integrations, and polished admin experiences that customers can use on day one.
+                Every solution solves a real business problem — practical value, not decoration. We ship foundational infrastructure, custom integrations, and polished admin experiences that customers can use on day one.
               </p>
             </div>
           </div>
@@ -146,11 +154,11 @@ export function Work() {
               >
                 <div className="relative z-10">
                   <div className="flex justify-between items-center mb-8 border-b border-white/20 pb-4">
-                    <span className="text-sm text-white/80">vari—able Suite</span>
+                    <span className="text-sm text-white/80">veri—able Suite</span>
                     <span className="text-sm text-white/80">{projects?.length}/8</span>
                   </div>
                   <h3 className="text-3xl font-medium tracking-tight text-white mb-6">
-                    Modular launch tooling and templates.
+                    Modular launch tooling and engines.
                   </h3>
                   <p className="text-white/80 text-sm leading-relaxed mb-8">
                     A collection of production-grade starter kits and deploy automation that let you go from idea to paying customers quickly.
@@ -164,9 +172,13 @@ export function Work() {
                 </div>
 
                 <div className="relative z-10 flex justify-end mt-auto">
-                  <button className="flex items-center gap-2 text-sm font-medium bg-black/20 hover:bg-black/30 text-white px-4 py-2 rounded-full transition-colors">
-                    Buy Template <ArrowRight className="w-4 h-4" />
-                  </button>
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex items-center gap-2 text-sm font-medium bg-black/20 hover:bg-black/30 text-white px-4 py-2 rounded-full transition-all"
+                  >
+                    Explore the Tech <ArrowRight className="w-4 h-4" />
+                  </motion.button>
                 </div>
               </motion.div>
             </div>

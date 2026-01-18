@@ -1,4 +1,4 @@
-# vari—able studio
+# veri—able studio
 
 An end-to-end digital product studio specializing in high-performance infrastructure, high-fidelity design, and rapid scale implementation.
 

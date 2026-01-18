@@ -22,7 +22,7 @@ export function Labs() {
             content: `
                 <p>Speed isn't just about coding faster; it's about making decisions faster. When we set out to build the Landlord CRM for a UK-based property group, we had a strict 14-day timeline. Here's how we pulled it off.</p>
                 <h3 class="text-white text-2xl font-bold mt-12 mb-4">The Constraints</h3>
-                <p>To hit the deadline, we had to be ruthless with scope. We agreed on three core features: Tenant Onboarding, Rent Collection (via Stripe), and Maintenance Requests. Anything else was pushed to v2. This "constraint-first" approach is why vari—able launches succeed where others stall.</p>
+                <p>To hit the deadline, we had to be ruthless with scope. We agreed on three core features: Tenant Onboarding, Rent Collection (via Stripe), and Maintenance Requests. Anything else was pushed to v2. This "constraint-first" approach is why veri—able launches succeed where others stall.</p>
                 <div class="my-10 p-6 bg-black rounded-xl border border-white/10 font-mono text-sm overflow-hidden relative group">
                     <div class="absolute top-0 right-0 p-2 text-[10px] font-black text-white/10 uppercase tracking-widest group-hover:text-primary transition-colors">Strategy</div>
                     <div class="text-primary/40 mb-4">// The 14-Day Protocol</div>
@@ -35,7 +35,7 @@ export function Labs() {
                     </ul>
                 </div>
                 <h3 class="text-white text-2xl font-bold mt-12 mb-4">The Stack</h3>
-                <p>We used our internal <strong>vari—able Core</strong> boilerplate. It comes pre-wired with Authentication, PostgreSQL schema, and UI components. This saved us about 100 hours of initial setup, allowing us to focus purely on the business logic of property management.</p>
+                <p>We used our internal <strong>veri—able Core</strong> boilerplate. It comes pre-wired with Authentication, PostgreSQL schema, and UI components. This saved us about 100 hours of initial setup, allowing us to focus purely on the business logic of property management.</p>
             `
         },
         {
@@ -45,7 +45,7 @@ export function Labs() {
             title: "Stripe flows that convert: the exact steps we use",
             image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=2670&auto=format&fit=crop",
             content: `
-                 <p>Friction kills conversion. I've audited over 50 billing flows this year, and the same mistakes keep popping up: too many steps, unclear pricing, and a lack of trust signals. At vari—able, we treat the checkout flow as a product in itself.</p>
+                 <p>Friction kills conversion. I've audited over 50 billing flows this year, and the same mistakes keep popping up: too many steps, unclear pricing, and a lack of trust signals. At veri—able, we treat the checkout flow as a product in itself.</p>
                  <h3 class="text-white text-2xl font-bold mt-12 mb-4">Pre-fill Everything</h3>
                  <p>If you already know the user's email or name, pre-fill it. Every keystroke saved is a higher chance of conversion. We use Stripe's Customer Portal API to handle upgrades, which keeps the logic off our servers and ensures compliance.</p>
                  <div class="my-10 p-6 bg-black rounded-xl border border-white/10 font-mono text-sm overflow-hidden relative group">
@@ -112,9 +112,9 @@ const session = await stripe.checkout.sessions.create({
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-[12vw] leading-[0.8] font-medium tracking-tighter text-[#1C1D20] mb-12 select-none"
+                        className="text-[12vw] leading-[0.8] font-medium tracking-tighter text-white/[0.15] md:text-[#1C1D20] mb-12 select-none"
                     >
-                        vari—able Labs®
+                        veri—able Labs®
                     </motion.h2>
 
                     <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
@@ -147,6 +147,8 @@ const session = await stripe.checkout.sessions.create({
                             whileInView="visible"
                             viewport={{ once: true, margin: "-50px" }}
                             variants={{ ...fadeInUp, visible: { ...fadeInUp.visible, transition: { delay: idx * 0.1, ...fadeInUp.visible.transition } } }}
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
                             onClick={() => openArticle(article)}
                             className="group relative h-[500px] md:h-[600px] rounded-3xl overflow-hidden bg-[#1C1D20] border border-white/5 cursor-pointer interactive"
                             data-cursor="Read"

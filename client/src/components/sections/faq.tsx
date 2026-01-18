@@ -21,11 +21,11 @@ export function FAQ() {
 
   const faqs = [
     {
-      q: "What exactly is vari—able?",
-      a: "vari—able is a digital product studio that ships production-ready, white-label web products fast. We combine templates, Stripe billing, deployment automation, and clean handovers so you can start charging customers in days, not months.",
+      q: "What exactly is veri—able?",
+      a: "veri—able is a digital product studio that ships production-ready, bespoke web products fast. We combine internal foundations, Stripe billing, deployment automation, and clean handovers so you can start charging customers in days, not months.",
     },
     {
-      q: "How does vari—able's launch process work?",
+      q: "How does veri—able's launch process work?",
       a: "We follow a 4-step process: Discover & Align → Build & Brand → QA & Demo → Launch & Transfer. Typical pilot timeline: 7–14 days. We include a 30-day priority patch window after launch.",
     },
     {
@@ -34,7 +34,7 @@ export function FAQ() {
     },
     {
       q: "What’s included in a launch package?",
-      a: "Template customization, Stripe integration, auth & admin, staging URL, deployment scripts, documentation, and 30 days of priority support. Final code + DB export is handed over after final payment.",
+      a: "Architecture customization, Stripe integration, auth & admin, staging URL, deployment scripts, documentation, and 30 days of priority support. Final code + database ownership is handed over after final payment.",
     },
     {
       q: "Do I really own the code?",
@@ -49,7 +49,7 @@ export function FAQ() {
       a: "Yes. We handle common integrations (Stripe, HubSpot, Postgres/Supabase, analytics tools). Complex or bespoke integrations are scoped and priced separately.",
     },
     {
-      q: "Is vari—able secure?",
+      q: "Is veri—able secure?",
       a: "We follow practical security hygiene: HTTPS, secure cookie settings, input validation, and monitoring hooks. For higher-risk projects we recommend (and can scope) third-party audits.",
     },
     {
@@ -57,8 +57,8 @@ export function FAQ() {
       a: "Post-launch work is billed either via a retainer or per-ticket. We offer three support tiers to cover small fixes through dedicated engineering time.",
     },
     {
-      q: "Are templates exclusive?",
-      a: "By default templates are non-exclusive (sold to multiple customers). Exclusive licenses can be negotiated at a higher fee and documented in the SOW.",
+      q: "Can we scale this beyond the 14-day launch?",
+      a: "Absolutely. We build on an industrial-grade stack (Next.js/React/Node) designed to scale. After handover, you can continue with our support plans or hand the keys to your internal team/contractors.",
     },
     {
       q: "What support do you provide?",
@@ -84,7 +84,7 @@ export function FAQ() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-[12vw] leading-[0.8] font-medium tracking-tighter text-[#1C1D20] mb-12 select-none"
+            className="text-[12vw] leading-[0.8] font-medium tracking-tighter text-white/[0.15] md:text-[#1C1D20] mb-12 select-none"
           >
             Question & Answer
           </motion.h2>
@@ -121,15 +121,17 @@ export function FAQ() {
                 variants={{ ...fadeInUp, visible: { ...fadeInUp.visible, transition: { delay: idx * 0.05, ...fadeInUp.visible.transition } } }}
                 className="border border-white/5 bg-[#1C1D20] rounded-2xl overflow-hidden"
               >
-                <div
+                <motion.div
                   onClick={() => toggleFAQ(idx)}
-                  className="flex justify-between items-center p-6 cursor-pointer hover:bg-white/5 transition-colors"
+                  whileHover={{ backgroundColor: "rgba(255, 255, 255, 0.03)" }}
+                  whileTap={{ scale: 0.995 }}
+                  className="flex justify-between items-center p-6 cursor-pointer transition-all"
                 >
                   <h4 className="text-lg font-bold text-white pr-4">{faq.q}</h4>
                   <div className="text-primary">
                     {openIndex === idx ? <Minus className="w-5 h-5" /> : <Plus className="w-5 h-5" />}
                   </div>
-                </div>
+                </motion.div>
                 <AnimatePresence>
                   {openIndex === idx && (
                     <motion.div
@@ -196,10 +198,14 @@ export function FAQ() {
                   Every team's needs are different. Let's cover your specific technical requirements and timeline in a short discovery call.
                 </p>
 
-                <button className="w-full h-16 flex items-center justify-center gap-3 bg-primary hover:bg-primary/90 text-white rounded-2xl font-bold text-base transition-all active:scale-95 group shadow-xl shadow-primary/30">
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full h-16 flex items-center justify-center gap-3 bg-primary hover:bg-primary/90 text-white rounded-2xl font-bold text-base transition-all group shadow-xl shadow-primary/30"
+                >
                   Schedule a 15-min call
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </button>
+                </motion.button>
 
                 <div className="mt-8 pt-8 border-t border-white/5 flex items-center gap-4">
                   <div className="flex -space-x-2">

@@ -82,7 +82,7 @@ export function Analytics() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-[12vw] leading-[0.8] font-medium tracking-tighter text-[#1C1D20] mb-12 select-none"
+            className="text-[12vw] leading-[0.8] font-medium tracking-tighter text-white/[0.15] md:text-[#1C1D20] mb-12 select-none"
           >
             Analytics
           </motion.h2>
@@ -374,8 +374,20 @@ export function Analytics() {
                   Warning: Edge timeouts detected on v2.4.1. Spike in 502 errors at 02:14 UTC.
                 </p>
                 <div className="mt-5 flex gap-2">
-                  <button className="flex-1 text-[9px] font-black bg-white/5 hover:bg-white/10 py-2.5 rounded-xl text-white/50 transition-all uppercase tracking-widest">Acknowledge</button>
-                  <button className="flex-1 text-[9px] font-black bg-red-500/10 hover:bg-red-500/20 py-2.5 rounded-xl text-red-500 transition-all uppercase tracking-widest">Escalate</button>
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex-1 text-[9px] font-black bg-white/5 hover:bg-white/10 py-2.5 rounded-xl text-white/50 transition-all uppercase tracking-widest"
+                  >
+                    Acknowledge
+                  </motion.button>
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex-1 text-[9px] font-black bg-red-500/10 hover:bg-red-500/20 py-2.5 rounded-xl text-red-500 transition-all uppercase tracking-widest"
+                  >
+                    Escalate
+                  </motion.button>
                 </div>
               </div>
 

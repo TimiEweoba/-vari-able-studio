@@ -9,8 +9,8 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
           <div className="col-span-1 md:col-span-2">
             <Link href="/" className="text-xl font-bold tracking-tight text-white flex items-center gap-2 mb-4">
-              <img src="/images/logo.png" alt="vari—able Logo" className="w-8 h-8 object-contain" />
-              vari—able
+              <img src="/images/logo.png" alt="veri—able Logo" className="w-8 h-8 object-contain" />
+              veri—able
             </Link>
             <p className="text-muted-foreground text-sm max-w-sm">
               An end-to-end digital product studio. We build the products of tomorrow in record time.
@@ -40,7 +40,7 @@ export function Footer() {
 
         <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs text-muted-foreground">
-            © {currentYear} vari—able. Built for builders.
+            © {currentYear} veri—able. Built for builders.
           </p>
           <div className="flex items-center gap-4">
             <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>

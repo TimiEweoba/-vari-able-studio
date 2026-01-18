@@ -55,23 +55,27 @@ export function Hero() {
                             variants={fadeInUp}
                             transition={{ delay: 0.3 }}
                         >
-                            <h3 className="text-2xl md:text-3xl font-medium text-white mb-2">See vari—able in action</h3>
+                            <h3 className="text-2xl md:text-3xl font-medium text-white mb-2">See veri—able in action</h3>
                             <p className="text-muted-foreground max-w-lg leading-relaxed mb-8">
                                 Join our guided tour and explore the product, billing flow, and deployment live. We convert services into monetizable products — white-label code, Stripe billing, one-click deploys, and 30-day priority support.
                             </p>
 
                             <div className="flex flex-col sm:flex-row gap-4">
                                 <Link href="/book">
-                                    <Button size="lg" className="h-14 px-8 text-lg rounded-xl bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/25 flex items-center gap-2 group">
-                                        <Calendar className="w-5 h-5" />
-                                        Book a Demo
-                                        <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-                                    </Button>
+                                    <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                                        <Button size="lg" className="h-14 px-8 text-lg rounded-xl bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/25 flex items-center gap-2 group w-full sm:w-auto">
+                                            <Calendar className="w-5 h-5" />
+                                            Book a Demo
+                                            <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                                        </Button>
+                                    </motion.div>
                                 </Link>
                                 <Link href="/reserve">
-                                    <Button size="lg" variant="outline" className="h-14 px-6 text-base rounded-xl border-white/10 bg-white/5 text-white hover:bg-white/10 hover:text-primary transition-colors">
-                                        Reserve a Spot — $500
-                                    </Button>
+                                    <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                                        <Button size="lg" variant="outline" className="h-14 px-6 text-base rounded-xl border-white/10 bg-white/5 text-white hover:bg-white/10 hover:text-primary transition-all w-full sm:w-auto">
+                                            Reserve a Spot — $500
+                                        </Button>
+                                    </motion.div>
                                 </Link>
                             </div>
                         </motion.div>

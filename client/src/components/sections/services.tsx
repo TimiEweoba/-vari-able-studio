@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, ArrowDown, Waves, Shield, Zap, TrendingUp, ArrowRight } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const services = [
   {
     id: "01",
-    label: "Templates",
-    title: "Templates & UI Kits",
-    description: "Ready-made vertical templates (Real Estate, Booking, Agency CRM) plus Figma kits and hero assets that speed design and development.",
+    label: "Foundations",
+    title: "Architecture & UI Foundations",
+    description: "Proprietary internal architecture and high-fidelity UI foundations that allow us to build twice as fast without sacrificing your custom requirements.",
     image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=2565&auto=format&fit=crop",
     icon: <Waves className="w-6 h-6" />
   },
@@ -50,7 +51,7 @@ export function Services() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-[12vw] leading-[0.8] font-medium tracking-tighter text-[#1C1D20] mb-12 select-none"
+            className="text-[12vw] leading-[0.8] font-medium tracking-tighter text-white/[0.15] md:text-[#1C1D20] mb-12 select-none"
           >
             Our Services
           </motion.h2>
@@ -74,18 +75,21 @@ export function Services() {
         </div>
 
         {/* Main Content Area */}
-        <div className="flex flex-col xl:flex-row gap-6 h-auto">
-
+        <div className="h-auto">
           {/* Accordion / Cards */}
-          <div className="flex-1 flex flex-col md:flex-row gap-3 min-h-[500px] md:h-[600px]">
+          <div className="w-full flex flex-col md:flex-row gap-4 min-h-[500px] md:h-[650px]">
             {services.map((service) => (
               <motion.div
                 key={service.id}
                 onClick={() => setActiveId(service.id)}
-                className={`relative overflow-hidden cursor-pointer transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] rounded-2xl ${activeId === service.id
-                  ? "bg-primary flex-[3] min-h-[400px] md:min-h-0"
-                  : "bg-[#1C1D20] flex-1 hover:bg-[#252629] min-h-[80px] md:min-h-0 md:min-w-[80px]"
-                  }`}
+                whileHover={{ scale: 1.01 }}
+                whileTap={{ scale: 0.99 }}
+                className={cn(
+                  "relative overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] rounded-3xl",
+                  activeId === service.id
+                    ? "bg-primary flex-[4] min-h-[500px] md:min-h-0 shadow-2xl shadow-primary/20"
+                    : "bg-[#1C1D20] flex-1 hover:bg-[#252629] min-h-[100px] md:min-h-0 md:min-w-[100px] border border-white/5"
+                )}
                 layout
               >
                 <div className="h-full flex flex-col p-6 relative z-10">
@@ -148,67 +152,6 @@ export function Services() {
               </motion.div>
             ))}
           </div>
-
-          {/* Right Static Panel */}
-          <div className="w-full xl:w-[400px] bg-[#1C1D20] rounded-2xl p-8 flex flex-col justify-between border border-white/5">
-            <div>
-              <div className="flex justify-between items-center mb-8 border-b border-white/10 pb-4">
-                <span className="text-sm text-muted-foreground">Core Services</span>
-                <span className="text-sm text-muted-foreground">4/4</span>
-              </div>
-              <motion.h3
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                className="text-4xl font-medium tracking-tight text-white mb-6"
-              >
-                Modular, flexible solutions for building productized digital products.
-              </motion.h3>
-              <p className="text-muted-foreground text-sm leading-relaxed mb-12">
-                vari—able's key capabilities include: design, build, launch, and maintain.
-              </p>
-
-              {/* Dot Grid Graphic */}
-              {/* Dot Grid Graphic */}
-              <div className="grid grid-cols-4 gap-6 w-fit mx-auto xl:mx-0">
-                {[...Array(16)].map((_, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, scale: 0, backgroundColor: "rgba(255,255,255,0.2)" }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    animate={{
-                      backgroundColor: ["rgba(255,255,255,0.2)", "var(--primary)", "rgba(255,255,255,0.2)"],
-                      scale: [1, 1.5, 1], // Pulse effect
-                      boxShadow: ["0 0 0px var(--primary)", "0 0 10px var(--primary)", "0 0 0px var(--primary)"]
-                    }}
-                    viewport={{ once: true }}
-                    transition={{
-                      opacity: { delay: i * 0.05, duration: 0.5 },
-                      default: {
-                        duration: 4, // Slower cycle for elegance
-                        repeat: Infinity,
-                        delay: i * 0.2, // Sequential staggered delay
-                        ease: "easeInOut",
-                        times: [0, 0.1, 1] // Sharp attack, slow decay
-                      }
-                    }}
-                    className="w-2 h-2 rounded-full"
-                  />
-                ))}
-              </div>
-              <div className="mt-4 text-xs text-muted-foreground/50 text-center xl:text-left">
-                Design, optimize, scale, and secure.
-              </div>
-            </div>
-
-            <div className="mt-8 flex justify-end">
-              <button className="flex items-center gap-2 text-sm font-medium bg-white/5 hover:bg-white/10 px-4 py-2 rounded-full transition-colors">
-                Explore Services <ArrowRight className="w-4 h-4" />
-              </button>
-            </div>
-          </div>
-
         </div>
       </div>
     </section>

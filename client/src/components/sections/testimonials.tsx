@@ -21,7 +21,7 @@ export function Testimonials() {
       name: "Henrik Vogt",
       role: "Operation Director",
       company: "Altrix",
-      quote: "vari—able was always a step ahead, from edge computing strategies to scalable deployment. They brought clarity, speed, and long-term thinking to every part of our build.",
+      quote: "veri—able was always a step ahead, from edge computing strategies to scalable deployment. They brought clarity, speed, and long-term thinking to every part of our build.",
       image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=2574&auto=format&fit=crop"
     },
     {
@@ -29,7 +29,7 @@ export function Testimonials() {
       name: "Sarah Jenkins",
       role: "CTO",
       company: "Novascape",
-      quote: "The automated infrastructure scaling saved us during our product launch. We handled 50x traffic without a single hiccup. vari—able is the real deal.",
+      quote: "The automated infrastructure scaling saved us during our product launch. We handled 50x traffic without a single hiccup. veri—able is the real deal.",
       image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=2574&auto=format&fit=crop"
     },
     {
@@ -53,7 +53,7 @@ export function Testimonials() {
       name: "David Kim",
       role: "Founder",
       company: "Orbit",
-      quote: "vari—able's security features gave our enterprise clients the confidence they needed to sign with us. It's enterprise-grade infrastructure for startups.",
+      quote: "veri—able's security features gave our enterprise clients the confidence they needed to sign with us. It's enterprise-grade infrastructure for startups.",
       image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=2574&auto=format&fit=crop"
     },
     {
@@ -84,7 +84,7 @@ export function Testimonials() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-[12vw] leading-[0.8] font-medium tracking-tighter text-[#1C1D20] mb-12 select-none"
+            className="text-[12vw] leading-[0.8] font-medium tracking-tighter text-white/[0.15] md:text-[#1C1D20] mb-12 select-none"
           >
             What Our Clients Say
           </motion.h2>
@@ -101,7 +101,7 @@ export function Testimonials() {
             </div>
             <div className="md:col-span-4 flex items-end justify-end md:h-full">
               <p className="text-white/50 text-right max-w-[280px] text-sm leading-relaxed border-r-2 border-primary/20 pr-6 italic">
-                Real stories from people who use vari—able daily – why they chose it, and how it changed their businesses.
+                Real stories from people who use veri—able daily – why they chose it, and how it changed their businesses.
               </p>
             </div>
           </div>
@@ -164,24 +164,42 @@ export function Testimonials() {
 
             {/* Desktop Navigation Arrows (Inside Content Area on right) */}
             <div className="absolute top-1/2 -translate-y-1/2 right-0 hidden lg:flex flex-col border-l border-white/5 h-full">
-              <button
+              <motion.button
                 onClick={prevTestimonial}
-                className="flex-1 w-24 flex items-center justify-center text-white/50 hover:text-white hover:bg-white/5 transition-all border-b border-white/5 group"
+                whileHover={{ backgroundColor: "rgba(255, 255, 255, 0.05)" }}
+                whileTap={{ scale: 0.95 }}
+                className="flex-1 w-24 flex items-center justify-center text-white/50 hover:text-white transition-all border-b border-white/5 group"
               >
                 <ArrowLeft className="w-8 h-8 group-hover:-translate-x-1 transition-transform" />
-              </button>
-              <button
+              </motion.button>
+              <motion.button
                 onClick={nextTestimonial}
-                className="flex-1 w-24 flex items-center justify-center text-white/50 hover:text-white hover:bg-white/5 transition-all group"
+                whileHover={{ backgroundColor: "rgba(255, 255, 255, 0.05)" }}
+                whileTap={{ scale: 0.95 }}
+                className="flex-1 w-24 flex items-center justify-center text-white/50 hover:text-white transition-all group"
               >
                 <ArrowRight className="w-8 h-8 group-hover:translate-x-1 transition-transform" />
-              </button>
+              </motion.button>
             </div>
 
             {/* Mobile Navigation */}
             <div className="flex lg:hidden gap-4 mt-8">
-              <button onClick={prevTestimonial} className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-white/5"><ArrowLeft className="w-5 h-5" /></button>
-              <button onClick={nextTestimonial} className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-white/5"><ArrowRight className="w-5 h-5" /></button>
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                onClick={prevTestimonial}
+                className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-white/5"
+              >
+                <ArrowLeft className="w-5 h-5" />
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                onClick={nextTestimonial}
+                className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-white/5"
+              >
+                <ArrowRight className="w-5 h-5" />
+              </motion.button>
             </div>
 
           </div>
@@ -208,20 +226,27 @@ export function Testimonials() {
             </div>
 
             {testimonials.map((item, idx) => (
-              <div
+              <motion.div
                 key={idx}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
                 onClick={() => setActiveIndex(idx)}
                 className={cn(
-                  "w-24 h-32 shrink-0 rounded-xl overflow-hidden cursor-pointer transition-all duration-300 relative border",
-                  idx === activeIndex ? "border-primary opacity-100" : "border-transparent opacity-40 hover:opacity-80"
+                  "w-24 h-32 shrink-0 rounded-xl overflow-hidden cursor-pointer transition-all duration-500 relative border-2",
+                  idx === activeIndex
+                    ? "border-primary shadow-lg shadow-primary/20 scale-105 z-10"
+                    : "border-white/5 opacity-40 grayscale hover:opacity-100 hover:grayscale-0 hover:border-white/20"
                 )}
               >
                 <img
                   src={item.image}
                   alt={item.name}
-                  className="w-full h-full object-cover grayscale"
+                  className={cn(
+                    "w-full h-full object-cover transition-all duration-700",
+                    idx === activeIndex ? "scale-110" : "scale-100"
+                  )}
                 />
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

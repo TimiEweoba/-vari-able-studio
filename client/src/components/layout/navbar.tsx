@@ -47,9 +47,9 @@ export function Navbar() {
         >
           <Link href="/" className="text-xl font-display font-bold tracking-tight text-white flex items-center gap-3 group">
             <div className="w-10 h-10 overflow-hidden rounded-xl bg-white/5 flex items-center justify-center p-2 group-hover:scale-110 transition-transform duration-500 ring-1 ring-white/10">
-              <img src="/images/logo.png" alt="vari—able Logo" className="w-full h-full object-contain" />
+              <img src="/images/logo.png" alt="veri—able Logo" className="w-full h-full object-contain" />
             </div>
-            <span className="hidden md:inline-block">vari—able</span>
+            <span className="hidden md:inline-block">veri—able</span>
           </Link>
 
           {/* Desktop Nav */}
@@ -112,7 +112,7 @@ export function Navbar() {
                   <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center p-2 ring-1 ring-white/10">
                     <img src="/images/logo.png" alt="Logo" className="w-full h-full object-contain" />
                   </div>
-                  <span className="font-bold text-white text-xl tracking-tight">vari—able</span>
+                  <span className="font-bold text-white text-xl tracking-tight">veri—able</span>
                 </div>
                 <button
                   onClick={() => setIsMobileOpen(false)}
@@ -172,7 +172,7 @@ export function Navbar() {
                     <a href="#" className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-white/40 hover:text-white hover:bg-white/10 transition-all ring-1 ring-white/5"><Linkedin size={20} /></a>
                   </div>
                   <div className="text-right">
-                    <p className="text-[11px] text-white/30 font-medium">© 2026 vari—able studio</p>
+                    <p className="text-[11px] text-white/30 font-medium">© 2026 veri—able studio</p>
                     <p className="text-[11px] text-white/10">Crafted with precision.</p>
                   </div>
                 </div>

@@ -15,7 +15,7 @@ export function Intro() {
         setProgress(latest);
     });
 
-    const text = "We build high-performance digital products at extraordinary velocity. vari—able is your competitive edge in shipping and scaling the future of software.";
+    const text = "We build high-performance digital products at extraordinary velocity. veri—able is your competitive edge in shipping and scaling the future of software.";
     const emphasizedWords = ["high-performance", "velocity.", "competitive", "edge", "shipping", "scaling"];
     const words = text.split(" ");
 

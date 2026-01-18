@@ -53,7 +53,7 @@ export function NameAnimation() {
 
                 {/* Top Row - Small */}
                 <MarqueeRow
-                    text="vari—able"
+                    text="veri—able"
                     subText="Your software business, streamlined for growth."
                     speed={60}
                     className="text-[10vw] md:text-[5vw] text-white/90"
@@ -61,7 +61,7 @@ export function NameAnimation() {
 
                 {/* Middle Row - Medium */}
                 <MarqueeRow
-                    text="vari—able"
+                    text="veri—able"
                     subText="The smarter way to build, run, and scale software."
                     speed={50}
                     className="text-[18vw] md:text-[10vw] text-white"
@@ -69,7 +69,7 @@ export function NameAnimation() {
 
                 {/* Bottom Row - Large */}
                 <MarqueeRow
-                    text="vari—able"
+                    text="veri—able"
                     subText="Where running and growing your software business gets simple."
                     speed={40}
                     className="text-[28vw] md:text-[18vw] text-white/90"
