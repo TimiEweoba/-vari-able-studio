@@ -12,9 +12,15 @@ const ACCENT_COLORS = [
 
 export function ThemeSettings() {
     const [isOpen, setIsOpen] = useState(false);
-    const [activeColor, setActiveColor] = useState(ACCENT_COLORS[0].color);
+    const [activeColor, setActiveColor] = useState(() => {
+        if (typeof window !== 'undefined') {
+            return localStorage.getItem('veriable-accent-color') || ACCENT_COLORS[0].color;
+        }
+        return ACCENT_COLORS[0].color;
+    });
 
     useEffect(() => {
+        localStorage.setItem('veriable-accent-color', activeColor);
         const root = document.documentElement;
 
         // Helper to convert hex to RGB for components that might need it

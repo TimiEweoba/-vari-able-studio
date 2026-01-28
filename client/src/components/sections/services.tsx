@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, ArrowDown, Waves, Shield, Zap, TrendingUp, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -152,6 +153,23 @@ export function Services() {
               </motion.div>
             ))}
           </div>
+        </div>
+        {/* Explore Services Callout */}
+        <div className="mt-20 pt-20 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+          <div className="flex gap-1">
+            {[...Array(10)].map((_, i) => (
+              <div key={i} className="w-1.5 h-1.5 rounded-full bg-white/[0.03]" />
+            ))}
+          </div>
+
+          <Link href="/tech" className="group flex items-center gap-6 cursor-pointer">
+            <span className="text-xl md:text-2xl font-medium text-white/40 group-hover:text-white transition-colors">
+              Explore Services in Depth
+            </span>
+            <div className="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center text-white transition-transform group-hover:scale-110 active:scale-95 shadow-lg shadow-primary/20">
+              <ArrowRight className="w-6 h-6" />
+            </div>
+          </Link>
         </div>
       </div>
     </section>

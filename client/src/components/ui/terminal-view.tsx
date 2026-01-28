@@ -16,9 +16,16 @@ const SYSTEM_LOGS = [
     "Status: Productizing Agency Services...",
     "Uptime: 2026.01.07.19.45",
     "Payload: High-Fidelity UI/UX",
+    "> vari-able --stack",
+    "Core: Vite, React 19, TS",
+    "Motion: Framer Motion + GSAP",
+    "Styling: Tailwind 4.0 (Engineered)",
+    "DB: Drizzle + Neon (Serverless)",
     "> vari-able --deploy",
     "Deploying to 'LAGOS_NODE_01'...",
     "Success: MVP launched in 14 days.",
+    "> vari-able --help",
+    "Available modules: --status, --stack, --deploy, --team, --labs",
 ];
 
 export function TerminalView() {

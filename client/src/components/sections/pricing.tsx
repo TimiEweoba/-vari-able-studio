@@ -131,14 +131,17 @@ export function Pricing() {
                 <p className="text-white/40 text-xs leading-relaxed">Build a high-fidelity MVP from your brief. Perfect for solo founders looking to validate fast.</p>
               </div>
               {/* Price */}
-              <div className="lg:col-span-3 p-8 border-b lg:border-b-0 lg:border-r border-white/5 flex flex-col justify-center items-center overflow-hidden">
+              <div className="lg:col-span-3 p-8 border-b lg:border-b-0 lg:border-r border-white/5 flex flex-col justify-center items-center">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={currency}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
-                    className="text-3xl md:text-4xl font-bold text-white font-display text-center whitespace-nowrap"
+                    className={cn(
+                      "font-bold text-white font-display text-center",
+                      currency === "NGN" ? "text-2xl md:text-3xl" : "text-3xl md:text-4xl"
+                    )}
                   >
                     {formatPrice(2500)}
                   </motion.div>
@@ -156,22 +159,26 @@ export function Pricing() {
               </div>
               {/* CTA */}
               <div className="lg:col-span-3 p-8 flex items-center justify-center">
-                <motion.button
+                <motion.a
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
+                  href="https://paystack.shop/pay/veriable-studio"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className={cn(
-                    "w-full h-14 rounded-2xl font-bold text-sm tracking-tight transition-all flex items-center justify-center gap-2 group/btn",
+                    "w-full h-14 rounded-2xl font-bold tracking-tight transition-all flex items-center justify-center gap-2 group/btn px-4 text-center",
+                    currency === "NGN" ? "text-[10px] md:text-xs" : "text-sm",
                     selectedPackage === "starter"
                       ? "bg-primary text-white shadow-xl shadow-primary/20"
                       : "bg-white/[0.03] hover:bg-white/[0.08] text-white border border-white/10"
                   )}
                 >
-                  Reserve Slot — {formatPrice(500)}
+                  <span className="truncate">Reserve Slot — {formatPrice(500)}</span>
                   <ArrowRight className={cn(
-                    "w-4 h-4 transition-all",
+                    "w-4 h-4 transition-all shrink-0",
                     selectedPackage === "starter" ? "translate-x-0" : "opacity-0 -ml-4 group-hover/btn:opacity-100 group-hover/btn:ml-0"
                   )} />
-                </motion.button>
+                </motion.a>
               </div>
             </div>
           </motion.div>
@@ -200,14 +207,17 @@ export function Pricing() {
                 <p className="text-white/40 text-xs leading-relaxed">Custom heavy lifting for teams going after paying users and market traction.</p>
               </div>
               {/* Price */}
-              <div className="lg:col-span-3 p-8 border-b lg:border-b-0 lg:border-r border-white/5 flex flex-col justify-center items-center overflow-hidden">
+              <div className="lg:col-span-3 p-8 border-b lg:border-b-0 lg:border-r border-white/5 flex flex-col justify-center items-center">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={currency}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
-                    className="text-3xl md:text-4xl font-bold text-white font-display text-center whitespace-nowrap"
+                    className={cn(
+                      "font-bold text-white font-display text-center",
+                      currency === "NGN" ? "text-2xl md:text-3xl" : "text-3xl md:text-4xl"
+                    )}
                   >
                     {formatPrice(7500)}
                   </motion.div>
@@ -227,22 +237,26 @@ export function Pricing() {
               </div>
               {/* CTA */}
               <div className="lg:col-span-3 p-8 flex items-center justify-center">
-                <motion.button
+                <motion.a
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
+                  href="https://paystack.shop/pay/veriable-studio"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className={cn(
-                    "w-full h-14 rounded-2xl font-bold text-sm tracking-tight transition-all flex items-center justify-center gap-2 group/btn",
+                    "w-full h-14 rounded-2xl font-bold tracking-tight transition-all flex items-center justify-center gap-2 group/btn px-4 text-center",
+                    currency === "NGN" ? "text-[10px] md:text-xs" : "text-sm",
                     selectedPackage === "scale"
                       ? "bg-primary text-white shadow-xl shadow-primary/20"
                       : "bg-white/[0.03] hover:bg-white/[0.08] text-white border border-white/10"
                   )}
                 >
-                  Reserve Slot — {formatPrice(500)}
+                  <span className="truncate">Reserve Slot — {formatPrice(500)}</span>
                   <ArrowRight className={cn(
-                    "w-4 h-4 transition-all",
+                    "w-4 h-4 transition-all shrink-0",
                     selectedPackage === "scale" ? "translate-x-0" : "opacity-0 -ml-4 group-hover/btn:opacity-100 group-hover/btn:ml-0"
                   )} />
-                </motion.button>
+                </motion.a>
               </div>
             </div>
           </motion.div>
@@ -289,6 +303,7 @@ export function Pricing() {
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
+                  onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
                   className={cn(
                     "w-full h-14 rounded-2xl font-bold text-sm tracking-tight transition-all",
                     selectedPackage === "enterprise"
@@ -323,7 +338,10 @@ export function Pricing() {
                 "font-bold text-base mb-1 transition-colors",
                 selectedSupport === "lite" ? "text-white" : "text-white/60 group-hover:text-white"
               )}>Support Lite</h4>
-              <div className="text-2xl font-bold text-primary mb-4">
+              <div className={cn(
+                "font-bold text-primary mb-4",
+                currency === "NGN" ? "text-xl" : "text-2xl"
+              )}>
                 {formatPrice(200)}<span className="text-xs text-muted-foreground font-normal">/mo</span>
               </div>
               <p className="text-xs text-white/40 leading-relaxed">Essential fixes, monitoring, and regular dependency updates.</p>
@@ -344,7 +362,10 @@ export function Pricing() {
                 "font-bold text-base mb-1 transition-colors",
                 selectedSupport === "pro" ? "text-white" : "text-white/60 group-hover:text-white"
               )}>Support Pro</h4>
-              <div className="text-2xl font-bold text-primary mb-4">
+              <div className={cn(
+                "font-bold text-primary mb-4",
+                currency === "NGN" ? "text-xl" : "text-2xl"
+              )}>
                 {formatPrice(500)}<span className="text-xs text-muted-foreground font-normal">/mo</span>
               </div>
               <p className="text-xs text-white/40 leading-relaxed">Priority fixes, performance health checks, and 48hr response time.</p>
@@ -365,7 +386,10 @@ export function Pricing() {
                 "font-bold text-base mb-1 transition-colors",
                 selectedSupport === "plus" ? "text-white" : "text-white/60 group-hover:text-white"
               )}>Support Plus</h4>
-              <div className="text-2xl font-bold text-primary mb-4">
+              <div className={cn(
+                "font-bold text-primary mb-4",
+                currency === "NGN" ? "text-xl" : "text-2xl"
+              )}>
                 {formatPrice(1200)}<span className="text-xs text-muted-foreground font-normal">/mo</span>
               </div>
               <p className="text-xs text-white/40 leading-relaxed">Dedicated engineering hours, quarterly audits, and custom scaling.</p>
@@ -384,3 +408,4 @@ export function Pricing() {
     </section>
   );
 }
+

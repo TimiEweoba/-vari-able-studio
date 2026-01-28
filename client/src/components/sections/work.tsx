@@ -1,15 +1,17 @@
 import { ArrowRight, Lock, LayoutDashboard, CreditCard, Loader2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
+import { useLocation } from "wouter";
 import { type Project } from "@shared/schema";
 
 interface WorkCardProps {
   project: Project;
   fadeInUp: any;
   index: number;
+  setLocation: (path: string) => void;
 }
 
-const ProjectCard = ({ project, fadeInUp, index }: WorkCardProps) => {
+const ProjectCard = ({ project, fadeInUp, index, setLocation }: WorkCardProps) => {
   const isFeatured = project.featured === "true";
 
   if (isFeatured) {
@@ -21,6 +23,7 @@ const ProjectCard = ({ project, fadeInUp, index }: WorkCardProps) => {
         variants={fadeInUp}
         className="lg:col-span-8 relative rounded-2xl overflow-hidden group bg-[#1C1D20] border border-white/5 h-[500px] cursor-pointer interactive"
         data-cursor="View Case"
+        onClick={() => setLocation("/work")}
       >
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10" />
         <img
@@ -38,6 +41,10 @@ const ProjectCard = ({ project, fadeInUp, index }: WorkCardProps) => {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            onClick={(e) => {
+              e.stopPropagation();
+              setLocation("/work");
+            }}
             className="flex items-center gap-2 text-sm font-medium bg-white/10 hover:bg-white/20 backdrop-blur-md text-white px-4 py-2 rounded-full transition-all"
           >
             Learn More <ArrowRight className="w-4 h-4" />
@@ -55,6 +62,7 @@ const ProjectCard = ({ project, fadeInUp, index }: WorkCardProps) => {
       variants={{ ...fadeInUp, visible: { ...fadeInUp.visible, transition: { delay: 0.2 + (index * 0.1), ...fadeInUp.visible.transition } } }}
       className="group relative h-[300px] rounded-2xl overflow-hidden bg-[#1C1D20] border border-white/5 hover:border-white/10 cursor-pointer interactive"
       data-cursor="Review"
+      onClick={() => setLocation("/work")}
     >
       <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors z-10" />
       <img src={project.imageUrl} alt={project.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
@@ -80,6 +88,7 @@ const ProjectCard = ({ project, fadeInUp, index }: WorkCardProps) => {
 };
 
 export function Work() {
+  const [location, setLocation] = useLocation();
   const { data: projects, isLoading } = useQuery<Project[]>({
     queryKey: ["/api/projects"],
   });
@@ -141,7 +150,7 @@ export function Work() {
             {/* Top Row: Featured + Info Panel */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 h-auto">
               {featuredProject && (
-                <ProjectCard project={featuredProject} index={0} fadeInUp={fadeInUp} />
+                <ProjectCard project={featuredProject} index={0} fadeInUp={fadeInUp} setLocation={setLocation} />
               )}
 
               {/* Orange Info Panel */}
@@ -172,13 +181,6 @@ export function Work() {
                 </div>
 
                 <div className="relative z-10 flex justify-end mt-auto">
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="flex items-center gap-2 text-sm font-medium bg-black/20 hover:bg-black/30 text-white px-4 py-2 rounded-full transition-all"
-                  >
-                    Explore the Tech <ArrowRight className="w-4 h-4" />
-                  </motion.button>
                 </div>
               </motion.div>
             </div>
@@ -186,7 +188,7 @@ export function Work() {
             {/* Other Projects Grid */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {otherProjects.map((project, i) => (
-                <ProjectCard key={project.id} project={project} index={i} fadeInUp={fadeInUp} />
+                <ProjectCard key={project.id} project={project} index={i} fadeInUp={fadeInUp} setLocation={setLocation} />
               ))}
             </div>
           </div>

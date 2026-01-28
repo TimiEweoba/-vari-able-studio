@@ -16,9 +16,15 @@ import { Marquee } from "@/components/ui/marquee";
 
 import { ParticleBackground } from "@/components/ui/particle-background";
 
+import { Meta } from "@/components/ui/meta";
+
 export default function Home() {
   return (
     <div className="min-h-screen text-foreground font-sans selection:bg-primary/30 relative">
+      <Meta
+        title="Launch Fast"
+        description="We build, launch, and scale production-ready digital products in 7–14 days. Full source code ownership."
+      />
       <ParticleBackground />
       <Navbar />
       <main>
@@ -30,7 +36,7 @@ export default function Home() {
             { name: "Supabase", logo: "https://cdn.simpleicons.org/supabase/white" },
             { name: "Linear", logo: "https://cdn.simpleicons.org/linear/white" },
             { name: "Framer", logo: "https://cdn.simpleicons.org/framer/white" },
-            { name: "Slack", logo: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Slack_icon_2019.svg" },
+
             { name: "GitHub", logo: "https://cdn.simpleicons.org/github/white" },
           ]}
           speed={60}

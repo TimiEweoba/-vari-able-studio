@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, Zap, Activity, CreditCard, Bell, Info, ArrowDown, ArrowUp, Slack, Database, MousePointer2 } from "lucide-react";
+import { ArrowUpRight, Zap, Activity, CreditCard, Bell, Info, ArrowDown, ArrowUp, Database, MousePointer2 } from "lucide-react";
 import { useEffect, useState, useRef } from "react";
 import { cn } from "@/lib/utils";
 
@@ -358,7 +358,7 @@ export function Analytics() {
               <div className="flex justify-between items-start">
                 <div>
                   <h4 className="text-xl font-bold text-white tracking-tight font-display">Active Alerts</h4>
-                  <p className="text-[10px] text-white/30 uppercase tracking-[0.2em] font-black mt-2">Triggered: Slack</p>
+                  <p className="text-[10px] text-white/30 uppercase tracking-[0.2em] font-black mt-2">Triggered: System</p>
                 </div>
                 <div className="w-12 h-12 rounded-full bg-red-500/10 border border-red-500/20 flex items-center justify-center text-red-500 animate-pulse">
                   <Bell className="w-6 h-6" />
@@ -367,7 +367,7 @@ export function Analytics() {
 
               <div className="bg-[#121214] rounded-2xl p-5 border border-white/5 relative group/alert mt-8 transform hover:scale-[1.02] transition-transform shadow-2xl">
                 <div className="flex items-center gap-2 mb-3">
-                  <Slack className="w-3.5 h-3.5 text-white/30" />
+                  <Bell className="w-3.5 h-3.5 text-white/30" />
                   <span className="text-[10px] font-mono text-white/30 uppercase font-black">#infra-shuttle</span>
                 </div>
                 <p className="text-[11px] font-mono text-red-400 leading-relaxed pl-4 border-l-2 border-red-500">
@@ -391,7 +391,7 @@ export function Analytics() {
                 </div>
               </div>
 
-              <p className="text-[9px] text-white/20 mt-6 italic font-bold text-center">Slack & Email automation active for downtime/spikes.</p>
+              <p className="text-[9px] text-white/20 mt-6 italic font-bold text-center">System & Email automation active for downtime/spikes.</p>
             </motion.div>
 
           </div>

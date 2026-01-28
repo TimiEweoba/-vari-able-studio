@@ -1,3 +1,4 @@
+import { Link } from "wouter";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Linkedin, Twitter, Instagram, Youtube, MessageCircle, ChevronDown, Rocket, CheckCircle2, Loader2 } from "lucide-react";
@@ -86,7 +87,8 @@ export function CTA() {
                         href="#"
                         whileHover={{ scale: 1.1, backgroundColor: "rgba(235, 81, 96, 0.1)", borderColor: "var(--color-primary)" }}
                         whileTap={{ scale: 0.9 }}
-                        className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center transition-all"
+                        className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center transition-all interactive"
+                        data-cursor="Follow"
                       >
                         <Icon className="w-4 h-4" />
                       </motion.a>
@@ -318,10 +320,10 @@ export function CTA() {
                     </li>
                     <li><a href="#labs" className="text-white/60 hover:text-primary transition-colors pl-4">veri—able Lab®</a></li>
                     <li><a href="#contact" className="text-white/60 hover:text-primary transition-colors pl-4">Contact</a></li>
-                    <li><a href="#" className="text-white/60 hover:text-primary transition-colors pl-4">Terms & Service</a></li>
-                    <li><a href="#" className="text-white/60 hover:text-primary transition-colors pl-4">Privacy Policy</a></li>
-                    <li><a href="#" className="text-white/60 hover:text-primary transition-colors pl-4">GDPR Compliance</a></li>
-                    <li><a href="#" className="text-white/60 hover:text-primary transition-colors pl-4">Data Protection</a></li>
+                    <li><Link href="/terms" className="text-white/60 hover:text-primary transition-colors pl-4 bg-transparent border-none cursor-pointer">Terms & Service</Link></li>
+                    <li><Link href="/privacy" className="text-white/60 hover:text-primary transition-colors pl-4 bg-transparent border-none cursor-pointer">Privacy Policy</Link></li>
+                    <li><Link href="/compliance" className="text-white/60 hover:text-primary transition-colors pl-4 bg-transparent border-none cursor-pointer">GDPR Compliance</Link></li>
+                    <li><Link href="/compliance" className="text-white/60 hover:text-primary transition-colors pl-4 bg-transparent border-none cursor-pointer">Data Protection</Link></li>
                   </ul>
                 </div>
 

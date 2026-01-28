@@ -54,3 +54,4 @@ export type ContactRequest = typeof contactRequests.$inferSelect;
 
 export type InsertProject = z.infer<typeof insertProjectSchema>;
 export type Project = typeof projects.$inferSelect;
+

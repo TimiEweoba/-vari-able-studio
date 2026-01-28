@@ -5,13 +5,30 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/home";
+import Success from "@/pages/success";
+
+import Privacy from "@/pages/privacy";
+import Terms from "@/pages/terms";
+import Compliance from "@/pages/compliance";
+import CaseStudies from "@/pages/case-studies";
+import TechStack from "@/pages/tech-stack";
+
+import { PageTransition } from "@/components/layout/page-transition";
 
 function Router() {
   return (
-    <Switch>
-      <Route path="/" component={Home} />
-      <Route component={NotFound} />
-    </Switch>
+    <PageTransition>
+      <Switch>
+        <Route path="/" component={Home} />
+        <Route path="/privacy" component={Privacy} />
+        <Route path="/terms" component={Terms} />
+        <Route path="/compliance" component={Compliance} />
+        <Route path="/work" component={CaseStudies} />
+        <Route path="/tech" component={TechStack} />
+        <Route path="/success" component={Success} />
+        <Route component={NotFound} />
+      </Switch>
+    </PageTransition>
   );
 }
 
@@ -19,15 +36,19 @@ import { CustomCursor } from "@/components/ui/custom-cursor";
 import { ThemeSettings } from "@/components/ui/theme-settings";
 import { TerminalView } from "@/components/ui/terminal-view";
 
+import { SmoothScroll } from "@/components/layout/smooth-scroll";
+
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <Toaster />
-        <CustomCursor />
-        <ThemeSettings />
-        <TerminalView />
-        <Router />
+        <SmoothScroll>
+          <Toaster />
+          <CustomCursor />
+          <ThemeSettings />
+          <TerminalView />
+          <Router />
+        </SmoothScroll>
       </TooltipProvider>
     </QueryClientProvider>
   );

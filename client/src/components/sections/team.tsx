@@ -1,3 +1,4 @@
+import { Link } from "wouter";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Linkedin, Twitter, Instagram } from "lucide-react";
@@ -108,9 +109,7 @@ export function Team() {
                   {team[activeMember].bio}
                 </p>
 
-                <div className="inline-block border border-white/10 rounded-full px-4 py-2 bg-white/5 text-sm text-white/80 hover:bg-white/10 transition-colors cursor-pointer">
-                  Join our Slack community — early access, beta invites.
-                </div>
+
               </motion.div>
             </div>
           </div>

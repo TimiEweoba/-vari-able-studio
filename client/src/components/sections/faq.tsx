@@ -1,3 +1,4 @@
+import { Link } from "wouter";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Plus, Minus } from "lucide-react";
@@ -145,7 +146,12 @@ export function FAQ() {
                         {faq.a}
                         {(faq.q.includes("refund") || faq.q.includes("secure")) && (
                           <div className="mt-3">
-                            <a href="#" className="text-xs text-primary hover:underline">Read full policy →</a>
+                            <Link
+                              href="/privacy"
+                              className="text-xs text-primary hover:underline bg-transparent border-none p-0 cursor-pointer"
+                            >
+                              Read full policy →
+                            </Link>
                           </div>
                         )}
                       </div>
@@ -201,9 +207,10 @@ export function FAQ() {
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
+                  onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
                   className="w-full h-16 flex items-center justify-center gap-3 bg-primary hover:bg-primary/90 text-white rounded-2xl font-bold text-base transition-all group shadow-xl shadow-primary/30"
                 >
-                  Schedule a 15-min call
+                  Inquire Us Directly
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </motion.button>
 

@@ -18,15 +18,15 @@ export function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "Selected Work", href: "#work", id: "01" },
-    { name: "Expertise", href: "#services", id: "02" },
-    { name: "Our Process", href: "#process", id: "03" },
-    { name: "Smart Data", href: "#analytics", id: "04" },
-    { name: "Pricing", href: "#pricing", id: "05" },
-    { name: "Our Team", href: "#team", id: "06" },
-    { name: "Wall of Love", href: "#testimonials", id: "07" },
-    { name: "Research Labs", href: "#labs", id: "08" },
-    { name: "Questions", href: "#faq", id: "09" },
+    { name: "Selected Work", href: "/work", id: "01" },
+    { name: "Expertise", href: "/#services", id: "02" },
+    { name: "Our Process", href: "/#process", id: "03" },
+    { name: "Smart Data", href: "/#analytics", id: "04" },
+    { name: "Pricing", href: "/#pricing", id: "05" },
+    { name: "Our Team", href: "/#team", id: "06" },
+    { name: "Wall of Love", href: "/#testimonials", id: "07" },
+    { name: "Research Labs", href: "/tech", id: "08" },
+    { name: "Questions", href: "/#faq", id: "09" },
   ];
 
   return (
@@ -58,7 +58,8 @@ export function Navbar() {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-xs 2xl:text-[13px] font-medium text-white/60 hover:text-white transition-all relative group py-2"
+                className="text-xs 2xl:text-[13px] font-medium text-white/60 hover:text-white transition-all relative group py-2 interactive"
+                data-cursor="Jump"
               >
                 {link.name}
                 <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-primary transition-all duration-300 group-hover:w-full" />
@@ -68,7 +69,14 @@ export function Navbar() {
 
           <div className="flex items-center gap-4">
             <Button
-              onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+              onClick={() => {
+                const contact = document.getElementById("contact");
+                if (contact) {
+                  contact.scrollIntoView({ behavior: "smooth" });
+                } else {
+                  window.location.href = "/#contact";
+                }
+              }}
               className="hidden md:flex bg-primary hover:bg-primary/90 text-white h-11 px-8 rounded-xl font-semibold transition-all hover:shadow-[0_0_25px_color-mix(in_srgb,var(--color-primary),transparent_60%)] hover:scale-105 active:scale-95 border-none cursor-pointer"
             >
               Book a Demo
@@ -152,9 +160,14 @@ export function Navbar() {
                   <Button
                     onClick={() => {
                       setIsMobileOpen(false);
-                      setTimeout(() => {
-                        document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-                      }, 300);
+                      const contact = document.getElementById("contact");
+                      if (contact) {
+                        setTimeout(() => {
+                          contact.scrollIntoView({ behavior: "smooth" });
+                        }, 300);
+                      } else {
+                        window.location.href = "/#contact";
+                      }
                     }}
                     className="w-full bg-primary hover:bg-primary/90 text-white rounded-2xl py-8 text-xl font-bold shadow-xl shadow-primary/20 transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
                   >

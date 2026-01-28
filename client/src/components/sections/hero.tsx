@@ -61,22 +61,28 @@ export function Hero() {
                             </p>
 
                             <div className="flex flex-col sm:flex-row gap-4">
-                                <Link href="/book">
-                                    <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                                        <Button size="lg" className="h-14 px-8 text-lg rounded-xl bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/25 flex items-center gap-2 group w-full sm:w-auto">
-                                            <Calendar className="w-5 h-5" />
-                                            Book a Demo
-                                            <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-                                        </Button>
-                                    </motion.div>
-                                </Link>
-                                <Link href="/reserve">
-                                    <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                                        <Button size="lg" variant="outline" className="h-14 px-6 text-base rounded-xl border-white/10 bg-white/5 text-white hover:bg-white/10 hover:text-primary transition-all w-full sm:w-auto">
-                                            Reserve a Spot — $500
-                                        </Button>
-                                    </motion.div>
-                                </Link>
+                                <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                                    <Button
+                                        size="lg"
+                                        className="h-14 px-8 text-lg rounded-xl bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/25 flex items-center gap-2 group w-full sm:w-auto"
+                                        onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+                                    >
+                                        <Calendar className="w-5 h-5" />
+                                        Book a Demo
+                                        <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                                    </Button>
+                                </motion.div>
+                                <motion.a
+                                    whileHover={{ scale: 1.02 }}
+                                    whileTap={{ scale: 0.98 }}
+                                    href="https://paystack.shop/pay/veriable-studio"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <Button size="lg" variant="outline" className="h-14 px-6 text-base rounded-xl border-white/10 bg-white/5 text-white hover:bg-white/10 hover:text-primary transition-all w-full sm:w-auto">
+                                        Reserve a Spot — $500
+                                    </Button>
+                                </motion.a>
                             </div>
                         </motion.div>
                     </div>

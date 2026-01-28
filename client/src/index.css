@@ -159,4 +159,29 @@
       padding-right: max(0px, env(safe-area-inset-right));
     }
   }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(250, 110, 67, 0.4);
+    border-radius: 20px;
+    transition: background 0.3s ease;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(250, 110, 67, 0.8);
+  }
+
+  /* Selection color */
+  ::selection {
+    background: rgba(250, 110, 67, 0.3);
+    color: white;
+  }
 }
