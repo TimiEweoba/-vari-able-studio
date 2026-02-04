@@ -26,13 +26,18 @@ export function Navbar() {
     if (href.startsWith("/#")) {
       e.preventDefault();
       const id = href.split("#")[1];
-      const element = document.getElementById(id);
 
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
+      if (location === "/") {
+        const element = document.getElementById(id);
+        if (element && (window as any).lenis) {
+          (window as any).lenis.scrollTo(element, { offset: -100, duration: 1.5 });
+        } else if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
       } else {
-        // If not on the same page, go to home with hash
-        window.location.href = href;
+        // Navigate to home first, the SmoothScroll/ScrollToTop will handle the hash
+        setLocation("/");
+        window.location.hash = id;
       }
       setIsMobileOpen(false);
     }

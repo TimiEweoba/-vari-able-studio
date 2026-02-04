@@ -11,13 +11,19 @@ export function ScrollToTop() {
         // Handle hash if present
         const hash = window.location.hash;
         if (hash) {
-            setTimeout(() => {
+            // Using a requestAnimationFrame to ensure the DOM is ready
+            requestAnimationFrame(() => {
                 const id = hash.replace("#", "");
                 const element = document.getElementById(id);
                 if (element) {
-                    element.scrollIntoView({ behavior: "smooth" });
+                    // If Lenis is active on window (custom property we'll add) or just scroll
+                    if ((window as any).lenis) {
+                        (window as any).lenis.scrollTo(element, { offset: -100, duration: 1.5 });
+                    } else {
+                        element.scrollIntoView({ behavior: "smooth" });
+                    }
                 }
-            }, 500); // Wait for page transition and content load
+            });
         }
     }, [location]);
 

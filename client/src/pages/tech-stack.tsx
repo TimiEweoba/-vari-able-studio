@@ -18,7 +18,7 @@ const techStacks = [
         id: "02",
         title: "Backend Engines",
         description: "High-performance Node.js and Drizzle-powered infrastructures with opinionated schema patterns for rapid data iteration.",
-        image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc51?q=80&w=2626&auto=format&fit=crop",
+        image: "https://images.unsplash.com/photo-1544383335-c54997007543?q=80&w=2626&auto=format&fit=crop",
         tags: ["Node.js", "PostgreSQL", "Drizzle"],
         icon: <Database className="w-6 h-6" />
     },

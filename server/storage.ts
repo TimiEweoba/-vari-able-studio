@@ -179,7 +179,50 @@ export class DatabaseStorage implements IStorage {
   }
 
   async getProjects(): Promise<Project[]> {
-    return await db.select().from(projects);
+    const allProjects = await db.select().from(projects);
+    if (allProjects.length === 0) {
+      // Seed default projects if database is empty
+      const initialProjects: InsertProject[] = [
+        {
+          title: "TenantFlow — Landlord CRM template",
+          description: "A vertical starter product for small landlords. Listings, tenant onboarding, rent collection, and basic analytics.",
+          category: "Featured",
+          imageUrl: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=2565&auto=format&fit=crop",
+          link: "#",
+          featured: "true",
+        },
+        {
+          title: "XPlus Commerce",
+          description: "A high-performance e-commerce platform built for the Nigerian market. Features real-time inventory, secure payments via Flutterwave, and a modular architecture for rapid scaling.",
+          category: "E-commerce",
+          imageUrl: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=2670&auto=format&fit=crop",
+          link: "https://xplus.com.ng",
+          featured: "true",
+        },
+        {
+          title: "Stripe Billing",
+          description: "Customer portal, subscriptions.",
+          category: "Integration",
+          imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2670&auto=format&fit=crop",
+          link: "#",
+          featured: "false",
+        },
+        {
+          title: "Admin Panel",
+          description: "Role management, user controls.",
+          category: "Infrastructure",
+          imageUrl: "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?q=80&w=2574&auto=format&fit=crop",
+          link: "#",
+          featured: "false",
+        }
+      ];
+
+      for (const p of initialProjects) {
+        await db.insert(projects).values(p);
+      }
+      return await db.select().from(projects);
+    }
+    return allProjects;
   }
 
   async createProject(insertProject: InsertProject): Promise<Project> {
@@ -207,4 +250,6 @@ export class DatabaseStorage implements IStorage {
   }
 }
 
-export const storage = process.env.DATABASE_URL ? new DatabaseStorage() : new MemStorage();
+// For local development without DATABASE_URL, we default to MemStorage
+// In production, DATABASE_URL should be set to use DatabaseStorage
+export const storage = new MemStorage();

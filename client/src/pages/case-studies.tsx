@@ -13,11 +13,43 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
+import { LabsReader } from "@/components/ui/labs-reader";
 
 import { Meta } from "@/components/ui/meta";
 
+const xPlusArticle = {
+    author: "Timi Eweoba",
+    authorImage: "/images/team/timi.png",
+    date: "Tuesday, June 17, 2025",
+    title: "Engineering XPlus: Launching a high-performance e-commerce engine in 7 days",
+    image: "/images/xplus-hero.png",
+    content: `
+        <p>Building a production-ready e-commerce platform in a single week sounds impossible. For XPlus, it was a necessity. Operating in Nigeria's fast-paced tech market, they needed a solution that was robust, secure, and lightning-fast. Here's how we engineered the XPlus engine.</p>
+        <h3 class="text-white text-2xl font-bold mt-12 mb-4">The Performance Results</h3>
+        <div class="my-10 grid grid-cols-2 gap-4">
+            <div class="p-6 bg-white/5 rounded-2xl border border-white/10 text-center">
+                <div class="text-primary text-3xl font-bold mb-1">99.9%</div>
+                <div class="text-[10px] text-white/40 uppercase tracking-widest font-black">Uptime</div>
+            </div>
+            <div class="p-6 bg-white/5 rounded-2xl border border-white/10 text-center">
+                <div class="text-primary text-3xl font-bold mb-1">0.8s</div>
+                <div class="text-[10px] text-white/40 uppercase tracking-widest font-black">Avg. Load Time</div>
+            </div>
+        </div>
+        <h3 class="text-white text-2xl font-bold mt-12 mb-4">The Modern Commerce Stack</h3>
+        <ul class="list-disc pl-4 text-white/80 space-y-2 mb-8">
+            <li><strong>Frontend:</strong> React 18, Vite, Tailwind CSS, Radix UI, Framer Motion</li>
+            <li><strong>Backend:</strong> Node.js, Express 5, Passport.js, WebSocket</li>
+            <li><strong>Database:</strong> PostgreSQL with Drizzle ORM</li>
+            <li><strong>Integrations:</strong> Flutterwave API (Payments), TanStack Query</li>
+        </ul>
+        <p>For the Nigerian market, payment reliability is everything. We implemented a robust Flutterwave integration with smart webhooks and automated reconciliation. The result is a checkout experience that handles high-volume traffic with zero friction, optimized for local mobile speeds and network conditions.</p>
+    `
+};
+
 export default function CaseStudiesPage() {
     const [isInquiryOpen, setIsInquiryOpen] = useState(false);
+    const [isReaderOpen, setIsReaderOpen] = useState(false);
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [message, setMessage] = useState("");
@@ -156,7 +188,14 @@ export default function CaseStudiesPage() {
                                             </p>
 
                                             <div className="flex gap-6 items-center">
-                                                <button className="flex items-center gap-3 text-sm font-black text-white hover:text-primary transition-all uppercase tracking-[0.2em] group/btn">
+                                                <button
+                                                    onClick={() => {
+                                                        if (project.title.includes("XPlus")) {
+                                                            setIsReaderOpen(true);
+                                                        }
+                                                    }}
+                                                    className="flex items-center gap-3 text-sm font-black text-white hover:text-primary transition-all uppercase tracking-[0.2em] group/btn"
+                                                >
                                                     View full breakdown
                                                     <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-2 transition-transform" />
                                                 </button>
@@ -247,6 +286,12 @@ export default function CaseStudiesPage() {
                     </form>
                 </DialogContent>
             </Dialog>
+
+            <LabsReader
+                isOpen={isReaderOpen}
+                onClose={() => setIsReaderOpen(false)}
+                article={xPlusArticle}
+            />
 
             <Footer />
         </div>

@@ -6,13 +6,14 @@ export function PageTransition({ children }: { children: ReactNode }) {
     const [location] = useLocation();
 
     return (
-        <AnimatePresence>
+        <AnimatePresence mode="wait">
             <motion.div
-                key={location.split('#')[0]}
+                key={location}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.3, ease: "easeInOut" }}
+                transition={{ duration: 0.2, ease: "easeOut" }}
+                className="w-full"
             >
                 {children}
             </motion.div>

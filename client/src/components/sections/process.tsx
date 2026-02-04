@@ -227,43 +227,110 @@ export function Process() {
                     )}
 
                     {steps[currentStep].visualType === "audit" && (
-                      <div className="w-full h-full flex flex-col items-center justify-center p-4">
-                        <div className="relative w-40 h-40 lg:w-48 lg:h-48 mb-8">
-                          <svg className="w-full h-full transform -rotate-90">
-                            <circle
-                              cx="50%"
-                              cy="50%"
-                              r="45%"
-                              className="fill-none stroke-white/5 stroke-[8]"
+                      <div className="w-full h-full flex flex-col items-center justify-center p-6 relative overflow-hidden">
+                        {/* High-tech background grid */}
+                        <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
+                          <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
+                        </div>
+
+                        {/* Central Hub with Scanning Effect */}
+                        <div className="relative mb-6 lg:mb-8 flex items-center justify-center">
+                          <motion.div
+                            className="absolute bg-primary/20 blur-[60px] rounded-full w-48 h-48"
+                            animate={{
+                              scale: [1, 1.1, 1],
+                              opacity: [0.2, 0.4, 0.2]
+                            }}
+                            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                          />
+
+                          <div className="relative w-32 h-32 lg:w-40 lg:h-40">
+                            <svg className="w-full h-full transform -rotate-90 relative z-10">
+                              <circle
+                                cx="50%"
+                                cy="50%"
+                                r="45%"
+                                className="fill-none stroke-white/5"
+                                strokeWidth="2"
+                              />
+                              <motion.circle
+                                cx="50%"
+                                cy="50%"
+                                r="45%"
+                                initial={{ pathLength: 0 }}
+                                animate={{ pathLength: 1 }}
+                                transition={{ duration: 2.5, ease: [0.65, 0, 0.35, 1], delay: 0.5 }}
+                                className="fill-none stroke-primary"
+                                strokeWidth="4"
+                                strokeLinecap="round"
+                              />
+                            </svg>
+
+                            <div className="absolute inset-0 flex flex-col items-center justify-center z-20">
+                              <motion.div
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ delay: 1.2, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                                className="text-center"
+                              >
+                                <span className="text-5xl lg:text-6xl font-black text-white tracking-tighter block leading-none">
+                                  100
+                                </span>
+                                <span className="text-[7px] lg:text-[8px] text-primary font-black uppercase tracking-[0.4em] mt-1 lg:mt-2 block">
+                                  SYSTEM SCORE
+                                </span>
+                              </motion.div>
+                            </div>
+
+                            {/* Radials and Scanning Lines */}
+                            <motion.div
+                              className="absolute inset-0 border border-white/5 rounded-full z-0"
+                              animate={{ scale: [1, 1.4], opacity: [0.5, 0] }}
+                              transition={{ duration: 2, repeat: Infinity, ease: "easeOut" }}
                             />
-                            <motion.circle
-                              cx="50%"
-                              cy="50%"
-                              r="45%"
-                              initial={{ strokeDasharray: "0, 1000" }}
-                              animate={{ strokeDasharray: "283, 1000" }}
-                              transition={{ duration: 2, delay: 0.5, ease: "easeOut" }}
-                              className="fill-none stroke-primary stroke-[8] stroke-round"
+                            <motion.div
+                              className="absolute top-1/2 left-0 w-full h-[1px] bg-primary/30 blur-[1px] z-30"
+                              animate={{ top: ['10%', '90%', '10%'] }}
+                              transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
                             />
-                          </svg>
-                          <div className="absolute inset-0 flex flex-col items-center justify-center">
-                            <motion.span
-                              initial={{ opacity: 0 }}
-                              animate={{ opacity: 1 }}
-                              transition={{ delay: 1 }}
-                              className="text-4xl lg:text-5xl font-bold text-white tracking-tighter"
-                            >
-                              100
-                            </motion.span>
-                            <span className="text-[10px] text-white/40 uppercase tracking-widest font-black">Score</span>
                           </div>
                         </div>
-                        <div className="grid grid-cols-2 gap-3 w-full">
-                          {["Performance", "Security", "SEO", "PWA"].map((item, i) => (
-                            <div key={i} className="flex items-center gap-2 px-3 py-2 bg-white/5 rounded-xl border border-white/5">
-                              <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-                              <span className="text-[10px] font-bold text-white/60">{item}</span>
-                            </div>
+
+                        {/* Metric Grid Display */}
+                        <div className="grid grid-cols-2 gap-2 lg:gap-3 w-full max-w-[320px] relative z-40">
+                          {[
+                            { label: "Performance", val: "100" },
+                            { label: "Security", val: "A+" },
+                            { label: "Stability", val: "MAX" },
+                            { label: "Scalability", val: "L7" }
+                          ].map((item, i) => (
+                            <motion.div
+                              key={i}
+                              initial={{ opacity: 0, y: 15 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ delay: 1.8 + (i * 0.1), duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                              whileHover={{ y: -2, backgroundColor: "rgba(255,255,255,0.03)" }}
+                              className="p-3 lg:p-4 bg-white/[0.02] border border-white/5 rounded-xl backdrop-blur-sm transition-colors group"
+                            >
+                              <div className="flex flex-col gap-0.5">
+                                <span className="text-[7px] font-black text-white/30 uppercase tracking-widest">{item.label}</span>
+                                <div className="flex items-center justify-between">
+                                  <span className="text-lg lg:text-xl font-bold text-white tracking-tight">{item.val}</span>
+                                  <div className="flex gap-0.5 shrink-0">
+                                    {[1, 2].map((b) => (
+                                      <motion.div
+                                        key={b}
+                                        className="w-1 h-3 rounded-full bg-primary/20"
+                                        animate={{
+                                          backgroundColor: ["rgba(var(--color-primary-rgb), 0.2)", "rgba(var(--color-primary-rgb), 0.8)", "rgba(var(--color-primary-rgb), 0.2)"]
+                                        }}
+                                        transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.2 + b * 0.1 }}
+                                      />
+                                    ))}
+                                  </div>
+                                </div>
+                              </div>
+                            </motion.div>
                           ))}
                         </div>
                       </div>

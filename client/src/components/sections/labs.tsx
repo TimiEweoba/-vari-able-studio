@@ -95,7 +95,7 @@ const session = await stripe.checkout.sessions.create({
             authorImage: "/images/team/timi.png",
             date: "Tuesday, June 17, 2025",
             title: "Engineering XPlus: Launching a high-performance e-commerce engine in 7 days",
-            image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2670&auto=format&fit=crop",
+            image: "/images/xplus-hero.png",
             content: `
                 <p>Building a production-ready e-commerce platform in a single week sounds impossible. For XPlus, it was a necessity. Operating in Nigeria's fast-paced tech market, they needed a solution that was robust, secure, and lightning-fast. Here's how we engineered the XPlus engine.</p>
                 <h3 class="text-white text-2xl font-bold mt-12 mb-4">The Performance Results</h3>

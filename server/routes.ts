@@ -22,9 +22,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   app.get("/api/projects", async (_req, res) => {
     try {
+      console.log("[API] Fetching projects...");
       const projects = await storage.getProjects();
+      console.log(`[API] Returning ${projects.length} projects`);
       res.json(projects);
     } catch (error: any) {
+      console.error("[API] Error fetching projects:", error);
       res.status(500).json({ message: error.message || "Failed to fetch projects" });
     }
   });
@@ -53,9 +56,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const result = await initializePayment({
         email,
         amount,
-        currency: currency || "USD",
+        currency: currency || "NGN",
         tx_ref,
-        callback_url,
+        redirect_url: callback_url,
         customer_name: name,
       });
 
