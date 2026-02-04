@@ -18,33 +18,33 @@ export default function PrivacyPage() {
     const sections = [
         {
             id: "1",
-            title: "Data Collection",
-            content: "We collect only what is essential: your contact info for collaboration, project-specific technical data, and anonymous site usage for performance tuning."
+            title: "Data Collection & Usage",
+            content: "We collect essential contact information (name, email, company) provided through our inquiry forms and reservation portal. This data is used solely for project communication, technical alignment, and providing the services requested. We do not sell or trade your personal information."
         },
         {
             id: "2",
-            title: "Storage Policy",
-            content: "Project data is stored in encrypted production databases. Source code is held in private, secure repositories with strict access control and rotate logging."
+            title: "Reservation & Refund Policy",
+            content: "Reservation deposits ($500 / ₦500,000) are fully refundable if requested within 5 business days after onboarding and before any active development or asset provisioning begins. If veri—able Studio declines a project for any reason, the deposit will be returned in full within 7-10 business days."
         },
         {
             id: "3",
-            title: "Third-Party Tools",
-            content: "We use vetted partners like Stripe (billing) and Vercel (hosting). We never sell your contact info or project data to outside brokers or advertisers."
+            title: "Intellectual Property & Handover",
+            content: "Total ownership is our standard. Upon final payment, all source code, database architectures, and design assets are transferred to the client. No recurring licensing fees or vendor lock-ins apply to custom-built deliverables."
         },
         {
             id: "4",
-            title: "Cookie Usage",
-            content: "We use minimal functional cookies to manage sessions and preferences. No invasive tracking or persistent third-party advertising pixels are used by default."
+            title: "Security & Retention",
+            content: "We implement industry-standard security measures (HTTPS, encryption-at-rest) to protect sensitive project data. We retain client data only as long as necessary for support or legal compliance, typically for 24 months post-handover."
         },
         {
             id: "5",
-            title: "Ownership & Portability",
-            content: "Your data is yours. Upon project completion or request, we provide full exports of your database and project files as part of our total ownership promise."
+            title: "Third-Party Services",
+            content: "We use trusted partners for core operations: Stripe & Flutterwave for secure payments, and Vercel/Supabase for deployment. Each partner has their own strict privacy standards. We do not share project briefs with external marketing entities."
         },
         {
             id: "6",
-            title: "Communication",
-            content: "We only contact you regarding active projects or if you've explicitly joined our insights newsletter. You can opt-out of newsletter comms at any time."
+            title: "User Rights",
+            content: "Clients have the right to request a copy of all information we hold on them, or to request the deletion of their data from our systems. Contact contact@veriable.xyz for all data-related inquiries."
         }
     ];
 

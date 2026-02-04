@@ -18,43 +18,43 @@ export default function TermsPage() {
     const sections = [
         {
             id: "1",
-            title: "Service Scope",
-            content: "We provide digital product design, branding, web development, and creative consulting services. Project specifics are defined in individual agreements and Statements of Work."
+            title: "Engagement Model",
+            content: "veri—able Studio operates on a productized service model. Engagements begin with a technical brief and a reservation deposit. Timelines (7-14 days for Pilots) are estimates based on standard project scopes and prompt client feedback."
         },
         {
             id: "2",
-            title: "Project Terms",
-            content: "All projects require a signed agreement, a refundable reserve deposit, and clearly defined deliverables. Changes to scope require written approval and may affect pricing and timelines."
+            title: "Reservation & Refunds",
+            content: "A reservation fee of $500 (or ₦500,000) is required to lock a production slot. This fee is 100% refundable if the client requests it within 5 business days of the initial discovery call, provided no development work has commenced. If we cannot fulfill the scope as agreed, the fee is returned in full."
         },
         {
             id: "3",
-            title: "Intellectual Property",
-            content: "Clients retain ownership of their original materials and final deliverables upon full payment. veri—able Studio retains rights to unused concepts and portfolio usage unless otherwise agreed."
+            title: "Technical Handover",
+            content: "Full source code, database access, and deployment credentials are transferred to the client only upon receipt of the final project payment. Until final payment, veri—able Studio retains all intellectual property rights to the work produced."
         },
         {
             id: "4",
-            title: "Payment Structure",
-            content: "Project fees are outlined in individual agreements. Final payment is due before file delivery or technical handover. Additional costs for third-party services, rush fees, or scope changes will be billed separately."
+            title: "Payment Terms",
+            content: "Payments are structured as a 50% upfront (less the reservation fee) and 50% upon successful demo sign-off. For NGN-based transactions, price protection is applied for 14 days against currency volatility from the date of the technical brief."
         },
         {
             id: "5",
-            title: "Timeline & Communication",
-            content: "Project timelines are established in agreements. Response time during business hours is within 24 hours. Delays due to client feedback may affect project completion dates."
+            title: "Client Responsibilities",
+            content: "Clients must provide all necessary brand assets, API keys (if external integrations like Stripe/Mailchimp are required), and technical specs within 48 hours of onboarding to meet the 14-day launch promise."
         },
         {
             id: "6",
-            title: "Confidentiality",
-            content: "We maintain strict confidentiality of client information and implement appropriate data security measures. Non-Disclosure Agreements (NDAs) are available and standard upon request."
+            title: "Limitation of Liability",
+            content: "While we build for scale and security, veri—able Studio is not liable for indirect, incidental, or consequential damages resulting from the use of the delivered products, including but not limited to loss of revenue or data."
         },
         {
             id: "7",
-            title: "Termination Rights",
-            content: "Either party may terminate the engagement as specified in the individual contract. Upon termination, all completed deliverables up to that point are billed and handed over."
+            title: "Post-Launch Support",
+            content: "Thirty (30) days of priority technical support is included with every Pilot. Ongoing maintenance beyond this window requires a separate 'Support Lite/Pro/Plus' subscription plan."
         },
         {
             id: "8",
-            title: "Liability",
-            content: "veri—able Studio's liability is limited to the fees paid for the specific project segment. We are not liable for indirect or consequential damages arising from the use of delivered software."
+            title: "Governing Law",
+            content: "These terms and all project agreements are governed by the laws of the Federal Republic of Nigeria, with jurisdiction in Lagos, unless otherwise specified in an individual SOW."
         }
     ];
 

@@ -1,4 +1,6 @@
 import { Link } from "wouter";
+import { Facebook, Instagram, MessageCircle } from "lucide-react";
+import { motion } from "framer-motion";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -29,12 +31,18 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="text-sm font-semibold text-white mb-4">Legal</h4>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><Link href="/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link></li>
-              <li><Link href="/terms" className="hover:text-primary transition-colors">Terms of Service</Link></li>
-              <li><Link href="/compliance" className="hover:text-primary transition-colors">Trust & Compliance</Link></li>
-              <li><a href="/#contact" className="hover:text-primary transition-colors">Contact</a></li>
+            <h4 className="text-sm font-semibold text-white mb-4">Reach Us</h4>
+            <ul className="space-y-4 text-sm text-muted-foreground">
+              <li className="text-white/60">Ikeja, Lagos, Nigeria</li>
+              <li className="flex flex-col gap-1">
+                <a href="mailto:contact@veriable.xyz" className="hover:text-primary transition-colors">contact@veriable.xyz</a>
+                <a href="mailto:sales@veriable.xyz" className="hover:text-primary transition-colors">sales@veriable.xyz</a>
+              </li>
+              <li className="pt-2 border-t border-white/5 flex flex-col gap-2">
+                <Link href="/privacy" className="hover:text-primary transition-colors text-xs">Privacy Policy</Link>
+                <Link href="/terms" className="hover:text-primary transition-colors text-xs">Terms of Service</Link>
+                <Link href="/compliance" className="hover:text-primary transition-colors text-xs">Compliance</Link>
+              </li>
             </ul>
           </div>
         </div>
@@ -43,9 +51,40 @@ export function Footer() {
           <p className="text-xs text-muted-foreground">
             © {currentYear} veri—able. Built for builders.
           </p>
-          <div className="flex items-center gap-4">
-            <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-            <span className="text-xs text-muted-foreground">All systems operational</span>
+          <div className="flex items-center gap-6">
+            <div className="flex items-center gap-4">
+              <motion.a
+                href="https://web.facebook.com/profile.php?id=61586865515139"
+                target="_blank"
+                whileHover={{ scale: 1.1, color: "var(--color-primary)" }}
+                className="text-muted-foreground transition-colors"
+                aria-label="Facebook"
+              >
+                <Facebook size={18} />
+              </motion.a>
+              <motion.a
+                href="#"
+                whileHover={{ scale: 1.1, color: "var(--color-primary)" }}
+                className="text-muted-foreground transition-colors"
+                aria-label="Instagram"
+              >
+                <Instagram size={18} />
+              </motion.a>
+              <motion.a
+                href="https://wa.me/2348144657589"
+                target="_blank"
+                whileHover={{ scale: 1.1, color: "var(--color-primary)" }}
+                className="text-muted-foreground transition-colors"
+                aria-label="WhatsApp"
+              >
+                <MessageCircle size={18} />
+              </motion.a>
+            </div>
+            <div className="h-4 w-px bg-white/10 hidden md:block" />
+            <div className="flex items-center gap-3">
+              <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+              <span className="text-xs text-muted-foreground">All systems operational</span>
+            </div>
           </div>
         </div>
       </div>

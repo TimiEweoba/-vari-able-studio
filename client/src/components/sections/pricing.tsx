@@ -15,89 +15,40 @@ import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
+import { CheckoutDialog } from "./checkout-dialog";
 
 export function Pricing() {
   const [currency, setCurrency] = useState<"USD" | "NGN">("USD");
   const [selectedPackage, setSelectedPackage] = useState<"starter" | "scale" | "enterprise">("scale");
   const [selectedSupport, setSelectedSupport] = useState<"lite" | "pro" | "plus">("pro");
-  const [isProcessing, setIsProcessing] = useState(false);
-  const [showPaymentModal, setShowPaymentModal] = useState(false);
-  const [paymentEmail, setPaymentEmail] = useState("");
-  const [pendingPlan, setPendingPlan] = useState<string | null>(null);
-  const [pendingAmount, setPendingAmount] = useState<number | null>(null);
+  const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
+  const [activePackage, setActivePackage] = useState<{ name: string, price: number } | null>(null);
   const { toast } = useToast();
 
-  // Adjusted to 4% buffer for a tighter, more competitive rate
-  // Base 1650 * 1.04 = 1716
-  const NGN_RATE = 1715;
-
-  const openPaymentModal = (plan: string, amountUSD: number) => {
-    setPendingPlan(plan);
-    setPendingAmount(amountUSD);
-    setShowPaymentModal(true);
+  // NGN Prices as requested
+  const PRICES = {
+    starter: { usd: 2500, ngn: 1500000 },
+    scale: { usd: 7500, ngn: 5000000 },
+    reservation: { usd: 500, ngn: 500000 },
+    support_lite: { usd: 200, ngn: 200000 },
+    support_pro: { usd: 500, ngn: 500000 },
+    support_plus: { usd: 1200, ngn: 1200000 },
   };
 
-  const handlePaymentConfirm = async (e?: React.FormEvent) => {
-    if (e) e.preventDefault();
-
-    if (!paymentEmail || !paymentEmail.includes("@")) {
-      toast({
-        title: "Invalid Email",
-        description: "Please enter a valid email address.",
-        variant: "destructive"
-      });
-      return;
-    }
-
-    if (!pendingPlan || pendingAmount === null) return;
-
-    try {
-      setIsProcessing(true);
-
-      // Convert to NGN for Paystack if currency is NGN, or just use NGN fixed rate
-      const amount = currency === "NGN" ? pendingAmount * NGN_RATE : pendingAmount * NGN_RATE;
-
-      const response = await apiRequest("POST", "/api/payments/initialize", {
-        email: paymentEmail,
-        amount,
-        plan: pendingPlan
-      });
-
-      const data = await response.json();
-
-      if (data.authorization_url) {
-        window.location.href = data.authorization_url;
-      } else {
-        throw new Error("Failed to initialize payment");
-      }
-    } catch (error: any) {
-      toast({
-        title: "Payment Error",
-        description: error.message || "Could not initialize Paystack payment",
-        variant: "destructive"
-      });
-    } finally {
-      setIsProcessing(false);
-      setShowPaymentModal(false);
-    }
-  };
-
-  const formatPrice = (usdAmount: number | "Custom") => {
-    if (usdAmount === "Custom") return "Custom";
-
+  const formatPrice = (type: keyof typeof PRICES) => {
+    const priceObj = PRICES[type];
     if (currency === "USD") {
       return new Intl.NumberFormat("en-US", {
         style: "currency",
         currency: "USD",
         maximumFractionDigits: 0,
-      }).format(usdAmount);
+      }).format(priceObj.usd);
     } else {
-      const ngnAmount = usdAmount * NGN_RATE;
       return new Intl.NumberFormat("en-NG", {
         style: "currency",
         currency: "NGN",
         maximumFractionDigits: 0,
-      }).format(ngnAmount);
+      }).format(priceObj.ngn);
     }
   };
 
@@ -166,15 +117,9 @@ export function Pricing() {
             </div>
           </div>
 
-          {/* Launch Packages List */}
-          <div className="flex flex-col gap-6 mb-20">
-            <div className="flex items-center justify-between mb-2 pl-2 border-l-4 border-primary">
-              <h3 className="text-2xl font-medium text-white">Launch Packages <span className="text-muted-foreground text-sm font-normal ml-2">(One-time)</span></h3>
-              {currency === "NGN" && (
-                <span className="text-[10px] font-mono text-white/20 uppercase tracking-widest hidden md:block">
-                  Rate: 1 USD = {NGN_RATE} NGN (Incl. buffer)
-                </span>
-              )}
+          <div className="flex flex-col gap-6 mb-24">
+            <div className="flex items-center justify-between mb-4 pl-4 border-l-4 border-primary">
+              <h3 className="text-3xl font-bold text-white tracking-tight">Launch Packages</h3>
             </div>
 
             {/* Starter Plan */}
@@ -213,7 +158,7 @@ export function Pricing() {
                         currency === "NGN" ? "text-2xl md:text-3xl" : "text-3xl md:text-4xl"
                       )}
                     >
-                      {formatPrice(2500)}
+                      {formatPrice("starter")}
                     </motion.div>
                   </AnimatePresence>
                   <span className="text-[10px] text-white/20 uppercase tracking-widest font-black mt-2">One-time</span>
@@ -232,8 +177,11 @@ export function Pricing() {
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    disabled={isProcessing}
-                    onClick={() => openPaymentModal("Starter", 500)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setActivePackage({ name: "Starter", price: PRICES.reservation.usd });
+                      setIsCheckoutOpen(true);
+                    }}
                     className={cn(
                       "w-full h-14 rounded-2xl font-bold tracking-tight transition-all flex items-center justify-center gap-2 group/btn px-4 text-center",
                       currency === "NGN" ? "text-[10px] md:text-xs" : "text-sm",
@@ -242,17 +190,11 @@ export function Pricing() {
                         : "bg-white/[0.03] hover:bg-white/[0.08] text-white border border-white/10"
                     )}
                   >
-                    {isProcessing ? (
-                      <Loader2 className="w-4 h-4 animate-spin" />
-                    ) : (
-                      <>
-                        Reserve Slot — {formatPrice(500)}
-                        <ArrowRight className={cn(
-                          "w-4 h-4 transition-all",
-                          selectedPackage === "starter" ? "translate-x-0" : "opacity-0 -ml-4 group-hover/btn:opacity-100 group-hover/btn:ml-0"
-                        )} />
-                      </>
-                    )}
+                    <span className="truncate">Reserve Slot — {formatPrice("reservation")}</span>
+                    <ArrowRight className={cn(
+                      "w-4 h-4 transition-all shrink-0",
+                      selectedPackage === "starter" ? "translate-x-0" : "opacity-0 -ml-4 group-hover/btn:opacity-100 group-hover/btn:ml-0"
+                    )} />
                   </motion.button>
                 </div>
               </div>
@@ -294,7 +236,7 @@ export function Pricing() {
                         currency === "NGN" ? "text-2xl md:text-3xl" : "text-3xl md:text-4xl"
                       )}
                     >
-                      {formatPrice(7500)}
+                      {formatPrice("scale")}
                     </motion.div>
                   </AnimatePresence>
                   <span className="text-[10px] text-white/20 uppercase tracking-widest font-black mt-2">One-time</span>
@@ -315,8 +257,11 @@ export function Pricing() {
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    disabled={isProcessing}
-                    onClick={() => openPaymentModal("Scale", 500)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setActivePackage({ name: "Scale", price: PRICES.reservation.usd });
+                      setIsCheckoutOpen(true);
+                    }}
                     className={cn(
                       "w-full h-14 rounded-2xl font-bold tracking-tight transition-all flex items-center justify-center gap-2 group/btn px-4 text-center",
                       currency === "NGN" ? "text-[10px] md:text-xs" : "text-sm",
@@ -325,17 +270,11 @@ export function Pricing() {
                         : "bg-white/[0.03] hover:bg-white/[0.08] text-white border border-white/10"
                     )}
                   >
-                    {isProcessing ? (
-                      <Loader2 className="w-4 h-4 animate-spin" />
-                    ) : (
-                      <>
-                        Reserve Slot — {formatPrice(500)}
-                        <ArrowRight className={cn(
-                          "w-4 h-4 transition-all",
-                          selectedPackage === "scale" ? "translate-x-0" : "opacity-0 -ml-4 group-hover/btn:opacity-100 group-hover/btn:ml-0"
-                        )} />
-                      </>
-                    )}
+                    <span className="truncate">Reserve Slot — {formatPrice("reservation")}</span>
+                    <ArrowRight className={cn(
+                      "w-4 h-4 transition-all shrink-0",
+                      selectedPackage === "scale" ? "translate-x-0" : "opacity-0 -ml-4 group-hover/btn:opacity-100 group-hover/btn:ml-0"
+                    )} />
                   </motion.button>
                 </div>
               </div>
@@ -396,7 +335,6 @@ export function Pricing() {
                 </div>
               </div>
             </motion.div>
-
           </div>
 
           {/* Monthly Support Add-ons */}
@@ -422,7 +360,7 @@ export function Pricing() {
                   "font-bold text-primary mb-4",
                   currency === "NGN" ? "text-xl" : "text-2xl"
                 )}>
-                  {formatPrice(200)}<span className="text-xs text-muted-foreground font-normal">/mo</span>
+                  {formatPrice("support_lite")}<span className="text-xs text-muted-foreground font-normal">/mo</span>
                 </div>
                 <p className="text-xs text-white/40 leading-relaxed">Essential fixes, monitoring, and regular dependency updates.</p>
               </motion.div>
@@ -446,7 +384,7 @@ export function Pricing() {
                   "font-bold text-primary mb-4",
                   currency === "NGN" ? "text-xl" : "text-2xl"
                 )}>
-                  {formatPrice(500)}<span className="text-xs text-muted-foreground font-normal">/mo</span>
+                  {formatPrice("support_pro")}<span className="text-xs text-muted-foreground font-normal">/mo</span>
                 </div>
                 <p className="text-xs text-white/40 leading-relaxed">Priority fixes, performance health checks, and 48hr response time.</p>
               </motion.div>
@@ -470,7 +408,7 @@ export function Pricing() {
                   "font-bold text-primary mb-4",
                   currency === "NGN" ? "text-xl" : "text-2xl"
                 )}>
-                  {formatPrice(1200)}<span className="text-xs text-muted-foreground font-normal">/mo</span>
+                  {formatPrice("support_plus")}<span className="text-xs text-muted-foreground font-normal">/mo</span>
                 </div>
                 <p className="text-xs text-white/40 leading-relaxed">Dedicated engineering hours, quarterly audits, and custom scaling.</p>
               </motion.div>
@@ -480,76 +418,19 @@ export function Pricing() {
           {/* Reserve Microcopy */}
           <div className="text-center border-t border-white/5 mt-16 pt-12">
             <p className="text-white/60 text-xs max-w-2xl mx-auto leading-relaxed">
-              Reserve your slot with a refundable {formatPrice(500)} deposit. Final payment triggers transfer of full source, database ownership, and technical handover. Prices include local processing fees and 4% volatility protection.
+              Reserve your slot with a refundable {formatPrice("reservation")} deposit. Final payment triggers transfer of full source, database ownership, and technical handover. Prices include local processing fees and 4% volatility protection.
             </p>
           </div>
 
+          <CheckoutDialog
+            isOpen={isCheckoutOpen}
+            onClose={() => setIsCheckoutOpen(false)}
+            price={currency === "USD" ? PRICES.reservation.usd : PRICES.reservation.ngn}
+            currency={currency}
+            packageName={activePackage?.name || ""}
+          />
         </div>
       </section>
-
-      {/* Payment Modal */}
-      <Dialog open={showPaymentModal} onOpenChange={setShowPaymentModal}>
-        <DialogContent className="sm:max-w-[425px] bg-[#0A0A0A] border-white/10 text-white p-0 overflow-hidden">
-          <div className="h-2 w-full bg-primary" />
-          <div className="p-8">
-            <DialogHeader className="mb-6">
-              <DialogTitle className="text-2xl font-bold flex items-center gap-2">
-                <Mail className="w-5 h-5 text-primary" />
-                Finalize Reservation
-              </DialogTitle>
-              <DialogDescription className="text-white/50 pt-2">
-                You are reserving the <span className="text-white font-medium">{pendingPlan} Plan</span> slot.
-                We need your email to send the project brief and payment receipt.
-              </DialogDescription>
-            </DialogHeader>
-
-            <form onSubmit={handlePaymentConfirm} className="space-y-6">
-              <div className="space-y-2">
-                <Label htmlFor="email" className="text-xs uppercase tracking-widest text-white/30 font-black">
-                  Email Address
-                </Label>
-                <div className="relative">
-                  <Input
-                    id="email"
-                    type="email"
-                    placeholder="name@company.com"
-                    required
-                    value={paymentEmail}
-                    onChange={(e) => setPaymentEmail(e.target.value)}
-                    className="bg-white/5 border-white/10 h-12 focus:border-primary/50 transition-all rounded-xl pl-4"
-                  />
-                </div>
-              </div>
-
-              <div className="bg-white/[0.03] rounded-2xl p-4 border border-white/5">
-                <div className="flex justify-between items-center text-sm">
-                  <span className="text-white/40">Amount due:</span>
-                  <span className="text-white font-bold text-lg">
-                    {pendingAmount !== null ? formatPrice(pendingAmount as number) : ""}
-                  </span>
-                </div>
-              </div>
-
-              <DialogFooter className="pt-2 sm:justify-start">
-                <Button
-                  type="submit"
-                  disabled={isProcessing}
-                  className="w-full h-12 rounded-xl bg-primary text-white font-bold hover:scale-[1.02] transition-transform"
-                >
-                  {isProcessing ? (
-                    <Loader2 className="w-4 h-4 animate-spin" />
-                  ) : (
-                    <>
-                      Proceed to Payment
-                      <ArrowRight className="w-4 h-4 ml-2" />
-                    </>
-                  )}
-                </Button>
-              </DialogFooter>
-            </form>
-          </div>
-        </DialogContent>
-      </Dialog>
     </>
   );
 }

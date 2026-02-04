@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { Navbar } from "@/components/layout/navbar";
 import { Hero } from "@/components/sections/hero";
 import { Intro } from "@/components/sections/intro";

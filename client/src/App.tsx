@@ -37,12 +37,14 @@ import { ThemeSettings } from "@/components/ui/theme-settings";
 import { TerminalView } from "@/components/ui/terminal-view";
 
 import { SmoothScroll } from "@/components/layout/smooth-scroll";
+import { ScrollToTop } from "@/components/layout/scroll-to-top";
 
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <SmoothScroll>
+          <ScrollToTop />
           <Toaster />
           <CustomCursor />
           <ThemeSettings />

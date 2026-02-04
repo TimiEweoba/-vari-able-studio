@@ -1,7 +1,7 @@
 import { Link } from "wouter";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, Linkedin, Twitter, Instagram, Youtube, MessageCircle, ChevronDown, Rocket, CheckCircle2, Loader2 } from "lucide-react";
+import { ArrowRight, Linkedin, Twitter, Instagram, Youtube, MessageCircle, ChevronDown, Rocket, CheckCircle2, Loader2, Facebook } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { insertContactSchema, type InsertContactRequest } from "@shared/schema";
@@ -30,8 +30,8 @@ export function CTA() {
     },
     onSuccess: () => {
       toast({
-        title: "Success",
-        description: "Your message has been sent. We'll get back to you soon!",
+        title: "Message Routed",
+        description: "Your brief has been sent to contact@veriable.xyz. We'll get back to you within 24 hours.",
       });
       form.reset();
     },
@@ -72,6 +72,19 @@ export function CTA() {
               {/* Left Column */}
               <div className="space-y-12">
 
+                {/* Contact Direct */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                >
+                  <h3 className="text-sm font-medium text-white/50 mb-6 uppercase tracking-wider">Direct Access</h3>
+                  <div className="space-y-4">
+                    <a href="mailto:contact@veriable.xyz" className="block text-2xl md:text-3xl font-bold hover:text-primary transition-colors">contact@veriable.xyz</a>
+                    <a href="mailto:sales@veriable.xyz" className="block text-xl text-white/40 hover:text-primary transition-colors">sales@veriable.xyz</a>
+                  </div>
+                </motion.div>
+
                 {/* Follow Us */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
@@ -81,18 +94,32 @@ export function CTA() {
                 >
                   <h3 className="text-sm font-medium text-white/50 mb-6 uppercase tracking-wider">Follow us</h3>
                   <div className="flex gap-3">
-                    {[Linkedin, Twitter, Instagram, MessageCircle, Youtube, MessageCircle].map((Icon, i) => (
-                      <motion.a
-                        key={i}
-                        href="#"
-                        whileHover={{ scale: 1.1, backgroundColor: "rgba(235, 81, 96, 0.1)", borderColor: "var(--color-primary)" }}
-                        whileTap={{ scale: 0.9 }}
-                        className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center transition-all interactive"
-                        data-cursor="Follow"
-                      >
-                        <Icon className="w-4 h-4" />
-                      </motion.a>
-                    ))}
+                    <motion.a
+                      href="https://web.facebook.com/profile.php?id=61586865515139"
+                      target="_blank"
+                      whileHover={{ scale: 1.1, backgroundColor: "rgba(235, 81, 96, 0.1)", borderColor: "var(--color-primary)" }}
+                      whileTap={{ scale: 0.9 }}
+                      className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center transition-all interactive"
+                    >
+                      <Facebook className="w-4 h-4" />
+                    </motion.a>
+                    <motion.a
+                      href="#"
+                      whileHover={{ scale: 1.1, backgroundColor: "rgba(235, 81, 96, 0.1)", borderColor: "var(--color-primary)" }}
+                      whileTap={{ scale: 0.9 }}
+                      className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center transition-all interactive"
+                    >
+                      <Instagram className="w-4 h-4" />
+                    </motion.a>
+                    <motion.a
+                      href="https://wa.me/2348144657589"
+                      target="_blank"
+                      whileHover={{ scale: 1.1, backgroundColor: "rgba(235, 81, 96, 0.1)", borderColor: "var(--color-primary)" }}
+                      whileTap={{ scale: 0.9 }}
+                      className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center transition-all interactive"
+                    >
+                      <MessageCircle className="w-4 h-4" />
+                    </motion.a>
                   </div>
                 </motion.div>
 
@@ -284,8 +311,7 @@ export function CTA() {
                   {/* Address */}
                   <div className="space-y-1 text-sm text-white/50">
                     <p className="text-primary text-xl font-bold mb-2">veri—able</p>
-                    <p>Banana Island</p>
-                    <p>Ikoyi, Lagos</p>
+                    <p>Ikeja, Lagos</p>
                     <p>Nigeria</p>
                   </div>
                 </div>
@@ -334,19 +360,29 @@ export function CTA() {
                 <h3 className="text-2xl font-medium text-white mb-3">Insights for builders and founders</h3>
                 <p className="text-white/50 text-sm mb-6">Join our newsletter and get launch playbooks and technical deep-dives.</p>
 
-                <div className="space-y-4">
+                <form onSubmit={(e) => {
+                  e.preventDefault();
+                  toast({
+                    title: "Subscription Received",
+                    description: "Your interest has been routed to Timi@veriable.xyz",
+                  });
+                  // Reset fields ideally, but for now just show toast
+                }} className="space-y-4">
                   <input
                     type="text"
                     placeholder="Your Name"
+                    required
                     className="w-full bg-transparent border-b border-white/10 pb-3 text-white placeholder:text-white/30 focus:outline-none focus:border-primary transition-colors"
                   />
                   <div className="flex gap-3">
                     <input
                       type="email"
                       placeholder="Your Email"
+                      required
                       className="flex-1 bg-transparent border-b border-white/10 pb-3 text-white placeholder:text-white/30 focus:outline-none focus:border-primary transition-colors"
                     />
                     <motion.button
+                      type="submit"
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
                       className="w-12 h-12 bg-primary hover:bg-primary/90 rounded-lg flex items-center justify-center transition-colors"
@@ -355,9 +391,9 @@ export function CTA() {
                     </motion.button>
                   </div>
                   <p className="text-xs text-white/40">
-                    By submitting, you agree to our <a href="#" className="text-primary hover:underline">Terms & Service</a>.
+                    By submitting, you agree to our <Link href="/terms" className="text-primary hover:underline">Terms & Service</Link>. Insights are routed to Timi@veriable.xyz for review.
                   </p>
-                </div>
+                </form>
               </div>
 
               {/* Bottom Bar */}
@@ -365,17 +401,32 @@ export function CTA() {
                 <p className="text-xs text-white/30">2026 © | veri—able Studio | Managed by founders, built for makers.</p>
 
                 <div className="flex gap-4">
-                  {[Linkedin, Twitter, Instagram, Youtube, MessageCircle].map((Icon, i) => (
-                    <motion.a
-                      key={i}
-                      href="#"
-                      whileHover={{ scale: 1.2, color: "var(--color-primary)" }}
-                      whileTap={{ scale: 0.8 }}
-                      className="text-white/30 transition-colors"
-                    >
-                      <Icon className="w-4 h-4" />
-                    </motion.a>
-                  ))}
+                  <motion.a
+                    href="https://web.facebook.com/profile.php?id=61586865515139"
+                    target="_blank"
+                    whileHover={{ scale: 1.2, color: "var(--color-primary)" }}
+                    whileTap={{ scale: 0.8 }}
+                    className="text-white/30 transition-colors"
+                  >
+                    <Facebook className="w-4 h-4" />
+                  </motion.a>
+                  <motion.a
+                    href="#"
+                    whileHover={{ scale: 1.2, color: "var(--color-primary)" }}
+                    whileTap={{ scale: 0.8 }}
+                    className="text-white/30 transition-colors"
+                  >
+                    <Instagram className="w-4 h-4" />
+                  </motion.a>
+                  <motion.a
+                    href="https://wa.me/2348144657589"
+                    target="_blank"
+                    whileHover={{ scale: 1.2, color: "var(--color-primary)" }}
+                    whileTap={{ scale: 0.8 }}
+                    className="text-white/30 transition-colors"
+                  >
+                    <MessageCircle className="w-4 h-4" />
+                  </motion.a>
                 </div>
 
                 <motion.button

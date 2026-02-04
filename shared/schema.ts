@@ -28,6 +28,17 @@ export const projects = pgTable("projects", {
   featured: text("featured").default("false"), // "true" or "false"
 });
 
+export const payments = pgTable("payments", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  txRef: text("tx_ref").notNull().unique(),
+  email: text("email").notNull(),
+  amount: text("amount").notNull(),
+  currency: text("currency").notNull(),
+  status: text("status").notNull().default("pending"),
+  data: text("data"), // store full payload if needed
+  createdAt: text("created_at").default(sql`CURRENT_TIMESTAMP`),
+});
+
 export const insertUserSchema = createInsertSchema(users).pick({
   username: true,
   password: true,
@@ -54,4 +65,12 @@ export type ContactRequest = typeof contactRequests.$inferSelect;
 
 export type InsertProject = z.infer<typeof insertProjectSchema>;
 export type Project = typeof projects.$inferSelect;
+
+export const insertPaymentSchema = createInsertSchema(payments).omit({
+  id: true,
+  createdAt: true,
+});
+
+export type InsertPayment = z.infer<typeof insertPaymentSchema>;
+export type Payment = typeof payments.$inferSelect;
 

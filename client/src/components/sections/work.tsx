@@ -1,4 +1,4 @@
-import { ArrowRight, Lock, LayoutDashboard, CreditCard, Loader2 } from "lucide-react";
+import { ArrowRight, Lock, LayoutDashboard, CreditCard, Loader2, ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
 import { useLocation } from "wouter";
@@ -37,7 +37,7 @@ const ProjectCard = ({ project, fadeInUp, index, setLocation }: WorkCardProps) =
           <h4 className="text-3xl font-bold text-white mt-2 mb-2">{project.title}</h4>
           <p className="text-white/80 max-w-md">{project.description}</p>
         </div>
-        <div className="absolute bottom-8 left-8 z-20">
+        <div className="absolute bottom-8 left-8 z-20 flex gap-4">
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -49,6 +49,20 @@ const ProjectCard = ({ project, fadeInUp, index, setLocation }: WorkCardProps) =
           >
             Learn More <ArrowRight className="w-4 h-4" />
           </motion.button>
+
+          {project.link && project.link !== "#" && (
+            <motion.a
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="flex items-center gap-2 text-sm font-medium bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-full transition-all shadow-lg shadow-primary/20"
+            >
+              Live Site <ArrowUpRight className="w-4 h-4" />
+            </motion.a>
+          )}
         </div>
       </motion.div>
     );
@@ -74,7 +88,7 @@ const ProjectCard = ({ project, fadeInUp, index, setLocation }: WorkCardProps) =
         </h4>
       </div>
 
-      <div className="absolute bottom-6 left-6 z-20">
+      <div className="absolute bottom-6 left-6 z-20 flex items-center gap-3">
         <motion.div
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
@@ -82,6 +96,20 @@ const ProjectCard = ({ project, fadeInUp, index, setLocation }: WorkCardProps) =
         >
           <ArrowRight className="w-5 h-5" />
         </motion.div>
+
+        {project.link && project.link !== "#" && (
+          <motion.a
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
+            className="h-10 px-4 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-xl flex items-center justify-center text-xs font-bold text-white transition-all border border-white/10"
+          >
+            Visit Site
+          </motion.a>
+        )}
       </div>
     </motion.div>
   );
@@ -147,42 +175,61 @@ export function Work() {
           </div>
         ) : (
           <div className="flex flex-col gap-6">
-            {/* Top Row: Featured + Info Panel */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 h-auto">
-              {featuredProject && (
-                <ProjectCard project={featuredProject} index={0} fadeInUp={fadeInUp} setLocation={setLocation} />
-              )}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+              {/* Featured Projects Column */}
+              <div className="lg:col-span-8 flex flex-col gap-6">
+                {projects?.filter(p => p.featured === "true").map((project, i) => (
+                  <ProjectCard key={project.id} project={project} index={i} fadeInUp={fadeInUp} setLocation={setLocation} />
+                ))}
+              </div>
 
-              {/* Orange Info Panel */}
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-50px" }}
-                variants={{ ...fadeInUp, visible: { ...fadeInUp.visible, transition: { delay: 0.1, ...fadeInUp.visible.transition } } }}
-                className="lg:col-span-4 bg-primary rounded-2xl p-8 flex flex-col justify-between relative overflow-hidden min-h-[400px]"
-              >
-                <div className="relative z-10">
-                  <div className="flex justify-between items-center mb-8 border-b border-white/20 pb-4">
-                    <span className="text-sm text-white/80">veri—able Suite</span>
-                    <span className="text-sm text-white/80">{projects?.length}/8</span>
+              {/* Sidebar Info Panel */}
+              <div className="lg:col-span-4 flex flex-col gap-6">
+                <motion.div
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: "-50px" }}
+                  variants={{ ...fadeInUp, visible: { ...fadeInUp.visible, transition: { delay: 0.1, ...fadeInUp.visible.transition } } }}
+                  className="bg-primary rounded-2xl p-8 flex flex-col justify-between relative overflow-hidden h-full min-h-[400px]"
+                >
+                  <div className="relative z-10">
+                    <div className="flex justify-between items-center mb-8 border-b border-white/20 pb-4">
+                      <span className="text-sm text-white/80">veri—able Suite</span>
+                      <span className="text-sm text-white/80">{projects?.length}/8</span>
+                    </div>
+                    <h3 className="text-3xl font-medium tracking-tight text-white mb-6">
+                      Modular launch tooling and engines.
+                    </h3>
+                    <p className="text-white/80 text-sm leading-relaxed mb-8">
+                      A collection of production-grade starter kits and deploy automation that let you go from idea to paying customers quickly.
+                    </p>
                   </div>
-                  <h3 className="text-3xl font-medium tracking-tight text-white mb-6">
-                    Modular launch tooling and engines.
-                  </h3>
-                  <p className="text-white/80 text-sm leading-relaxed mb-8">
-                    A collection of production-grade starter kits and deploy automation that let you go from idea to paying customers quickly.
-                  </p>
-                </div>
 
-                <div className="grid grid-cols-6 gap-6 absolute bottom-8 left-8 right-8 z-0 opacity-30">
-                  {[...Array(24)].map((_, i) => (
-                    <div key={i} className="w-1 h-1 bg-white rounded-full" />
-                  ))}
-                </div>
+                  <div className="grid grid-cols-6 gap-6 absolute bottom-8 left-8 right-8 z-0 opacity-30">
+                    {[...Array(24)].map((_, i) => (
+                      <div key={i} className="w-1 h-1 bg-white rounded-full" />
+                    ))}
+                  </div>
+                </motion.div>
 
-                <div className="relative z-10 flex justify-end mt-auto">
-                </div>
-              </motion.div>
+                {/* Secondary CTA to Case Studies page */}
+                <motion.div
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  variants={{ ...fadeInUp, visible: { ...fadeInUp.visible, transition: { delay: 0.2, ...fadeInUp.visible.transition } } }}
+                  onClick={() => setLocation("/work")}
+                  className="bg-[#1C1D20] border border-white/5 rounded-2xl p-8 cursor-pointer flex flex-col justify-center items-center gap-4 text-center hover:bg-white/5 transition-all group"
+                >
+                  <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-primary group-hover:scale-110 transition-all">
+                    <ArrowRight className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h4 className="text-white font-bold text-lg">Case Studies</h4>
+                    <p className="text-white/40 text-sm mt-1 uppercase tracking-widest font-black">View All Projects</p>
+                  </div>
+                </motion.div>
+              </div>
             </div>
 
             {/* Other Projects Grid */}
@@ -191,6 +238,24 @@ export function Work() {
                 <ProjectCard key={project.id} project={project} index={i} fadeInUp={fadeInUp} setLocation={setLocation} />
               ))}
             </div>
+
+            {/* View All Button */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="mt-12 flex justify-center"
+            >
+              <button
+                onClick={() => setLocation("/work")}
+                className="group flex items-center gap-4 text-white/40 hover:text-white transition-all text-sm font-bold uppercase tracking-[0.3em] cursor-pointer"
+              >
+                <span>Explore Full Archive</span>
+                <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-all">
+                  <ArrowRight size={18} />
+                </div>
+              </button>
+            </motion.div>
           </div>
         )}
       </div>

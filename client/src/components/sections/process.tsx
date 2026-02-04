@@ -45,15 +45,14 @@ const steps = [
     time: "Days 8–12",
     description: "Objective: client review, final polish, and acceptance testing. Demo, tweak once, ship.",
     details: [
-      "Deliverables: demo walkthrough video, list of fixes.",
-      "Final test pass.",
-      "Success criteria: demo sign-off."
+      "Deliverables: architecture audit result, list of final patches.",
+      "Security & Performance optimization pass.",
+      "Success criteria: demo sign-off & technical acceptance."
     ],
     owner: "Team + Client",
     icon: <Sparkles className="w-5 h-5" />,
-    image: "https://images.unsplash.com/photo-1504384153582-8f2894b1277a?q=80&w=2000",
-    visualType: "video",
-    videoDuration: "1:24"
+    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=2000",
+    visualType: "audit"
   },
   {
     id: "04",
@@ -85,8 +84,22 @@ export function Process() {
   };
 
   return (
-    <section id="process" className="py-32 bg-[#050505] text-[#E3DBD8] overflow-hidden">
-      <div className="container mx-auto px-4 md:px-6">
+    <section id="process" className="py-32 bg-[#050505] text-[#E3DBD8] overflow-hidden relative">
+      {/* Dynamic Background Text */}
+      <div className="absolute top-1/2 left-0 w-full overflow-hidden pointer-events-none opacity-[0.03] select-none -translate-y-1/2 flex items-center whitespace-nowrap z-0">
+        <motion.div
+          animate={{ x: [0, -1000] }}
+          transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+          className="text-[40vw] font-black leading-none flex gap-[0.5em]"
+        >
+          <span>ENGINEERING</span>
+          <span>VELOCITY</span>
+          <span>PRECISION</span>
+          <span>SHIPPING</span>
+        </motion.div>
+      </div>
+
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
 
         {/* Header Section */}
         <div className="mb-24">
@@ -118,7 +131,7 @@ export function Process() {
         </div>
 
         {/* Main Process Widget */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 border border-white/5 bg-[#0A0A0B] rounded-[3rem] overflow-hidden min-h-[700px] shadow-[0_50px_100px_-20px_rgba(0,0,0,1)] relative">
+        <div className="grid grid-cols-1 lg:grid-cols-12 border border-white/5 bg-[#0A0A0B]/80 backdrop-blur-xl rounded-[3rem] overflow-hidden min-h-[700px] shadow-[0_50px_100px_-20px_rgba(0,0,0,1)] relative group/main">
 
           {/* Subtle Grid Overlay */}
           <div className="absolute inset-0 opacity-[0.02] pointer-events-none"
@@ -129,29 +142,29 @@ export function Process() {
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentStep}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                initial={{ opacity: 0, scale: 1.1 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                 className="absolute inset-0"
               >
                 <img
                   src={steps[currentStep].image}
                   alt={steps[currentStep].title}
-                  className="w-full h-full object-cover scale-110 lg:group-hover:scale-100 transition-transform duration-[2000ms] opacity-60"
+                  className="w-full h-full object-cover scale-110 lg:group-hover:scale-105 transition-transform duration-[4000ms] opacity-60"
                 />
-                <div className="absolute inset-0 bg-gradient-to-tr from-[#050505] via-[#050505]/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-[#050505] via-[#050505]/20 to-transparent" />
 
                 {/* Visual Overlay Components */}
                 <div className="absolute inset-0 flex items-center justify-center p-6 lg:p-12">
                   <motion.div
                     initial={{ scale: 0.9, opacity: 0, y: 20 }}
                     animate={{ scale: 1, opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3, duration: 0.6 }}
-                    className="relative w-full max-w-[360px] lg:max-w-[400px] aspect-square bg-[#0D0D0E]/80 backdrop-blur-3xl border border-white/10 rounded-[2rem] lg:rounded-[2.5rem] p-6 lg:p-10 flex flex-col items-center justify-center shadow-2xl"
+                    transition={{ delay: 0.4, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                    className="relative w-full max-w-[360px] lg:max-w-[400px] aspect-square bg-[#0D0D0E]/80 backdrop-blur-3xl border border-white/10 rounded-[2rem] lg:rounded-[2.5rem] p-6 lg:p-10 flex flex-col items-center justify-center shadow-2xl overflow-hidden group/card"
                   >
                     {/* Floating Glow */}
-                    <div className="absolute -top-12 -right-12 w-48 h-48 bg-primary/10 blur-[80px] rounded-full" />
+                    <div className="absolute -top-12 -right-12 w-48 h-48 bg-primary/10 blur-[80px] rounded-full group-hover/card:bg-primary/20 transition-colors duration-1000" />
                     <div className="absolute -bottom-12 -left-12 w-48 h-48 bg-blue-500/5 blur-[80px] rounded-full" />
 
                     {/* Content Based on Visual Type */}
@@ -171,7 +184,7 @@ export function Process() {
                             key={i}
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: 0.5 + i * 0.1 }}
+                            transition={{ delay: 0.6 + i * 0.1 }}
                             className="flex items-center gap-3 lg:gap-4 py-2 lg:py-3 border-b border-white/5 last:border-0"
                           >
                             <div className="w-5 h-5 lg:w-6 lg:h-6 rounded-full bg-primary/20 border border-primary/40 flex items-center justify-center text-primary shrink-0">
@@ -197,13 +210,13 @@ export function Process() {
                             className="h-full bg-gradient-to-r from-primary/80 to-primary"
                             initial={{ width: 0 }}
                             animate={{ width: `${steps[currentStep].progress}%` }}
-                            transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+                            transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
                           />
                         </div>
                         <div className="grid grid-cols-1 gap-2 lg:gap-3">
                           {["Database Schema", "Auth Flow", "Stripe Integration"].map((task, i) => (
-                            <div key={i} className="flex items-center justify-between p-3 lg:p-4 bg-white/5 rounded-xl lg:rounded-2xl border border-white/5">
-                              <span className="text-[10px] lg:text-xs font-semibold text-white/60">{task}</span>
+                            <div key={i} className="flex items-center justify-between p-3 lg:p-4 bg-white/5 rounded-xl lg:rounded-2xl border border-white/5 group/task cursor-default hover:bg-white/10 transition-colors">
+                              <span className="text-[10px] lg:text-xs font-semibold text-white/60 group-hover/task:text-white/90 transition-colors">{task}</span>
                               <div className={`text-[8px] lg:text-[9px] font-black uppercase px-2 py-1 rounded ${i < 2 ? 'bg-primary/20 text-primary' : 'bg-white/5 text-white/20'}`}>
                                 {i < 2 ? 'Completed' : 'Pending'}
                               </div>
@@ -213,20 +226,45 @@ export function Process() {
                       </div>
                     )}
 
-                    {steps[currentStep].visualType === "video" && (
-                      <div className="w-full h-full relative group/vid cursor-pointer overflow-hidden rounded-[1.5rem] lg:rounded-[2rem] bg-black">
-                        <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=2574&auto=format&fit=crop" className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover/vid:opacity-40 transition-opacity duration-700" />
-                        <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 lg:gap-6">
-                          <motion.div
-                            whileHover={{ scale: 1.1 }}
-                            className="w-14 h-14 lg:w-20 lg:h-20 rounded-full bg-primary/20 backdrop-blur-xl border border-primary/40 flex items-center justify-center text-primary group-hover/vid:bg-primary group-hover/vid:text-white transition-all duration-500 shadow-2xl"
-                          >
-                            <div className="w-0 h-0 border-t-[8px] lg:border-t-[10px] border-t-transparent border-l-[14px] lg:border-l-[18px] border-l-current border-b-[8px] lg:border-b-[10px] border-b-transparent ml-1 lg:ml-2" />
-                          </motion.div>
-                          <div className="text-[8px] lg:text-[10px] font-black uppercase tracking-[0.3em] lg:tracking-[0.4em] text-white">Watch Demo Video</div>
+                    {steps[currentStep].visualType === "audit" && (
+                      <div className="w-full h-full flex flex-col items-center justify-center p-4">
+                        <div className="relative w-40 h-40 lg:w-48 lg:h-48 mb-8">
+                          <svg className="w-full h-full transform -rotate-90">
+                            <circle
+                              cx="50%"
+                              cy="50%"
+                              r="45%"
+                              className="fill-none stroke-white/5 stroke-[8]"
+                            />
+                            <motion.circle
+                              cx="50%"
+                              cy="50%"
+                              r="45%"
+                              initial={{ strokeDasharray: "0, 1000" }}
+                              animate={{ strokeDasharray: "283, 1000" }}
+                              transition={{ duration: 2, delay: 0.5, ease: "easeOut" }}
+                              className="fill-none stroke-primary stroke-[8] stroke-round"
+                            />
+                          </svg>
+                          <div className="absolute inset-0 flex flex-col items-center justify-center">
+                            <motion.span
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              transition={{ delay: 1 }}
+                              className="text-4xl lg:text-5xl font-bold text-white tracking-tighter"
+                            >
+                              100
+                            </motion.span>
+                            <span className="text-[10px] text-white/40 uppercase tracking-widest font-black">Score</span>
+                          </div>
                         </div>
-                        <div className="absolute bottom-4 right-4 lg:bottom-6 lg:right-6 px-2 py-1 lg:px-3 lg:py-1.5 bg-black/80 backdrop-blur-md rounded-full text-[8px] lg:text-[10px] text-white font-mono border border-white/10">
-                          {steps[currentStep].videoDuration}
+                        <div className="grid grid-cols-2 gap-3 w-full">
+                          {["Performance", "Security", "SEO", "PWA"].map((item, i) => (
+                            <div key={i} className="flex items-center gap-2 px-3 py-2 bg-white/5 rounded-xl border border-white/5">
+                              <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                              <span className="text-[10px] font-bold text-white/60">{item}</span>
+                            </div>
+                          ))}
                         </div>
                       </div>
                     )}
@@ -237,7 +275,7 @@ export function Process() {
                           <motion.div
                             initial={{ scale: 0, rotate: -180 }}
                             animate={{ scale: 1, rotate: 0 }}
-                            transition={{ type: "spring", bounce: 0.4, duration: 1 }}
+                            transition={{ type: "spring", bounce: 0.4, duration: 1.5 }}
                             className="w-24 h-24 lg:w-32 lg:h-32 rounded-[2rem] lg:rounded-[2.5rem] bg-primary/10 border border-primary/30 flex items-center justify-center text-primary shadow-xl shadow-primary/40"
                           >
                             <ShieldCheck className="w-12 lg:w-16 h-12 lg:h-16" />
@@ -264,7 +302,7 @@ export function Process() {
           <div className="lg:col-span-5 flex flex-col relative z-20">
 
             {/* Steps Navigation Bar */}
-            <div className="h-24 border-b border-white/5 flex items-center justify-between px-10 bg-[#0A0A0B]/80 backdrop-blur-xl">
+            <div className="h-24 border-b border-white/5 flex items-center justify-between px-10 bg-[#0A0A0B]/20 backdrop-blur-xl">
               <div className="flex items-center gap-2">
                 <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white/20">Phase</span>
                 <span className="text-sm font-bold text-white">{steps[currentStep].id}</span>
@@ -279,9 +317,8 @@ export function Process() {
                     className="group py-2 px-1 focus:outline-none"
                   >
                     <motion.div
-                      className={`h-1 rounded-full transition-colors ${idx === currentStep ? 'bg-primary' : 'bg-white/10 group-hover:bg-white/30'}`}
-                      animate={{ width: idx === currentStep ? 32 : 12 }}
-                      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                      className={`h-1.5 rounded-full transition-all duration-500 ${idx === currentStep ? 'bg-primary shadow-[0_0_12px_var(--color-primary)]' : 'bg-white/10 group-hover:bg-white/30'}`}
+                      animate={{ width: idx === currentStep ? 40 : 12 }}
                     />
                   </motion.button>
                 ))}
@@ -296,10 +333,10 @@ export function Process() {
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
-                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                 >
                   <div className="flex items-center gap-4 mb-4">
-                    <div className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[9px] font-black text-white/40 uppercase tracking-widest whitespace-nowrap">
+                    <div className="px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-[9px] font-black text-primary uppercase tracking-widest whitespace-nowrap">
                       {steps[currentStep].time}
                     </div>
                     <div className="h-[1px] w-12 bg-white/10" />
@@ -318,12 +355,12 @@ export function Process() {
                     {steps[currentStep].details.map((detail, idx) => (
                       <motion.div
                         key={idx}
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.2 + idx * 0.1 }}
-                        className="flex items-start gap-3 group/item cursor-default"
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.3 + idx * 0.1 }}
+                        className="flex items-start gap-4 group/item cursor-default"
                       >
-                        <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary/40 group-hover/item:bg-primary transition-colors" />
+                        <div className="mt-2 w-1.5 h-1.5 rounded-full bg-primary/40 group-hover/item:bg-primary transition-all duration-300 group-hover/item:scale-125" />
                         <span className="text-sm font-medium text-white/50 group-hover/item:text-white/90 transition-colors leading-relaxed">
                           {detail}
                         </span>
@@ -334,31 +371,31 @@ export function Process() {
               </AnimatePresence>
             </div>
 
-            {/* Bottom Nav & Info - FIXED FOR MOBILE OVERLAP & LONG TEXT */}
-            <div className="min-h-[120px] lg:h-40 border-t border-white/5 flex flex-col sm:flex-row bg-black/20 overflow-hidden">
+            {/* Bottom Nav & Info */}
+            <div className="min-h-[120px] lg:h-40 border-t border-white/5 flex flex-col sm:flex-row bg-[#0A0A0B]/50 backdrop-blur-3xl overflow-hidden">
               <div className="flex-1 border-b sm:border-b-0 sm:border-r border-white/5 p-6 lg:p-8 flex items-center gap-4 lg:gap-5 min-w-0">
-                <div className="w-10 h-10 lg:w-12 lg:h-12 rounded-xl lg:rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
-                  <User className="w-4 lg:w-5 h-4 lg:h-5 text-white/30" />
+                <div className="w-10 h-10 lg:w-12 lg:h-12 rounded-xl lg:rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
+                  <User className="w-4 lg:w-5 h-4 lg:h-5 text-primary" />
                 </div>
                 <div className="min-w-0">
                   <div className="text-[8px] lg:text-[9px] text-white/20 font-black uppercase tracking-[0.2em] mb-1">Ownership</div>
-                  <div className="text-[10px] lg:text-xs font-bold text-white/80 truncate pr-4">{steps[currentStep].owner}</div>
+                  <div className="text-[10px] lg:text-xs font-bold text-white truncate pr-4">{steps[currentStep].owner}</div>
                 </div>
               </div>
-              <div className="p-4 lg:px-10 flex items-center justify-center gap-3 shrink-0 bg-black/10 sm:bg-transparent">
+              <div className="p-4 lg:px-10 flex items-center justify-center gap-3 shrink-0 bg-white/[0.02]">
                 <motion.button
                   onClick={prevStep}
-                  whileHover={{ scale: 1.1 }}
+                  whileHover={{ scale: 1.1, backgroundColor: 'rgba(255,255,255,0.05)' }}
                   whileTap={{ scale: 0.9 }}
-                  className="w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/30 hover:text-white hover:bg-primary hover:border-primary transition-all duration-500 shadow-lg hover:shadow-primary/20"
+                  className="w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/30 hover:text-white transition-all duration-500 shadow-lg"
                 >
                   <ArrowLeft className="w-5 h-5" />
                 </motion.button>
                 <motion.button
                   onClick={nextStep}
-                  whileHover={{ scale: 1.1 }}
+                  whileHover={{ scale: 1.1, backgroundColor: 'rgba(255,255,255,0.05)' }}
                   whileTap={{ scale: 0.9 }}
-                  className="w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/30 hover:text-white hover:bg-primary hover:border-primary transition-all duration-500 shadow-lg hover:shadow-primary/20"
+                  className="w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/30 hover:text-white transition-all duration-500 shadow-lg"
                 >
                   <ArrowRight className="w-5 h-5" />
                 </motion.button>
@@ -368,26 +405,32 @@ export function Process() {
         </div>
 
         {/* Floating Call to Action */}
-        <div className="mt-16 flex flex-col md:flex-row justify-between items-center gap-8 py-8 px-12 bg-primary/5 border border-primary/10 rounded-[2.5rem] backdrop-blur-md">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-16 flex flex-col md:flex-row justify-between items-center gap-8 py-10 px-12 bg-gradient-to-br from-white/[0.03] to-transparent border border-white/5 rounded-[3rem]"
+        >
           <div className="flex items-center gap-6">
-            <div className="w-16 h-16 rounded-3xl bg-primary text-white flex items-center justify-center shadow-xl shadow-primary/40">
-              <Calendar className="w-8 h-8" />
+            <div className="w-16 h-16 rounded-[2rem] bg-primary text-white flex items-center justify-center shadow-xl shadow-primary/20 relative overflow-hidden group">
+              <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+              <Calendar className="w-8 h-8 relative z-10" />
             </div>
             <div>
-              <h5 className="text-xl font-bold text-white mb-1">Predictable Delivery.</h5>
-              <p className="text-sm text-white/40">Lock in your launch date today.</p>
+              <h5 className="text-2xl font-bold text-white mb-1">Direct Engineering Pipeline.</h5>
+              <p className="text-sm text-white/40 tracking-tight">Zero bloat. High velocity. Predictable shipping cycles.</p>
             </div>
           </div>
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+          <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
             <Button
-              onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-              className="bg-white text-black hover:bg-primary hover:text-white px-10 h-16 rounded-2xl font-bold text-lg transition-all group shadow-2xl flex items-center gap-4"
+              onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })}
+              className="bg-white text-black hover:bg-primary hover:text-white px-12 h-16 rounded-2xl font-bold text-lg transition-all group shadow-2xl flex items-center gap-4 border-0"
             >
-              Start Your Journey
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              Secure Your Slot
+              <Zap className="w-5 h-5 group-hover:fill-current transition-all" />
             </Button>
           </motion.div>
-        </div>
+        </motion.div>
 
       </div>
     </section>

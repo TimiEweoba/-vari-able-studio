@@ -1,18 +1,60 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useMutation } from "@tanstack/react-query";
 import { type Project } from "@shared/schema";
-import { ArrowRight, Loader2, ArrowLeft, Plus } from "lucide-react";
+import { ArrowRight, Loader2, ArrowLeft, Plus, CheckCircle2 } from "lucide-react";
 import { ParticleBackground } from "@/components/ui/particle-background";
 import { Link } from "wouter";
+import { useState } from "react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { useToast } from "@/hooks/use-toast";
+import { apiRequest } from "@/lib/queryClient";
 
 import { Meta } from "@/components/ui/meta";
 
 export default function CaseStudiesPage() {
+    const [isInquiryOpen, setIsInquiryOpen] = useState(false);
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [message, setMessage] = useState("");
+    const { toast } = useToast();
+
     const { data: projects, isLoading } = useQuery<Project[]>({
         queryKey: ["/api/projects"],
     });
+
+    const inquiryMutation = useMutation({
+        mutationFn: async (data: { name: string; email: string; message: string; company: string }) => {
+            const res = await apiRequest("POST", "/api/contact", data);
+            return res.json();
+        },
+        onSuccess: () => {
+            toast({
+                title: "Inquiry Sent",
+                description: "Your project brief has been routed to contact@veriable.xyz",
+            });
+            setIsInquiryOpen(false);
+            setName("");
+            setEmail("");
+            setMessage("");
+        },
+        onError: (error: Error) => {
+            toast({
+                title: "Error",
+                description: error.message || "Failed to send inquiry.",
+                variant: "destructive",
+            });
+        },
+    });
+
+    const handleInquirySubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        inquiryMutation.mutate({ name, email, message, company: "Case Study Inquiry" });
+    };
 
     const fadeInUp = {
         hidden: { opacity: 0, y: 30 },
@@ -133,7 +175,7 @@ export default function CaseStudiesPage() {
                                 Start your <br /><span className="text-primary italic">next chapter</span> with us.
                             </h2>
                             <button
-                                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                                onClick={() => setIsInquiryOpen(true)}
                                 className="bg-primary hover:bg-primary/90 text-white px-12 py-6 rounded-2xl font-black text-sm uppercase tracking-widest shadow-2xl shadow-primary/30 hover:scale-105 transition-all flex items-center gap-4 mx-auto"
                             >
                                 Inquire about a project
@@ -143,6 +185,68 @@ export default function CaseStudiesPage() {
                     </section>
                 </div>
             </main>
+
+            <Dialog open={isInquiryOpen} onOpenChange={setIsInquiryOpen}>
+                <DialogContent className="bg-[#161719] border-white/10 text-white sm:max-w-[500px] rounded-[2rem]">
+                    <DialogHeader>
+                        <DialogTitle className="text-3xl font-bold tracking-tight">Project Inquiry</DialogTitle>
+                        <DialogDescription className="text-white/40">
+                            Tell us about your project brief. We'll route this to contact@veriable.xyz and respond within 24 hours.
+                        </DialogDescription>
+                    </DialogHeader>
+                    <form onSubmit={handleInquirySubmit} className="space-y-6 mt-4">
+                        <div className="space-y-2">
+                            <Label htmlFor="inquiry-name" className="text-sm font-medium text-white/80">Your Name</Label>
+                            <Input
+                                id="inquiry-name"
+                                required
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                                className="bg-white/5 border-white/10 focus:border-primary text-white h-12 rounded-xl"
+                                placeholder="John Doe"
+                            />
+                        </div>
+                        <div className="space-y-2">
+                            <Label htmlFor="inquiry-email" className="text-sm font-medium text-white/80">Email Address</Label>
+                            <Input
+                                id="inquiry-email"
+                                type="email"
+                                required
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                className="bg-white/5 border-white/10 focus:border-primary text-white h-12 rounded-xl"
+                                placeholder="john@example.com"
+                            />
+                        </div>
+                        <div className="space-y-2">
+                            <Label htmlFor="inquiry-message" className="text-sm font-medium text-white/80">Project Brief</Label>
+                            <textarea
+                                id="inquiry-message"
+                                required
+                                value={message}
+                                onChange={(e) => setMessage(e.target.value)}
+                                rows={4}
+                                className="w-full bg-white/5 border border-white/10 rounded-xl p-3 focus:border-primary text-white outline-none text-sm transition-colors resize-none"
+                                placeholder="Describe your project goals, timeline, and budget..."
+                            />
+                        </div>
+                        <Button
+                            type="submit"
+                            disabled={inquiryMutation.isPending}
+                            className="w-full h-14 text-base font-bold rounded-xl"
+                        >
+                            {inquiryMutation.isPending ? (
+                                <Loader2 className="w-5 h-5 animate-spin mr-2" />
+                            ) : (
+                                <>
+                                    Send Inquiry
+                                    <ArrowRight className="w-5 h-5 ml-2" />
+                                </>
+                            )}
+                        </Button>
+                    </form>
+                </DialogContent>
+            </Dialog>
 
             <Footer />
         </div>

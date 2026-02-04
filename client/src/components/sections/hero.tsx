@@ -72,17 +72,14 @@ export function Hero() {
                                         <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                                     </Button>
                                 </motion.div>
-                                <motion.a
-                                    whileHover={{ scale: 1.02 }}
-                                    whileTap={{ scale: 0.98 }}
-                                    href="https://paystack.shop/pay/veriable-studio"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
+                                <Button
+                                    size="lg"
+                                    variant="outline"
+                                    className="h-14 px-6 text-base rounded-xl border-white/10 bg-white/5 text-white hover:bg-white/10 hover:text-primary transition-all w-full sm:w-auto"
+                                    onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })}
                                 >
-                                    <Button size="lg" variant="outline" className="h-14 px-6 text-base rounded-xl border-white/10 bg-white/5 text-white hover:bg-white/10 hover:text-primary transition-all w-full sm:w-auto">
-                                        Reserve a Spot — $500
-                                    </Button>
-                                </motion.a>
+                                    Reserve a Spot — $500 / ₦500k
+                                </Button>
                             </div>
                         </motion.div>
                     </div>

@@ -1,7 +1,7 @@
 import { Link } from "wouter";
 import { useState } from "react";
-import { motion } from "framer-motion";
-import { Linkedin, Twitter, Instagram, Facebook, Github } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Linkedin, Twitter, Instagram, Facebook, Github, ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const WhatsApp = ({ className, ...props }: any) => (
@@ -19,15 +19,6 @@ const WhatsApp = ({ className, ...props }: any) => (
 export function Team() {
   const [activeMember, setActiveMember] = useState(0);
 
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const }
-    }
-  };
-
   const team = [
     {
       name: "Timi Eweoba",
@@ -35,7 +26,6 @@ export function Team() {
       bio: "Product strategy, sales, and operations. Runs launches, client comms, and the product roadmap.",
       image: "/images/team/timi.png",
       socials: [
-        { icon: Facebook, href: "https://www.facebook.com/timieweoba" },
         { icon: Twitter, href: "https://x.com/TimiEweoba" },
         { icon: Github, href: "https://github.com/TimiEweoba" },
         { icon: WhatsApp, href: "https://wa.me/2348144657589" }
@@ -50,7 +40,8 @@ export function Team() {
         { icon: Linkedin, href: "https://www.linkedin.com/in/eleojo-arawa-495aaa250/" },
         { icon: Github, href: "https://github.com/arawaeleojo" },
         { icon: WhatsApp, href: "https://wa.me/2348087087083" }
-      ]
+      ],
+      experienceLink: "#"
     },
     {
       name: "Dennis Okpandu",
@@ -61,13 +52,17 @@ export function Team() {
         { icon: Linkedin, href: "https://www.linkedin.com/in/dennis-okpandu/" },
         { icon: Github, href: "https://github.com/kaiknightop" },
         { icon: WhatsApp, href: "https://wa.me/2347070070281" }
-      ]
+      ],
+      experienceLink: "https://okpandu.vercel.app/"
     }
   ];
 
   return (
-    <section id="team" className="py-24 bg-[#050505] text-[#E3DBD8]">
-      <div className="container mx-auto px-4 md:px-6">
+    <section id="team" className="py-32 bg-[#050505] text-[#E3DBD8] relative overflow-hidden">
+      {/* Abstract Background Element */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
 
         {/* Header Section */}
         <div className="mb-24">
@@ -75,7 +70,7 @@ export function Team() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-[12vw] leading-[0.8] font-medium tracking-tighter text-white/[0.15] md:text-[#1C1D20] mb-12 select-none"
+            className="text-[12vw] leading-[0.8] font-medium tracking-tighter text-white/[0.08] md:text-[#1C1D20] mb-12 select-none"
           >
             Meet the Team
           </motion.h2>
@@ -86,8 +81,8 @@ export function Team() {
               <span className="text-[10px] text-muted-foreground uppercase tracking-[0.3em] font-black underline decoration-primary decoration-2 underline-offset-4">Makers</span>
             </div>
             <div className="md:col-span-6">
-              <h3 className="text-3xl md:text-5xl font-medium tracking-tight text-white leading-tight">
-                Makers, thinkers, and problem solvers who ship product.
+              <h3 className="text-4xl md:text-6xl font-medium tracking-tight text-white leading-[1.1]">
+                High-performance <span className="text-primary italic">engineers</span> for ambitious founders.
               </h3>
             </div>
             <div className="md:col-span-4 flex items-end justify-end md:h-full">
@@ -99,127 +94,141 @@ export function Team() {
         </div>
 
         {/* Interactive Team Slider */}
-        <div className="bg-[#1C1D20] border border-white/5 rounded-3xl overflow-hidden flex flex-col lg:flex-row h-auto lg:h-[600px]">
+        <div className="bg-[#0A0A0B]/80 backdrop-blur-xl border border-white/5 rounded-[3rem] overflow-hidden flex flex-col lg:flex-row h-auto lg:h-[650px] shadow-2xl relative">
+
+          {/* Subtle Grain Overlay */}
+          <div className="absolute inset-0 pointer-events-none opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
 
           {/* Left Column: Details */}
-          <div className="lg:w-1/2 p-8 md:p-16 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-white/5 order-2 lg:order-1">
+          <div className="lg:w-1/2 p-10 md:p-16 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-white/5 order-2 lg:order-1 relative z-10">
             <div>
-              <h5 className="text-muted-foreground mb-4 text-lg">Team veri—able</h5>
+              <div className="flex items-center gap-4 mb-8">
+                <div className="h-[1px] w-8 bg-primary/40" />
+                <h5 className="text-primary font-black text-[10px] uppercase tracking-[0.4em]">Core Unit</h5>
+              </div>
 
-              <div className="flex gap-3 mb-12">
+              <div className="flex gap-3 mb-16">
                 {team.map((_, i) => (
                   <button
                     key={i}
                     onClick={() => setActiveMember(i)}
                     className={cn(
-                      "h-1 px-4 py-3 rounded-xl transition-all duration-500 relative flex items-center justify-center group/dot",
-                      i === activeMember ? "bg-primary/20" : "bg-transparent hover:bg-white/5"
+                      "h-1.5 transition-all duration-700 relative flex items-center justify-center group/dot",
+                      i === activeMember ? "w-12 bg-primary rounded-full shadow-[0_0_15px_var(--color-primary)]" : "w-3 bg-white/10 rounded-full hover:bg-white/20"
                     )}
-                  >
-                    <div className={cn(
-                      "h-1.5 rounded-full transition-all duration-500",
-                      i === activeMember ? "w-8 bg-primary shadow-[0_0_10px_var(--color-primary)]" : "w-1.5 bg-white/20 group-hover/dot:bg-white/40"
-                    )} />
-                  </button>
+                  />
                 ))}
               </div>
 
-              <motion.div
-                key={activeMember}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4 }}
-              >
-                <h3 className="text-4xl md:text-5xl font-medium text-white mb-2">{team[activeMember].name}</h3>
-                <p className="text-lg text-muted-foreground mb-8">{team[activeMember].role}</p>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeMember}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 20 }}
+                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <h3 className="text-5xl md:text-7xl font-bold text-white mb-4 tracking-tighter leading-none">{team[activeMember].name}</h3>
+                  <p className="text-xl text-primary font-medium mb-10 tracking-tight italic">{team[activeMember].role}</p>
 
-                <p className="text-lg text-[#E3DBD8] leading-relaxed max-w-lg mb-8">
-                  {team[activeMember].bio}
-                </p>
+                  <p className="text-xl text-white/60 leading-relaxed max-w-lg mb-12">
+                    {team[activeMember].bio}
+                  </p>
 
-
-              </motion.div>
+                  {team[activeMember].experienceLink && (
+                    <motion.a
+                      href={team[activeMember].experienceLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="inline-flex items-center gap-3 px-6 py-3 rounded-xl bg-white/5 border border-white/10 text-white/80 font-bold text-xs uppercase tracking-[0.2em] hover:bg-white/10 hover:text-white transition-all group w-fit"
+                    >
+                      View Experience
+                      <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                    </motion.a>
+                  )}
+                </motion.div>
+              </AnimatePresence>
             </div>
           </div>
 
           {/* Right Column: Image & Socials */}
-          <div className="lg:w-1/2 relative order-1 lg:order-2 h-[450px] md:h-[550px] lg:h-auto">
-            <motion.div
-              key={activeMember}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-              className="absolute inset-0 z-0"
-            >
-              <img
-                src={team[activeMember].image}
-                alt={team[activeMember].name}
-                loading="lazy"
-                className={cn(
-                  "w-full h-full object-cover transition-all duration-700",
-                  // Enhanced normalization to mimic Timi's studio photo look
-                  team[activeMember].image.endsWith(".jpg") ?
-                    "brightness-[0.85] contrast-[1.15] saturate-[0.85] sepia-[0.1]" :
-                    "brightness-[1.1] contrast-[1.05]"
-                )}
-              />
-              {/* Vignette and Gradient Overlay for consistent depth */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#1C1D20] via-transparent to-transparent opacity-80 lg:opacity-60" />
-              <div className="absolute inset-0 ring-1 ring-inset ring-white/10" />
-            </motion.div>
+          <div className="lg:w-1/2 relative order-1 lg:order-2 h-[500px] lg:h-auto overflow-hidden">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeMember}
+                initial={{ opacity: 0, scale: 1.1 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 1.05 }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                className="absolute inset-0 z-0"
+              >
+                <img
+                  src={team[activeMember].image}
+                  alt={team[activeMember].name}
+                  loading="lazy"
+                  className={cn(
+                    "w-full h-full object-cover transition-all duration-1000",
+                    team[activeMember].image.endsWith(".jpg") ?
+                      "brightness-[0.8] contrast-[1.2] grayscale-[30%]" :
+                      "brightness-[1.1] contrast-[1.1]"
+                  )}
+                />
+                {/* Visual Finish Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/20 to-transparent" />
+                <div className="absolute inset-0 ring-1 ring-inset ring-white/10" />
+              </motion.div>
+            </AnimatePresence>
 
-            {/* Social Links */}
-            <div className="absolute bottom-6 right-6 lg:top-0 lg:right-0 lg:bottom-0 lg:w-24 flex lg:flex-col items-center justify-center gap-6 lg:gap-12 z-10 lg:bg-[#161719]/90 lg:border-l lg:border-white/5 lg:backdrop-blur-sm">
+            {/* Social Panel */}
+            <div className="absolute bottom-10 right-10 lg:bottom-0 lg:top-0 lg:right-0 lg:w-20 flex lg:flex-col items-center justify-center gap-6 lg:gap-10 z-20 lg:bg-[#050505]/40 lg:backdrop-blur-xl lg:border-l lg:border-white/5">
               {team[activeMember].socials?.map((social, idx) => (
-                <a
+                <motion.a
                   key={idx}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white/80 hover:text-primary transition-all p-2 bg-black/40 lg:bg-transparent rounded-full backdrop-blur-md lg:backdrop-blur-none hover:scale-110 active:scale-95"
+                  whileHover={{ scale: 1.2, color: "var(--color-primary)" }}
+                  className="text-white/40 transition-colors p-2"
                 >
                   <social.icon className="w-5 h-5 lg:w-6 lg:h-6" />
-                </a>
+                </motion.a>
               ))}
             </div>
           </div>
         </div>
 
-        {/* Thumbnails Navigation Strip */}
-        <div className="mt-8 flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
-          {team.map((member, idx) => (
-            <motion.div
-              key={idx}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => setActiveMember(idx)}
-              className={cn(
-                "w-24 h-32 shrink-0 rounded-xl overflow-hidden cursor-pointer transition-all duration-500 relative border-2 interactive",
-                idx === activeMember
-                  ? "border-primary shadow-lg shadow-primary/20 scale-105 z-10"
-                  : "border-white/5 opacity-50 grayscale hover:opacity-100 hover:grayscale-0 hover:border-white/20"
-              )}
-              data-cursor="Member"
-            >
-              <img
-                src={member.image}
-                alt={member.name}
-                loading="lazy"
+        {/* Thumbnails Strip */}
+        < div className="mt-12 flex gap-6 overflow-x-auto pb-6 scrollbar-hide items-center justify-center" >
+          {
+            team.map((member, idx) => (
+              <motion.div
+                key={idx}
+                whileHover={{ y: -10 }}
+                onClick={() => setActiveMember(idx)}
                 className={cn(
-                  "w-full h-full object-cover transition-all duration-700",
-                  idx === activeMember ? "scale-110" : "scale-100",
-                  member.image.endsWith(".jpg") && "brightness-[0.9] contrast-[1.1]"
+                  "group relative w-32 h-44 shrink-0 rounded-[1.5rem] overflow-hidden cursor-pointer transition-all duration-700 border-2",
+                  idx === activeMember
+                    ? "border-primary shadow-2xl shadow-primary/20 scale-105 z-10"
+                    : "border-white/5 opacity-50 grayscale hover:opacity-100 hover:grayscale-0 hover:border-white/20"
                 )}
-              />
-              <div className={cn(
-                "absolute inset-0 transition-opacity duration-500",
-                idx === activeMember ? "bg-primary/10 opacity-100" : "bg-black/20 opacity-0 group-hover:opacity-100"
-              )} />
-            </motion.div>
-          ))}
-        </div>
+              >
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className={cn(
+                  "absolute inset-0 transition-opacity bg-primary/20",
+                  idx === activeMember ? "opacity-100" : "opacity-0 group-hover:opacity-40"
+                )} />
+              </motion.div>
+            ))
+          }
+        </div >
 
-      </div>
-    </section>
+      </div >
+    </section >
   );
 }

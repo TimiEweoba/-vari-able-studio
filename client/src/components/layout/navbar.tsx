@@ -2,6 +2,8 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Menu, X, ArrowRight, Instagram, Twitter, Linkedin } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useLocation } from "wouter";
+import { useToast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -17,16 +19,35 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const { toast } = useToast();
+  const [location, setLocation] = useLocation();
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith("/#")) {
+      e.preventDefault();
+      const id = href.split("#")[1];
+      const element = document.getElementById(id);
+
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      } else {
+        // If not on the same page, go to home with hash
+        window.location.href = href;
+      }
+      setIsMobileOpen(false);
+    }
+  };
+
   const navLinks = [
-    { name: "Selected Work", href: "/work", id: "01" },
+    { name: "Selected Work", href: "/#work", id: "01", isRoute: false },
     { name: "Expertise", href: "/#services", id: "02" },
     { name: "Our Process", href: "/#process", id: "03" },
     { name: "Smart Data", href: "/#analytics", id: "04" },
     { name: "Pricing", href: "/#pricing", id: "05" },
-    { name: "Our Team", href: "/#team", id: "06" },
-    { name: "Wall of Love", href: "/#testimonials", id: "07" },
-    { name: "Research Labs", href: "/tech", id: "08" },
-    { name: "Questions", href: "/#faq", id: "09" },
+    { name: "Questions", href: "/#faq", id: "06" },
+    { name: "Our Team", href: "/#team", id: "07" },
+    { name: "Wall of Love", href: "/#testimonials", id: "08" },
+    { name: "Research Labs", href: "/#labs", id: "09" },
   ];
 
   return (
@@ -55,15 +76,28 @@ export function Navbar() {
           {/* Desktop Nav */}
           <div className="hidden xl:flex items-center gap-4 2xl:gap-8 text-nowrap">
             {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="text-xs 2xl:text-[13px] font-medium text-white/60 hover:text-white transition-all relative group py-2 interactive"
-                data-cursor="Jump"
-              >
-                {link.name}
-                <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-primary transition-all duration-300 group-hover:w-full" />
-              </a>
+              link.isRoute ? (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className="text-xs 2xl:text-[13px] font-medium text-white/60 hover:text-white transition-all relative group py-2 interactive"
+                  data-cursor="Jump"
+                >
+                  {link.name}
+                  <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-primary transition-all duration-300 group-hover:w-full" />
+                </Link>
+              ) : (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  className="text-xs 2xl:text-[13px] font-medium text-white/60 hover:text-white transition-all relative group py-2 interactive"
+                  data-cursor="Jump"
+                >
+                  {link.name}
+                  <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-primary transition-all duration-300 group-hover:w-full" />
+                </a>
+              )
             ))}
           </div>
 
@@ -140,17 +174,33 @@ export function Navbar() {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: idx * 0.05 }}
                     >
-                      <a
-                        href={link.href}
-                        className="group flex items-center gap-5 py-5 border-b border-white/5 transition-all"
-                        onClick={() => setIsMobileOpen(false)}
-                      >
-                        <span className="text-[11px] font-mono text-primary/40 group-hover:text-primary transition-colors">{link.id}</span>
-                        <span className="text-2xl font-semibold text-white/70 group-hover:text-white group-hover:translate-x-3 transition-all duration-300">
-                          {link.name}
-                        </span>
-                        <ArrowRight className="ml-auto w-5 h-5 text-primary opacity-0 group-hover:opacity-100 transition-all transform group-hover:-rotate-45" />
-                      </a>
+                      {link.isRoute ? (
+                        <Link
+                          href={link.href}
+                          className="group flex items-center gap-5 py-5 border-b border-white/5 transition-all"
+                          onClick={() => setIsMobileOpen(false)}
+                        >
+                          <span className="text-[11px] font-mono text-primary/40 group-hover:text-primary transition-colors">{link.id}</span>
+                          <span className="text-2xl font-semibold text-white/70 group-hover:text-white group-hover:translate-x-3 transition-all duration-300">
+                            {link.name}
+                          </span>
+                          <ArrowRight className="ml-auto w-5 h-5 text-primary opacity-0 group-hover:opacity-100 transition-all transform group-hover:-rotate-45" />
+                        </Link>
+                      ) : (
+                        <a
+                          href={link.href}
+                          className="group flex items-center gap-5 py-5 border-b border-white/5 transition-all"
+                          onClick={(e) => {
+                            handleNavClick(e, link.href);
+                          }}
+                        >
+                          <span className="text-[11px] font-mono text-primary/40 group-hover:text-primary transition-colors">{link.id}</span>
+                          <span className="text-2xl font-semibold text-white/70 group-hover:text-white group-hover:translate-x-3 transition-all duration-300">
+                            {link.name}
+                          </span>
+                          <ArrowRight className="ml-auto w-5 h-5 text-primary opacity-0 group-hover:opacity-100 transition-all transform group-hover:-rotate-45" />
+                        </a>
+                      )}
                     </motion.div>
                   ))}
                 </div>
