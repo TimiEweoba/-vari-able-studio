@@ -39,28 +39,37 @@ export function Labs() {
             `
         },
         {
-            author: "Dennis Okpandu",
+            author: "Okpandu Dennis",
             authorImage: "/images/team/dennis.jpg",
-            date: "Wednesday, April 2, 2025",
-            title: "Stripe flows that convert: the exact steps we use",
-            image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=2670&auto=format&fit=crop",
+            date: "Friday, February 6, 2026",
+            title: "Web3 Social Media & Digital Content Architecture: The Pearl Hope Case Study",
+            image: "/backgrounds/pearl.png",
+            video: "/screenrecords/pearl.mp4",
             content: `
-                 <p>Friction kills conversion. I've audited over 50 billing flows this year, and the same mistakes keep popping up: too many steps, unclear pricing, and a lack of trust signals. At veri—able, we treat the checkout flow as a product in itself.</p>
-                 <h3 class="text-white text-2xl font-bold mt-12 mb-4">Pre-fill Everything</h3>
-                 <p>If you already know the user's email or name, pre-fill it. Every keystroke saved is a higher chance of conversion. We use Stripe's Customer Portal API to handle upgrades, which keeps the logic off our servers and ensures compliance.</p>
-                 <div class="my-10 p-6 bg-black rounded-xl border border-white/10 font-mono text-sm overflow-hidden relative group">
-                    <div class="absolute top-0 right-0 p-2 text-[10px] font-black text-white/10 uppercase tracking-widest group-hover:text-primary transition-colors">Code Snippet</div>
-                    <div class="text-primary/40 mb-4">// Stripe Session Config</div>
-                    <pre class="text-white/80 overflow-x-auto scrollbar-hide">
-const session = await stripe.checkout.sessions.create({
-  customer_email: user.email, // <--- Key for conversion
-  line_items: [{ price: PRICE_ID, quantity: 1 }],
-  mode: 'subscription',
-  success_url: \`\${domain}/dashboard?success=true\`,
-  cancel_url: \`\${domain}/pricing?canceled=true\`,
-});</pre>
+                <p>Building a digital presence in the Web3 space requires more than just a list of skills; it requires a narrative. For Pearl Hope, a Web3 Social Media Intern and Writer, we designed a portfolio that serves as both a resume and a proof of work.</p>
+                <div class="my-10 p-6 bg-black rounded-xl border border-white/10 font-mono text-sm overflow-hidden relative group">
+                    <div class="absolute top-0 right-0 p-2 text-[10px] font-black text-white/10 uppercase tracking-widest group-hover:text-primary transition-colors">Digital Identity</div>
+                    <div class="text-primary/40 mb-4">// Portfolio Overview</div>
+                    <ul class="list-disc pl-4 text-white/80 space-y-2">
+                        <li><strong>Role:</strong> Web3 Social Media Intern & Writer</li>
+                        <li><strong>Website:</strong> <a href="https://www.web3pearl.online/" target="_blank" class="text-primary hover:underline">www.web3pearl.online</a></li>
+                        <li><strong>Focus:</strong> Content Strategy, Community Building, Technical Writing</li>
+                    </ul>
                 </div>
-                 <p>We also implement "smart retries" for failed payments webhooks. Instead of just locking the account, we send a branded email sequence that recovers about 15% of churned revenue automatically.</p>
+                <h3 class="text-white text-2xl font-bold mt-12 mb-4">Functional Presence</h3>
+                <p>In the decentralized world, accessibility is key. We designed a professional ecosystem that ensures founders and collaborators can understand her value proposition immediately.</p>
+                <h3 class="text-white text-2xl font-bold mt-12 mb-4">Linked Projects & Digital Products</h3>
+                <p>The portfolio isn't just static text—it's a hub for her digital products and projects. From Web3 guides to community-focused content, everything is linked to provide a comprehensive look at her contributions to the ecosystem.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+                    <div class="p-4 bg-white/5 rounded-lg border border-white/10 transition-colors hover:border-primary/50">
+                        <h4 class="text-white font-bold mb-2">Web3 Social Strategy</h4>
+                        <p class="text-sm text-white/60">Comprehensive guides on building community in a decentralized landscape.</p>
+                    </div>
+                    <div class="p-4 bg-white/5 rounded-lg border border-white/10 transition-colors hover:border-primary/50">
+                        <h4 class="text-white font-bold mb-2">Technical Writing</h4>
+                        <p class="text-sm text-white/60">In-depth breakdowns of blockchain protocols and DeFi ecosystems.</p>
+                    </div>
+                </div>
             `
         },
         {
@@ -91,6 +100,7 @@ const session = await stripe.checkout.sessions.create({
             `
         },
         {
+<<<<<<< HEAD
             author: "Timi Eweoba",
             authorImage: "/images/team/timi.png",
             date: "Tuesday, June 17, 2025",
@@ -124,6 +134,41 @@ const session = await stripe.checkout.sessions.create({
                 </div>
                 <h3 class="text-white text-2xl font-bold mt-12 mb-4">Flutterwave & Local Optimization</h3>
                 <p>For the Nigerian market, payment reliability is everything. We implemented a robust Flutterwave integration with smart webhooks and automated reconciliation. The result is a checkout experience that handles high-volume traffic with zero friction, optimized for local mobile speeds and network conditions.</p>
+=======
+            author: "Okpandu Dennis",
+            authorImage: "/images/team/dennis.jpg",
+            date: "Monday, February 9, 2026",
+            title: "ChatApp: Stephen Kodaolu's Enterprise-Grade Messaging Case Study",
+            image: "/backgrounds/stephen.png",
+            video: "/screenrecords/stephen.mp4",
+            content: `
+                <p>ChatApp is a premium, end-to-end encrypted messaging platform featuring a modern Orange-accented design with full Light/Dark mode support. Built as a secure real-time communication tool, it bridges the gap between high-level security and consumer-grade usability.</p>
+                
+                <div class="my-10 p-6 bg-black rounded-xl border border-white/10 font-mono text-sm overflow-hidden relative group">
+                    <div class="absolute top-0 right-0 p-2 text-[10px] font-black text-white/10 uppercase tracking-widest group-hover:text-primary transition-colors">Tech Stack</div>
+                    <div class="text-primary/40 mb-4">// System Architecture</div>
+                    <ul class="list-disc pl-4 text-white/80 space-y-2">
+                        <li><strong>Frontend:</strong> React, TypeScript, Tailwind CSS, Framer Motion</li>
+                        <li><strong>Backend:</strong> Node.js, Express, MongoDB</li>
+                        <li><strong>Real-Time:</strong> Socket.io (Typing indicators, Online status)</li>
+                        <li><strong>Security:</strong> Web Crypto API (RSA-OAEP / AES-GCM)</li>
+                    </ul>
+                </div>
+
+                <h3 class="text-white text-2xl font-bold mt-12 mb-4">Robust Security (E2EE)</h3>
+                <p>At the core of ChatApp is a zero-knowledge security model. Messages are encrypted on the sender's device and can only be decrypted by the intended recipient. The server never sees plain text, ensuring absolute privacy. We also implemented self-healing keys that automatically repair encryption if local storage is cleared.</p>
+
+                <h3 class="text-white text-2xl font-bold mt-12 mb-4">Premium Design System</h3>
+                <p>The UI utilizes a "Glassmorphism" aesthetic with vibrant Orange branding. We built a dual-theme engine for instant switching between Light and Dark modes, paired with fluid animations from Framer Motion to create a premium, reactive experience.</p>
+
+                <div class="my-10 p-6 bg-[#1A1A1A] rounded-xl border border-white/10">
+                    <h4 class="text-primary font-bold mb-4 uppercase tracking-tighter italic">Live Preview Available</h4>
+                    <p class="text-white/80 text-sm mb-4">Explore the architectural implementation and secure messaging flow.</p>
+                    <a href="https://chatapp-nine-mu.vercel.app" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white font-bold rounded-lg hover:bg-primary/80 transition-all">
+                        Launch ChatApp Demo
+                    </a>
+                </div>
+>>>>>>> 8a0c285 (update)
             `
         }
     ];

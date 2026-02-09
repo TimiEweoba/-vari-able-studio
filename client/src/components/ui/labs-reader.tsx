@@ -12,6 +12,7 @@ interface LabsReaderProps {
         authorImage?: string;
         date: string;
         image: string;
+        video?: string;
         content?: string;
     } | null;
 }
@@ -71,6 +72,7 @@ export function LabsReader({ isOpen, onClose, article }: LabsReaderProps) {
                         exit={{ x: "100%" }}
                         transition={{ type: "spring", damping: 25, stiffness: 200 }}
                         className="fixed right-0 top-0 h-full w-full md:w-[600px] lg:w-[800px] bg-[#0F1011] z-[260] overflow-y-auto border-l border-white/5 shadow-2xl"
+                        data-lenis-prevent
                     >
                         {/* Header Controls */}
                         <div className="sticky top-0 w-full flex justify-between items-center p-6 bg-[#0F1011]/80 backdrop-blur-xl z-10 border-b border-white/5">
@@ -126,11 +128,22 @@ export function LabsReader({ isOpen, onClose, article }: LabsReaderProps) {
                                 </div>
                             </div>
 
-                            <img
-                                src={article.image}
-                                className="w-full aspect-video object-cover rounded-2xl mb-12 border border-white/5"
-                                alt={article.title}
-                            />
+                            {article.video ? (
+                                <video
+                                    src={article.video}
+                                    className="w-full aspect-video object-cover rounded-2xl mb-12 border border-white/5"
+                                    autoPlay
+                                    muted
+                                    loop
+                                    playsInline
+                                />
+                            ) : (
+                                <img
+                                    src={article.image}
+                                    className="w-full aspect-video object-cover rounded-2xl mb-12 border border-white/5"
+                                    alt={article.title}
+                                />
+                            )}
 
                             <div className="prose prose-invert max-w-none space-y-6 text-white/60 leading-relaxed text-lg">
                                 {article.content ? (
