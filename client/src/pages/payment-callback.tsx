@@ -12,7 +12,26 @@ export default function PaymentCallback() {
     const [status, setStatus] = useState<"loading" | "success" | "failed" | "cancelled">("loading");
     const [message, setMessage] = useState("Verifying payment...");
 
+    // Check if we are currently in the process of redirecting to a payment gateway.
+    // This prevents a "glimpse" of the cancellation UI during history manipulation.
+    const [isRedirecting, setIsRedirecting] = useState(() => {
+        const ts = sessionStorage.getItem("payment_redirect_ts");
+        if (!ts) return false;
+        // If the redirect was initiated less than 5 seconds ago, block the UI
+        return Date.now() - parseInt(ts) < 5000;
+    });
+
     useEffect(() => {
+        if (isRedirecting) {
+            const timer = setTimeout(() => setIsRedirecting(false), 5000);
+            return () => clearTimeout(timer);
+        }
+    }, [isRedirecting]);
+
+    useEffect(() => {
+        // If we are still in the redirect grace period, do nothing.
+        if (isRedirecting) return;
+
         const searchParams = new URLSearchParams(window.location.search);
         const tx_ref = searchParams.get("tx_ref");
         const transaction_id = searchParams.get("transaction_id");
@@ -38,6 +57,15 @@ export default function PaymentCallback() {
             }
         }
     }, []);
+
+    useEffect(() => {
+        if (status === "cancelled") {
+            const timer = setTimeout(() => {
+                window.location.href = "/#pricing";
+            }, 5000);
+            return () => clearTimeout(timer);
+        }
+    }, [status]);
 
     const verifyPayment = async (tx_ref: string | null, transaction_id: string | null) => {
         if (!tx_ref) {
@@ -84,7 +112,7 @@ export default function PaymentCallback() {
         }
     };
 
-    if (status === "loading") {
+    if (status === "loading" || isRedirecting) {
         return (
             <div className="min-h-screen flex items-center justify-center bg-background">
                 <div className="text-center space-y-4">

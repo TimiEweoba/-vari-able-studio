@@ -35,60 +35,8 @@ export function Pricing() {
     support_plus: { usd: 1200, ngn: 1200000 },
   };
 
-<<<<<<< HEAD
   const formatPrice = (type: keyof typeof PRICES) => {
     const priceObj = PRICES[type];
-=======
-  const handlePaymentConfirm = async (e?: React.FormEvent) => {
-    if (e) e.preventDefault();
-
-    if (!paymentEmail || !paymentEmail.includes("@")) {
-      toast({
-        title: "Invalid Email",
-        description: "Please enter a valid email address.",
-        variant: "destructive"
-      });
-      return;
-    }
-
-    if (!pendingPlan || pendingAmount === null) return;
-
-    try {
-      setIsProcessing(true);
-
-      // Convert to NGN for Flutterwave. We use the NGN rate for both NGN and USD selection 
-      // to ensure a consistent NGN amount is sent to the backend.
-      const amount = pendingAmount * NGN_RATE;
-
-      const response = await apiRequest("POST", "/api/payments/initialize", {
-        email: paymentEmail,
-        amount,
-        plan: pendingPlan
-      });
-
-      const data = await response.json();
-
-      if (data.authorization_url) {
-        window.location.href = data.authorization_url;
-      } else {
-        throw new Error("Failed to initialize payment");
-      }
-    } catch (error: any) {
-      toast({
-        title: "Payment Error",
-        description: error.message || "Could not initialize Flutterwave payment",
-        variant: "destructive"
-      });
-    } finally {
-      setIsProcessing(false);
-      setShowPaymentModal(false);
-    }
-  };
-
-  const formatPrice = (usdAmount: number | "Custom") => {
-    if (usdAmount === "Custom") return "Custom";
-
->>>>>>> 8a0c285 (update)
     if (currency === "USD") {
       return new Intl.NumberFormat("en-US", {
         style: "currency",

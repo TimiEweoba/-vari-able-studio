@@ -1,81 +1,6 @@
 /**
- * Flutterwave V4 API Integration
- * Uses OAuth 2.0 Client Credentials Flow
+ * Flutterwave V3 API Integration (Standard)
  */
-
-const FLUTTERWAVE_CLIENT_ID = process.env.FLUTTERWAVE_CLIENT_ID;
-const FLUTTERWAVE_CLIENT_SECRET = process.env.FLUTTERWAVE_CLIENT_SECRET;
-const TOKEN_URL = "https://idp.flutterwave.com/realms/flutterwave/protocol/openid-connect/token";
-// Standard API endpoint for V3/V4 unified access
-const API_BASE_URL = "https://api.flutterwave.com";
-
-interface TokenResponse {
-    access_token: string;
-    expires_in: number;
-    token_type: string;
-}
-
-let cachedToken: { token: string; expiry: number } | null = null;
-
-async function getAccessToken(): Promise<string> {
-    // Return cached token if still valid
-    if (cachedToken && cachedToken.expiry > Date.now()) {
-        console.log("[Flutterwave] Using cached access token");
-        return cachedToken.token;
-    }
-
-    console.log("[Flutterwave] Requesting new access token...");
-    console.log("[Flutterwave] Client ID:", FLUTTERWAVE_CLIENT_ID ? "Present" : "MISSING");
-    console.log("[Flutterwave] Client Secret:", FLUTTERWAVE_CLIENT_SECRET ? "Present" : "MISSING");
-
-    if (!FLUTTERWAVE_CLIENT_ID || !FLUTTERWAVE_CLIENT_SECRET) {
-        throw new Error("Flutterwave credentials not configured. Set FLUTTERWAVE_CLIENT_ID and FLUTTERWAVE_CLIENT_SECRET in .env");
-    }
-
-    const body = new URLSearchParams({
-        client_id: FLUTTERWAVE_CLIENT_ID,
-        client_secret: FLUTTERWAVE_CLIENT_SECRET,
-        grant_type: "client_credentials",
-    });
-
-    console.log("[Flutterwave] Token request URL:", TOKEN_URL);
-
-    const response = await fetch(TOKEN_URL, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: body.toString(),
-    });
-
-    const responseText = await response.text();
-    console.log("[Flutterwave] Token response status:", response.status);
-    console.log("[Flutterwave] Token response:", responseText.substring(0, 200));
-
-    if (!response.ok) {
-        throw new Error(`Flutterwave Auth Error (${response.status}): ${responseText}`);
-    }
-
-    let data: TokenResponse;
-    try {
-        data = JSON.parse(responseText);
-    } catch (e) {
-        throw new Error(`Failed to parse token response: ${responseText}`);
-    }
-
-    if (!data.access_token) {
-        throw new Error(`No access token in response: ${responseText}`);
-    }
-
-    // Cache the token (expire 1 minute early for safety)
-    cachedToken = {
-        token: data.access_token,
-        expiry: Date.now() + (data.expires_in - 60) * 1000,
-    };
-
-    console.log("[Flutterwave] Got new access token, expires in:", data.expires_in, "seconds");
-    return data.access_token;
-}
 
 export interface PaymentInitializationParams {
     amount: number;
@@ -88,56 +13,61 @@ export interface PaymentInitializationParams {
 }
 
 export async function initializePayment(params: PaymentInitializationParams) {
+    const FLW_SECRET_KEY = process.env.FLW_SECRET_KEY;
+    const API_BASE_URL = "https://api.flutterwave.com/v3";
+
     console.log("[Flutterwave] Initializing payment:", {
         tx_ref: params.tx_ref,
         amount: params.amount,
         currency: params.currency,
         email: params.email,
+        has_key: !!FLW_SECRET_KEY
     });
 
-    const token = await getAccessToken();
+    if (!FLW_SECRET_KEY) {
+        throw new Error("Flutterwave Secret Key not configured. Set FLW_SECRET_KEY in .env");
+    }
 
     const payload = {
         tx_ref: params.tx_ref,
         amount: params.amount,
         currency: params.currency,
         redirect_url: params.redirect_url,
+        payment_options: "card, account, banktransfer, ussd, mobilemoneygh, mobilemoneyfranco, mobilemoneyug, mobilemoneyrw, mobilemoneyzm, mobilemoneyks, barter, ozeemoney, payattitude, pwa, credit, 1ach, bank_transfer",
         customer: {
             email: params.email,
             name: params.customer_name || "Customer",
+            phone_number: params.phone_number || "0000000000",
         },
         customizations: {
             title: "veri—able studio",
             description: "Project Reservation Deposit",
+            logo: "https://veriable.xyz/logo.png"
         },
     };
 
     console.log("[Flutterwave] Payment payload:", JSON.stringify(payload, null, 2));
 
-    const response = await fetch(`${API_BASE_URL}/v3/payments`, {
+    const response = await fetch(`${API_BASE_URL}/payments`, {
         method: "POST",
         headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${FLW_SECRET_KEY}`,
             "Content-Type": "application/json",
         },
         body: JSON.stringify(payload),
     });
 
     const responseText = await response.text();
-    console.log(`[Flutterwave] Payment Request to: ${API_BASE_URL}/v3/payments`);
     console.log(`[Flutterwave] Response Status: ${response.status}`);
-    console.log(`[Flutterwave] Response Body: ${responseText}`);
 
     if (!response.ok) {
         let errorMessage = `Payment failed (${response.status})`;
         try {
             const errorData = JSON.parse(responseText);
-            const detail = errorData.message || errorData.error || errorData.data || errorData;
-            errorMessage = typeof detail === 'object' ? JSON.stringify(detail) : detail;
+            errorMessage = errorData.message || JSON.stringify(errorData);
         } catch {
             errorMessage = responseText || errorMessage;
         }
-        console.error(`[Flutterwave] Error Detail: ${errorMessage}`);
         throw new Error(errorMessage);
     }
 
@@ -156,12 +86,17 @@ export async function initializePayment(params: PaymentInitializationParams) {
 }
 
 export async function verifyTransaction(transactionId: string) {
-    const token = await getAccessToken();
+    const FLW_SECRET_KEY = process.env.FLW_SECRET_KEY;
+    const API_BASE_URL = "https://api.flutterwave.com/v3";
 
-    const response = await fetch(`${API_BASE_URL}/v3/transactions/${transactionId}/verify`, {
+    if (!FLW_SECRET_KEY) {
+        throw new Error("Flutterwave Secret Key not configured.");
+    }
+
+    const response = await fetch(`${API_BASE_URL}/transactions/${transactionId}/verify`, {
         method: "GET",
         headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${FLW_SECRET_KEY}`,
             "Content-Type": "application/json",
         },
     });

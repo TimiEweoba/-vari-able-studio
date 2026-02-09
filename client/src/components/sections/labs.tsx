@@ -100,7 +100,6 @@ export function Labs() {
             `
         },
         {
-<<<<<<< HEAD
             author: "Timi Eweoba",
             authorImage: "/images/team/timi.png",
             date: "Tuesday, June 17, 2025",
@@ -134,7 +133,9 @@ export function Labs() {
                 </div>
                 <h3 class="text-white text-2xl font-bold mt-12 mb-4">Flutterwave & Local Optimization</h3>
                 <p>For the Nigerian market, payment reliability is everything. We implemented a robust Flutterwave integration with smart webhooks and automated reconciliation. The result is a checkout experience that handles high-volume traffic with zero friction, optimized for local mobile speeds and network conditions.</p>
-=======
+            `
+        },
+        {
             author: "Okpandu Dennis",
             authorImage: "/images/team/dennis.jpg",
             date: "Monday, February 9, 2026",
@@ -168,7 +169,6 @@ export function Labs() {
                         Launch ChatApp Demo
                     </a>
                 </div>
->>>>>>> 8a0c285 (update)
             `
         }
     ];

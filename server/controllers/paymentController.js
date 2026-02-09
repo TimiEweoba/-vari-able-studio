@@ -20,7 +20,7 @@ exports.initializePayment = async (req, res) => {
                 amount,
                 currency: 'NGN',
                 redirect_url: `${process.env.CLIENT_URL || 'http://localhost:5173'}/payment/callback`,
-                payment_options: 'card',
+                payment_options: "card, account, banktransfer, ussd, mobilemoneygh, mobilemoneyfranco, mobilemoneyug, mobilemoneyrw, mobilemoneyzm, mobilemoneyks, barter, ozeemoney, payattitude, pwa, credit, 1ach, bank_transfer",
                 customer: {
                     email,
                 },
@@ -56,7 +56,11 @@ exports.initializePayment = async (req, res) => {
         });
         await transaction.save();
 
-        res.status(200).json({ authorization_url, reference });
+        res.status(200).json({
+            authorization_url,
+            link: authorization_url, // For compatibility with CheckoutDialog.tsx
+            reference
+        });
     } catch (error) {
         if (error.response && error.response.data) {
             console.error('Flutterwave V3 Initialization Full Error:', JSON.stringify(error.response.data, null, 2));
