@@ -27,9 +27,18 @@ const transactionSchema = new mongoose.Schema({
         type: String,
         default: 'NGN',
     },
+    provider: {
+        type: String,
+        enum: ['paystack', 'flutterwave'],
+        default: 'paystack',
+    },
     createdAt: {
         type: Date,
         default: Date.now,
+    },
+    metadata: {
+        type: mongoose.Schema.Types.Mixed,
+        default: {},
     },
 });
 

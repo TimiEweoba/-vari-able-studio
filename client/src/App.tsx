@@ -12,6 +12,7 @@ import Terms from "@/pages/terms";
 import Compliance from "@/pages/compliance";
 import CaseStudies from "@/pages/case-studies";
 import TechStack from "@/pages/tech-stack";
+import PaymentCallback from "@/pages/payment-callback";
 
 import { PageTransition } from "@/components/layout/page-transition";
 
@@ -26,6 +27,7 @@ function Router() {
         <Route path="/work" component={CaseStudies} />
         <Route path="/tech" component={TechStack} />
         <Route path="/success" component={Success} />
+        <Route path="/payment/callback" component={PaymentCallback} />
         <Route component={NotFound} />
       </Switch>
     </PageTransition>

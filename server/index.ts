@@ -1,4 +1,20 @@
-import "dotenv/config";
+import dotenv from "dotenv";
+import path from "path";
+// Load .env from the server folder if it exists, otherwise root
+const envPath = path.resolve(process.cwd(), "server", ".env");
+dotenv.config({ path: envPath });
+dotenv.config();
+
+// Verify required env vars on startup
+const requiredEnvVars = ["FLW_SECRET_KEY"];
+const missingVars = requiredEnvVars.filter(v => !process.env[v]);
+if (missingVars.length > 0) {
+    console.warn(`[WARNING] Missing environment variables: ${missingVars.join(", ")}`);
+    console.warn(`[WARNING] Checked path: ${envPath}`);
+} else {
+    console.log("[INFO] Environment variables loaded successfully");
+}
+
 import express from "express";
 import cors from "cors";
 import { registerRoutes } from "./routes";
@@ -8,7 +24,7 @@ const app = express();
 
 // Middlewares
 app.use(cors({
-    origin: ["http://localhost:5173", "http://0.0.0.0:5173", "http://localhost:5000"],
+    origin: true,
     credentials: true,
 }));
 app.use(express.json());

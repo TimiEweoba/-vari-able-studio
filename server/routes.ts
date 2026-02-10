@@ -41,7 +41,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
 
       const tx_ref = `VS-${crypto.randomUUID()}`;
-      const callback_url = `${req.protocol}://${req.get("host")}/success`;
+      const clientUrl = process.env.CLIENT_URL || "http://localhost:5173";
+      const callback_url = `${clientUrl}/payment/callback`;
 
       // Save to storage
       await storage.createPayment({
@@ -85,7 +86,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   app.post("/api/webhooks/flutterwave", async (req, res) => {
-    const secretHash = process.env.FLUTTERWAVE_WEBHOOK_SECRET_HASH;
+    const secretHash = process.env.FLW_WEBHOOK_HASH;
     const signature = req.headers["verif-hash"];
 
     if (!signature || signature !== secretHash) {

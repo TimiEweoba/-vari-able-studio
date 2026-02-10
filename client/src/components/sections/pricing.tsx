@@ -249,7 +249,7 @@ export function Pricing() {
                     <li className="flex gap-3 items-center"><Check className="w-3.5 h-3.5 text-primary shrink-0" /> <span className="truncate">Priority support</span></li>
                     <li className="flex gap-3 items-center"><Check className="w-3.5 h-3.5 text-primary shrink-0" /> <span className="truncate">14-day sprint</span></li>
                     <li className="flex gap-3 items-center"><Check className="w-3.5 h-3.5 text-primary shrink-0" /> <span className="truncate">Deploy & Training</span></li>
-                    <li className="flex gap-3 items-center"><Check className="w-3.5 h-3.5 text-primary shrink-0" /> <span className="truncate">Paystack Setup</span></li>
+                    <li className="flex gap-3 items-center"><Check className="w-3.5 h-3.5 text-primary shrink-0" /> <span className="truncate">Flutterwave Setup</span></li>
                   </ul>
                 </div>
                 {/* CTA */}

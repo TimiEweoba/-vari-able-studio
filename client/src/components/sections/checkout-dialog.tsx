@@ -59,6 +59,11 @@ export function CheckoutDialog({ isOpen, onClose, price, currency, packageName }
             // The V4 API returns a link in the data.link property or data.data.link
             const checkoutUrl = data.link || (data.data && data.data.link);
             if (checkoutUrl) {
+                // Set a timestamp to prevent the cancellation UI from showing during this redirect window
+                sessionStorage.setItem("payment_redirect_ts", Date.now().toString());
+
+                // Push the cancellation URL to history so the 'Back' button works
+                window.history.pushState(null, "", "/payment/callback?status=cancelled");
                 window.location.href = checkoutUrl;
             } else {
                 throw new Error("Checkout URL not found in response");
