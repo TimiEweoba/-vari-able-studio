@@ -1,6 +1,6 @@
 import "dotenv/config";
-import app from "./app";
-import { registerRoutes } from "./routes";
+import app from "./app.js";
+import { registerRoutes } from "./routes.js";
 
 // Routes
 const startServer = async () => {
@@ -19,4 +19,3 @@ const startServer = async () => {
 };
 
 startServer();
-
