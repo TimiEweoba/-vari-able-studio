@@ -1,8 +1,8 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
-import { storage } from "./storage";
+import { storage } from "./storage.js";
 import { insertContactSchema } from "@shared/schema";
-import { initializePayment } from "./flutterwave";
+import { initializePayment } from "./flutterwave.js";
 import crypto from "crypto";
 
 export async function registerRoutes(app: Express): Promise<Server> {
