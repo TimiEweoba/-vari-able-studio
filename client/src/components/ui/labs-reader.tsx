@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Clock, User, Share2, Bookmark, Check } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useToast } from "@/hooks/use-toast";
 
 interface LabsReaderProps {
@@ -20,6 +20,7 @@ interface LabsReaderProps {
 export function LabsReader({ isOpen, onClose, article }: LabsReaderProps) {
     const { toast } = useToast();
     const [isBookmarked, setIsBookmarked] = useState(false);
+    const videoRef = useRef<HTMLVideoElement>(null);
 
     const handleShare = async () => {
         if (!article) return;
@@ -130,12 +131,15 @@ export function LabsReader({ isOpen, onClose, article }: LabsReaderProps) {
 
                             {article.video ? (
                                 <video
+                                    ref={videoRef}
                                     src={article.video}
-                                    className="w-full aspect-video object-cover rounded-2xl mb-12 border border-white/5"
-                                    autoPlay
+                                    poster={article.image}
+                                    className="w-full aspect-video object-cover rounded-2xl mb-12 border border-white/5 cursor-pointer"
                                     muted
                                     loop
                                     playsInline
+                                    onMouseEnter={(e) => e.currentTarget.play()}
+                                    onMouseLeave={(e) => e.currentTarget.pause()}
                                 />
                             ) : (
                                 <img
