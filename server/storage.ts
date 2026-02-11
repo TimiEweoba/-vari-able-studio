@@ -1,10 +1,9 @@
 import { users, contactRequests, projects, payments, type User, type InsertUser, type ContactRequest, type InsertContactRequest, type Project, type InsertProject, type Payment, type InsertPayment } from "@shared/schema";
 import { randomUUID } from "crypto";
-import { db } from "./db";
+import { db } from "./db.js";
 import { eq } from "drizzle-orm";
 
-// modify the interface with any CRUD methods
-// you might need
+// ... keep the rest of your file exactly as it is ...
 
 export interface IStorage {
   getUser(id: string): Promise<User | undefined>;
