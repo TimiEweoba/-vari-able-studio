@@ -1,5 +1,5 @@
-import app from '../server/app';
-import { registerRoutes } from '../server/routes';
+import app from '../server/app.js';
+import { registerRoutes } from '../server/routes.js';
 import { type Request, Response, NextFunction } from "express";
 
 // Ensure routes are registered
