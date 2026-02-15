@@ -128,17 +128,25 @@ export class MemStorage implements IStorage {
         title: "Stripe Billing",
         description: "Customer portal, subscriptions.",
         category: "Integration",
-        imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2670&auto=format&fit=crop",
+        imageUrl: "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?q=80&w=2574&auto=format&fit=crop",
         link: "#",
         featured: "false",
       },
       {
-        title: "Admin Panel",
-        description: "Role management, user controls.",
-        category: "Infrastructure",
-        imageUrl: "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?q=80&w=2574&auto=format&fit=crop",
-        link: "#",
-        featured: "false",
+        title: "Pearl Hope Portfolio",
+        description: "A premium Web3-focused digital identity and content architecture hub.",
+        category: "Digital Presence",
+        imageUrl: "/backgrounds/pearl.png",
+        link: "https://www.web3pearl.online/",
+        featured: "true",
+      },
+      {
+        title: "ChatApp",
+        description: "Enterprise-grade end-to-end encrypted messaging platform with a premium design.",
+        category: "Messaging",
+        imageUrl: "/backgrounds/stephen.png",
+        link: "https://chatapp-nine-mu.vercel.app",
+        featured: "true",
       }
     ];
 
@@ -208,12 +216,20 @@ export class DatabaseStorage implements IStorage {
           featured: "false",
         },
         {
-          title: "Admin Panel",
-          description: "Role management, user controls.",
-          category: "Infrastructure",
-          imageUrl: "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?q=80&w=2574&auto=format&fit=crop",
-          link: "#",
-          featured: "false",
+          title: "Pearl Hope Portfolio",
+          description: "A premium Web3-focused digital identity and content architecture hub.",
+          category: "Digital Presence",
+          imageUrl: "/backgrounds/pearl.png",
+          link: "https://www.web3pearl.online/",
+          featured: "true",
+        },
+        {
+          title: "ChatApp",
+          description: "Enterprise-grade end-to-end encrypted messaging platform with a premium design.",
+          category: "Messaging",
+          imageUrl: "/backgrounds/stephen.png",
+          link: "https://chatapp-nine-mu.vercel.app",
+          featured: "true",
         }
       ];
 

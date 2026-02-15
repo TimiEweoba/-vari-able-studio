@@ -13,9 +13,12 @@ interface LabsReaderProps {
         date: string;
         image: string;
         video?: string;
+        images?: string[];
         content?: string;
     } | null;
 }
+
+import { ImageSlider } from "./image-slider";
 
 export function LabsReader({ isOpen, onClose, article }: LabsReaderProps) {
     const { toast } = useToast();
@@ -129,7 +132,9 @@ export function LabsReader({ isOpen, onClose, article }: LabsReaderProps) {
                                 </div>
                             </div>
 
-                            {article.video ? (
+                            {article.images && article.images.length > 0 ? (
+                                <ImageSlider images={article.images} />
+                            ) : article.video ? (
                                 <video
                                     ref={videoRef}
                                     src={article.video}

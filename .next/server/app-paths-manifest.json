@@ -1,0 +1,10 @@
+{
+  "/[[...slug]]/page": "app/[[...slug]]/page.js",
+  "/_global-error/page": "app/_global-error/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/api/contact/route": "app/api/contact/route.js",
+  "/api/payments/initialize/route": "app/api/payments/initialize/route.js",
+  "/api/payments/verify/[txRef]/route": "app/api/payments/verify/[txRef]/route.js",
+  "/api/projects/route": "app/api/projects/route.js",
+  "/api/webhooks/flutterwave/route": "app/api/webhooks/flutterwave/route.js"
+}

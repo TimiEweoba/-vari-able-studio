@@ -1,0 +1,32 @@
+[00:00:01.124] Server  LOG     ✓ Ready in 750ms
+[00:00:29.565] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:30.204] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[00:00:41.775] Browser ERROR   useInsertionEffect must not schedule updates.
+[00:00:41.776] Browser ERROR   useInsertionEffect must not schedule updates.
+[00:00:41.776] Browser ERROR   useInsertionEffect must not schedule updates.
+[00:00:41.776] Browser ERROR   useInsertionEffect must not schedule updates.
+[00:00:41.776] Browser ERROR   useInsertionEffect must not schedule updates.
+[00:00:41.776] Browser ERROR   useInsertionEffect must not schedule updates.
+[00:00:41.776] Browser ERROR   useInsertionEffect must not schedule updates.
+[00:00:41.776] Browser ERROR   useInsertionEffect must not schedule updates.
+[00:00:41.776] Browser ERROR   useInsertionEffect must not schedule updates.
+[00:00:41.776] Browser ERROR   useInsertionEffect must not schedule updates.
+[00:00:41.776] Browser ERROR   useInsertionEffect must not schedule updates.
+[00:00:41.776] Browser ERROR   useInsertionEffect must not schedule updates.
+[00:00:41.776] Browser ERROR   useInsertionEffect must not schedule updates.
+[00:02:02.863] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:02:03.378] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[00:02:58.295] Server  LOG     ✓ Compiled in 581ms
+[00:06:33.364] Server  LOG     [Storage] Attempting to connect to MongoDB...
+[00:06:33.433] Server  LOG     [Flutterwave] Initializing payment: {}
+[00:06:33.434] Server  LOG     [Flutterwave] Payment payload: "{\n  \"tx_ref\": \"VS-286ea6b8-42bd-4155-991d-c2d23b2953c6\",\n  \"amount\": 500,\n  \"currency\": \"USD\",\n  \"redirect_url\": \"http://localhost:3000/payment/callback\",\n  \"payment_options\": \"card, account, banktransfer, ussd, mobilemoneygh, mobilemoneyfranco, mobilemoneyug, mobilemoneyrw, mobilemoneyzm, mobilemoneyks, barter, ozeemoney, payattitude, pwa, credit, 1ach, bank_transfer\",\n  \"customer\": {\n    \"email\": \"kaiknightokpandu@gmail.com\",\n    \"name\": \"Dennis\",\n    \"phone_number\": \"0000000000\"\n  },\n  \"customizations\": {\n    \"title\": \"veri—able studio\",\n    \"description\": \"Project Reservation Deposit\",\n    \"logo\": \"https://veriable.xyz/logo.png\"\n  }\n}"
+[00:06:34.046] Server  LOG     [Flutterwave] Response Status: 200
+[00:06:36.662] Server  LOG     [Storage] Using MongoDB Storage
+[00:07:15.043] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:07:15.272] Browser LOG     Payment Callback Params: {"status":"cancelled","transaction_id":null,"tx_ref":"VS-286ea6b8-42bd-4155-991d-c2d23b2953c6"}
+[00:07:15.272] Browser LOG     Payment Callback Params: {"status":"cancelled","transaction_id":null,"tx_ref":"VS-286ea6b8-42bd-4155-991d-c2d23b2953c6"}
+[00:07:16.945] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:07:17.736] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[00:07:33.651] Server  LOG     [Flutterwave] Initializing payment: {}
+[00:07:33.652] Server  LOG     [Flutterwave] Payment payload: "{\n  \"tx_ref\": \"VS-cd6aa46e-566a-49b3-ac69-ba921afb2687\",\n  \"amount\": 500000,\n  \"currency\": \"NGN\",\n  \"redirect_url\": \"http://localhost:3000/payment/callback\",\n  \"payment_options\": \"card, account, banktransfer, ussd, mobilemoneygh, mobilemoneyfranco, mobilemoneyug, mobilemoneyrw, mobilemoneyzm, mobilemoneyks, barter, ozeemoney, payattitude, pwa, credit, 1ach, bank_transfer\",\n  \"customer\": {\n    \"email\": \"kaiknightokpandu@gmail.com\",\n    \"name\": \"Dennis\",\n    \"phone_number\": \"0000000000\"\n  },\n  \"customizations\": {\n    \"title\": \"veri—able studio\",\n    \"description\": \"Project Reservation Deposit\",\n    \"logo\": \"https://veriable.xyz/logo.png\"\n  }\n}"
+[00:07:34.197] Server  LOG     [Flutterwave] Response Status: 200

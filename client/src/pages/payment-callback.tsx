@@ -76,8 +76,8 @@ export default function PaymentCallback() {
 
         try {
             // Call your backend verification endpoint
-            // Note: Your backend expects /verify/:reference
-            const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/payments/verify/${tx_ref}`, {
+            // In Next.js, API routes are served from the same origin
+            const response = await fetch(`/api/payments/verify/${tx_ref}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

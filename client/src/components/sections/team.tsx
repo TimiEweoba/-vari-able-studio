@@ -94,13 +94,13 @@ export function Team() {
         </div>
 
         {/* Interactive Team Slider */}
-        <div className="bg-[#0A0A0B]/80 backdrop-blur-xl border border-white/5 rounded-[3rem] overflow-hidden flex flex-col lg:flex-row h-auto lg:h-[650px] shadow-2xl relative">
+        <div className="bg-[#0A0A0B]/80 backdrop-blur-xl border border-white/5 rounded-[2rem] md:rounded-[3rem] overflow-hidden flex flex-col lg:flex-row h-auto lg:h-[650px] shadow-2xl relative">
 
           {/* Subtle Grain Overlay */}
           <div className="absolute inset-0 pointer-events-none opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
 
           {/* Left Column: Details */}
-          <div className="lg:w-1/2 p-10 md:p-16 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-white/5 order-2 lg:order-1 relative z-10">
+          <div className="lg:w-1/2 p-8 md:p-16 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-white/5 order-2 lg:order-1 relative z-10">
             <div>
               <div className="flex items-center gap-4 mb-8">
                 <div className="h-[1px] w-8 bg-primary/40" />
@@ -128,7 +128,7 @@ export function Team() {
                   exit={{ opacity: 0, x: 20 }}
                   transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  <h3 className="text-5xl md:text-7xl font-bold text-white mb-4 tracking-tighter leading-none">{team[activeMember].name}</h3>
+                  <h3 className="text-4xl md:text-7xl font-bold text-white mb-4 tracking-tighter leading-none">{team[activeMember].name}</h3>
                   <p className="text-xl text-primary font-medium mb-10 tracking-tight italic">{team[activeMember].role}</p>
 
                   <p className="text-xl text-white/60 leading-relaxed max-w-lg mb-12">
@@ -200,33 +200,31 @@ export function Team() {
         </div>
 
         {/* Thumbnails Strip */}
-        < div className="mt-12 flex gap-6 overflow-x-auto pb-6 scrollbar-hide items-center justify-center" >
-          {
-            team.map((member, idx) => (
-              <motion.div
-                key={idx}
-                whileHover={{ y: -10 }}
-                onClick={() => setActiveMember(idx)}
-                className={cn(
-                  "group relative w-32 h-44 shrink-0 rounded-[1.5rem] overflow-hidden cursor-pointer transition-all duration-700 border-2",
-                  idx === activeMember
-                    ? "border-primary shadow-2xl shadow-primary/20 scale-105 z-10"
-                    : "border-white/5 opacity-50 grayscale hover:opacity-100 hover:grayscale-0 hover:border-white/20"
-                )}
-              >
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className={cn(
-                  "absolute inset-0 transition-opacity bg-primary/20",
-                  idx === activeMember ? "opacity-100" : "opacity-0 group-hover:opacity-40"
-                )} />
-              </motion.div>
-            ))
-          }
-        </div >
+        <div className="mt-8 md:mt-12 flex gap-4 md:gap-6 overflow-x-auto pb-6 scrollbar-hide items-center justify-start md:justify-center px-4 md:px-0">
+          {team.map((member, idx) => (
+            <motion.div
+              key={idx}
+              whileHover={{ y: -10 }}
+              onClick={() => setActiveMember(idx)}
+              className={cn(
+                "group relative w-24 h-32 md:w-32 md:h-44 shrink-0 rounded-[1.2rem] md:rounded-[1.5rem] overflow-hidden cursor-pointer transition-all duration-700 border-2",
+                idx === activeMember
+                  ? "border-primary shadow-2xl shadow-primary/20 scale-105 z-10"
+                  : "border-white/5 opacity-50 grayscale hover:opacity-100 hover:grayscale-0 hover:border-white/20"
+              )}
+            >
+              <img
+                src={member.image}
+                alt={member.name}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className={cn(
+                "absolute inset-0 transition-opacity bg-primary/20",
+                idx === activeMember ? "opacity-100" : "opacity-0 group-hover:opacity-40"
+              )} />
+            </motion.div>
+          ))}
+        </div>
 
       </div >
     </section >

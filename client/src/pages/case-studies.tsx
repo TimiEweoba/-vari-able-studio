@@ -1,8 +1,8 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
-import { useQuery, useMutation } from "@tanstack/react-query";
-import { type Project } from "@shared/schema";
+import { useMutation } from "@tanstack/react-query";
+import { projects, type Project } from "@/lib/projects";
 import { ArrowRight, Loader2, ArrowLeft, Plus, CheckCircle2 } from "lucide-react";
 import { ParticleBackground } from "@/components/ui/particle-background";
 import { Link } from "wouter";
@@ -47,17 +47,100 @@ const xPlusArticle = {
     `
 };
 
+const pearlArticle = {
+    author: "Okpandu Dennis",
+    authorImage: "/images/team/dennis.jpg",
+    date: "Friday, February 6, 2026",
+    title: "Web3 Social Media & Digital Content Architecture: The Pearl Hope Case Study",
+    image: "/backgrounds/pearl.png",
+    images: [
+        "/casestudypics/pearl/pearl1.png",
+        "/casestudypics/pearl/pearl2.png",
+        "/casestudypics/pearl/pearl3.png",
+        "/casestudypics/pearl/pearl4.png",
+        "/casestudypics/pearl/pearl5.png",
+        "/casestudypics/pearl/pearl6.png",
+        "/casestudypics/pearl/pearl7.png",
+        "/casestudypics/pearl/pearl8.png",
+        "/casestudypics/pearl/pearl9.png",
+        "/casestudypics/pearl/pearl10.png"
+    ],
+    content: `
+        <p>Building a digital presence in the Web3 space requires more than just a list of skills; it requires a narrative. For Pearl Hope, a Web3 Social Media Intern and Writer, we designed a portfolio that serves as both a resume and a proof of work.</p>
+        <div class="my-10 p-6 bg-black rounded-xl border border-white/10 font-mono text-sm overflow-hidden relative group">
+            <div class="absolute top-0 right-0 p-2 text-[10px] font-black text-white/10 uppercase tracking-widest group-hover:text-primary transition-colors">Digital Identity</div>
+            <div class="text-primary/40 mb-4">// Portfolio Overview</div>
+            <ul class="list-disc pl-4 text-white/80 space-y-2">
+                <li><strong>Role:</strong> Web3 Social Media Intern & Writer</li>
+                <li><strong>Website:</strong> <a href="https://www.web3pearl.online/" target="_blank" class="text-primary hover:underline">www.web3pearl.online</a></li>
+                <li><strong>Focus:</strong> Content Strategy, Community Building, Technical Writing</li>
+            </ul>
+        </div>
+        <h3 class="text-white text-2xl font-bold mt-12 mb-4">Functional Presence</h3>
+        <p>In the decentralized world, accessibility is key. We designed a professional ecosystem that ensures founders and collaborators can understand her value proposition immediately.</p>
+    `
+};
+
+const stephenArticle = {
+    author: "Okpandu Dennis",
+    authorImage: "/images/team/dennis.jpg",
+    date: "Monday, February 9, 2026",
+    title: "ChatApp: Stephen Kodaolu's Enterprise-Grade Messaging Case Study",
+    image: "/backgrounds/stephen.png",
+    images: [
+        "/casestudypics/stephen/chatapp1.png",
+        "/casestudypics/stephen/chatapp2.png",
+        "/casestudypics/stephen/chatapp3.png",
+        "/casestudypics/stephen/chatapp4.png",
+        "/casestudypics/stephen/chatapp5.png",
+        "/casestudypics/stephen/chatapp6.png",
+        "/casestudypics/stephen/chatapp8.png",
+        "/casestudypics/stephen/chatapp9.png",
+        "/casestudypics/stephen/chatapp10.png"
+    ],
+    content: `
+        <p>ChatApp is a premium, end-to-end encrypted messaging platform featuring a modern Orange-accented design with full Light/Dark mode support. Built as a secure real-time communication tool, it bridges the gap between high-level security and consumer-grade usability.</p>
+        <div class="my-10 p-6 bg-black rounded-xl border border-white/10 font-mono text-sm overflow-hidden relative group">
+            <div class="absolute top-0 right-0 p-2 text-[10px] font-black text-white/10 uppercase tracking-widest group-hover:text-primary transition-colors">Tech Stack</div>
+            <div class="text-primary/40 mb-4">// System Architecture</div>
+            <ul class="list-disc pl-4 text-white/80 space-y-2">
+                <li><strong>Frontend:</strong> React, TypeScript, Tailwind CSS, Framer Motion</li>
+                <li><strong>Backend:</strong> Node.js, Express, MongoDB</li>
+                <li><strong>Real-Time:</strong> Socket.io (Typing indicators, Online status)</li>
+            </ul>
+        </div>
+    `
+};
+
 export default function CaseStudiesPage() {
     const [isInquiryOpen, setIsInquiryOpen] = useState(false);
     const [isReaderOpen, setIsReaderOpen] = useState(false);
+    const [selectedArticle, setSelectedArticle] = useState<any>(null);
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [message, setMessage] = useState("");
     const { toast } = useToast();
 
-    const { data: projects, isLoading } = useQuery<Project[]>({
-        queryKey: ["/api/projects"],
-    });
+
+    const openArticle = (project: Project) => {
+        if (project.title.toLowerCase().includes("xplus")) {
+            setSelectedArticle(xPlusArticle);
+        } else if (project.title.toLowerCase().includes("pearl")) {
+            setSelectedArticle(pearlArticle);
+        } else if (project.title.toLowerCase().includes("chatapp")) {
+            setSelectedArticle(stephenArticle);
+        } else {
+            // Default or fallback
+            setSelectedArticle({
+                title: project.title,
+                author: "veri—able Team",
+                date: "Recent",
+                image: project.imageUrl,
+                content: `<p>${project.description}</p>`
+            });
+        }
+        setIsReaderOpen(true);
+    };
 
     const inquiryMutation = useMutation({
         mutationFn: async (data: { name: string; email: string; message: string; company: string }) => {
@@ -109,103 +192,138 @@ export default function CaseStudiesPage() {
             <main className="pt-40 pb-32">
                 <div className="container mx-auto px-4 md:px-6">
                     {/* Hero Section */}
-                    <motion.div
-                        initial="hidden"
-                        animate="visible"
-                        variants={fadeInUp}
-                        className="mb-32"
-                    >
-                        <Link href="/" className="inline-flex items-center gap-2 text-white/50 hover:text-primary transition-all mb-12 group">
-                            <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
-                            <span className="text-sm font-medium">Back to Studio</span>
+                    <div className="mb-40 relative">
+                        <Link href="/" className="inline-flex items-center gap-3 text-white/30 hover:text-white transition-all mb-20 group">
+                            <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center group-hover:border-primary/50 group-hover:bg-primary/5 transition-all">
+                                <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
+                            </div>
+                            <span className="text-xs font-black uppercase tracking-[0.2em]">Return to Studio</span>
                         </Link>
 
-                        <h1 className="text-[12vw] md:text-[10vw] font-bold text-white tracking-tighter leading-[0.8] mb-16">
-                            Case <br />Studies.
-                        </h1>
-
-                        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-12 border-t border-white/10 pt-12">
-                            <div className="max-w-2xl">
-                                <div className="flex items-center gap-4 mb-6">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-                                    <span className="text-xs font-bold text-white/40 uppercase tracking-[0.3em]">Engineering Proof</span>
-                                </div>
-                                <h2 className="text-3xl md:text-5xl font-medium text-white tracking-tight leading-tight">
-                                    Real products, real impact. <br />Behind the <span className="text-primary italic">architecture</span> of success.
-                                </h2>
-                            </div>
-                            <p className="text-white/30 text-sm max-w-[280px] italic leading-relaxed md:text-right border-r-2 border-primary/20 pr-6">
-                                Explore how we helped founders launch and scale their ideas with production-grade engineering.
-                            </p>
+                        <div className="relative overflow-hidden mb-24">
+                            <motion.h1
+                                initial={{ y: "100%" }}
+                                animate={{ y: 0 }}
+                                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                                className="text-[14vw] font-bold text-white tracking-tighter leading-[0.75]"
+                            >
+                                Selected <br />
+                                <span className="text-primary italic">Works.</span>
+                            </motion.h1>
                         </div>
-                    </motion.div>
+
+                        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pt-20 border-t border-white/5 items-start">
+                            <div className="lg:col-span-8">
+                                <motion.div
+                                    initial={{ opacity: 0, x: -20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.8, delay: 0.2 }}
+                                    className="flex items-center gap-6 mb-8"
+                                >
+                                    <div className="h-px w-12 bg-primary" />
+                                    <span className="text-xs font-black text-primary uppercase tracking-[0.4em]">Architecture of Success</span>
+                                </motion.div>
+                                <motion.h2
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.8, delay: 0.3 }}
+                                    className="text-4xl md:text-6xl font-medium text-white tracking-tight leading-[1.1]"
+                                >
+                                    Real products, real impact. <br />
+                                    <span className="text-white/40">Measured in results, not just code.</span>
+                                </motion.h2>
+                            </div>
+                            <div className="lg:col-span-4 lg:text-right flex flex-col items-start lg:items-end justify-between h-full py-4">
+                                <motion.p
+                                    initial={{ opacity: 0 }}
+                                    whileInView={{ opacity: 1 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 1, delay: 0.5 }}
+                                    className="text-white/30 text-sm max-w-[320px] leading-relaxed italic border-l-2 lg:border-l-0 lg:border-r-2 border-primary/20 pl-6 lg:pl-0 lg:pr-6"
+                                >
+                                    A curated archive of high-performance digital products and technical infrastructure engineered by veri—able.
+                                </motion.p>
+                            </div>
+                        </div>
+                    </div>
 
                     {/* Projects Listing */}
-                    {isLoading ? (
-                        <div className="h-96 flex flex-col items-center justify-center gap-6">
-                            <Loader2 className="w-12 h-12 text-primary animate-spin" />
-                            <p className="text-white/20 font-mono text-sm tracking-widest uppercase">Loading Archive...</p>
-                        </div>
-                    ) : (
-                        <div className="space-y-40">
-                            {projects?.map((project, idx) => (
-                                <motion.section
-                                    key={project.id}
-                                    initial={{ opacity: 0, y: 50 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true, margin: "-100px" }}
-                                    transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                                    className="group"
-                                >
-                                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
-                                        <div className="lg:col-span-7">
-                                            <div className="relative aspect-[16/10] bg-[#141415] rounded-[2.5rem] overflow-hidden border border-white/5 shadow-2xl group-hover:border-primary/20 transition-all duration-700">
-                                                <img
-                                                    src={project.imageUrl}
-                                                    alt={project.title}
-                                                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
-                                                />
-                                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                                                <div className="absolute top-8 right-8 w-14 h-14 rounded-full bg-primary flex items-center justify-center text-white scale-0 group-hover:scale-100 transition-transform duration-500 shadow-xl">
-                                                    <Plus size={24} />
+                    <div className="space-y-64">
+                        {projects.map((project, idx) => (
+                            <motion.section
+                                key={project.id}
+                                initial={{ opacity: 0, y: 100 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: "-10%" }}
+                                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                                className="group relative"
+                            >
+                                {/* Number Indicator */}
+                                <div className="absolute -top-12 left-0 text-[10vw] font-bold text-white/[0.02] select-none leading-none z-0 pointer-events-none transition-colors group-hover:text-primary/[0.02]">
+                                    0{idx + 1}
+                                </div>
+
+                                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 relative z-10">
+                                    <div className="lg:col-span-7">
+                                        <div
+                                            className="relative aspect-[16/10] bg-[#141415] rounded-[3rem] overflow-hidden border border-white/5 shadow-[0_0_50px_rgba(0,0,0,0.5)] group-hover:border-primary/20 transition-all duration-700 cursor-pointer"
+                                            onClick={() => openArticle(project)}
+                                        >
+                                            <motion.img
+                                                whileHover={{ scale: 1.05 }}
+                                                transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+                                                src={project.imageUrl}
+                                                alt={project.title}
+                                                className="w-full h-full object-cover"
+                                            />
+                                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-700" />
+
+                                            {/* Hover Overlay Title */}
+                                            <div className="absolute bottom-12 left-12 right-12 flex justify-between items-end opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+                                                <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center text-white shadow-2xl">
+                                                    <Plus size={32} />
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
 
-                                        <div className="lg:col-span-5 flex flex-col justify-center">
-                                            <div className="flex items-center gap-4 mb-8">
-                                                <span className="text-xs font-bold text-primary tracking-[0.4em] uppercase">{project.category}</span>
-                                                <div className="h-px flex-1 bg-white/5" />
-                                                <span className="text-xs font-mono text-white/20">0{idx + 1} —</span>
-                                            </div>
+                                    <div className="lg:col-span-5 flex flex-col justify-center">
+                                        <motion.div
+                                            initial={{ opacity: 0, x: 20 }}
+                                            whileInView={{ opacity: 1, x: 0 }}
+                                            viewport={{ once: true }}
+                                            className="flex items-center gap-4 mb-8"
+                                        >
+                                            <span className="text-[10px] font-black text-primary tracking-[0.5em] uppercase px-3 py-1 bg-primary/10 rounded-full">{project.category}</span>
+                                            <div className="h-px w-8 bg-white/10" />
+                                        </motion.div>
 
-                                            <h3 className="text-5xl md:text-7xl font-bold text-white mb-8 tracking-tighter leading-none group-hover:text-primary transition-colors">
-                                                {project.title}
-                                            </h3>
+                                        <h3 className="text-5xl md:text-8xl font-bold text-white mb-10 tracking-tighter leading-[0.85] group-hover:text-primary transition-colors duration-500">
+                                            {project.title.split(" ").map((word, i) => (
+                                                <span key={i} className="inline-block mr-4">{word}</span>
+                                            ))}
+                                        </h3>
 
-                                            <p className="text-xl text-white/40 leading-relaxed font-medium italic mb-12">
-                                                {project.description}
-                                            </p>
+                                        <p className="text-xl md:text-2xl text-white/40 leading-relaxed font-medium mb-12 max-w-lg">
+                                            {project.description}
+                                        </p>
 
-                                            <div className="flex gap-6 items-center">
-                                                <button
-                                                    onClick={() => {
-                                                        if (project.title.includes("XPlus")) {
-                                                            setIsReaderOpen(true);
-                                                        }
-                                                    }}
-                                                    className="flex items-center gap-3 text-sm font-black text-white hover:text-primary transition-all uppercase tracking-[0.2em] group/btn"
-                                                >
-                                                    View full breakdown
-                                                    <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-2 transition-transform" />
-                                                </button>
-                                            </div>
+                                        <div className="flex gap-6 items-center">
+                                            <button
+                                                onClick={() => openArticle(project)}
+                                                className="relative flex items-center gap-4 py-4 px-8 bg-white/5 hover:bg-primary border border-white/10 hover:border-primary rounded-2xl text-sm font-black text-white transition-all group/btn overflow-hidden"
+                                            >
+                                                <span className="relative z-10 uppercase tracking-[0.2em]">View breakdown</span>
+                                                <ArrowRight className="w-5 h-5 relative z-10 group-hover/btn:translate-x-2 transition-transform" />
+                                            </button>
                                         </div>
                                     </div>
-                                </motion.section>
-                            ))}
-                        </div>
-                    )}
+                                </div>
+                            </motion.section>
+                        ))}
+                    </div>
 
                     {/* Bottom Call to Action */}
                     <section className="mt-60 py-32 border-t border-white/5 text-center relative overflow-hidden rounded-[3rem] bg-white/[0.02]">
@@ -290,7 +408,7 @@ export default function CaseStudiesPage() {
             <LabsReader
                 isOpen={isReaderOpen}
                 onClose={() => setIsReaderOpen(false)}
-                article={xPlusArticle}
+                article={selectedArticle}
             />
 
             <Footer />

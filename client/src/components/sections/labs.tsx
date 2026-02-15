@@ -44,7 +44,18 @@ export function Labs() {
             date: "Friday, February 6, 2026",
             title: "Web3 Social Media & Digital Content Architecture: The Pearl Hope Case Study",
             image: "/backgrounds/pearl.png",
-            video: "/screenrecords/pearl.mp4",
+            images: [
+                "/casestudypics/pearl/pearl1.png",
+                "/casestudypics/pearl/pearl2.png",
+                "/casestudypics/pearl/pearl3.png",
+                "/casestudypics/pearl/pearl4.png",
+                "/casestudypics/pearl/pearl5.png",
+                "/casestudypics/pearl/pearl6.png",
+                "/casestudypics/pearl/pearl7.png",
+                "/casestudypics/pearl/pearl8.png",
+                "/casestudypics/pearl/pearl9.png",
+                "/casestudypics/pearl/pearl10.png"
+            ],
             content: `
                 <p>Building a digital presence in the Web3 space requires more than just a list of skills; it requires a narrative. For Pearl Hope, a Web3 Social Media Intern and Writer, we designed a portfolio that serves as both a resume and a proof of work.</p>
                 <div class="my-10 p-6 bg-black rounded-xl border border-white/10 font-mono text-sm overflow-hidden relative group">
@@ -141,7 +152,17 @@ export function Labs() {
             date: "Monday, February 9, 2026",
             title: "ChatApp: Stephen Kodaolu's Enterprise-Grade Messaging Case Study",
             image: "/backgrounds/stephen.png",
-            video: "/screenrecords/stephen.mp4",
+            images: [
+                "/casestudypics/stephen/chatapp1.png",
+                "/casestudypics/stephen/chatapp2.png",
+                "/casestudypics/stephen/chatapp3.png",
+                "/casestudypics/stephen/chatapp4.png",
+                "/casestudypics/stephen/chatapp5.png",
+                "/casestudypics/stephen/chatapp6.png",
+                "/casestudypics/stephen/chatapp8.png",
+                "/casestudypics/stephen/chatapp9.png",
+                "/casestudypics/stephen/chatapp10.png"
+            ],
             content: `
                 <p>ChatApp is a premium, end-to-end encrypted messaging platform featuring a modern Orange-accented design with full Light/Dark mode support. Built as a secure real-time communication tool, it bridges the gap between high-level security and consumer-grade usability.</p>
                 
