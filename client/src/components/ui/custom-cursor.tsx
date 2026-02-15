@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { motion, useSpring, useMotionValue } from "framer-motion";
+import { useLocation } from "wouter";
 
 export function CustomCursor() {
     const [isHovered, setIsHovered] = useState(false);
@@ -12,6 +13,34 @@ export function CustomCursor() {
     const springConfig = { damping: 25, stiffness: 200 };
     const cursorX = useSpring(mouseX, springConfig);
     const cursorY = useSpring(mouseY, springConfig);
+    const [location] = useLocation();
+    const lastMousePos = useRef({ x: 0, y: 0 });
+
+    // Function to update cursor state based on element at coordinates
+    const syncCursorState = (x: number, y: number) => {
+        const element = document.elementFromPoint(x, y);
+        if (!element) return;
+
+        const interactive = element.closest('a, button, [role="button"], .interactive') as HTMLElement;
+        const cursorElement = element.closest('[data-cursor]') as HTMLElement;
+
+        if (interactive) {
+            setIsHovered(true);
+            setCursorText(cursorElement?.dataset.cursor || "");
+        } else {
+            setIsHovered(false);
+            setCursorText("");
+        }
+    };
+
+    // Reset and re-sync cursor state on navigation
+    useEffect(() => {
+        // Small delay to allow DOM to update after navigation
+        const timer = setTimeout(() => {
+            syncCursorState(lastMousePos.current.x, lastMousePos.current.y);
+        }, 50);
+        return () => clearTimeout(timer);
+    }, [location]);
 
     useEffect(() => {
         const updatePosition = (x: number, y: number) => {
@@ -21,31 +50,36 @@ export function CustomCursor() {
         };
 
         const handlePointerMove = (e: PointerEvent) => {
+            lastMousePos.current = { x: e.clientX, y: e.clientY };
             updatePosition(e.clientX, e.clientY);
         };
 
         const handlePointerOver = (e: PointerEvent) => {
             const target = e.target as HTMLElement;
-            const isClickable = target.closest('a, button, [role="button"], .interactive');
-            const customCursorText = target.dataset.cursor;
+            const interactive = target.closest('a, button, [role="button"], .interactive') as HTMLElement;
+            const cursorElement = target.closest('[data-cursor]') as HTMLElement;
 
-            if (isClickable) {
+            if (interactive) {
                 setIsHovered(true);
-                if (customCursorText) {
-                    setCursorText(customCursorText);
-                }
+                setCursorText(cursorElement?.dataset.cursor || "");
             } else {
                 setIsHovered(false);
                 setCursorText("");
             }
         };
 
+        const handleMouseDown = () => {
+            setIsHovered(false);
+        };
+
         window.addEventListener("pointermove", handlePointerMove);
         window.addEventListener("pointerover", handlePointerOver);
+        window.addEventListener("mousedown", handleMouseDown);
 
         return () => {
             window.removeEventListener("pointermove", handlePointerMove);
             window.removeEventListener("pointerover", handlePointerOver);
+            window.removeEventListener("mousedown", handleMouseDown);
         };
     }, [mouseX, mouseY, isVisible]);
 

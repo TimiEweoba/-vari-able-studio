@@ -1673,8 +1673,10 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/framer-motion/dist/es/render/components/motion/proxy.mjs [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$value$2f$use$2d$spring$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/framer-motion/dist/es/value/use-spring.mjs [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$value$2f$use$2d$motion$2d$value$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/framer-motion/dist/es/value/use-motion-value.mjs [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$wouter$2f$src$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/wouter/src/index.js [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
+;
 ;
 ;
 function CustomCursor() {
@@ -1690,6 +1692,41 @@ function CustomCursor() {
     };
     const cursorX = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$value$2f$use$2d$spring$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSpring"])(mouseX, springConfig);
     const cursorY = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$value$2f$use$2d$spring$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSpring"])(mouseY, springConfig);
+    const [location] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$wouter$2f$src$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useLocation"])();
+    const lastMousePos = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])({
+        x: 0,
+        y: 0
+    });
+    // Function to update cursor state based on element at coordinates
+    const syncCursorState = (x, y)=>{
+        const element = document.elementFromPoint(x, y);
+        if (!element) return;
+        const interactive = element.closest('a, button, [role="button"], .interactive');
+        const cursorElement = element.closest('[data-cursor]');
+        if (interactive) {
+            setIsHovered(true);
+            setCursorText(cursorElement?.dataset.cursor || "");
+        } else {
+            setIsHovered(false);
+            setCursorText("");
+        }
+    };
+    // Reset and re-sync cursor state on navigation
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "CustomCursor.useEffect": ()=>{
+            // Small delay to allow DOM to update after navigation
+            const timer = setTimeout({
+                "CustomCursor.useEffect.timer": ()=>{
+                    syncCursorState(lastMousePos.current.x, lastMousePos.current.y);
+                }
+            }["CustomCursor.useEffect.timer"], 50);
+            return ({
+                "CustomCursor.useEffect": ()=>clearTimeout(timer)
+            })["CustomCursor.useEffect"];
+        }
+    }["CustomCursor.useEffect"], [
+        location
+    ]);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "CustomCursor.useEffect": ()=>{
             const updatePosition = {
@@ -1701,31 +1738,40 @@ function CustomCursor() {
             }["CustomCursor.useEffect.updatePosition"];
             const handlePointerMove = {
                 "CustomCursor.useEffect.handlePointerMove": (e)=>{
+                    lastMousePos.current = {
+                        x: e.clientX,
+                        y: e.clientY
+                    };
                     updatePosition(e.clientX, e.clientY);
                 }
             }["CustomCursor.useEffect.handlePointerMove"];
             const handlePointerOver = {
                 "CustomCursor.useEffect.handlePointerOver": (e)=>{
                     const target = e.target;
-                    const isClickable = target.closest('a, button, [role="button"], .interactive');
-                    const customCursorText = target.dataset.cursor;
-                    if (isClickable) {
+                    const interactive = target.closest('a, button, [role="button"], .interactive');
+                    const cursorElement = target.closest('[data-cursor]');
+                    if (interactive) {
                         setIsHovered(true);
-                        if (customCursorText) {
-                            setCursorText(customCursorText);
-                        }
+                        setCursorText(cursorElement?.dataset.cursor || "");
                     } else {
                         setIsHovered(false);
                         setCursorText("");
                     }
                 }
             }["CustomCursor.useEffect.handlePointerOver"];
+            const handleMouseDown = {
+                "CustomCursor.useEffect.handleMouseDown": ()=>{
+                    setIsHovered(false);
+                }
+            }["CustomCursor.useEffect.handleMouseDown"];
             window.addEventListener("pointermove", handlePointerMove);
             window.addEventListener("pointerover", handlePointerOver);
+            window.addEventListener("mousedown", handleMouseDown);
             return ({
                 "CustomCursor.useEffect": ()=>{
                     window.removeEventListener("pointermove", handlePointerMove);
                     window.removeEventListener("pointerover", handlePointerOver);
+                    window.removeEventListener("mousedown", handleMouseDown);
                 }
             })["CustomCursor.useEffect"];
         }
@@ -1752,21 +1798,22 @@ function CustomCursor() {
             children: cursorText
         }, void 0, false, {
             fileName: "[project]/client/src/components/ui/custom-cursor.tsx",
-            lineNumber: 62,
+            lineNumber: 96,
             columnNumber: 17
         }, this)
     }, void 0, false, {
         fileName: "[project]/client/src/components/ui/custom-cursor.tsx",
-        lineNumber: 53,
+        lineNumber: 87,
         columnNumber: 9
     }, this);
 }
-_s(CustomCursor, "uyNyLX2HqjDBHWYKcacZYPUTuwI=", false, function() {
+_s(CustomCursor, "ZsHihHsGRmj+yp7ageQze166CAY=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$value$2f$use$2d$motion$2d$value$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMotionValue"],
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$value$2f$use$2d$motion$2d$value$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMotionValue"],
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$value$2f$use$2d$spring$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSpring"],
-        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$value$2f$use$2d$spring$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSpring"]
+        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$value$2f$use$2d$spring$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSpring"],
+        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$wouter$2f$src$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useLocation"]
     ];
 });
 _c = CustomCursor;

@@ -1,8 +1,47 @@
-[00:00:01.170] Server  LOG     ✓ Ready in 776ms
-[00:00:05.643] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:06.196] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
-[00:00:35.287] Server  LOG     [Storage] Attempting to connect to MongoDB...
-[00:00:35.331] Server  LOG     [Flutterwave] Initializing payment: {}
-[00:00:35.333] Server  LOG     [Flutterwave] Payment payload: "{\n  \"tx_ref\": \"VS-2952d522-8c34-4dd1-981e-80005489032d\",\n  \"amount\": 500,\n  \"currency\": \"USD\",\n  \"redirect_url\": \"http://localhost:3000/payment/callback\",\n  \"payment_options\": \"card, account, banktransfer, ussd, mobilemoneygh, mobilemoneyfranco, mobilemoneyug, mobilemoneyrw, mobilemoneyzm, mobilemoneyks, barter, ozeemoney, payattitude, pwa, credit, 1ach, bank_transfer\",\n  \"customer\": {\n    \"email\": \"kaiknightokpandu@gmail.com\",\n    \"name\": \"Dennis\",\n    \"phone_number\": \"0000000000\"\n  },\n  \"customizations\": {\n    \"title\": \"veri—able studio\",\n    \"description\": \"Project Reservation Deposit\",\n    \"logo\": \"https://veriable.xyz/logo.png\"\n  }\n}"
-[00:00:35.961] Server  LOG     [Flutterwave] Response Status: 200
-[00:00:39.379] Server  LOG     [Storage] Using MongoDB Storage
+[00:00:01.133] Server  LOG     ✓ Ready in 759ms
+[00:00:06.532] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:07.048] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[00:03:30.916] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:31.696] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[00:11:57.136] Server  LOG     ✓ Compiled in 279ms
+[00:12:56.978] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:12:58.022] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[00:14:59.570] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:15:00.459] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[00:18:21.332] Server  LOG     ✓ Compiled in 218ms
+[00:21:17.699] Browser ERROR   useInsertionEffect must not schedule updates.
+[00:21:17.699] Browser ERROR   useInsertionEffect must not schedule updates.
+[00:21:17.699] Browser ERROR   useInsertionEffect must not schedule updates.
+[00:21:17.699] Browser ERROR   useInsertionEffect must not schedule updates.
+[00:21:17.699] Browser ERROR   useInsertionEffect must not schedule updates.
+[00:21:17.699] Browser ERROR   useInsertionEffect must not schedule updates.
+[00:21:17.699] Browser ERROR   useInsertionEffect must not schedule updates.
+[00:21:17.699] Browser ERROR   useInsertionEffect must not schedule updates.
+[00:21:17.699] Browser ERROR   useInsertionEffect must not schedule updates.
+[00:21:17.699] Browser ERROR   useInsertionEffect must not schedule updates.
+[00:21:17.699] Browser ERROR   useInsertionEffect must not schedule updates.
+[00:21:17.699] Browser ERROR   useInsertionEffect must not schedule updates.
+[00:21:17.700] Browser ERROR   useInsertionEffect must not schedule updates.
+[00:21:17.700] Browser ERROR   useInsertionEffect must not schedule updates.
+[00:24:05.170] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:24:06.089] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[00:26:50.457] Server  LOG     ✓ Compiled in 129ms
+[00:28:01.661] Browser ERROR   useInsertionEffect must not schedule updates.
+[00:28:01.661] Browser ERROR   useInsertionEffect must not schedule updates.
+[00:28:01.661] Browser ERROR   useInsertionEffect must not schedule updates.
+[00:28:01.661] Browser ERROR   useInsertionEffect must not schedule updates.
+[00:28:01.661] Browser ERROR   useInsertionEffect must not schedule updates.
+[00:28:01.661] Browser ERROR   useInsertionEffect must not schedule updates.
+[00:28:01.661] Browser ERROR   useInsertionEffect must not schedule updates.
+[00:28:01.661] Browser ERROR   useInsertionEffect must not schedule updates.
+[00:28:01.661] Browser ERROR   useInsertionEffect must not schedule updates.
+[00:28:01.661] Browser ERROR   useInsertionEffect must not schedule updates.
+[00:28:01.661] Browser ERROR   useInsertionEffect must not schedule updates.
+[00:28:01.661] Browser ERROR   useInsertionEffect must not schedule updates.
+[00:28:01.661] Browser ERROR   useInsertionEffect must not schedule updates.
+[00:28:01.661] Browser ERROR   useInsertionEffect must not schedule updates.
+[00:28:27.427] Server  LOG     [Storage] Attempting to connect to MongoDB...
+[00:28:27.462] Server  LOG     [Flutterwave] Initializing payment: {}
+[00:28:27.463] Server  LOG     [Flutterwave] Payment payload: "{\n  \"tx_ref\": \"VS-5e041db5-e842-4a8c-a287-6f65612e091c\",\n  \"amount\": 500,\n  \"currency\": \"USD\",\n  \"redirect_url\": \"http://localhost:3000/payment/callback\",\n  \"payment_options\": \"card, account, banktransfer, ussd, mobilemoneygh, mobilemoneyfranco, mobilemoneyug, mobilemoneyrw, mobilemoneyzm, mobilemoneyks, barter, ozeemoney, payattitude, pwa, credit, 1ach, bank_transfer\",\n  \"customer\": {\n    \"email\": \"kaiknightokpandu@gmail.com\",\n    \"name\": \"Dennis Okpandu\",\n    \"phone_number\": \"0000000000\"\n  },\n  \"customizations\": {\n    \"title\": \"veri—able studio\",\n    \"description\": \"Project Reservation Deposit\",\n    \"logo\": \"https://veriable.xyz/logo.png\"\n  }\n}"
+[00:28:28.830] Server  LOG     [Flutterwave] Response Status: 200
+[00:28:29.773] Server  LOG     [Storage] Using MongoDB Storage

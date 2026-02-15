@@ -20,48 +20,51 @@ const ProjectCard = ({ project, fadeInUp, index, setLocation }: WorkCardProps) =
         whileInView="visible"
         viewport={{ once: true, margin: "-50px" }}
         variants={fadeInUp}
-        className="lg:col-span-8 relative rounded-2xl overflow-hidden group bg-[#1C1D20] border border-white/5 h-[500px] cursor-pointer interactive"
+        className="lg:col-span-8 group bg-[#1C1D20] border border-white/5 rounded-[2.5rem] overflow-hidden flex flex-col md:flex-row cursor-pointer hover:bg-white/[0.02] transition-colors"
         data-cursor="View Case"
         onClick={() => setLocation("/work")}
       >
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10" />
-        <img
-          src={project.imageUrl}
-          alt={project.title}
-          loading="lazy"
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-        />
-        <div className="absolute top-8 left-8 z-20">
-          <span className="text-sm font-medium text-white/80">{project.category}</span>
-          <h4 className="text-3xl font-bold text-white mt-2 mb-2">{project.title}</h4>
-          <p className="text-white/80 max-w-md">{project.description}</p>
+        <div className="w-full md:w-3/5 aspect-[16/10] md:aspect-auto overflow-hidden bg-black/50">
+          <img
+            src={project.imageUrl}
+            alt={project.title}
+            loading="lazy"
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          />
         </div>
-        <div className="absolute bottom-8 left-8 z-20 flex gap-4">
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={(e) => {
-              e.stopPropagation();
-              setLocation("/work");
-            }}
-            className="flex items-center gap-2 text-sm font-medium bg-white/10 hover:bg-white/20 backdrop-blur-md text-white px-4 py-2 rounded-full transition-all"
-          >
-            Learn More <ArrowRight className="w-4 h-4" />
-          </motion.button>
-
-          {project.link && project.link !== "#" && (
-            <motion.a
+        <div className="w-full md:w-2/5 p-8 md:p-10 flex flex-col justify-center">
+          <span className="text-[10px] font-black text-primary tracking-[0.5em] uppercase mb-4">{project.category}</span>
+          <h4 className="text-2xl md:text-3xl font-bold text-white mb-4 group-hover:text-primary transition-colors tracking-tight">{project.title}</h4>
+          <p className="text-white/40 text-sm md:text-sm leading-relaxed mb-8 line-clamp-3">
+            {project.description}
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={(e) => e.stopPropagation()}
-              className="flex items-center gap-2 text-sm font-medium bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-full transition-all shadow-lg shadow-primary/20"
+              onClick={(e) => {
+                e.stopPropagation();
+                setLocation("/work");
+              }}
+              className="flex items-center gap-2 text-xs font-bold bg-white/5 hover:bg-white/10 border border-white/10 text-white px-5 py-2.5 rounded-xl transition-all uppercase tracking-widest"
             >
-              Live Site <ArrowUpRight className="w-4 h-4" />
-            </motion.a>
-          )}
+              Details <ArrowRight className="w-4 h-4" />
+            </motion.button>
+
+            {project.link && project.link !== "#" && (
+              <motion.a
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="flex items-center gap-2 text-xs font-bold bg-primary hover:bg-primary/90 text-white px-5 py-2.5 rounded-xl transition-all shadow-lg shadow-primary/20 uppercase tracking-widest"
+              >
+                Live <ArrowUpRight className="w-4 h-4" />
+              </motion.a>
+            )}
+          </div>
         </div>
       </motion.div>
     );
@@ -73,42 +76,52 @@ const ProjectCard = ({ project, fadeInUp, index, setLocation }: WorkCardProps) =
       whileInView="visible"
       viewport={{ once: true, margin: "-50px" }}
       variants={{ ...fadeInUp, visible: { ...fadeInUp.visible, transition: { delay: 0.2 + (index * 0.1), ...fadeInUp.visible.transition } } }}
-      className="group relative h-[300px] rounded-2xl overflow-hidden bg-[#1C1D20] border border-white/5 hover:border-white/10 cursor-pointer interactive"
+      className="group bg-[#1C1D20] border border-white/5 rounded-[2rem] overflow-hidden flex flex-col cursor-pointer hover:bg-white/[0.02] transition-colors"
       data-cursor="Review"
       onClick={() => setLocation("/work")}
     >
-      <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors z-10" />
-      <img src={project.imageUrl} alt={project.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-
-      <div className="absolute top-6 left-6 z-20">
-        <h4 className="text-xl font-medium text-white flex flex-col gap-1">
-          {project.title}
-          <span className="text-xs text-white/70 font-normal">{project.category}</span>
-        </h4>
+      <div className="w-full aspect-[16/10] overflow-hidden bg-black/50">
+        <img
+          src={project.imageUrl}
+          alt={project.title}
+          loading="lazy"
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+        />
       </div>
 
-      <div className="absolute bottom-6 left-6 z-20 flex items-center gap-3">
-        <motion.div
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center text-white transition-all shadow-lg shadow-primary/20"
-        >
-          <ArrowRight className="w-5 h-5" />
-        </motion.div>
+      <div className="p-8 flex flex-col gap-4">
+        <div className="flex justify-between items-start">
+          <h4 className="text-xl font-bold text-white group-hover:text-primary transition-colors tracking-tight">
+            {project.title}
+          </h4>
+          <span className="text-[10px] text-white/40 uppercase tracking-widest font-black">{project.category}</span>
+        </div>
 
-        {project.link && project.link !== "#" && (
-          <motion.a
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            href={project.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={(e) => e.stopPropagation()}
-            className="h-10 px-4 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-xl flex items-center justify-center text-xs font-bold text-white transition-all border border-white/10"
-          >
-            Visit Site
-          </motion.a>
-        )}
+        <div className="flex items-center justify-between mt-4 pb-2">
+          <div className="flex items-center gap-4">
+            <motion.div
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              className="w-10 h-10 bg-white/5 border border-white/10 group-hover:bg-primary group-hover:border-primary rounded-xl flex items-center justify-center text-white transition-all shadow-lg"
+            >
+              <ArrowRight className="w-5 h-5" />
+            </motion.div>
+
+            {project.link && project.link !== "#" && (
+              <motion.a
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.9 }}
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="text-[10px] font-black uppercase tracking-widest text-white/40 hover:text-white transition-colors"
+              >
+                View Site
+              </motion.a>
+            )}
+          </div>
+        </div>
       </div>
     </motion.div>
   );
@@ -127,7 +140,7 @@ export function Work() {
   };
 
   const featuredProjects = projects.filter(p => p.featured === "true");
-  const otherProjects = projects.filter(p => p.featured !== "true");
+  const otherProjects = projects.filter(p => p.featured !== "true").slice(0, 5 - featuredProjects.length);
 
   return (
     <section id="work" className="py-24 bg-[#050505] text-[#E3DBD8]">
@@ -166,6 +179,10 @@ export function Work() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
             {/* Featured Projects Column */}
             <div className="lg:col-span-8 flex flex-col gap-6">
+              <div className="flex items-center gap-4 mb-2">
+                <span className="text-[10px] font-black text-primary uppercase tracking-[0.4em] bg-primary/10 px-3 py-1 rounded-full">Featured</span>
+                <div className="h-px flex-1 bg-white/5" />
+              </div>
               {featuredProjects.map((project, i) => (
                 <ProjectCard key={project.id} project={project} index={i} fadeInUp={fadeInUp} setLocation={setLocation} />
               ))}
