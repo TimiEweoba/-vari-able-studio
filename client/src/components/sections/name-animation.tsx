@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { isMobile } from "@/lib/animations";
 
 const MarqueeRow = ({
     text,
@@ -51,29 +52,33 @@ export function NameAnimation() {
         <>
             <section className="py-16 md:py-24 bg-primary text-white overflow-hidden flex flex-col gap-4 md:gap-8 select-none border-t border-white/10">
 
-                {/* Top Row - Small */}
-                <MarqueeRow
-                    text="veri—able"
-                    subText="Your software business, streamlined for growth."
-                    speed={60}
-                    className="text-[10vw] md:text-[5vw] text-white/90"
-                />
+                {/* Top Row - Small - Hidden on mobile */}
+                {!isMobile && (
+                    <MarqueeRow
+                        text="veri—able"
+                        subText="Your software business, streamlined for growth."
+                        speed={60}
+                        className="text-[10vw] md:text-[5vw] text-white/90"
+                    />
+                )}
 
                 {/* Middle Row - Medium */}
                 <MarqueeRow
                     text="veri—able"
                     subText="The smarter way to build, run, and scale software."
-                    speed={50}
+                    speed={isMobile ? 30 : 50}
                     className="text-[18vw] md:text-[10vw] text-white"
                 />
 
-                {/* Bottom Row - Large */}
-                <MarqueeRow
-                    text="veri—able"
-                    subText="Where running and growing your software business gets simple."
-                    speed={40}
-                    className="text-[28vw] md:text-[18vw] text-white/90"
-                />
+                {/* Bottom Row - Large - Hidden on mobile */}
+                {!isMobile && (
+                    <MarqueeRow
+                        text="veri—able"
+                        subText="Where running and growing your software business gets simple."
+                        speed={40}
+                        className="text-[28vw] md:text-[18vw] text-white/90"
+                    />
+                )}
 
             </section>
         </>

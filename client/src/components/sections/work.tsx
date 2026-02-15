@@ -2,6 +2,7 @@ import { ArrowRight, Lock, LayoutDashboard, CreditCard, Loader2, ArrowUpRight } 
 import { motion } from "framer-motion";
 import { useLocation } from "wouter";
 import { projects, type Project } from "@/lib/projects";
+import { fadeInUp, isMobile } from "@/lib/animations";
 
 interface WorkCardProps {
   project: Project;
@@ -129,15 +130,6 @@ const ProjectCard = ({ project, fadeInUp, index, setLocation }: WorkCardProps) =
 
 export function Work() {
   const [location, setLocation] = useLocation();
-
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const }
-    }
-  };
 
   const featuredProjects = projects.filter(p => p.featured === "true");
   const otherProjects = projects.filter(p => p.featured !== "true").slice(0, 5 - featuredProjects.length);

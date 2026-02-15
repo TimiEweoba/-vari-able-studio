@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ArrowRight, Quote, ArrowUp } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { fadeInUp, isMobile } from "@/lib/animations";
 
 export function Testimonials() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -25,15 +26,6 @@ export function Testimonials() {
   ];
 
   const testimonial = testimonials[activeIndex];
-
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const }
-    }
-  };
 
   return (
     <section id="testimonials" className="py-24 bg-[#161719] text-[#E3DBD8]">
@@ -88,7 +80,7 @@ export function Testimonials() {
                   className="w-full h-full object-cover"
                 />
                 {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1C1D20] via-transparent to-transparent opacity-40" />
+                {!isMobile && <div className="absolute inset-0 bg-gradient-to-t from-[#1C1D20] via-transparent to-transparent opacity-40" />}
               </motion.div>
             </AnimatePresence>
           </div>
@@ -155,7 +147,7 @@ export function Testimonials() {
               <motion.div
                 key={t.id}
                 onClick={() => setActiveIndex(index)}
-                whileHover={{ scale: 1.05 }}
+                whileHover={isMobile ? {} : { scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className={cn(
                   "w-24 h-32 shrink-0 rounded-xl overflow-hidden cursor-pointer transition-all duration-500 relative border-2",

@@ -16,6 +16,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import { CheckoutDialog } from "./checkout-dialog";
+import { fadeInUp, isMobile } from "@/lib/animations";
 
 export function Pricing() {
   const [currency, setCurrency] = useState<"USD" | "NGN">("USD");
@@ -52,14 +53,6 @@ export function Pricing() {
     }
   };
 
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const }
-    }
-  };
 
   return (
     <>
@@ -434,4 +427,3 @@ export function Pricing() {
     </>
   );
 }
-

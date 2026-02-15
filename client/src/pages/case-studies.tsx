@@ -200,19 +200,19 @@ export default function CaseStudiesPage() {
                             <span className="text-xs font-black uppercase tracking-[0.2em]">Return to Studio</span>
                         </Link>
 
-                        <div className="relative overflow-hidden mb-24">
+                        <div className="relative overflow-hidden mb-12 md:mb-24">
                             <motion.h1
                                 initial={{ y: "100%" }}
                                 animate={{ y: 0 }}
                                 transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                                className="text-[14vw] font-bold text-white tracking-tighter leading-[0.75]"
+                                className="text-[clamp(3.5rem,18vw,12rem)] md:text-[14vw] font-bold text-white tracking-tighter leading-[0.75]"
                             >
                                 Selected <br />
                                 <span className="text-primary italic">Works.</span>
                             </motion.h1>
                         </div>
 
-                        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pt-20 border-t border-white/5 items-start">
+                        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 pt-12 md:pt-20 border-t border-white/5 items-start">
                             <div className="lg:col-span-8">
                                 <motion.div
                                     initial={{ opacity: 0, x: -20 }}
@@ -229,7 +229,7 @@ export default function CaseStudiesPage() {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ duration: 0.8, delay: 0.3 }}
-                                    className="text-4xl md:text-6xl font-medium text-white tracking-tight leading-[1.1]"
+                                    className="text-3xl md:text-6xl font-medium text-white tracking-tight leading-[1.1]"
                                 >
                                     Real products, real impact. <br />
                                     <span className="text-white/40">Measured in results, not just code.</span>
@@ -250,7 +250,7 @@ export default function CaseStudiesPage() {
                     </div>
 
                     {/* Projects Listing */}
-                    <div className="space-y-64">
+                    <div className="space-y-32 md:space-y-64">
                         {projects.map((project, idx) => (
                             <motion.section
                                 key={project.id}
@@ -261,7 +261,7 @@ export default function CaseStudiesPage() {
                                 className="group relative"
                             >
                                 {/* Number Indicator */}
-                                <div className="absolute -top-12 left-0 text-[10vw] font-bold text-white/[0.02] select-none leading-none z-0 pointer-events-none transition-colors group-hover:text-primary/[0.02]">
+                                <div className="absolute -top-8 md:-top-12 left-0 text-[15vw] md:text-[10vw] font-bold text-white/[0.02] select-none leading-none z-0 pointer-events-none transition-colors group-hover:text-primary/[0.02]">
                                     0{idx + 1}
                                 </div>
 
@@ -300,20 +300,20 @@ export default function CaseStudiesPage() {
                                             <div className="h-px w-8 bg-white/10" />
                                         </motion.div>
 
-                                        <h3 className="text-5xl md:text-8xl font-bold text-white mb-10 tracking-tighter leading-[0.85] group-hover:text-primary transition-colors duration-500">
+                                        <h3 className="text-4xl md:text-8xl font-bold text-white mb-6 md:mb-10 tracking-tighter leading-[0.85] group-hover:text-primary transition-colors duration-500">
                                             {project.title.split(" ").map((word, i) => (
                                                 <span key={i} className="inline-block mr-4">{word}</span>
                                             ))}
                                         </h3>
 
-                                        <p className="text-xl md:text-2xl text-white/40 leading-relaxed font-medium mb-12 max-w-lg">
+                                        <p className="text-lg md:text-2xl text-white/40 leading-relaxed font-medium mb-8 md:mb-12 max-w-lg">
                                             {project.description}
                                         </p>
 
                                         <div className="flex gap-6 items-center">
                                             <button
                                                 onClick={() => openArticle(project)}
-                                                className="relative flex items-center gap-4 py-4 px-8 bg-white/5 hover:bg-primary border border-white/10 hover:border-primary rounded-2xl text-sm font-black text-white transition-all group/btn overflow-hidden"
+                                                className="relative flex items-center gap-4 py-3 px-6 md:py-4 md:px-8 bg-white/5 hover:bg-primary border border-white/10 hover:border-primary rounded-2xl min-h-0 text-sm font-black text-white transition-all group/btn overflow-hidden"
                                             >
                                                 <span className="relative z-10 uppercase tracking-[0.2em]">View breakdown</span>
                                                 <ArrowRight className="w-5 h-5 relative z-10 group-hover/btn:translate-x-2 transition-transform" />

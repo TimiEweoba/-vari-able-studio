@@ -90,44 +90,44 @@ export function LabsReader({ isOpen, onClose, article }: LabsReaderProps) {
                             </div>
                             <button
                                 onClick={onClose}
-                                className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 transition-colors"
+                                className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 transition-colors min-h-0 flex-shrink-0"
                             >
                                 <X className="w-5 h-5 text-white" />
                             </button>
                         </div>
 
                         {/* Article Content */}
-                        <article className="p-8 md:p-16">
+                        <article className="p-6 md:p-16">
                             <div className="flex items-center gap-4 text-primary text-[10px] uppercase tracking-[0.3em] font-black mb-6">
                                 <div className="w-8 h-px bg-primary" />
                                 Case Study
                             </div>
 
-                            <h1 className="text-4xl md:text-6xl font-bold text-white mb-8 tracking-tighter leading-[0.9]">
+                            <h1 className="text-3xl md:text-6xl font-bold text-white mb-6 md:mb-8 tracking-tighter leading-[0.9]">
                                 {article.title}
                             </h1>
 
-                            <div className="flex flex-wrap gap-8 items-center mb-12 py-8 border-y border-white/5">
+                            <div className="flex flex-wrap gap-6 md:gap-8 items-center mb-8 md:mb-12 py-6 md:py-8 border-y border-white/5">
                                 <div className="flex items-center gap-3">
-                                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden border border-white/10">
+                                    <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden border border-white/10">
                                         {article.authorImage ? (
                                             <img src={article.authorImage} alt={article.author} className="w-full h-full object-cover" />
                                         ) : (
-                                            <User className="w-5 h-5 text-primary" />
+                                            <User className="w-4 h-4 md:w-5 md:h-5 text-primary" />
                                         )}
                                     </div>
                                     <div>
-                                        <div className="text-[10px] uppercase font-black text-white/20 tracking-widest">Author</div>
-                                        <div className="text-sm font-bold text-white/80">{article.author}</div>
+                                        <div className="text-[8px] md:text-[10px] uppercase font-black text-white/20 tracking-widest">Author</div>
+                                        <div className="text-xs md:text-sm font-bold text-white/80">{article.author}</div>
                                     </div>
                                 </div>
                                 <div className="flex items-center gap-3">
-                                    <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/40">
-                                        <Clock className="w-5 h-5" />
+                                    <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/5 flex items-center justify-center text-white/40">
+                                        <Clock className="w-4 h-4 md:w-5 md:h-5" />
                                     </div>
                                     <div>
-                                        <div className="text-[10px] uppercase font-black text-white/20 tracking-widest">Published</div>
-                                        <div className="text-sm font-bold text-white/80">{article.date}</div>
+                                        <div className="text-[8px] md:text-[10px] uppercase font-black text-white/20 tracking-widest">Published</div>
+                                        <div className="text-xs md:text-sm font-bold text-white/80">{article.date}</div>
                                     </div>
                                 </div>
                             </div>

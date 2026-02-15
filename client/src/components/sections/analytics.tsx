@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, Zap, Activity, CreditCard, Bell, Info, ArrowDown, ArrowUp, Database, MousePointer2 } from "lucide-react";
 import { useEffect, useState, useRef } from "react";
 import { cn } from "@/lib/utils";
+import { fadeInUp, isMobile } from "@/lib/animations";
 
 const AnimatedNumber = ({ value, suffix = "", prefix = "", duration = 2000 }: { value: number, suffix?: string, prefix?: string, duration?: number }) => {
   const [displayValue, setDisplayValue] = useState(0);
@@ -49,30 +50,25 @@ const Tooltip = ({ text, children }: { text: string; children: React.ReactNode }
 export function Analytics() {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 40 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }
-    }
-  };
-
   return (
     <section id="analytics" className="py-32 bg-[#161719] text-[#E3DBD8] overflow-hidden relative" ref={containerRef}>
       {/* Dynamic Background Grid */}
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
-        style={{ backgroundImage: 'linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
+      {!isMobile && (
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
+          style={{ backgroundImage: 'linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
+      )}
 
       {/* High-definition ambient glow */}
-      <motion.div
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.1, 0.2, 0.1],
-        }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] bg-primary/20 rounded-full blur-[160px] pointer-events-none"
-      />
+      {!isMobile && (
+        <motion.div
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.1, 0.2, 0.1],
+          }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] bg-primary/20 rounded-full blur-[160px] pointer-events-none"
+        />
+      )}
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
 

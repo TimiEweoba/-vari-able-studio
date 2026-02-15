@@ -3,6 +3,7 @@ import { Link } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, ArrowDown, Waves, Shield, Zap, TrendingUp, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { isMobile } from "@/lib/animations";
 
 const services = [
   {
@@ -91,7 +92,7 @@ export function Services() {
                     ? "bg-primary flex-[4] min-h-[500px] md:min-h-0 shadow-2xl shadow-primary/20"
                     : "bg-[#1C1D20] flex-1 hover:bg-[#252629] min-h-[100px] md:min-h-0 md:min-w-[100px] border border-white/5"
                 )}
-                layout
+                layout={!isMobile}
               >
                 <div className="h-full flex flex-col p-6 relative z-10">
                   {/* Top Number & Label (Mobile Friendly) */}

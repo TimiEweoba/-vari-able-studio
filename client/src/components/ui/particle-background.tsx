@@ -23,9 +23,10 @@ export function ParticleBackground() {
         };
 
         // Configuration
-        const particleCount = 200; // Increased count for better effect
-        const connectionDistance = 100;
-        const mouseDistance = 200;
+        const isMobile = window.innerWidth < 768;
+        const particleCount = isMobile ? 50 : 200;
+        const connectionDistance = isMobile ? 0 : 100;
+        const mouseDistance = isMobile ? 100 : 200;
 
         interface Particle {
             x: number;
@@ -126,7 +127,7 @@ export function ParticleBackground() {
 
                 // Optional: Connect particles close to mouse for that "network" feel 
                 // matching the "constellation" vibe of Framer sites
-                if (mouse.isActive) {
+                if (mouse.isActive && !isMobile) {
                     const dx = mouse.x - p.x;
                     const dy = mouse.y - p.y;
                     const dist = Math.sqrt(dx * dx + dy * dy);

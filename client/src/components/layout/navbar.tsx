@@ -52,7 +52,6 @@ export function Navbar() {
     { name: "Questions", href: "/#faq", id: "06" },
     { name: "Our Team", href: "/#team", id: "07" },
     { name: "Wall of Love", href: "/#testimonials", id: "08" },
-    { name: "Research Labs", href: "/#labs", id: "09" },
   ];
 
   return (

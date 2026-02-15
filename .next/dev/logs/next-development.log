@@ -1,47 +1,936 @@
-[00:00:01.133] Server  LOG     ✓ Ready in 759ms
-[00:00:06.532] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:07.048] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
-[00:03:30.916] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:03:31.696] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
-[00:11:57.136] Server  LOG     ✓ Compiled in 279ms
-[00:12:56.978] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:12:58.022] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
-[00:14:59.570] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:15:00.459] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
-[00:18:21.332] Server  LOG     ✓ Compiled in 218ms
-[00:21:17.699] Browser ERROR   useInsertionEffect must not schedule updates.
-[00:21:17.699] Browser ERROR   useInsertionEffect must not schedule updates.
-[00:21:17.699] Browser ERROR   useInsertionEffect must not schedule updates.
-[00:21:17.699] Browser ERROR   useInsertionEffect must not schedule updates.
-[00:21:17.699] Browser ERROR   useInsertionEffect must not schedule updates.
-[00:21:17.699] Browser ERROR   useInsertionEffect must not schedule updates.
-[00:21:17.699] Browser ERROR   useInsertionEffect must not schedule updates.
-[00:21:17.699] Browser ERROR   useInsertionEffect must not schedule updates.
-[00:21:17.699] Browser ERROR   useInsertionEffect must not schedule updates.
-[00:21:17.699] Browser ERROR   useInsertionEffect must not schedule updates.
-[00:21:17.699] Browser ERROR   useInsertionEffect must not schedule updates.
-[00:21:17.699] Browser ERROR   useInsertionEffect must not schedule updates.
-[00:21:17.700] Browser ERROR   useInsertionEffect must not schedule updates.
-[00:21:17.700] Browser ERROR   useInsertionEffect must not schedule updates.
-[00:24:05.170] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:24:06.089] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
-[00:26:50.457] Server  LOG     ✓ Compiled in 129ms
-[00:28:01.661] Browser ERROR   useInsertionEffect must not schedule updates.
-[00:28:01.661] Browser ERROR   useInsertionEffect must not schedule updates.
-[00:28:01.661] Browser ERROR   useInsertionEffect must not schedule updates.
-[00:28:01.661] Browser ERROR   useInsertionEffect must not schedule updates.
-[00:28:01.661] Browser ERROR   useInsertionEffect must not schedule updates.
-[00:28:01.661] Browser ERROR   useInsertionEffect must not schedule updates.
-[00:28:01.661] Browser ERROR   useInsertionEffect must not schedule updates.
-[00:28:01.661] Browser ERROR   useInsertionEffect must not schedule updates.
-[00:28:01.661] Browser ERROR   useInsertionEffect must not schedule updates.
-[00:28:01.661] Browser ERROR   useInsertionEffect must not schedule updates.
-[00:28:01.661] Browser ERROR   useInsertionEffect must not schedule updates.
-[00:28:01.661] Browser ERROR   useInsertionEffect must not schedule updates.
-[00:28:01.661] Browser ERROR   useInsertionEffect must not schedule updates.
-[00:28:01.661] Browser ERROR   useInsertionEffect must not schedule updates.
-[00:28:27.427] Server  LOG     [Storage] Attempting to connect to MongoDB...
-[00:28:27.462] Server  LOG     [Flutterwave] Initializing payment: {}
-[00:28:27.463] Server  LOG     [Flutterwave] Payment payload: "{\n  \"tx_ref\": \"VS-5e041db5-e842-4a8c-a287-6f65612e091c\",\n  \"amount\": 500,\n  \"currency\": \"USD\",\n  \"redirect_url\": \"http://localhost:3000/payment/callback\",\n  \"payment_options\": \"card, account, banktransfer, ussd, mobilemoneygh, mobilemoneyfranco, mobilemoneyug, mobilemoneyrw, mobilemoneyzm, mobilemoneyks, barter, ozeemoney, payattitude, pwa, credit, 1ach, bank_transfer\",\n  \"customer\": {\n    \"email\": \"kaiknightokpandu@gmail.com\",\n    \"name\": \"Dennis Okpandu\",\n    \"phone_number\": \"0000000000\"\n  },\n  \"customizations\": {\n    \"title\": \"veri—able studio\",\n    \"description\": \"Project Reservation Deposit\",\n    \"logo\": \"https://veriable.xyz/logo.png\"\n  }\n}"
-[00:28:28.830] Server  LOG     [Flutterwave] Response Status: 200
-[00:28:29.773] Server  LOG     [Storage] Using MongoDB Storage
+[00:00:01.113] Server  LOG     ✓ Ready in 742ms
+[00:00:06.603] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:07.160] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[00:02:02.004] Browser WARN    'oklab(0.999994 0.0000455678 0.0000200868 / 0.4)' is not an animatable color. Use the equivalent color code instead.. For more information and steps for solving, visit https://motion.dev/troubleshooting/color-not-animatable
+[00:04:31.844] Server  LOG     ✓ Compiled in 607ms
+[00:04:41.194] Server  LOG     ✓ Compiled in 188ms
+[00:04:54.228] Server  LOG     ✓ Compiled in 121ms
+[00:05:01.560] Server  LOG     ✓ Compiled in 156ms
+[00:05:27.054] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:05:31.464] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[00:17:44.337] Server  LOG     ✓ Compiled in 224ms
+[00:17:51.130] Server  LOG     ✓ Compiled in 100ms
+[00:21:13.859] Server  LOG     ✓ Compiled in 116ms
+[00:21:21.895] Server  LOG     ✓ Compiled in 116ms
+[00:21:28.244] Server  LOG     ✓ Compiled in 101ms
+[00:21:53.429] Server  LOG     ✓ Compiled in 135ms
+[00:22:16.651] Server  LOG     ✓ Compiled in 86ms
+[00:22:34.221] Server  LOG     ✓ Compiled in 96ms
+[00:22:42.936] Server  LOG     ✓ Compiled in 89ms
+[00:22:48.844] Server  LOG     ✓ Compiled in 123ms
+[00:23:09.872] Server  LOG     ✓ Compiled in 99ms
+[00:23:20.030] Server  LOG     ✓ Compiled in 99ms
+[00:23:20.538] Browser ERROR   ./client/src/components/sections/analytics.tsx:53:3
+Parsing ecmascript source code failed
+  51 |   const containerRef = useRef<HTMLDivElement>(null);
+  52 |
+> 53 |   export function Analytics() {
+     |   ^^^^^^
+  54 |     const containerRef = useRef<HTMLDivElement>(null);
+  55 |
+  56 |     return (
+
+'import', and 'export' cannot be used outside of module code
+
+Import traces:
+  Client Component Browser:
+    ./client/src/components/sections/analytics.tsx [Client Component Browser]
+    ./client/src/pages/home.tsx [Client Component Browser]
+    ./client/src/App.tsx [Client Component Browser]
+    ./app/components/client-wrapper.tsx [Client Component Browser]
+    ./app/components/client-wrapper.tsx [Server Component]
+    ./app/[[...slug]]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./client/src/components/sections/analytics.tsx [Client Component SSR]
+    ./client/src/pages/home.tsx [Client Component SSR]
+    ./client/src/App.tsx [Client Component SSR]
+    ./app/components/client-wrapper.tsx [Client Component SSR]
+    ./app/components/client-wrapper.tsx [Server Component]
+    ./app/[[...slug]]/page.tsx [Server Component]
+[00:24:10.390] Server  LOG     ✓ Compiled in 164ms
+[00:24:11.528] Browser ERROR   ./client/src/components/sections/pricing.tsx:1:3
+Parsing ecmascript source code failed
+>  1 | ```javascript
+     |   ^^^^^^^^^^^
+>  2 | import { useState } from "react";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  3 | import { Check, ArrowRight, Globe, Loader2, Mail } from "lucide-react";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  4 | import { cn } from "@/lib/utils";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  5 | import { Button } from "@/components/ui/button";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  6 | import { Input } from "@/components/ui/input";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  7 | import { Label } from "@/components/ui/label";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  8 | import {
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  9 |   Dialog,
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  10 |   DialogContent,
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  11 |   DialogHeader,
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  12 |   DialogTitle,
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  13 |   DialogDescription,
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  14 |   DialogFooter,
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  15 | } from "@/components/ui/dialog";
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  16 | import { CheckoutDialog } from "./checkout-dialog";
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  17 | import { fadeInUp, isMobile } from "@/lib/animations";
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  18 | 
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  19 | export function Pricing() {
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  20 |   const [currency, setCurrency] = useState<"USD" | "NGN">("USD");
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  21 |   const [selectedPackage, setSelectedPackage] = useState<"starter" | "scale" | "enterprise">("scale");
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  22 |   const [selectedSupport, setSelectedSupport] = useState<"lite" | "pro" | "plus">("pro");
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  23 |   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  24 |   const [activePackage, setActivePackage] = useState<{ name: string, price: number } | null>(null);
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  25 |   const { toast } = useToast();
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  26 | 
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  27 |   // NGN Prices as requested
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  28 |   const PRICES = {
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  29 |     starter: { usd: 2500, ngn: 1500000 },
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  30 |     scale: { usd: 7500, ngn: 5000000 },
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  31 |     reservation: { usd: 500, ngn: 500000 },
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  32 |     support_lite: { usd: 200, ngn: 200000 },
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  33 |     support_pro: { usd: 500, ngn: 500000 },
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  34 |     support_plus: { usd: 1200, ngn: 1200000 },
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  35 |   };
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  36 | 
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  37 |   const formatPrice = (type: keyof typeof PRICES) => {
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  38 |     const priceObj = PRICES[type];
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  39 |     if (currency === "USD") {
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  40 |       return new Intl.NumberFormat("en-US", {
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  41 |         style: "currency",
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  42 |         currency: "USD",
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  43 |         maximumFractionDigits: 0,
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  44 |       }).format(priceObj.usd);
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  45 |     } else {
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  46 |       return new Intl.NumberFormat("en-NG", {
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  47 |         style: "currency",
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  48 |         currency: "NGN",
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  49 |         maximumFractionDigits: 0,
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  50 |       }).format(priceObj.ngn);
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  51 |     }
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  52 |   };
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  53 | 
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  54 | 
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  55 |   return (
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  56 |     <>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  57 |       <section id="pricing" className="py-24 bg-[#050505] text-[#E3DBD8]">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  58 |         <div className="container mx-auto px-4 md:px-6">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  59 | 
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  60 |           {/* Header Section */}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  61 |           <div className="mb-16">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  62 |             <motion.h2
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  63 |               initial={{ opacity: 0, y: 20 }}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  64 |               whileInView={{ opacity: 1, y: 0 }}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  65 |               viewport={{ once: true }}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  66 |               className="text-[12vw] leading-[0.8] font-medium tracking-tighter text-white/[0.15] md:text-[#1C1D20] mb-12 select-none"
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  67 |             >
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  68 |               Pricing
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  69 |             </motion.h2>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  70 | 
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  71 |             <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  72 |               <div className="md:col-span-2 hidden md:block border-l-2 border-primary pl-6 h-12 flex flex-col justify-center">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  73 |                 <span className="block text-2xl font-bold mb-1 text-white leading-none">005</span>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  74 |                 <span className="text-[10px] text-muted-foreground uppercase tracking-[0.3em] font-black underline decoration-primary decoration-2 underline-offset-4">Economics</span>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  75 |               </div>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  76 |               <div className="md:col-span-6">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  77 |                 <h3 className="text-3xl md:text-5xl font-medium tracking-tight text-white leading-tight">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  78 |                   Bespoke engineering, productized speed.
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  79 |                 </h3>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  80 |               </div>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  81 |               <div className="md:col-span-4 flex flex-col items-end justify-end md:h-full gap-6">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  82 |                 <p className="text-white/50 text-right max-w-[280px] text-sm leading-relaxed border-r-2 border-primary/20 pr-6 italic">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  83 |                   Fixed-scope launch packages. Brief us, lock the roadmap, and deposit to start the sprint.
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  84 |                 </p>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  85 | 
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  86 |                 {/* Currency Toggle */}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  87 |                 <div className="flex items-center gap-3 bg-white/10 p-1.5 rounded-full border border-white/20">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  88 |                   <button
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  89 |                     onClick={() => setCurrency("USD")}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  90 |                     className={cn(
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  91 |                       "px-6 py-2 rounded-full text-xs font-bold transition-all relative z-10",
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  92 |                       currency === "USD" ? "bg-primary text-white shadow-lg" : "text-white/40 hover:text-white"
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  93 |                     )}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  94 |                   >
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  95 |                     USD
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  96 |                   </button>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  97 |                   <button
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  98 |                     onClick={() => setCurrency("NGN")}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  99 |                     className={cn(
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 100 |                       "px-6 py-2 rounded-full text-xs font-bold transition-all relative z-10",
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 101 |                       currency === "NGN" ? "bg-primary text-white shadow-lg" : "text-white/40 hover:text-white"
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 102 |                     )}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 103 |                   >
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 104 |                     NGN
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 105 |                   </button>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 106 |                 </div>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 107 |               </div>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 108 |             </div>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 109 |           </div>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 110 | 
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 111 |           <div className="flex flex-col gap-6 mb-24">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 112 |             <div className="flex items-center justify-between mb-4 pl-4 border-l-4 border-primary">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 113 |               <h3 className="text-3xl font-bold text-white tracking-tight">Launch Packages</h3>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 114 |             </div>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 115 | 
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 116 |             {/* Starter Plan */}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 117 |             <motion.div
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 118 |               initial="hidden"
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 119 |               whileInView="visible"
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 120 |               viewport={{ once: true, margin: "-50px" }}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 121 |               variants={fadeInUp}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 122 |               onClick={() => setSelectedPackage("starter")}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 123 |               className={cn(
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 124 |                 "relative rounded-3xl overflow-hidden border transition-all duration-500 cursor-pointer bg-[#141415] group",
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 125 |                 selectedPackage === "starter"
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 126 |                   ? "border-primary shadow-2xl shadow-primary/10"
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 127 |                   : "border-white/5 hover:border-white/10"
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 128 |               )}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 129 |             >
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 130 |               {selectedPackage === "starter" && (
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 131 |                 <div className="absolute top-0 right-0 bg-primary text-white text-[10px] font-black px-4 py-1.5 rounded-bl-2xl tracking-widest uppercase z-20">SELECTED</div>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 132 |               )}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 133 |               <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[200px]">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 134 |                 {/* Info */}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 135 |                 <div className="lg:col-span-3 p-8 border-b lg:border-b-0 lg:border-r border-white/5 flex flex-col justify-center">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 136 |                   <h4 className="text-xl font-bold text-white mb-2 font-display">Starter</h4>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 137 |                   <p className="text-white/40 text-xs leading-relaxed">Build a high-fidelity MVP from your brief. Perfect for solo founders looking to validate fast.</p>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 138 |                 </div>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 139 |                 {/* Price */}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 140 |                 <div className="lg:col-span-3 p-8 border-b lg:border-b-0 lg:border-r border-white/5 flex flex-col justify-center items-center">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 141 |                   <AnimatePresence mode="wait">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 142 |                     <motion.div
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 143 |                       key={currency}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 144 |                       initial={{ opacity: 0, y: 10 }}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 145 |                       animate={{ opacity: 1, y: 0 }}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 146 |                       exit={{ opacity: 0, y: -10 }}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 147 |                       className={cn(
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 148 |                         "font-bold text-white font-display text-center",
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 149 |                         currency === "NGN" ? "text-2xl md:text-3xl" : "text-3xl md:text-4xl"
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 150 |                       )}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 151 |                     >
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 152 |                       {formatPrice("starter")}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 153 |                     </motion.div>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 154 |                   </AnimatePresence>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 155 |                   <span className="text-[10px] text-white/20 uppercase tracking-widest font-black mt-2">One-time</span>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 156 |                 </div>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 157 |                 {/* Features */}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 158 |                 <div className="lg:col-span-3 p-8 border-b lg:border-b-0 lg:border-r border-white/5 flex items-center">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 159 |                   <ul className="space-y-2 text-xs text-white/50">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 160 |                     <li className="flex gap-3 items-center"><Check className="w-3.5 h-3.5 text-primary shrink-0" /> <span className="truncate">MVP Technical Brief</span></li>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 161 |                     <li className="flex gap-3 items-center"><Check className="w-3.5 h-3.5 text-primary shrink-0" /> <span className="truncate">Modular Foundation</span></li>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 162 |                     <li className="flex gap-3 items-center"><Check className="w-3.5 h-3.5 text-primary shrink-0" /> <span className="truncate">Auth & Cloud Setup</span></li>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 163 |                     <li className="flex gap-3 items-center"><Check className="w-3.5 h-3.5 text-primary shrink-0" /> <span className="truncate">7 days priority support</span></li>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 164 |                   </ul>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 165 |                 </div>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 166 |                 {/* CTA */}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 167 |                 <div className="lg:col-span-3 p-8 flex items-center justify-center">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 168 |                   <motion.button
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 169 |                     whileHover={{ scale: 1.02 }}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 170 |                     whileTap={{ scale: 0.98 }}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 171 |                     onClick={(e) => {
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 172 |                       e.stopPropagation();
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 173 |                       setActivePackage({ name: "Starter", price: PRICES.reservation.usd });
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 174 |                       setIsCheckoutOpen(true);
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 175 |                     }}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 176 |                     className={cn(
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 177 |                       "w-full h-14 rounded-2xl font-bold tracking-tight transition-all flex items-center justify-center gap-2 group/btn px-4 text-center",
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 178 |                       currency === "NGN" ? "text-[10px] md:text-xs" : "text-sm",
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 179 |                       selectedPackage === "starter"
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 180 |                         ? "bg-primary text-white shadow-xl shadow-primary/20"
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 181 |                         : "bg-white/[0.03] hover:bg-white/[0.08] text-white border border-white/10"
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 182 |                     )}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 183 |                   >
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 184 |                     <span className="truncate">Reserve Slot — {formatPrice("reservation")}</span>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 185 |                     <ArrowRight className={cn(
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 186 |                       "w-4 h-4 transition-all shrink-0",
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 187 |                       selectedPackage === "starter" ? "translate-x-0" : "opacity-0 -ml-4 group-hover/btn:opacity-100 group-hover/btn:ml-0"
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 188 |                     )} />
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 189 |                   </motion.button>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 190 |                 </div>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 191 |               </div>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 192 |             </motion.div>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 193 | 
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 194 |             {/* Scale Plan */}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 195 |             <motion.div
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 196 |               initial="hidden"
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 197 |               whileInView="visible"
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 198 |               viewport={{ once: true, margin: "-50px" }}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 199 |               variants={fadeInUp}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 200 |               onClick={() => setSelectedPackage("scale")}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 201 |               className={cn(
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 202 |                 "relative rounded-3xl overflow-hidden border transition-all duration-500 cursor-pointer bg-[#141415] group",
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 203 |                 selectedPackage === "scale"
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 204 |                   ? "border-primary shadow-2xl shadow-primary/10"
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 205 |                   : "border-white/5 hover:border-white/10"
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 206 |               )}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 207 |             >
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 208 |               {selectedPackage === "scale" && (
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 209 |                 <div className="absolute top-0 right-0 bg-primary text-white text-[10px] font-black px-4 py-1.5 rounded-bl-2xl tracking-widest uppercase z-20">SELECTED</div>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 210 |               )}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 211 |               <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[200px]">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 212 |                 {/* Info */}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 213 |                 <div className="lg:col-span-3 p-8 border-b lg:border-b-0 lg:border-r border-white/5 flex flex-col justify-center">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 214 |                   <h4 className="text-xl font-bold text-white mb-2 font-display">Scale</h4>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 215 |                   <p className="text-white/40 text-xs leading-relaxed">Custom heavy lifting for teams going after paying users and market traction.</p>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 216 |                 </div>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 217 |                 {/* Price */}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 218 |                 <div className="lg:col-span-3 p-8 border-b lg:border-b-0 lg:border-r border-white/5 flex flex-col justify-center items-center">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 219 |                   <AnimatePresence mode="wait">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 220 |                     <motion.div
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 221 |                       key={currency}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 222 |                       initial={{ opacity: 0, y: 10 }}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 223 |                       animate={{ opacity: 1, y: 0 }}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 224 |                       exit={{ opacity: 0, y: -10 }}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 225 |                       className={cn(
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 226 |                         "font-bold text-white font-display text-center",
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 227 |                         currency === "NGN" ? "text-2xl md:text-3xl" : "text-3xl md:text-4xl"
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 228 |                       )}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 229 |                     >
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 230 |                       {formatPrice("scale")}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 231 |                     </motion.div>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 232 |                   </AnimatePresence>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 233 |                   <span className="text-[10px] text-white/20 uppercase tracking-widest font-black mt-2">One-time</span>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 234 |                 </div>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 235 |                 {/* Features */}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 236 |                 <div className="lg:col-span-3 p-8 border-b lg:border-b-0 lg:border-r border-white/5 flex items-center">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 237 |                   <ul className="grid grid-cols-1 xl:grid-cols-2 gap-x-6 gap-y-2 text-xs text-white/50 w-full">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 238 |                     <li className="flex gap-3 items-center"><Check className="w-3.5 h-3.5 text-primary shrink-0" /> <span className="truncate">Custom UI roadmap</span></li>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 239 |                     <li className="flex gap-3 items-center"><Check className="w-3.5 h-3.5 text-primary shrink-0" /> <span className="truncate">Advanced analytics</span></li>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 240 |                     <li className="flex gap-3 items-center"><Check className="w-3.5 h-3.5 text-primary shrink-0" /> <span className="truncate">Priority support</span></li>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 241 |                     <li className="flex gap-3 items-center"><Check className="w-3.5 h-3.5 text-primary shrink-0" /> <span className="truncate">14-day sprint</span></li>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 242 |                     <li className="flex gap-3 items-center"><Check className="w-3.5 h-3.5 text-primary shrink-0" /> <span className="truncate">Deploy & Training</span></li>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 243 |                     <li className="flex gap-3 items-center"><Check className="w-3.5 h-3.5 text-primary shrink-0" /> <span className="truncate">Flutterwave Setup</span></li>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 244 |                   </ul>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 245 |                 </div>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 246 |                 {/* CTA */}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 247 |                 <div className="lg:col-span-3 p-8 flex items-center justify-center">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 248 |                   <motion.button
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 249 |                     whileHover={{ scale: 1.02 }}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 250 |                     whileTap={{ scale: 0.98 }}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 251 |                     onClick={(e) => {
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 252 |                       e.stopPropagation();
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 253 |                       setActivePackage({ name: "Scale", price: PRICES.reservation.usd });
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 254 |                       setIsCheckoutOpen(true);
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 255 |                     }}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 256 |                     className={cn(
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 257 |                       "w-full h-14 rounded-2xl font-bold tracking-tight transition-all flex items-center justify-center gap-2 group/btn px-4 text-center",
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 258 |                       currency === "NGN" ? "text-[10px] md:text-xs" : "text-sm",
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 259 |                       selectedPackage === "scale"
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 260 |                         ? "bg-primary text-white shadow-xl shadow-primary/20"
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 261 |                         : "bg-white/[0.03] hover:bg-white/[0.08] text-white border border-white/10"
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 262 |                     )}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 263 |                   >
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 264 |                     <span className="truncate">Reserve Slot — {formatPrice("reservation")}</span>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 265 |                     <ArrowRight className={cn(
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 266 |                       "w-4 h-4 transition-all shrink-0",
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 267 |                       selectedPackage === "scale" ? "translate-x-0" : "opacity-0 -ml-4 group-hover/btn:opacity-100 group-hover/btn:ml-0"
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 268 |                     )} />
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 269 |                   </motion.button>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 270 |                 </div>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 271 |               </div>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 272 |             </motion.div>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 273 | 
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 274 |             {/* Enterprise Plan */}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 275 |             <motion.div
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 276 |               initial="hidden"
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 277 |               whileInView="visible"
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 278 |               viewport={{ once: true, margin: "-50px" }}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 279 |               variants={fadeInUp}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 280 |               onClick={() => setSelectedPackage("enterprise")}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 281 |               className={cn(
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 282 |                 "relative rounded-3xl overflow-hidden border transition-all duration-500 cursor-pointer bg-[#141415] group",
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 283 |                 selectedPackage === "enterprise"
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 284 |                   ? "border-primary shadow-2xl shadow-primary/10"
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 285 |                   : "border-white/5 hover:border-white/10"
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 286 |               )}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 287 |             >
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 288 |               {selectedPackage === "enterprise" && (
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 289 |                 <div className="absolute top-0 right-0 bg-primary text-white text-[10px] font-black px-4 py-1.5 rounded-bl-2xl tracking-widest uppercase z-20">SELECTED</div>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 290 |               )}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 291 |               <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[200px]">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 292 |                 {/* Info */}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 293 |                 <div className="lg:col-span-3 p-8 border-b lg:border-b-0 lg:border-r border-white/5 flex flex-col justify-center">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 294 |                   <h4 className="text-xl font-bold text-white mb-2 font-display">Enterprise</h4>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 295 |                   <p className="text-white/40 text-xs leading-relaxed">For complex requirements and custom heavy lifting.</p>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 296 |                 </div>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 297 |                 {/* Price */}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 298 |                 <div className="lg:col-span-3 p-8 border-b lg:border-b-0 lg:border-r border-white/5 flex flex-col justify-center items-center">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 299 |                   <div className="text-3xl md:text-4xl font-bold text-white font-display">Custom</div>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 300 |                   <span className="text-[10px] text-white/20 uppercase tracking-widest font-black mt-2">Bespoke</span>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 301 |                 </div>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 302 |                 {/* Features */}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 303 |                 <div className="lg:col-span-3 p-8 border-b lg:border-b-0 lg:border-r border-white/5 flex items-center">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 304 |                   <ul className="space-y-3 text-xs text-white/50">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 305 |                     <li className="flex gap-3 items-center"><Check className="w-3.5 h-3.5 text-primary shrink-0" /> <span className="truncate">Dedicated engineer</span></li>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 306 |                     <li className="flex gap-3 items-center"><Check className="w-3.5 h-3.5 text-primary shrink-0" /> <span className="truncate">Private hosting</span></li>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 307 |                     <li className="flex gap-3 items-center"><Check className="w-3.5 h-3.5 text-primary shrink-0" /> <span className="truncate">Complex Integrations</span></li>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 308 |                     <li className="flex gap-3 items-center"><Check className="w-3.5 h-3.5 text-primary shrink-0" /> <span className="truncate">SLA & training</span></li>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 309 |                   </ul>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 310 |                 </div>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 311 |                 {/* CTA */}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 312 |                 <div className="lg:col-span-3 p-8 flex items-center justify-center">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 313 |                   <motion.button
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 314 |                     whileHover={{ scale: 1.02 }}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 315 |                     whileTap={{ scale: 0.98 }}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 316 |                     onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 317 |                     className={cn(
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 318 |                       "w-full h-14 rounded-2xl font-bold text-sm tracking-tight transition-all",
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 319 |                       selectedPackage === "enterprise"
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 320 |                         ? "bg-primary text-white shadow-xl shadow-primary/20"
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 321 |                         : "bg-white/[0.03] hover:bg-white/[0.08] text-white border border-white/10"
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 322 |                     )}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 323 |                   >
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 324 |                     Contact Sales
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 325 |                   </motion.button>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 326 |                 </div>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 327 |               </div>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 328 |             </motion.div>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 329 |           </div>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 330 | 
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 331 |           {/* Monthly Support Add-ons */}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 332 |           <div>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 333 |             <h3 className="text-2xl font-medium text-white mb-8 pl-2 border-l-4 border-white/20">Monthly Support <span className="text-muted-foreground text-sm font-normal ml-2">(Optional)</span></h3>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 334 |             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 335 |               <motion.div
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 336 |                 onClick={() => setSelectedSupport("lite")}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 337 |                 whileHover={{ y: -5 }}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 338 |                 className={cn(
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 339 |                   "p-8 rounded-3xl bg-[#141415] border transition-all cursor-pointer group relative",
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 340 |                   selectedSupport === "lite" ? "border-primary shadow-lg shadow-primary/5" : "border-white/5"
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 341 |                 )}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 342 |               >
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 343 |                 {selectedSupport === "lite" && (
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 344 |                   <div className="absolute top-4 right-4 w-2 h-2 rounded-full bg-primary animate-pulse" />
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 345 |                 )}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 346 |                 <h4 className={cn(
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 347 |                   "font-bold text-base mb-1 transition-colors",
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 348 |                   selectedSupport === "lite" ? "text-white" : "text-white/60 group-hover:text-white"
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 349 |                 )}>Support Lite</h4>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 350 |                 <div className={cn(
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 351 |                   "font-bold text-primary mb-4",
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 352 |                   currency === "NGN" ? "text-xl" : "text-2xl"
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 353 |                 )}>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 354 |                   {formatPrice("support_lite")}<span className="text-xs text-muted-foreground font-normal">/mo</span>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 355 |                 </div>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 356 |                 <p className="text-xs text-white/40 leading-relaxed">Essential fixes, monitoring, and regular dependency updates.</p>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 357 |               </motion.div>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 358 | 
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 359 |               <motion.div
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 360 |                 onClick={() => setSelectedSupport("pro")}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 361 |                 whileHover={{ y: -5 }}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 362 |                 className={cn(
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 363 |                   "p-8 rounded-3xl bg-[#141415] border transition-all cursor-pointer group relative",
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 364 |                   selectedSupport === "pro" ? "border-primary shadow-lg shadow-primary/5" : "border-white/5"
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 365 |                 )}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 366 |               >
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 367 |                 {selectedSupport === "pro" && (
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 368 |                   <div className="absolute top-4 right-4 w-2 h-2 rounded-full bg-primary animate-pulse" />
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 369 |                 )}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 370 |                 <h4 className={cn(
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 371 |                   "font-bold text-base mb-1 transition-colors",
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 372 |                   selectedSupport === "pro" ? "text-white" : "text-white/60 group-hover:text-white"
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 373 |                 )}>Support Pro</h4>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 374 |                 <div className={cn(
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 375 |                   "font-bold text-primary mb-4",
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 376 |                   currency === "NGN" ? "text-xl" : "text-2xl"
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 377 |                 )}>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 378 |                   {formatPrice("support_pro")}<span className="text-xs text-muted-foreground font-normal">/mo</span>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 379 |                 </div>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 380 |                 <p className="text-xs text-white/40 leading-relaxed">Priority fixes, performance health checks, and 48hr response time.</p>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 381 |               </motion.div>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 382 | 
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 383 |               <motion.div
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 384 |                 onClick={() => setSelectedSupport("plus")}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 385 |                 whileHover={{ y: -5 }}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 386 |                 className={cn(
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 387 |                   "p-8 rounded-3xl bg-[#141415] border transition-all cursor-pointer group relative",
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 388 |                   selectedSupport === "plus" ? "border-primary shadow-lg shadow-primary/5" : "border-white/5"
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 389 |                 )}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 390 |               >
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 391 |                 {selectedSupport === "plus" && (
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 392 |                   <div className="absolute top-4 right-4 w-2 h-2 rounded-full bg-primary animate-pulse" />
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 393 |                 )}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 394 |                 <h4 className={cn(
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 395 |                   "font-bold text-base mb-1 transition-colors",
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 396 |                   selectedSupport === "plus" ? "text-white" : "text-white/60 group-hover:text-white"
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 397 |                 )}>Support Plus</h4>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 398 |                 <div className={cn(
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 399 |                   "font-bold text-primary mb-4",
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 400 |                   currency === "NGN" ? "text-xl" : "text-2xl"
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 401 |                 )}>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 402 |                   {formatPrice("support_plus")}<span className="text-xs text-muted-foreground font-normal">/mo</span>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 403 |                 </div>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 404 |                 <p className="text-xs text-white/40 leading-relaxed">Dedicated engineering hours, quarterly audits, and custom scaling.</p>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 405 |               </motion.div>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 406 |             </div>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 407 |           </div>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 408 | 
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 409 |           {/* Reserve Microcopy */}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 410 |           <div className="text-center border-t border-white/5 mt-16 pt-12">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 411 |             <p className="text-white/60 text-xs max-w-2xl mx-auto leading-relaxed">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 412 |               Reserve your slot with a refundable {formatPrice("reservation")} deposit. Final payment triggers transfer of full source, database ownership, and technical handover. Prices include local processing fees and 4% volatility protection.
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 413 |             </p>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 414 |           </div>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 415 | 
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 416 |           <CheckoutDialog
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 417 |             isOpen={isCheckoutOpen}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 418 |             onClose={() => setIsCheckoutOpen(false)}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 419 |             price={currency === "USD" ? PRICES.reservation.usd : PRICES.reservation.ngn}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 420 |             currency={currency}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 421 |             packageName={activePackage?.name || ""}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 422 |           />
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 423 |         </div>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 424 |       </section>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 425 |     </>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 426 |   );
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 427 | }
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 428 | 
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 429 | 
+      | ^
+
+Unterminated template
+
+Import traces:
+  Client Component Browser:
+    ./client/src/components/sections/pricing.tsx [Client Component Browser]
+    ./client/src/pages/home.tsx [Client Component Browser]
+    ./client/src/App.tsx [Client Component Browser]
+    ./app/components/client-wrapper.tsx [Client Component Browser]
+    ./app/components/client-wrapper.tsx [Server Component]
+    ./app/[[...slug]]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./client/src/components/sections/pricing.tsx [Client Component SSR]
+    ./client/src/pages/home.tsx [Client Component SSR]
+    ./client/src/App.tsx [Client Component SSR]
+    ./app/components/client-wrapper.tsx [Client Component SSR]
+    ./app/components/client-wrapper.tsx [Server Component]
+    ./app/[[...slug]]/page.tsx [Server Component]
+[00:25:06.104] Server  LOG     ✓ Compiled in 161ms
+[00:25:19.340] Server  LOG     ✓ Compiled in 115ms
+[00:25:32.775] Server  LOG     ✓ Compiled in 91ms
+[00:25:40.748] Server  LOG     ✓ Compiled in 101ms
+[00:26:09.577] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:27:10.802] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.

@@ -10,7 +10,6 @@ import { Pricing } from "@/components/sections/pricing";
 import { FAQ } from "@/components/sections/faq";
 import { Team } from "@/components/sections/team";
 import { Testimonials } from "@/components/sections/testimonials";
-import { Labs } from "@/components/sections/labs";
 import { NameAnimation } from "@/components/sections/name-animation";
 import { CTA } from "@/components/sections/cta";
 import { Marquee } from "@/components/ui/marquee";
@@ -51,7 +50,6 @@ export default function Home() {
         <FAQ />
         <Team />
         <Testimonials />
-        <Labs />
         <NameAnimation />
         <CTA />
       </main>
