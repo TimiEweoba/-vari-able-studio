@@ -7679,15 +7679,15 @@ function NameAnimation() {
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
             className: "py-16 md:py-24 bg-primary text-white overflow-hidden flex flex-col gap-4 md:gap-8 select-none border-t border-white/10",
             children: [
-                !__TURBOPACK__imported__module__$5b$project$5d2f$client$2f$src$2f$lib$2f$animations$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["isMobile"] && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(MarqueeRow, {
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(MarqueeRow, {
                     text: "veri—able",
                     subText: "Your software business, streamlined for growth.",
-                    speed: 60,
+                    speed: __TURBOPACK__imported__module__$5b$project$5d2f$client$2f$src$2f$lib$2f$animations$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["isMobile"] ? 40 : 60,
                     className: "text-[10vw] md:text-[5vw] text-white/90"
                 }, void 0, false, {
                     fileName: "[project]/client/src/components/sections/name-animation.tsx",
-                    lineNumber: 57,
-                    columnNumber: 21
+                    lineNumber: 56,
+                    columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(MarqueeRow, {
                     text: "veri—able",
@@ -7696,18 +7696,18 @@ function NameAnimation() {
                     className: "text-[18vw] md:text-[10vw] text-white"
                 }, void 0, false, {
                     fileName: "[project]/client/src/components/sections/name-animation.tsx",
-                    lineNumber: 66,
+                    lineNumber: 64,
                     columnNumber: 17
                 }, this),
-                !__TURBOPACK__imported__module__$5b$project$5d2f$client$2f$src$2f$lib$2f$animations$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["isMobile"] && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(MarqueeRow, {
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(MarqueeRow, {
                     text: "veri—able",
                     subText: "Where running and growing your software business gets simple.",
-                    speed: 40,
+                    speed: __TURBOPACK__imported__module__$5b$project$5d2f$client$2f$src$2f$lib$2f$animations$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["isMobile"] ? 25 : 40,
                     className: "text-[28vw] md:text-[18vw] text-white/90"
                 }, void 0, false, {
                     fileName: "[project]/client/src/components/sections/name-animation.tsx",
-                    lineNumber: 75,
-                    columnNumber: 21
+                    lineNumber: 72,
+                    columnNumber: 17
                 }, this)
             ]
         }, void 0, true, {
