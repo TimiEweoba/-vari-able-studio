@@ -108,16 +108,11 @@ export function Navbar() {
           <div className="flex items-center gap-4">
             <Button
               onClick={() => {
-                const contact = document.getElementById("contact");
-                if (contact) {
-                  contact.scrollIntoView({ behavior: "smooth" });
-                } else {
-                  window.location.href = "/#contact";
-                }
+                window.location.href = "/promo";
               }}
               className="hidden md:flex bg-primary hover:bg-primary/90 text-white h-11 px-8 rounded-xl font-semibold transition-all hover:shadow-[0_0_25px_color-mix(in_srgb,var(--color-primary),transparent_60%)] hover:scale-105 active:scale-95 border-none cursor-pointer"
             >
-              Book a Demo
+              Free Preview Promo
             </Button>
 
             {/* Mobile Toggle */}
@@ -214,18 +209,11 @@ export function Navbar() {
                   <Button
                     onClick={() => {
                       setIsMobileOpen(false);
-                      const contact = document.getElementById("contact");
-                      if (contact) {
-                        setTimeout(() => {
-                          contact.scrollIntoView({ behavior: "smooth" });
-                        }, 300);
-                      } else {
-                        window.location.href = "/#contact";
-                      }
+                      window.location.href = "/promo";
                     }}
                     className="w-full bg-primary hover:bg-primary/90 text-white rounded-2xl py-8 text-xl font-bold shadow-xl shadow-primary/20 transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
                   >
-                    Book a Demo
+                    Free Preview Promo
                   </Button>
                 </div>
               </div>

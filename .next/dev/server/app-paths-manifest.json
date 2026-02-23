@@ -1,3 +1,5 @@
 {
-  "/[[...slug]]/page": "app/[[...slug]]/page.js"
+  "/[[...slug]]/page": "app/[[...slug]]/page.js",
+  "/api/payments/initialize/route": "app/api/payments/initialize/route.js",
+  "/api/payments/verify/[txRef]/route": "app/api/payments/verify/[txRef]/route.js"
 }

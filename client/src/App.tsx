@@ -13,6 +13,7 @@ import Compliance from "@/pages/compliance";
 import CaseStudies from "@/pages/case-studies";
 import TechStack from "@/pages/tech-stack";
 import PaymentCallback from "@/pages/payment-callback";
+import Promo from "@/pages/promo";
 
 import { PageTransition } from "@/components/layout/page-transition";
 
@@ -28,6 +29,7 @@ function Router() {
         <Route path="/tech" component={TechStack} />
         <Route path="/success" component={Success} />
         <Route path="/payment/callback" component={PaymentCallback} />
+        <Route path="/promo" component={Promo} />
         <Route component={NotFound} />
       </Switch>
     </PageTransition>
@@ -35,8 +37,6 @@ function Router() {
 }
 
 import { CustomCursor } from "@/components/ui/custom-cursor";
-import { ThemeSettings } from "@/components/ui/theme-settings";
-import { TerminalView } from "@/components/ui/terminal-view";
 
 import { SmoothScroll } from "@/components/layout/smooth-scroll";
 import { ScrollToTop } from "@/components/layout/scroll-to-top";
@@ -49,8 +49,6 @@ function App() {
           <ScrollToTop />
           <Toaster />
           <CustomCursor />
-          <ThemeSettings />
-          <TerminalView />
           <Router />
         </SmoothScroll>
       </TooltipProvider>

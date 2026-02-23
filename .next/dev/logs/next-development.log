@@ -1,5 +1,106 @@
-[00:00:02.473] Server  LOG     ✓ Ready in 1646ms
-[00:00:06.460] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:07.055] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
-[00:06:22.578] Server  LOG     ✓ Compiled in 718ms
-[00:06:52.838] Server  LOG     ✓ Compiled in 115ms
+[00:00:01.195] Server  LOG     ✓ Ready in 828ms
+[00:00:01.198] Server  WARN    ⚠ Cross origin request detected from 192.168.1.174 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+[00:00:03.171] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:03.636] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[00:00:18.177] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:26.825] Server  LOG     [Storage] Attempting to connect to MongoDB...
+[00:00:26.859] Server  LOG     [Flutterwave] Initializing payment: {}
+[00:00:26.860] Server  LOG     [Flutterwave] Payment payload: "{\n  \"tx_ref\": \"VS-d4f743bc-b88b-4ad3-b855-bdd8de3ae593\",\n  \"amount\": 15000,\n  \"currency\": \"NGN\",\n  \"redirect_url\": \"http://localhost:3000/payment/callback\",\n  \"payment_options\": \"card, account, banktransfer, ussd, mobilemoneygh, mobilemoneyfranco, mobilemoneyug, mobilemoneyrw, mobilemoneyzm, mobilemoneyks, barter, ozeemoney, payattitude, pwa, credit, 1ach, bank_transfer\",\n  \"customer\": {\n    \"email\": \"kaiknightokpandu@gmail.com\",\n    \"name\": \"Dennis\",\n    \"phone_number\": \"0000000000\"\n  },\n  \"customizations\": {\n    \"title\": \"veri—able studio\",\n    \"description\": \"Project Reservation Deposit\",\n    \"logo\": \"https://veriable.xyz/logo.png\"\n  }\n}"
+[00:00:26.914] Server  ERROR   [Storage] MongoDB connection failed: "querySrv ESERVFAIL _mongodb._tcp.cluster0.rgxnfaq.mongodb.net"
+[00:00:26.915] Server  WARN    [Storage] Using In-Memory Storage (Data will be lost on restart)
+[00:00:26.929] Server  WARN    [Flutterwave] DNS Error detected. Falling back to MOCK MODE for development.
+[00:00:27.673] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:27.859] Browser LOG     Payment Callback Params: {"status":"successful","transaction_id":null,"tx_ref":"VS-d4f743bc-b88b-4ad3-b855-bdd8de3ae593"}
+[00:00:27.859] Browser LOG     Payment Callback Params: {"status":"successful","transaction_id":null,"tx_ref":"VS-d4f743bc-b88b-4ad3-b855-bdd8de3ae593"}
+[00:00:29.398] Server  WARN    Error: Route "/api/payments/verify/[txRef]" used `params.txRef`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+[00:00:29.511] Server  WARN    Error: Route "/api/payments/verify/[txRef]" used `params.txRef`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+[00:00:32.309] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:32.900] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[00:00:44.480] Server  LOG     [Flutterwave] Initializing payment: {}
+[00:00:44.480] Server  LOG     [Flutterwave] Payment payload: "{\n  \"tx_ref\": \"VS-e6323238-e1ec-4709-9d8d-f2d5cf7001db\",\n  \"amount\": 500,\n  \"currency\": \"USD\",\n  \"redirect_url\": \"http://localhost:3000/payment/callback\",\n  \"payment_options\": \"card, account, banktransfer, ussd, mobilemoneygh, mobilemoneyfranco, mobilemoneyug, mobilemoneyrw, mobilemoneyzm, mobilemoneyks, barter, ozeemoney, payattitude, pwa, credit, 1ach, bank_transfer\",\n  \"customer\": {\n    \"email\": \"kaiknightokpandu@gmail.com\",\n    \"name\": \"Dennis\",\n    \"phone_number\": \"0000000000\"\n  },\n  \"customizations\": {\n    \"title\": \"veri—able studio\",\n    \"description\": \"Project Reservation Deposit\",\n    \"logo\": \"https://veriable.xyz/logo.png\"\n  }\n}"
+[00:01:06.267] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:06.669] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[00:01:21.182] Server  LOG     [Flutterwave] Initializing payment: {}
+[00:01:21.183] Server  LOG     [Flutterwave] Payment payload: "{\n  \"tx_ref\": \"VS-d3e5955e-751b-4dba-ac99-6e6f0b7b7956\",\n  \"amount\": 500,\n  \"currency\": \"USD\",\n  \"redirect_url\": \"http://localhost:3000/payment/callback\",\n  \"payment_options\": \"card, account, banktransfer, ussd, mobilemoneygh, mobilemoneyfranco, mobilemoneyug, mobilemoneyrw, mobilemoneyzm, mobilemoneyks, barter, ozeemoney, payattitude, pwa, credit, 1ach, bank_transfer\",\n  \"customer\": {\n    \"email\": \"kaiknightokpandu@gmail.com\",\n    \"name\": \"Dennis\",\n    \"phone_number\": \"0000000000\"\n  },\n  \"customizations\": {\n    \"title\": \"veri—able studio\",\n    \"description\": \"Project Reservation Deposit\",\n    \"logo\": \"https://veriable.xyz/logo.png\"\n  }\n}"
+[00:01:21.819] Server  LOG     [Flutterwave] Response Status: 503
+[00:01:21.986] Server  ERROR   Payment initialization error: Error: An error occurred. Please contact support
+[00:01:23.043] Server  LOG     [Flutterwave] Response Status: 200
+[00:01:40.526] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:40.708] Browser LOG     Payment Callback Params: {"status":"cancelled","transaction_id":null,"tx_ref":"VS-d3e5955e-751b-4dba-ac99-6e6f0b7b7956"}
+[00:01:40.708] Browser LOG     Payment Callback Params: {"status":"cancelled","transaction_id":null,"tx_ref":"VS-d3e5955e-751b-4dba-ac99-6e6f0b7b7956"}
+[00:01:41.723] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:42.219] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[00:01:48.622] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:49.028] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[00:01:51.973] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:58.325] Server  LOG     [Flutterwave] Initializing payment: {}
+[00:01:58.326] Server  LOG     [Flutterwave] Payment payload: "{\n  \"tx_ref\": \"VS-19203871-36ee-468a-b85d-34b477ecb88c\",\n  \"amount\": 15000,\n  \"currency\": \"NGN\",\n  \"redirect_url\": \"http://localhost:3000/payment/callback\",\n  \"payment_options\": \"card, account, banktransfer, ussd, mobilemoneygh, mobilemoneyfranco, mobilemoneyug, mobilemoneyrw, mobilemoneyzm, mobilemoneyks, barter, ozeemoney, payattitude, pwa, credit, 1ach, bank_transfer\",\n  \"customer\": {\n    \"email\": \"kaiknightokpandu@gmail.com\",\n    \"name\": \"Dennis Okpandu\",\n    \"phone_number\": \"0000000000\"\n  },\n  \"customizations\": {\n    \"title\": \"veri—able studio\",\n    \"description\": \"Project Reservation Deposit\",\n    \"logo\": \"https://veriable.xyz/logo.png\"\n  }\n}"
+[00:02:08.999] Server  WARN    [Flutterwave] DNS Error detected. Falling back to MOCK MODE for development.
+[00:02:09.321] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:02:40.787] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:02:40.947] Browser LOG     Payment Callback Params: {"status":"cancelled","transaction_id":null,"tx_ref":null}
+[00:02:40.947] Browser LOG     Payment Callback Params: {"status":"cancelled","transaction_id":null,"tx_ref":null}
+[00:02:42.394] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:02:42.818] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[00:02:45.297] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:02:45.629] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[00:02:52.446] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:02:58.094] Server  LOG     [Flutterwave] Initializing payment: {}
+[00:02:58.095] Server  LOG     [Flutterwave] Payment payload: "{\n  \"tx_ref\": \"VS-1a176e75-284d-4cf6-9c69-037992350dfc\",\n  \"amount\": 15000,\n  \"currency\": \"NGN\",\n  \"redirect_url\": \"http://localhost:3000/payment/callback\",\n  \"payment_options\": \"card, account, banktransfer, ussd, mobilemoneygh, mobilemoneyfranco, mobilemoneyug, mobilemoneyrw, mobilemoneyzm, mobilemoneyks, barter, ozeemoney, payattitude, pwa, credit, 1ach, bank_transfer\",\n  \"customer\": {\n    \"email\": \"kaiknightokpandu@gmail.com\",\n    \"name\": \"Dennis\",\n    \"phone_number\": \"0000000000\"\n  },\n  \"customizations\": {\n    \"title\": \"veri—able studio\",\n    \"description\": \"Project Reservation Deposit\",\n    \"logo\": \"https://veriable.xyz/logo.png\"\n  }\n}"
+[00:03:00.085] Server  LOG     [Flutterwave] Response Status: 200
+[00:03:12.828] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:13.026] Browser LOG     Payment Callback Params: {"status":"cancelled","transaction_id":null,"tx_ref":"VS-1a176e75-284d-4cf6-9c69-037992350dfc"}
+[00:03:13.026] Browser LOG     Payment Callback Params: {"status":"cancelled","transaction_id":null,"tx_ref":"VS-1a176e75-284d-4cf6-9c69-037992350dfc"}
+[00:03:13.880] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:14.385] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[00:03:16.624] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:22.368] Server  LOG     [Flutterwave] Initializing payment: {}
+[00:03:22.369] Server  LOG     [Flutterwave] Payment payload: "{\n  \"tx_ref\": \"VS-68c99cdb-2397-47f5-9608-2988c2d98e18\",\n  \"amount\": 150000,\n  \"currency\": \"NGN\",\n  \"redirect_url\": \"http://localhost:3000/payment/callback\",\n  \"payment_options\": \"card, account, banktransfer, ussd, mobilemoneygh, mobilemoneyfranco, mobilemoneyug, mobilemoneyrw, mobilemoneyzm, mobilemoneyks, barter, ozeemoney, payattitude, pwa, credit, 1ach, bank_transfer\",\n  \"customer\": {\n    \"email\": \"kaiknightokpandu@gmail.com\",\n    \"name\": \"Dennis\",\n    \"phone_number\": \"0000000000\"\n  },\n  \"customizations\": {\n    \"title\": \"veri—able studio\",\n    \"description\": \"Project Reservation Deposit\",\n    \"logo\": \"https://veriable.xyz/logo.png\"\n  }\n}"
+[00:03:56.814] Server  LOG     [Flutterwave] Response Status: 503
+[00:03:56.913] Server  ERROR   Payment initialization error: Error: An error occurred. Please contact support
+[00:04:04.203] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:04:06.295] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[00:04:11.957] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:04:19.482] Server  LOG     [Flutterwave] Initializing payment: {}
+[00:04:19.482] Server  LOG     [Flutterwave] Payment payload: "{\n  \"tx_ref\": \"VS-6b2d7a8f-c579-4670-97f7-3414be5bc827\",\n  \"amount\": 150000,\n  \"currency\": \"NGN\",\n  \"redirect_url\": \"http://localhost:3000/payment/callback\",\n  \"payment_options\": \"card, account, banktransfer, ussd, mobilemoneygh, mobilemoneyfranco, mobilemoneyug, mobilemoneyrw, mobilemoneyzm, mobilemoneyks, barter, ozeemoney, payattitude, pwa, credit, 1ach, bank_transfer\",\n  \"customer\": {\n    \"email\": \"kaiknightokpandu@gmail.com\",\n    \"name\": \"Dennis\",\n    \"phone_number\": \"0000000000\"\n  },\n  \"customizations\": {\n    \"title\": \"veri—able studio\",\n    \"description\": \"Project Reservation Deposit\",\n    \"logo\": \"https://veriable.xyz/logo.png\"\n  }\n}"
+[00:04:20.434] Server  LOG     [Flutterwave] Response Status: 200
+[00:06:14.509] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:06:14.682] Browser LOG     Payment Callback Params: {"status":"cancelled","transaction_id":null,"tx_ref":"VS-6b2d7a8f-c579-4670-97f7-3414be5bc827"}
+[00:06:14.682] Browser LOG     Payment Callback Params: {"status":"cancelled","transaction_id":null,"tx_ref":"VS-6b2d7a8f-c579-4670-97f7-3414be5bc827"}
+[00:06:15.991] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:06:16.567] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[00:06:17.863] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:06:18.332] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[00:08:40.106] Server  LOG     ✓ Compiled in 553ms
+[00:08:50.154] Server  LOG     ✓ Compiled in 248ms
+[00:09:00.475] Server  LOG     ✓ Compiled in 159ms
+[00:09:57.330] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:09:57.771] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[00:10:00.141] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:10:37.490] Server  LOG     [Flutterwave] Initializing payment: {}
+[00:10:37.492] Server  LOG     [Flutterwave] Payment payload: "{\n  \"tx_ref\": \"VS-c3de15ca-9595-40e8-8fb7-de82fd62ffcd\",\n  \"amount\": 10,\n  \"currency\": \"USD\",\n  \"redirect_url\": \"http://localhost:3000/payment/callback\",\n  \"payment_options\": \"card, account, banktransfer, ussd, mobilemoneygh, mobilemoneyfranco, mobilemoneyug, mobilemoneyrw, mobilemoneyzm, mobilemoneyks, barter, ozeemoney, payattitude, pwa, credit, 1ach, bank_transfer\",\n  \"customer\": {\n    \"email\": \"kaiknightokpandu@gmail.com\",\n    \"name\": \"Dennis\",\n    \"phone_number\": \"0000000000\"\n  },\n  \"customizations\": {\n    \"title\": \"veri—able studio\",\n    \"description\": \"Project Reservation Deposit\",\n    \"logo\": \"https://veriable.xyz/logo.png\"\n  }\n}"
+[00:10:48.157] Server  WARN    [Flutterwave] DNS Error detected. Falling back to MOCK MODE for development.
+[00:10:48.496] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:11:22.974] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:11:23.155] Browser LOG     Payment Callback Params: {"status":"cancelled","transaction_id":null,"tx_ref":null}
+[00:11:23.155] Browser LOG     Payment Callback Params: {"status":"cancelled","transaction_id":null,"tx_ref":null}
+[00:11:23.704] Browser ERROR   useInsertionEffect must not schedule updates.
+[00:11:23.705] Browser ERROR   useInsertionEffect must not schedule updates.
+[00:11:23.705] Browser ERROR   useInsertionEffect must not schedule updates.
+[00:11:23.705] Browser ERROR   useInsertionEffect must not schedule updates.
+[00:11:23.705] Browser ERROR   useInsertionEffect must not schedule updates.
+[00:11:23.705] Browser ERROR   useInsertionEffect must not schedule updates.
+[00:11:23.705] Browser ERROR   useInsertionEffect must not schedule updates.
+[00:11:25.716] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[00:11:26.961] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:11:27.975] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[00:11:29.995] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:11:36.205] Server  LOG     [Flutterwave] Initializing payment: {}
+[00:11:36.206] Server  LOG     [Flutterwave] Payment payload: "{\n  \"tx_ref\": \"VS-5bd2e3c6-4759-4197-b1ac-45756672a053\",\n  \"amount\": 10,\n  \"currency\": \"USD\",\n  \"redirect_url\": \"http://localhost:3000/payment/callback\",\n  \"payment_options\": \"card, account, banktransfer, ussd, mobilemoneygh, mobilemoneyfranco, mobilemoneyug, mobilemoneyrw, mobilemoneyzm, mobilemoneyks, barter, ozeemoney, payattitude, pwa, credit, 1ach, bank_transfer\",\n  \"customer\": {\n    \"email\": \"kaiknightokpandu@gmail.com\",\n    \"name\": \"Dennis\",\n    \"phone_number\": \"0000000000\"\n  },\n  \"customizations\": {\n    \"title\": \"veri—able studio\",\n    \"description\": \"Project Reservation Deposit\",\n    \"logo\": \"https://veriable.xyz/logo.png\"\n  }\n}"
+[00:11:37.965] Server  LOG     [Flutterwave] Response Status: 200
+[00:11:54.096] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:11:54.296] Browser LOG     Payment Callback Params: {"status":"cancelled","transaction_id":null,"tx_ref":"VS-5bd2e3c6-4759-4197-b1ac-45756672a053"}
+[00:11:54.296] Browser LOG     Payment Callback Params: {"status":"cancelled","transaction_id":null,"tx_ref":"VS-5bd2e3c6-4759-4197-b1ac-45756672a053"}
+[00:11:56.072] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:11:56.534] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.

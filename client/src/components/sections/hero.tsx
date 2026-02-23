@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import { ArrowRight, Calendar, Activity, Zap } from "lucide-react";
+import { ArrowRight, Calendar, Activity, Zap, Gift } from "lucide-react";
 import { fadeInUp } from "@/lib/animations";
 
 export function Hero() {
@@ -62,10 +62,10 @@ export function Hero() {
                                     <Button
                                         size="lg"
                                         className="h-14 px-8 text-lg rounded-xl bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/25 flex items-center gap-2 group w-full sm:w-auto"
-                                        onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+                                        onClick={() => window.location.href = "/promo"}
                                     >
-                                        <Calendar className="w-5 h-5" />
-                                        Book a Demo
+                                        <Gift className="w-5 h-5" />
+                                        Free Preview Promo 🎁
                                         <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                                     </Button>
                                 </motion.div>

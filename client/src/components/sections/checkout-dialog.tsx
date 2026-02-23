@@ -84,8 +84,8 @@ export function CheckoutDialog({ isOpen, onClose, price, currency, packageName }
                 <DialogHeader>
                     <DialogTitle className="text-2xl font-bold">Reserve your Slot</DialogTitle>
                     <DialogDescription className="text-white/60">
-                        You're reserving the <span className="text-primary font-semibold">{packageName}</span> package.
-                        A refundable deposit of <span className="text-white font-bold">{currency} 500</span> is required to start.
+                        You're {packageName.toLowerCase().includes("hosting") ? "subscribing to" : "reserving"} the <span className="text-primary font-semibold">{packageName}</span> package.
+                        Payment of <span className="text-white font-bold">{currency} {price.toLocaleString()}</span> is required to continue.
                     </DialogDescription>
                 </DialogHeader>
                 <form onSubmit={handleCheckout} className="space-y-6 py-4">
