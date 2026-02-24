@@ -191,14 +191,14 @@ export function Work() {
               >
                 <div className="relative z-10">
                   <div className="flex justify-between items-center mb-8 border-b border-white/20 pb-4">
-                    <span className="text-sm text-white/80">veri—able Suite</span>
-                    <span className="text-sm text-white/80">{projects?.length}/8</span>
+                    <span className="text-sm text-white/80">veri—able Showcase</span>
+                    <span className="text-sm text-white/80">{projects?.length}/3</span>
                   </div>
                   <h3 className="text-3xl font-medium tracking-tight text-white mb-6">
-                    Modular launch tooling and engines.
+                    Digital Excellence at Scale.
                   </h3>
                   <p className="text-white/80 text-sm leading-relaxed mb-8">
-                    A collection of production-grade starter kits and deploy automation that let you go from idea to paying customers quickly.
+                    A curated selection of our most impactful deployments, demonstrating our ability to build, launch, and scale complex systems in record time.
                   </p>
                 </div>
 
