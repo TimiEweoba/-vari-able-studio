@@ -36,6 +36,14 @@ const workflowSteps = [
 export function Hero() {
     const [currentStep, setCurrentStep] = useState(0);
 
+    // Preload images for smooth transitions in production
+    useEffect(() => {
+        workflowSteps.forEach((step) => {
+            const img = new Image();
+            img.src = step.image;
+        });
+    }, []);
+
     useEffect(() => {
         const timer = setInterval(() => {
             setCurrentStep((prev) => (prev + 1) % workflowSteps.length);

@@ -44,6 +44,13 @@ const workflowSteps = [
 ];
 function Hero() {
     const [currentStep, setCurrentStep] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(0);
+    // Preload images for smooth transitions in production
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        workflowSteps.forEach((step)=>{
+            const img = new Image();
+            img.src = step.image;
+        });
+    }, []);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
         const timer = setInterval(()=>{
             setCurrentStep((prev)=>(prev + 1) % workflowSteps.length);
@@ -71,7 +78,7 @@ function Hero() {
                     children: "Building the future of digital."
                 }, void 0, false, {
                     fileName: "[project]/client/src/components/sections/hero.tsx",
-                    lineNumber: 52,
+                    lineNumber: 60,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -89,25 +96,25 @@ function Hero() {
                                         className: "block border-t-4 border-primary w-24 mb-6 md:mb-8"
                                     }, void 0, false, {
                                         fileName: "[project]/client/src/components/sections/hero.tsx",
-                                        lineNumber: 72,
+                                        lineNumber: 80,
                                         columnNumber: 29
                                     }, this),
                                     "Launch ",
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                         fileName: "[project]/client/src/components/sections/hero.tsx",
-                                        lineNumber: 73,
+                                        lineNumber: 81,
                                         columnNumber: 36
                                     }, this),
                                     "production-ready ",
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                         fileName: "[project]/client/src/components/sections/hero.tsx",
-                                        lineNumber: 74,
+                                        lineNumber: 82,
                                         columnNumber: 46
                                     }, this),
                                     "products in ",
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                         fileName: "[project]/client/src/components/sections/hero.tsx",
-                                        lineNumber: 75,
+                                        lineNumber: 83,
                                         columnNumber: 41
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -115,18 +122,18 @@ function Hero() {
                                         children: "7–14 days."
                                     }, void 0, false, {
                                         fileName: "[project]/client/src/components/sections/hero.tsx",
-                                        lineNumber: 76,
+                                        lineNumber: 84,
                                         columnNumber: 29
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/client/src/components/sections/hero.tsx",
-                                lineNumber: 66,
+                                lineNumber: 74,
                                 columnNumber: 25
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/client/src/components/sections/hero.tsx",
-                            lineNumber: 65,
+                            lineNumber: 73,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -173,7 +180,7 @@ function Hero() {
                                                         className: "absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-50"
                                                     }, void 0, false, {
                                                         fileName: "[project]/client/src/components/sections/hero.tsx",
-                                                        lineNumber: 107,
+                                                        lineNumber: 115,
                                                         columnNumber: 41
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
@@ -182,7 +189,7 @@ function Hero() {
                                                         className: "w-full h-full object-contain rounded-2xl"
                                                     }, void 0, false, {
                                                         fileName: "[project]/client/src/components/sections/hero.tsx",
-                                                        lineNumber: 108,
+                                                        lineNumber: 116,
                                                         columnNumber: 41
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -204,7 +211,7 @@ function Hero() {
                                                                 children: workflowSteps[currentStep].title
                                                             }, void 0, false, {
                                                                 fileName: "[project]/client/src/components/sections/hero.tsx",
-                                                                lineNumber: 121,
+                                                                lineNumber: 129,
                                                                 columnNumber: 45
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -212,19 +219,19 @@ function Hero() {
                                                                 children: workflowSteps[currentStep].description
                                                             }, void 0, false, {
                                                                 fileName: "[project]/client/src/components/sections/hero.tsx",
-                                                                lineNumber: 124,
+                                                                lineNumber: 132,
                                                                 columnNumber: 45
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/client/src/components/sections/hero.tsx",
-                                                        lineNumber: 115,
+                                                        lineNumber: 123,
                                                         columnNumber: 41
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/client/src/components/sections/hero.tsx",
-                                                lineNumber: 106,
+                                                lineNumber: 114,
                                                 columnNumber: 37
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -243,7 +250,7 @@ function Hero() {
                                                         children: workflowSteps[currentStep].title
                                                     }, void 0, false, {
                                                         fileName: "[project]/client/src/components/sections/hero.tsx",
-                                                        lineNumber: 136,
+                                                        lineNumber: 144,
                                                         columnNumber: 41
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -251,13 +258,13 @@ function Hero() {
                                                         children: workflowSteps[currentStep].description
                                                     }, void 0, false, {
                                                         fileName: "[project]/client/src/components/sections/hero.tsx",
-                                                        lineNumber: 139,
+                                                        lineNumber: 147,
                                                         columnNumber: 41
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/client/src/components/sections/hero.tsx",
-                                                lineNumber: 131,
+                                                lineNumber: 139,
                                                 columnNumber: 37
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -266,50 +273,50 @@ function Hero() {
                                                         className: `h-1.5 transition-all duration-500 rounded-full ${idx === currentStep ? "w-8 bg-primary" : "w-2 bg-white/20"}`
                                                     }, idx, false, {
                                                         fileName: "[project]/client/src/components/sections/hero.tsx",
-                                                        lineNumber: 147,
+                                                        lineNumber: 155,
                                                         columnNumber: 45
                                                     }, this))
                                             }, void 0, false, {
                                                 fileName: "[project]/client/src/components/sections/hero.tsx",
-                                                lineNumber: 145,
+                                                lineNumber: 153,
                                                 columnNumber: 37
                                             }, this)
                                         ]
                                     }, currentStep, true, {
                                         fileName: "[project]/client/src/components/sections/hero.tsx",
-                                        lineNumber: 84,
+                                        lineNumber: 92,
                                         columnNumber: 33
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/client/src/components/sections/hero.tsx",
-                                    lineNumber: 83,
+                                    lineNumber: 91,
                                     columnNumber: 29
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/client/src/components/sections/hero.tsx",
-                                lineNumber: 82,
+                                lineNumber: 90,
                                 columnNumber: 25
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/client/src/components/sections/hero.tsx",
-                            lineNumber: 81,
+                            lineNumber: 89,
                             columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/client/src/components/sections/hero.tsx",
-                    lineNumber: 62,
+                    lineNumber: 70,
                     columnNumber: 17
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/client/src/components/sections/hero.tsx",
-            lineNumber: 49,
+            lineNumber: 57,
             columnNumber: 13
         }, this)
     }, void 0, false, {
         fileName: "[project]/client/src/components/sections/hero.tsx",
-        lineNumber: 47,
+        lineNumber: 55,
         columnNumber: 9
     }, this);
 }
@@ -342,8 +349,8 @@ function Intro() {
     const { scrollYProgress } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$value$2f$use$2d$scroll$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useScroll"])({
         target: containerRef,
         offset: [
-            "start 1.2",
-            "end 1.3"
+            "start 0.7",
+            "start 0.3"
         ]
     });
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$utils$2f$use$2d$motion$2d$value$2d$event$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useMotionValueEvent"])(scrollYProgress, "change", (latest)=>{
@@ -362,15 +369,15 @@ function Intro() {
     let charCounter = 0;
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
         ref: containerRef,
-        className: "py-24 md:py-32 bg-[#161719] relative overflow-hidden border-t border-white/5",
+        className: "pt-24 pb-20 md:py-32 bg-[#161719] relative overflow-hidden border-t border-white/5",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "container mx-auto px-4 md:px-8",
+                className: "container mx-auto px-4 md:px-8 relative z-10",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "grid grid-cols-1 lg:grid-cols-12 gap-12 items-end",
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "lg:col-span-7 space-y-8",
+                            className: "lg:col-span-7 space-y-8 pb-4",
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "space-y-6",
                                 children: [
@@ -489,7 +496,7 @@ function Intro() {
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "lg:col-span-5 flex flex-col md:flex-row gap-8 lg:gap-12 border-t border-white/10 pt-8 lg:border-t-0 lg:pt-0 lg:justify-end",
+                            className: "lg:col-span-5 flex flex-col md:flex-row gap-8 lg:gap-12 border-t border-white/10 pt-8 lg:border-t-0 lg:pt-0 lg:justify-end pb-4",
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
                                     initial: {
@@ -554,7 +561,7 @@ function Intro() {
                                     transition: {
                                         delay: 0.3
                                     },
-                                    className: "flex flex-col justify-center",
+                                    className: "flex flex-col justify-center min-w-0",
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
                                             className: "text-white font-medium text-lg mb-1",
@@ -565,7 +572,7 @@ function Intro() {
                                             columnNumber: 29
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                            className: "text-muted-foreground",
+                                            className: "text-muted-foreground whitespace-normal break-words",
                                             children: "White-label ownership"
                                         }, void 0, false, {
                                             fileName: "[project]/client/src/components/sections/intro.tsx",
@@ -573,7 +580,7 @@ function Intro() {
                                             columnNumber: 29
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                            className: "text-muted-foreground",
+                                            className: "text-muted-foreground whitespace-normal break-words",
                                             children: "30-day priority support"
                                         }, void 0, false, {
                                             fileName: "[project]/client/src/components/sections/intro.tsx",
@@ -604,7 +611,7 @@ function Intro() {
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "absolute bottom-0 left-0 h-32 w-full bg-gradient-to-b from-[#161719] to-[#050505]"
+                className: "absolute bottom-0 left-0 h-32 w-full bg-gradient-to-b from-[#161719] to-[#050505] z-0 pointer-events-none"
             }, void 0, false, {
                 fileName: "[project]/client/src/components/sections/intro.tsx",
                 lineNumber: 126,
@@ -912,7 +919,7 @@ function Work() {
     const otherProjects = __TURBOPACK__imported__module__$5b$project$5d2f$client$2f$src$2f$lib$2f$projects$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["projects"].filter((p)=>p.featured !== "true").slice(0, 5 - featuredProjects.length);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
         id: "work",
-        className: "py-24 bg-[#050505] text-[#E3DBD8]",
+        className: "pt-12 pb-24 md:py-24 bg-[#050505] text-[#E3DBD8]",
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             className: "container mx-auto px-4 md:px-6",
             children: [

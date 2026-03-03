@@ -10,7 +10,7 @@ export function Intro() {
 
     const { scrollYProgress } = useScroll({
         target: containerRef,
-        offset: ["start 1.2", "end 1.3"]
+        offset: ["start 0.7", "start 0.3"]
     });
 
     useMotionValueEvent(scrollYProgress, "change", (latest) => {
@@ -26,13 +26,13 @@ export function Intro() {
     return (
         <section
             ref={containerRef}
-            className="py-24 md:py-32 bg-[#161719] relative overflow-hidden border-t border-white/5"
+            className="pt-24 pb-20 md:py-32 bg-[#161719] relative overflow-hidden border-t border-white/5"
         >
-            <div className="container mx-auto px-4 md:px-8">
+            <div className="container mx-auto px-4 md:px-8 relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
 
                     {/* Action Area with Content Reveal */}
-                    <div className="lg:col-span-7 space-y-8">
+                    <div className="lg:col-span-7 space-y-8 pb-4">
                         <div className="space-y-6">
                             {/* Animated Text replacing "See veri-able in action" */}
                             <p className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tighter leading-[1.2] flex flex-wrap gap-x-[0.2em] gap-y-1 mb-6">
@@ -96,7 +96,7 @@ export function Intro() {
                     </div>
 
                     {/* Stats Area (Moved from Hero) */}
-                    <div className="lg:col-span-5 flex flex-col md:flex-row gap-8 lg:gap-12 border-t border-white/10 pt-8 lg:border-t-0 lg:pt-0 lg:justify-end">
+                    <div className="lg:col-span-5 flex flex-col md:flex-row gap-8 lg:gap-12 border-t border-white/10 pt-8 lg:border-t-0 lg:pt-0 lg:justify-end pb-4">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -112,18 +112,18 @@ export function Intro() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.3 }}
-                            className="flex flex-col justify-center"
+                            className="flex flex-col justify-center min-w-0"
                         >
                             <h4 className="text-white font-medium text-lg mb-1">Includes</h4>
-                            <p className="text-muted-foreground">White-label ownership</p>
-                            <p className="text-muted-foreground">30-day priority support</p>
+                            <p className="text-muted-foreground whitespace-normal break-words">White-label ownership</p>
+                            <p className="text-muted-foreground whitespace-normal break-words">30-day priority support</p>
                         </motion.div>
                     </div>
 
                 </div>
             </div>
             {/* Gradient transition to next section (Dark) */}
-            <div className="absolute bottom-0 left-0 h-32 w-full bg-gradient-to-b from-[#161719] to-[#050505]" />
+            <div className="absolute bottom-0 left-0 h-32 w-full bg-gradient-to-b from-[#161719] to-[#050505] z-0 pointer-events-none" />
         </section>
     );
 }

@@ -135,7 +135,7 @@ export function Work() {
   const otherProjects = projects.filter(p => p.featured !== "true").slice(0, 5 - featuredProjects.length);
 
   return (
-    <section id="work" className="py-24 bg-[#050505] text-[#E3DBD8]">
+    <section id="work" className="pt-12 pb-24 md:py-24 bg-[#050505] text-[#E3DBD8]">
       <div className="container mx-auto px-4 md:px-6">
 
         {/* Header Section */}
