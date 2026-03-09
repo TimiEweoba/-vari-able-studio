@@ -1,42 +1,42 @@
 import { useState } from "react";
 import { Link } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, ArrowDown, Waves, Shield, Zap, TrendingUp, ArrowRight } from "lucide-react";
+import { ArrowUpRight, ArrowDown, ArrowRight, Monitor, Smartphone, PenTool, Video } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { isMobile } from "@/lib/animations";
 
 const services = [
   {
     id: "01",
-    label: "Foundations",
-    title: "Architecture & UI Foundations",
-    description: "Proprietary internal architecture and high-fidelity UI foundations that allow us to build twice as fast without sacrificing your custom requirements.",
-    image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=2565&auto=format&fit=crop",
-    icon: <Waves className="w-6 h-6" />
+    label: "Web Development",
+    title: "Full-Stack Websites",
+    description: "High-performance, scalable web applications built from front to back. We combine beautiful, reactive frontends with robust, secure backend architectures tailored to your business needs.",
+    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&h=800&auto=format&fit=crop",
+    icon: <Monitor className="w-6 h-6" />
   },
   {
     id: "02",
-    label: "Deploy",
-    title: "Architecture & Deploy",
-    description: "Opinionated deployment patterns (Next.js, CI/CD, one-click deploy scripts), hosting guidance, and backup/recovery checklists so deployments are repeatable and reliable.",
-    image: "https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=2532&auto=format&fit=crop",
-    icon: <Zap className="w-6 h-6" />
+    label: "App Development",
+    title: "Mobile Apps",
+    description: "Cross-platform mobile applications designed for seamless user experiences. We deliver fast, intuitive, and feature-rich apps for both iOS and Android ecosystems.",
+    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=1200&h=800&auto=format&fit=crop",
+    icon: <Smartphone className="w-6 h-6" />
   },
   {
     id: "03",
-    label: "Security",
-    title: "Security & Compliance",
-    description: "Basic security hardening, monitoring hooks, and a 30-day patch window. For higher risk projects we scope audits and mitigations as add-ons.",
-    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2670&auto=format&fit=crop",
-    icon: <Shield className="w-6 h-6" />
+    label: "Product Design",
+    title: "UI/UX Designs",
+    description: "World-class interface design and user experience research. We craft intuitive, accessible, and stunning visuals that convert visitors into loyal customers.",
+    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=1200&h=800&auto=format&fit=crop",
+    icon: <PenTool className="w-6 h-6" />
   },
   {
     id: "04",
-    label: "Growth",
-    title: "Scale & Growth",
-    description: "Conversion-focused onboarding, analytics dashboards, and prioritized performance tuning so your early customers stick and pay.",
-    image: "https://images.unsplash.com/photo-1634152962476-4b8a00e1915c?q=80&w=2528&auto=format&fit=crop",
-    icon: <TrendingUp className="w-6 h-6" />
+    label: "Motion & Graphics",
+    title: "2D & 3D Animations",
+    description: "Captivating motion graphics, product animations, and immersive 3D experiences that elevate your brand narrative and engage your audience.",
+    image: "https://images.unsplash.com/photo-1620121692029-d088224ddc74?q=80&w=1200&h=800&auto=format&fit=crop",
+    icon: <Video className="w-6 h-6" />
   }
 ];
 
@@ -44,7 +44,7 @@ export function Services() {
   const [activeId, setActiveId] = useState("01");
 
   return (
-    <section id="services" className="py-24 bg-[#161719] text-[#E3DBD8]">
+    <section id="services" className="py-24 md:py-32 bg-[#161719] text-[#E3DBD8]">
       <div className="container mx-auto px-4 md:px-6">
 
         {/* Header Section */}
@@ -65,12 +65,12 @@ export function Services() {
             </div>
             <div className="md:col-span-6">
               <h3 className="text-3xl md:text-5xl font-medium tracking-tight text-white leading-tight">
-                Productized services for faster launches.
+                Digital experiences <br />that drive growth.
               </h3>
             </div>
             <div className="md:col-span-4 flex items-end justify-end md:h-full">
               <p className="text-white/50 text-right max-w-[280px] text-sm leading-relaxed border-r-2 border-primary/20 pr-6 italic">
-                Future-proof, modular solutions that scale with your business. Pick the modules you need and get a working product — fast.
+                From ideation to deployment, we build end-to-end digital solutions that give your brand a competitive edge.
               </p>
             </div>
           </div>
@@ -87,10 +87,10 @@ export function Services() {
                 whileHover={{ scale: 1.01 }}
                 whileTap={{ scale: 0.99 }}
                 className={cn(
-                  "relative overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] rounded-3xl",
+                  "relative overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] rounded-2xl",
                   activeId === service.id
                     ? "bg-primary flex-[4] min-h-[500px] md:min-h-0 shadow-2xl shadow-primary/20"
-                    : "bg-[#1C1D20] flex-1 hover:bg-[#252629] min-h-[100px] md:min-h-0 md:min-w-[100px] border border-white/5"
+                    : "glass-panel flex-1 hover:bg-white/[0.04] min-h-[100px] md:min-h-0 md:min-w-[100px]"
                 )}
                 layout={!isMobile}
               >
@@ -163,12 +163,13 @@ export function Services() {
             ))}
           </div>
 
-          <Link href="/tech" className="group flex items-center gap-6 cursor-pointer">
-            <span className="text-xl md:text-2xl font-medium text-white/40 group-hover:text-white transition-colors">
-              Explore Services in Depth
+          <Link href="/tech" className="group relative inline-flex items-center gap-8 glass-panel rounded-full px-8 md:px-12 py-5 md:py-7 transition-all overflow-hidden w-full md:w-auto justify-center shadow-2xl interactive cursor-pointer">
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+            <span className="text-white font-black text-sm md:text-xl tracking-tight relative z-10 uppercase">
+              See All Our Services
             </span>
-            <div className="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center text-white transition-transform group-hover:scale-110 active:scale-95 shadow-lg shadow-primary/20">
-              <ArrowRight className="w-6 h-6" />
+            <div className="w-10 h-10 md:w-12 md:h-12 shrink-0 bg-primary rounded-full flex items-center justify-center text-white group-hover:translate-x-1 transition-transform duration-500 relative z-10 shadow-xl shadow-primary/40">
+              <ArrowRight className="w-5 h-5 md:w-6 md:h-6 leading-none" />
             </div>
           </Link>
         </div>

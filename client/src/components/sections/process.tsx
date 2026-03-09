@@ -9,28 +9,28 @@ const steps = [
     step: "Step 01",
     title: "Discover & Align",
     time: "Day 0",
-    description: "Objective: define the brief and lock scope. We ship what you actually need — no nice-to-haves without agreement.",
+    description: "We sit down, understand your idea, and agree on exactly what we're building — no surprises.",
     details: [
-      "Deliverables: project brief, technical roadmap.",
-      "Client deliverable: brand assets, billing decision.",
-      "Success criteria: signed SOW + $500 deposit."
+      "What you get: a clear project outline and timeline.",
+      "What we need from you: your logo, brand colours, and payment preferences.",
+      "How we start: sign the agreement + $500 deposit."
     ],
     owner: "You + Timi (Operations)",
     icon: <Target className="w-5 h-5" />,
     image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=2000",
     visualType: "checklist",
-    items: ["Scope locked", "Assets received", "Deposit paid"]
+    items: ["Plan confirmed", "Assets received", "Deposit paid"]
   },
   {
     id: "02",
     step: "Step 02",
     title: "Build & Brand",
     time: "Days 1–7",
-    description: "Objective: rapid implementation of the locked brief. Design → build → test. We show you progress, not excuses.",
+    description: "We start designing and building based on the agreed plan. You'll see real progress, not empty promises.",
     details: [
-      "Deliverables: staging URL, core feature implementation, auth.",
-      "Stripe test integration & admin panel stub.",
-      "Success criteria: internal QA pass."
+      "What you get: a preview link to see your site taking shape.",
+      "Payment system setup & admin dashboard started.",
+      "Milestone: everything tested and working internally."
     ],
     owner: "Ele (Design) + Dennis (Backend)",
     icon: <Layers className="w-5 h-5" />,
@@ -43,11 +43,11 @@ const steps = [
     step: "Step 03",
     title: "QA, Demo & Tweak",
     time: "Days 8–12",
-    description: "Objective: client review, final polish, and acceptance testing. Demo, tweak once, ship.",
+    description: "You review the site, we make final tweaks, and everything gets polished for launch.",
     details: [
-      "Deliverables: architecture audit result, list of final patches.",
-      "Security & Performance optimization pass.",
-      "Success criteria: demo sign-off & technical acceptance."
+      "What you get: a full review checklist and final fixes.",
+      "Speed and safety checks completed.",
+      "Milestone: your approval to go live."
     ],
     owner: "Team + Client",
     icon: <Sparkles className="w-5 h-5" />,
@@ -59,11 +59,11 @@ const steps = [
     step: "Step 04",
     title: "Launch & Transfer",
     time: "Day 13–14",
-    description: "Objective: push to production, hand over code & DB export. You own the code after final payment.",
+    description: "We launch your site for the world to see and hand over everything to you. After final payment, it's 100% yours.",
     details: [
-      "Deliverables: production deployment, handover.",
-      "30-day priority patch window.",
-      "Success criteria: live site, full ownership."
+      "What you get: your live website, fully launched.",
+      "30 days of priority fixes included.",
+      "Milestone: site is live and you own everything."
     ],
     owner: "Dennis (Deploy) + You (Payment)",
     icon: <Zap className="w-5 h-5" />,
@@ -84,7 +84,7 @@ export function Process() {
   };
 
   return (
-    <section id="process" className="py-32 bg-[#050505] text-[#E3DBD8] overflow-hidden relative">
+    <section id="process" className="py-24 md:py-32 bg-[#050505] text-[#E3DBD8] overflow-hidden relative">
       {/* Dynamic Background Text */}
       <div className="absolute top-1/2 left-0 w-full overflow-hidden pointer-events-none opacity-[0.03] select-none -translate-y-1/2 flex items-center whitespace-nowrap z-0">
         <motion.div
@@ -92,10 +92,10 @@ export function Process() {
           transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
           className="text-[40vw] font-black leading-none flex gap-[0.5em]"
         >
-          <span>ENGINEERING</span>
-          <span>VELOCITY</span>
-          <span>PRECISION</span>
-          <span>SHIPPING</span>
+          <span>CREATING</span>
+          <span>SPEED</span>
+          <span>QUALITY</span>
+          <span>DELIVERING</span>
         </motion.div>
       </div>
 
@@ -119,19 +119,19 @@ export function Process() {
             </div>
             <div className="md:col-span-6">
               <h3 className="text-4xl md:text-6xl font-medium tracking-tight text-white leading-[1.1]">
-                A scope-first playbook for <span className="text-primary italic">predictable</span> success.
+                A clear, step-by-step plan for <span className="text-primary italic">guaranteed</span> results.
               </h3>
             </div>
             <div className="md:col-span-4 flex items-end justify-end md:h-full">
               <p className="text-white/50 text-right max-w-[280px] text-sm leading-relaxed border-r-2 border-primary/20 pr-6 italic">
-                We've stripped away the noise. No endless meetings, no scope creep. Just high-fidelity execution at scale.
+                No endless meetings, no surprise changes. Just great work, delivered on time.
               </p>
             </div>
           </div>
         </div>
 
         {/* Main Process Widget */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 border border-white/5 bg-[#0A0A0B]/80 backdrop-blur-xl rounded-[3rem] overflow-hidden min-h-[700px] shadow-[0_50px_100px_-20px_rgba(0,0,0,1)] relative group/main">
+        <div className="grid grid-cols-1 lg:grid-cols-12 glass-panel rounded-3xl overflow-hidden min-h-[700px] shadow-[0_50px_100px_-20px_rgba(0,0,0,1)] relative group/main">
 
           {/* Subtle Grid Overlay */}
           <div className="absolute inset-0 opacity-[0.02] pointer-events-none"
@@ -176,7 +176,7 @@ export function Process() {
                           </div>
                           <div>
                             <div className="text-[8px] lg:text-[10px] text-primary font-bold uppercase tracking-[0.2em] mb-1">Status</div>
-                            <div className="text-base lg:text-lg font-bold text-white tracking-tight leading-none">Requirement Lock</div>
+                            <div className="text-base lg:text-lg font-bold text-white tracking-tight leading-none">Plan Confirmed</div>
                           </div>
                         </div>
                         {steps[currentStep].items?.map((item, i) => (
@@ -200,7 +200,7 @@ export function Process() {
                       <div className="w-full">
                         <div className="flex justify-between items-end mb-4 lg:mb-6">
                           <div>
-                            <div className="text-[8px] lg:text-[10px] text-primary/60 font-black uppercase tracking-[0.3em] mb-1 lg:mb-2">Build Status</div>
+                            <div className="text-[8px] lg:text-[10px] text-primary/60 font-black uppercase tracking-[0.3em] mb-1 lg:mb-2">Progress</div>
                             <div className="text-4xl lg:text-6xl font-bold text-white tracking-tighter tabular-nums leading-none">{steps[currentStep].progress}%</div>
                           </div>
                           <Sparkles className="w-8 h-8 lg:w-10 lg:h-10 text-primary opacity-20 animate-pulse mb-1 lg:mb-2" />
@@ -214,7 +214,7 @@ export function Process() {
                           />
                         </div>
                         <div className="grid grid-cols-1 gap-2 lg:gap-3">
-                          {["Database Schema", "Auth Flow", "Stripe Integration"].map((task, i) => (
+                          {["Data Setup", "User Login", "Payment System"].map((task, i) => (
                             <div key={i} className="flex items-center justify-between p-3 lg:p-4 bg-white/5 rounded-xl lg:rounded-2xl border border-white/5 group/task cursor-default hover:bg-white/10 transition-colors">
                               <span className="text-[10px] lg:text-xs font-semibold text-white/60 group-hover/task:text-white/90 transition-colors">{task}</span>
                               <div className={`text-[8px] lg:text-[9px] font-black uppercase px-2 py-1 rounded ${i < 2 ? 'bg-primary/20 text-primary' : 'bg-white/5 text-white/20'}`}>
@@ -244,19 +244,19 @@ export function Process() {
                             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
                           />
 
-                          <div className="relative w-32 h-32 lg:w-40 lg:h-40">
-                            <svg className="w-full h-full transform -rotate-90 relative z-10">
+                          <div className="relative w-24 h-24 lg:w-32 lg:h-32 shrink-0">
+                            <svg className="w-full h-full transform -rotate-90 relative z-10 overflow-visible" viewBox="0 0 100 100">
                               <circle
-                                cx="50%"
-                                cy="50%"
-                                r="45%"
+                                cx="50"
+                                cy="50"
+                                r="45"
                                 className="fill-none stroke-white/5"
                                 strokeWidth="2"
                               />
                               <motion.circle
-                                cx="50%"
-                                cy="50%"
-                                r="45%"
+                                cx="50"
+                                cy="50"
+                                r="45"
                                 initial={{ pathLength: 0 }}
                                 animate={{ pathLength: 1 }}
                                 transition={{ duration: 2.5, ease: [0.65, 0, 0.35, 1], delay: 0.5 }}
@@ -273,11 +273,11 @@ export function Process() {
                                 transition={{ delay: 1.2, duration: 1, ease: [0.16, 1, 0.3, 1] }}
                                 className="text-center"
                               >
-                                <span className="text-5xl lg:text-6xl font-black text-white tracking-tighter block leading-none">
+                                <span className="text-4xl lg:text-5xl font-black text-white tracking-tighter block leading-none">
                                   100
                                 </span>
-                                <span className="text-[7px] lg:text-[8px] text-primary font-black uppercase tracking-[0.4em] mt-1 lg:mt-2 block">
-                                  SYSTEM SCORE
+                                <span className="text-[6px] lg:text-[7px] text-primary font-black uppercase tracking-[0.4em] mt-1 lg:mt-2 block">
+                                  QUALITY SCORE
                                 </span>
                               </motion.div>
                             </div>
@@ -302,7 +302,7 @@ export function Process() {
                             { label: "Performance", val: "100" },
                             { label: "Security", val: "A+" },
                             { label: "Stability", val: "MAX" },
-                            { label: "Scalability", val: "L7" }
+                            { label: "Scalability", val: "HIGH" }
                           ].map((item, i) => (
                             <motion.div
                               key={i}
@@ -355,7 +355,7 @@ export function Process() {
                         </div>
                         <div className="space-y-1 lg:space-y-2">
                           <h4 className="text-xl lg:text-2xl font-bold text-white tracking-tight">Full Handover</h4>
-                          <p className="text-[10px] lg:text-sm text-white/40 max-w-[160px] lg:max-w-[200px] leading-relaxed italic">The keys to the kingdom are now yours.</p>
+                          <p className="text-[10px] lg:text-sm text-white/40 max-w-[160px] lg:max-w-[200px] leading-relaxed italic">Everything is now in your hands.</p>
                         </div>
                       </div>
                     )}
@@ -476,7 +476,7 @@ export function Process() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-16 flex flex-col md:flex-row justify-between items-center gap-8 py-10 px-12 bg-gradient-to-br from-white/[0.03] to-transparent border border-white/5 rounded-[3rem]"
+          className="mt-16 flex flex-col md:flex-row justify-between items-center gap-8 py-10 px-12 glass-panel rounded-3xl"
         >
           <div className="flex items-center gap-6">
             <div className="w-16 h-16 rounded-[2rem] bg-primary text-white flex items-center justify-center shadow-xl shadow-primary/20 relative overflow-hidden group">
@@ -484,18 +484,23 @@ export function Process() {
               <Calendar className="w-8 h-8 relative z-10" />
             </div>
             <div>
-              <h5 className="text-2xl font-bold text-white mb-1">Direct Engineering Pipeline.</h5>
-              <p className="text-sm text-white/40 tracking-tight">Zero bloat. High velocity. Predictable shipping cycles.</p>
+              <h5 className="text-2xl font-bold text-white mb-1">A Straightforward Path to Launch.</h5>
+              <p className="text-sm text-white/40 tracking-tight">No fluff. Fast turnaround. You'll always know what's happening.</p>
             </div>
           </div>
           <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-            <Button
+            <button
               onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })}
-              className="bg-white text-black hover:bg-primary hover:text-white px-12 h-16 rounded-2xl font-bold text-lg transition-all group shadow-2xl flex items-center gap-4 border-0"
+              className="group relative inline-flex items-center gap-8 glass-panel rounded-full px-8 md:px-12 py-5 md:py-7 transition-all overflow-hidden w-full md:w-auto justify-center shadow-2xl interactive cursor-pointer border-none"
             >
-              Secure Your Slot
-              <Zap className="w-5 h-5 group-hover:fill-current transition-all" />
-            </Button>
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              <span className="text-white font-black text-sm md:text-xl tracking-tight relative z-10 uppercase">
+                Secure Your Slot
+              </span>
+              <div className="w-10 h-10 md:w-12 md:h-12 shrink-0 bg-primary rounded-full flex items-center justify-center text-white group-hover:translate-x-1 transition-transform duration-500 relative z-10 shadow-xl shadow-primary/40">
+                <Zap className="w-5 h-5 md:w-6 md:h-6 leading-none" />
+              </div>
+            </button>
           </motion.div>
         </motion.div>
 

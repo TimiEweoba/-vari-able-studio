@@ -134,7 +134,7 @@ export function Testimonials() {
             </div>
           </div>
 
-          <div className="md:col-span-10 flex gap-4 overflow-x-auto pb-4 md:pb-0 scrollbar-hide">
+          <div className="md:col-span-10 flex gap-4 overflow-x-auto pt-6 pb-6 md:py-6 scrollbar-hide">
             {/* Static 'Feature/Upload' Block */}
             <div className="w-24 h-32 shrink-0 bg-[#1C1D20] border border-white/5 rounded-xl flex items-center justify-center group cursor-pointer hover:border-primary transition-colors relative overflow-hidden">
               <div className="absolute inset-0 flex flex-col items-center justify-end pb-4 z-10">

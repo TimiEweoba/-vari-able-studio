@@ -23,7 +23,7 @@ export function Team() {
     {
       name: "Timi Eweoba",
       role: "Head of Operations",
-      bio: "Product strategy, sales, and operations. Runs launches, client comms, and the product roadmap.",
+      bio: "Strategy, client relationships, and keeping projects on track. Your main point of contact from start to finish.",
       image: "/images/team/timi.png",
       socials: [
         { icon: Twitter, href: "https://x.com/TimiEweoba" },
@@ -34,7 +34,7 @@ export function Team() {
     {
       name: "Eleojo Arawa",
       role: "UI/UX & Visual Design",
-      bio: "Design lead — templates, Figma systems, and hero assets. Illustrator and visual storyteller.",
+      bio: "Our design lead — creates beautiful visuals, page layouts, and brand imagery. A true visual storyteller.",
       image: "/images/team/eleojo.jpg",
       socials: [
         { icon: Linkedin, href: "https://www.linkedin.com/in/eleojo-arawa-495aaa250/" },
@@ -45,8 +45,8 @@ export function Team() {
     },
     {
       name: "Dennis Okpandu",
-      role: "Backend & Infrastructure",
-      bio: "Builds reusable boilerplates, Stripe flows, deployment scripts, and DB seeds. Keeps launches production-ready.",
+      role: "Development & Systems",
+      bio: "Builds the engine behind your website — payments, databases, and everything that makes it all work. Makes sure it's ready for the real world.",
       image: "/images/team/dennis.jpg",
       socials: [
         { icon: Linkedin, href: "https://www.linkedin.com/in/dennis-okpandu/" },
@@ -58,7 +58,7 @@ export function Team() {
   ];
 
   return (
-    <section id="team" className="py-32 bg-[#050505] text-[#E3DBD8] relative overflow-hidden">
+    <section id="team" className="py-24 md:py-32 bg-[#050505] text-[#E3DBD8] relative overflow-hidden">
       {/* Abstract Background Element */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
 
@@ -82,7 +82,7 @@ export function Team() {
             </div>
             <div className="md:col-span-6">
               <h3 className="text-4xl md:text-6xl font-medium tracking-tight text-white leading-[1.1]">
-                High-performance <span className="text-primary italic">engineers</span> for ambitious founders.
+                A skilled team for people with <span className="text-primary italic">big ideas</span>.
               </h3>
             </div>
             <div className="md:col-span-4 flex items-end justify-end md:h-full">
@@ -94,7 +94,7 @@ export function Team() {
         </div>
 
         {/* Interactive Team Slider */}
-        <div className="bg-[#0A0A0B]/80 backdrop-blur-xl border border-white/5 rounded-[2rem] md:rounded-[3rem] overflow-hidden flex flex-col lg:flex-row h-auto lg:h-[650px] shadow-2xl relative">
+        <div className="glass-panel rounded-3xl overflow-hidden flex flex-col lg:flex-row h-auto lg:h-[650px] shadow-2xl relative">
 
           {/* Subtle Grain Overlay */}
           <div className="absolute inset-0 pointer-events-none opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
@@ -140,12 +140,15 @@ export function Team() {
                       href={team[activeMember].experienceLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="inline-flex items-center gap-3 px-6 py-3 rounded-xl bg-white/5 border border-white/10 text-white/80 font-bold text-xs uppercase tracking-[0.2em] hover:bg-white/10 hover:text-white transition-all group w-fit"
+                      className="group relative inline-flex items-center gap-6 glass-panel rounded-full px-6 py-3 transition-all overflow-hidden w-fit justify-center shadow-xl interactive cursor-pointer border-none"
                     >
-                      View Experience
-                      <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                      <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                      <span className="text-white font-black text-xs tracking-tight relative z-10 uppercase">
+                        View Experience
+                      </span>
+                      <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white group-hover:translate-x-1 transition-transform duration-500 relative z-10 shadow-lg shadow-primary/20">
+                        <ArrowUpRight className="w-4 h-4" />
+                      </div>
                     </motion.a>
                   )}
                 </motion.div>
@@ -200,14 +203,14 @@ export function Team() {
         </div>
 
         {/* Thumbnails Strip */}
-        <div className="mt-8 md:mt-12 flex gap-4 md:gap-6 overflow-x-auto pb-6 scrollbar-hide items-center justify-start md:justify-center px-4 md:px-0">
+        <div className="mt-8 md:mt-12 flex gap-4 md:gap-6 overflow-x-auto pt-6 pb-6 scrollbar-hide items-center justify-start md:justify-center px-4 md:px-0">
           {team.map((member, idx) => (
             <motion.div
               key={idx}
               whileHover={{ y: -10 }}
               onClick={() => setActiveMember(idx)}
               className={cn(
-                "group relative w-24 h-32 md:w-32 md:h-44 shrink-0 rounded-[1.2rem] md:rounded-[1.5rem] overflow-hidden cursor-pointer transition-all duration-700 border-2",
+                "group relative w-24 h-32 md:w-32 md:h-44 shrink-0 rounded-2xl overflow-hidden cursor-pointer transition-all duration-700 border-2",
                 idx === activeMember
                   ? "border-primary shadow-2xl shadow-primary/20 scale-105 z-10"
                   : "border-white/5 opacity-50 grayscale hover:opacity-100 hover:grayscale-0 hover:border-white/20"

@@ -53,7 +53,7 @@ export default function PromoPage() {
         onSuccess: () => {
             toast({
                 title: "Request Received!",
-                description: "We've received your free preview request. Expect an email from us shortly.",
+                description: "Your free preview request has been routed to contact@veriable.xyz.",
             });
             setName("");
             setEmail("");

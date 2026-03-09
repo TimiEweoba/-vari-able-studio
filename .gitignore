@@ -38,3 +38,9 @@ Desktop.ini
 server/public
 vite.config.ts.*
 *.tar.gz
+# Cache and build files
+.next/
+.turbo/
+node_modules/
+*.txt
+*.log

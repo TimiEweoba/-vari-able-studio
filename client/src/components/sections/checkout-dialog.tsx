@@ -80,71 +80,91 @@ export function CheckoutDialog({ isOpen, onClose, price, currency, packageName }
 
     return (
         <Dialog open={isOpen} onOpenChange={onClose}>
-            <DialogContent className="sm:max-w-[425px] bg-[#0A0A0B] border-white/10 text-white">
-                <DialogHeader>
-                    <DialogTitle className="text-2xl font-bold">Reserve your Slot</DialogTitle>
-                    <DialogDescription className="text-white/60">
-                        You're {packageName.toLowerCase().includes("hosting") ? "subscribing to" : "reserving"} the <span className="text-primary font-semibold">{packageName}</span> package.
-                        Payment of <span className="text-white font-bold">{currency} {price.toLocaleString()}</span> is required to continue.
-                    </DialogDescription>
-                </DialogHeader>
-                <form onSubmit={handleCheckout} className="space-y-6 py-4">
-                    <div className="space-y-2">
-                        <Label htmlFor="name" className="text-sm font-medium text-white/80">Full Name</Label>
-                        <Input
-                            id="name"
-                            placeholder="John Doe"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                            className="bg-white/5 border-white/10 focus:border-primary text-white"
-                        />
+            <DialogContent className="w-[95vw] sm:max-w-[480px] bg-[#0A0A0B] border-white/10 text-white rounded-[2rem] p-0 overflow-hidden shadow-[0_0_80px_rgba(0,0,0,0.8)] focus:outline-none flex flex-col max-h-[90vh]">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-[80px] -z-10" />
+
+                <div className="p-6 md:p-10 overflow-y-auto scrollbar-hide flex-1">
+                    <DialogHeader className="mb-8 items-center text-center">
+                        <div className="w-16 h-1 bg-primary/40 rounded-full mb-8" />
+                        <DialogTitle className="text-2xl md:text-3xl font-bold tracking-tighter mb-4 uppercase">Secure Your Slot</DialogTitle>
+                        <DialogDescription className="text-white/50 text-sm md:text-base leading-relaxed max-w-[320px]">
+                            You're {packageName.toLowerCase().includes("hosting") ? "subscribing to" : "reserving"} the <span className="text-primary font-bold italic">{packageName}</span> package.
+                        </DialogDescription>
+                    </DialogHeader>
+
+                    <form onSubmit={handleCheckout} className="space-y-8">
+                        <div className="space-y-6">
+                            <div className="space-y-2">
+                                <Label htmlFor="name" className="text-[10px] font-black uppercase tracking-widest text-white/30 ml-4">Full Name</Label>
+                                <Input
+                                    id="name"
+                                    placeholder="John Doe"
+                                    value={name}
+                                    onChange={(e) => setName(e.target.value)}
+                                    className="h-14 bg-white/[0.03] border-white/5 focus:border-primary/40 focus:ring-0 text-white rounded-2xl px-6 transition-all placeholder:text-white/10"
+                                />
+                            </div>
+                            <div className="space-y-2">
+                                <Label htmlFor="email" className="text-[10px] font-black uppercase tracking-widest text-white/30 ml-4">Email Address</Label>
+                                <Input
+                                    id="email"
+                                    type="email"
+                                    placeholder="john@example.com"
+                                    required
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    className="h-14 bg-white/[0.03] border-white/5 focus:border-primary/40 focus:ring-0 text-white rounded-2xl px-6 transition-all placeholder:text-white/10"
+                                />
+                            </div>
+                            <div className="space-y-2">
+                                <Label htmlFor="description" className="text-[10px] font-black uppercase tracking-widest text-white/30 ml-4">Project Brief</Label>
+                                <textarea
+                                    id="description"
+                                    placeholder="What's on your mind? Briefly describe your vision..."
+                                    value={description}
+                                    onChange={(e) => setDescription(e.target.value)}
+                                    rows={3}
+                                    className="w-full bg-white/[0.03] border border-white/5 rounded-2xl p-6 focus:border-primary/40 text-white outline-none text-sm transition-all resize-none placeholder:text-white/10"
+                                />
+                            </div>
+                        </div>
+
+                        <div className="pt-4">
+                            <button
+                                type="submit"
+                                disabled={isLoading}
+                                className="group relative inline-flex items-center gap-8 glass-panel rounded-full px-8 py-5 transition-all overflow-hidden w-full justify-center shadow-2xl interactive cursor-pointer border-none disabled:opacity-50 disabled:cursor-not-allowed"
+                            >
+                                <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                                <span className="text-white font-black text-sm md:text-base tracking-tight relative z-10 uppercase flex items-center gap-2">
+                                    {isLoading ? (
+                                        <>
+                                            <Loader2 className="w-4 h-4 animate-spin" />
+                                            Processing...
+                                        </>
+                                    ) : (
+                                        <>
+                                            Secure Slot — {currency} {price.toLocaleString()}
+                                        </>
+                                    )}
+                                </span>
+                                {!isLoading && (
+                                    <div className="w-10 h-10 shrink-0 bg-primary rounded-full flex items-center justify-center text-white group-hover:translate-x-1 transition-transform duration-500 relative z-10 shadow-xl shadow-primary/40">
+                                        <ArrowRight className="w-5 h-5 leading-none" />
+                                    </div>
+                                )}
+                            </button>
+                        </div>
+                    </form>
+
+                    <div className="mt-10 pt-8 border-t border-white/5 flex flex-col items-center gap-4">
+                        <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-500/10 border border-green-500/20">
+                            <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                            <p className="text-[9px] font-bold text-green-500/80 uppercase tracking-widest">Secure Link Active</p>
+                        </div>
+                        <p className="text-[10px] text-white/20 font-medium font-mono uppercase tracking-widest">Checkout powered by Flutterwave</p>
                     </div>
-                    <div className="space-y-2">
-                        <Label htmlFor="email" className="text-sm font-medium text-white/80">Email Address</Label>
-                        <Input
-                            id="email"
-                            type="email"
-                            placeholder="john@example.com"
-                            required
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            className="bg-white/5 border-white/10 focus:border-primary text-white"
-                        />
-                    </div>
-                    <div className="space-y-2">
-                        <Label htmlFor="description" className="text-sm font-medium text-white/80">What would you like to build?</Label>
-                        <textarea
-                            id="description"
-                            placeholder="Briefly describe your project idea..."
-                            value={description}
-                            onChange={(e) => setDescription(e.target.value)}
-                            rows={3}
-                            className="w-full bg-white/5 border border-white/10 rounded-md p-2 focus:border-primary text-white outline-none text-sm transition-colors resize-none"
-                        />
-                    </div>
-                    <Button
-                        type="submit"
-                        className="w-full h-12 text-base font-bold"
-                        disabled={isLoading}
-                    >
-                        {isLoading ? (
-                            <>
-                                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                                Processing...
-                            </>
-                        ) : (
-                            <>
-                                Continue to Payment
-                                <ArrowRight className="ml-2 h-4 w-4" />
-                            </>
-                        )}
-                    </Button>
-                </form>
-                <DialogFooter className="flex flex-col items-center gap-2">
-                    <p className="text-[10px] text-white/40 text-center">
-                        Secure checkout powered by Flutterwave.
-                    </p>
-                </DialogFooter>
+                </div>
             </DialogContent>
         </Dialog>
     );

@@ -205,7 +205,7 @@ export function Labs() {
 
 
     return (
-        <section id="labs" className="py-24 bg-[#050505] text-[#E3DBD8]">
+        <section id="labs" className="py-24 md:py-32 bg-[#050505] text-[#E3DBD8]">
             <div className="container mx-auto px-4 md:px-6">
 
                 {/* Header Section */}
@@ -222,16 +222,16 @@ export function Labs() {
                     <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
                         <div className="md:col-span-2 hidden md:block border-l-2 border-primary pl-6 h-12 flex flex-col justify-center">
                             <span className="block text-2xl font-bold mb-1 text-white leading-none">009</span>
-                            <span className="text-[10px] text-muted-foreground uppercase tracking-[0.3em] font-black underline decoration-primary decoration-2 underline-offset-4">Intelligence</span>
+                            <span className="text-[10px] text-muted-foreground uppercase tracking-[0.3em] font-black underline decoration-primary decoration-2 underline-offset-4">Stories</span>
                         </div>
                         <div className="md:col-span-6">
                             <h3 className="text-3xl md:text-5xl font-medium tracking-tight text-white leading-tight">
-                                Case studies, launch playbooks, billing guides, template teardowns.
+                                Real stories, behind-the-scenes looks, and helpful guides.
                             </h3>
                         </div>
                         <div className="md:col-span-4 flex items-end justify-end md:h-full">
                             <p className="text-white/50 text-right max-w-[280px] text-sm leading-relaxed border-r-2 border-primary/20 pr-6 italic">
-                                Actionable posts meant to attract founders and agencies. Proven systems that actually work.
+                                Real insights and lessons from projects we've delivered. No theory — just what actually works.
                             </p>
                         </div>
                     </div>
@@ -252,7 +252,7 @@ export function Labs() {
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
                             onClick={() => openArticle(article)}
-                            className="group relative h-[500px] md:h-[600px] rounded-3xl overflow-hidden bg-[#1C1D20] border border-white/5 cursor-pointer interactive"
+                            className="group relative h-[500px] md:h-[600px] rounded-3xl overflow-hidden glass-panel cursor-pointer interactive"
                             data-cursor="Read"
                         >
                             {/* Background Image */}

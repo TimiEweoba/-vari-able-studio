@@ -138,7 +138,7 @@ export function CTA() {
                     </li>
                     <li className="flex items-start gap-3">
                       <span className="text-primary text-xl leading-none">•</span>
-                      <span>Modular Tech: Pre-built, production-ready infrastructure</span>
+                      <span>Solid Foundations: Pre-built, reliable building blocks</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <span className="text-primary text-xl leading-none">•</span>
@@ -163,7 +163,7 @@ export function CTA() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.3 }}
-                className="bg-[#252629] rounded-2xl p-8 lg:p-10 border border-white/5 relative overflow-hidden"
+                className="glass-panel rounded-3xl p-8 lg:p-12 relative overflow-hidden"
               >
                 {/* Submit Success Overlay */}
                 <AnimatePresence>
@@ -171,7 +171,7 @@ export function CTA() {
                     <motion.div
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
-                      className="absolute inset-0 bg-[#252629] z-20 flex flex-col items-center justify-center p-8 text-center"
+                      className="absolute inset-0 bg-[#0A0A0B]/80 backdrop-blur-xl z-20 flex flex-col items-center justify-center p-8 text-center"
                     >
                       <motion.div
                         initial={{ scale: 0 }}
@@ -254,25 +254,28 @@ export function CTA() {
                     )}
                   </div>
 
-                  <motion.button
+                  <button
                     type="submit"
                     disabled={mutation.isPending}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="w-full bg-primary hover:bg-primary/90 text-white h-12 rounded-lg font-medium transition-all mt-6 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed group relative overflow-hidden"
+                    className="group relative inline-flex items-center gap-6 md:gap-8 glass-panel rounded-full px-8 py-4 md:py-5 transition-all overflow-hidden w-full justify-center shadow-2xl interactive cursor-pointer border-none mt-6 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    {mutation.isPending ? (
-                      <>
-                        <Loader2 className="w-4 h-4 animate-spin" />
-                        Processing...
-                      </>
-                    ) : (
-                      <>
-                        <span>Send Message</span>
-                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                      </>
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                    <span className="text-white font-black text-sm md:text-lg tracking-tight relative z-10 uppercase flex items-center gap-2">
+                      {mutation.isPending ? (
+                        <>
+                          <Loader2 className="w-4 h-4 animate-spin" />
+                          Processing...
+                        </>
+                      ) : (
+                        "Send Message"
+                      )}
+                    </span>
+                    {!mutation.isPending && (
+                      <div className="w-10 h-10 shrink-0 bg-primary rounded-full flex items-center justify-center text-white group-hover:translate-x-1 transition-transform duration-500 relative z-10 shadow-xl shadow-primary/40">
+                        <ArrowRight className="w-5 h-5 leading-none" />
+                      </div>
                     )}
-                  </motion.button>
+                  </button>
                 </form>
               </motion.div>
 
@@ -364,7 +367,7 @@ export function CTA() {
                   e.preventDefault();
                   toast({
                     title: "Subscription Received",
-                    description: "Your interest has been routed to Timi@veriable.xyz",
+                    description: "Your interest has been routed to contact@veriable.xyz",
                   });
                   // Reset fields ideally, but for now just show toast
                 }} className="space-y-4">
@@ -385,13 +388,13 @@ export function CTA() {
                       type="submit"
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
-                      className="w-12 h-12 bg-primary hover:bg-primary/90 rounded-lg flex items-center justify-center transition-colors"
+                      className="w-12 h-12 bg-primary hover:bg-primary/90 rounded-2xl flex items-center justify-center transition-colors interactive shadow-lg shadow-primary/30"
                     >
                       <ArrowRight className="w-5 h-5 text-white" />
                     </motion.button>
                   </div>
                   <p className="text-xs text-white/40">
-                    By submitting, you agree to our <Link href="/terms" className="text-primary hover:underline">Terms & Service</Link>. Insights are routed to Timi@veriable.xyz for review.
+                    By submitting, you agree to our <Link href="/terms" className="text-primary hover:underline">Terms & Service</Link>. Insights are routed to contact@veriable.xyz for review.
                   </p>
                 </form>
               </div>
@@ -433,7 +436,7 @@ export function CTA() {
                   onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                   whileHover={{ scale: 1.1, borderColor: "var(--color-primary)", color: "var(--color-primary)" }}
                   whileTap={{ scale: 0.9 }}
-                  className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center transition-colors"
+                  className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center transition-colors interactive"
                 >
                   <ChevronDown className="w-5 h-5 rotate-180" />
                 </motion.button>

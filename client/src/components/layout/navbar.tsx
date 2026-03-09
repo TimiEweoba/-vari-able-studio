@@ -45,9 +45,9 @@ export function Navbar() {
 
   const navLinks = [
     { name: "Selected Work", href: "/#work", id: "01", isRoute: false },
-    { name: "Expertise", href: "/#services", id: "02" },
+    { name: "What We Do", href: "/#services", id: "02" },
     { name: "Our Process", href: "/#process", id: "03" },
-    { name: "Smart Data", href: "/#analytics", id: "04" },
+    { name: "Insights", href: "/#analytics", id: "04" },
     { name: "Pricing", href: "/#pricing", id: "05" },
     { name: "Questions", href: "/#faq", id: "06" },
     { name: "Our Team", href: "/#team", id: "07" },
@@ -66,7 +66,7 @@ export function Navbar() {
           className={cn(
             "flex items-center justify-between transition-all duration-500 px-6 py-2 rounded-2xl border",
             isScrolled
-              ? "bg-[#0A0A0B]/80 backdrop-blur-xl border-white/10 shadow-2xl shadow-black/50"
+              ? "glass-panel shadow-2xl shadow-black/50"
               : "bg-transparent border-transparent"
           )}
         >
@@ -106,14 +106,20 @@ export function Navbar() {
           </div>
 
           <div className="flex items-center gap-4">
-            <Button
+            <button
               onClick={() => {
                 window.location.href = "/promo";
               }}
-              className="hidden md:flex bg-primary hover:bg-primary/90 text-white h-11 px-8 rounded-xl font-semibold transition-all hover:shadow-[0_0_25px_color-mix(in_srgb,var(--color-primary),transparent_60%)] hover:scale-105 active:scale-95 border-none cursor-pointer"
+              className="hidden md:flex items-center gap-4 glass-panel rounded-full px-5 h-11 transition-all overflow-hidden shadow-xl interactive cursor-pointer border-none"
             >
-              Free Preview Promo
-            </Button>
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              <span className="text-white font-black text-[10px] tracking-widest relative z-10 uppercase">
+                Free Promo
+              </span>
+              <div className="w-8 h-8 shrink-0 bg-primary rounded-full flex items-center justify-center text-white group-hover:translate-x-1 transition-transform duration-500 relative z-10 shadow-lg shadow-primary/40">
+                <ArrowRight className="w-4 h-4 leading-none" />
+              </div>
+            </button>
 
             {/* Mobile Toggle */}
             <button
@@ -145,7 +151,7 @@ export function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 30, stiffness: 300 }}
-              className="fixed top-0 right-0 bottom-0 w-full sm:w-[450px] bg-[#0A0A0B] border-l border-white/10 z-[70] xl:hidden flex flex-col shadow-2xl"
+              className="fixed top-0 right-0 bottom-0 w-full sm:w-[450px] glass-panel border-l border-white/10 z-[70] xl:hidden flex flex-col shadow-2xl"
             >
               {/* Header */}
               <div className="p-8 flex items-center justify-between">
@@ -205,16 +211,22 @@ export function Navbar() {
                 </div>
 
                 <div className="mt-12 mb-8">
-                  <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/20 mb-6">Let's build something epic</p>
-                  <Button
+                  <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/20 mb-6">Let's create something amazing</p>
+                  <button
                     onClick={() => {
                       setIsMobileOpen(false);
                       window.location.href = "/promo";
                     }}
-                    className="w-full bg-primary hover:bg-primary/90 text-white rounded-2xl py-8 text-xl font-bold shadow-xl shadow-primary/20 transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+                    className="group relative inline-flex items-center gap-6 glass-panel rounded-full px-8 py-5 transition-all overflow-hidden w-full justify-center shadow-2xl interactive cursor-pointer border-none"
                   >
-                    Free Preview Promo
-                  </Button>
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                    <span className="text-white font-black text-lg tracking-tight relative z-10 uppercase">
+                      Free Preview Promo
+                    </span>
+                    <div className="w-10 h-10 shrink-0 bg-primary rounded-full flex items-center justify-center text-white group-hover:translate-x-1 transition-transform duration-500 relative z-10 shadow-xl shadow-primary/40">
+                      <ArrowRight className="w-6 h-6 leading-none" />
+                    </div>
+                  </button>
                 </div>
               </div>
 

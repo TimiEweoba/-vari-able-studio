@@ -51,7 +51,7 @@ export function Analytics() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   return (
-    <section id="analytics" className="py-32 bg-[#161719] text-[#E3DBD8] overflow-hidden relative" ref={containerRef}>
+    <section id="analytics" className="py-24 md:py-32 bg-[#161719] text-[#E3DBD8] overflow-hidden relative" ref={containerRef}>
       {/* Dynamic Background Grid */}
       {!isMobile && (
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
@@ -86,17 +86,17 @@ export function Analytics() {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
             <div className="md:col-span-2 hidden md:block border-l-2 border-primary pl-6">
               <span className="block text-2xl font-bold mb-1 font-display">004</span>
-              <span className="text-[10px] text-muted-foreground uppercase tracking-[0.3em] font-black underline decoration-primary decoration-2 underline-offset-4">Metrics</span>
+              <span className="text-[10px] text-muted-foreground uppercase tracking-[0.3em] font-black underline decoration-primary decoration-2 underline-offset-4">Insights</span>
             </div>
             <div className="md:col-span-6">
               <h3 className="text-3xl md:text-5xl font-medium tracking-tight text-white leading-tight">
-                Actionable metrics that show <br className="hidden md:block" />
-                if your launch is actually working.
+                Clear numbers that show <br className="hidden md:block" />
+                if your website is actually working.
               </h3>
             </div>
             <div className="md:col-span-4 flex items-end justify-end md:h-full">
               <p className="text-white/50 text-right max-w-[280px] text-sm leading-relaxed border-r-2 border-primary/20 pr-6 italic">
-                Signups, conversions, uptime and performance. No vanity figures. Just the signals that define traction.
+                Sign-ups, sales, and performance. No fluff — just the numbers that matter for your growth.
               </p>
             </div>
           </div>
@@ -111,18 +111,18 @@ export function Analytics() {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={fadeInUp}
-            className="md:col-span-8 bg-[#1C1D20] border border-white/5 rounded-[2.5rem] p-8 md:p-12 overflow-hidden relative group hover:border-white/10 transition-all duration-700 shadow-2xl"
+            className="md:col-span-8 glass-panel rounded-3xl p-8 md:p-12 overflow-hidden relative group interactive shadow-2xl"
           >
             <div className="flex flex-col md:flex-row justify-between items-start mb-16 relative z-10">
               <div className="space-y-2">
                 <div className="flex items-center gap-3">
                   <div className="px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold uppercase tracking-widest">Live Flow</div>
-                  <Tooltip text="Tracks conversion at each onboarding step so you know where to fix UX.">
+                  <Tooltip text="Shows where visitors drop off so you know what to improve.">
                     <Info className="w-4 h-4 text-white/20 hover:text-white transition-colors cursor-help" />
                   </Tooltip>
                 </div>
                 <h4 className="text-2xl font-bold text-white font-display uppercase tracking-tight">Conversion Funnel</h4>
-                <p className="text-white/40 text-sm max-w-sm">Detailed drop-off analysis from initial land to paid subscription.</p>
+                <p className="text-white/40 text-sm max-w-sm">See exactly where visitors turn into paying customers.</p>
               </div>
               <div className="mt-6 md:mt-0 p-6 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-xl text-center group-hover:border-primary/30 transition-colors">
                 <div className="text-primary text-5xl font-bold font-display tabular-nums shadow-primary/20 drop-shadow-2xl">
@@ -179,15 +179,15 @@ export function Analytics() {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={{ ...fadeInUp, visible: { ...fadeInUp.visible, transition: { delay: 0.1, ...fadeInUp.visible.transition } } }}
-            className="md:col-span-4 bg-[#1C1D20] border border-white/5 rounded-[2.5rem] p-10 flex flex-col justify-between group h-full relative overflow-hidden shadow-2xl"
+            className="md:col-span-4 glass-panel rounded-3xl p-10 flex flex-col justify-between group h-full relative overflow-hidden shadow-2xl interactive"
           >
             <div className="relative z-10">
               <div className="flex items-center justify-between mb-12">
                 <div className="w-14 h-14 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-xl shadow-primary/20">
                   <CreditCard className="w-7 h-7" />
                 </div>
-                <Tooltip text="Shows transactional totals and refunds via Stripe — not accounting.">
-                  <div className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[9px] font-bold text-white/40 uppercase tracking-widest cursor-help hover:text-white transition-colors">Stripe Feed</div>
+                <Tooltip text="Shows your total sales and refunds — a quick financial snapshot.">
+                  <div className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[9px] font-bold text-white/40 uppercase tracking-widest cursor-help hover:text-white transition-colors">Sales Feed</div>
                 </Tooltip>
               </div>
 
@@ -199,7 +199,7 @@ export function Analytics() {
                   </div>
                   <div className="flex items-center gap-2 mt-3">
                     <div className="h-[2px] w-12 bg-primary rounded-full" />
-                    <p className="text-[10px] text-white/30 font-medium">30-day transactional flow</p>
+                    <p className="text-[10px] text-white/30 font-medium">Last 30 days of sales</p>
                   </div>
                 </div>
 
@@ -209,7 +209,7 @@ export function Analytics() {
                       <AnimatedNumber value={842} />
                       <ArrowUp className="w-4 h-4 text-green-400 mb-1 animate-bounce" />
                     </div>
-                    <p className="text-[9px] text-white/30 uppercase tracking-widest font-black">Active Subs</p>
+                    <p className="text-[9px] text-white/30 uppercase tracking-widest font-black">Active Customers</p>
                   </div>
                   <div className="space-y-1">
                     <div className="text-3xl font-bold text-white/20 font-display tabular-nums flex items-end gap-2">
@@ -256,7 +256,7 @@ export function Analytics() {
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeInUp}
-              className="bg-[#1C1D20] border border-white/5 rounded-[2rem] p-8 group hover:border-white/10 transition-all shadow-xl"
+              className="glass-panel rounded-2xl p-8 group transition-all shadow-xl interactive"
             >
               <div className="flex justify-between items-start mb-10">
                 <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center group-hover:bg-primary/10 group-hover:text-primary transition-all duration-500">
@@ -301,15 +301,15 @@ export function Analytics() {
               whileInView="visible"
               viewport={{ once: true }}
               variants={{ ...fadeInUp, visible: { ...fadeInUp.visible, transition: { delay: 0.1, ...fadeInUp.visible.transition } } }}
-              className="bg-[#1C1D20] border border-white/5 rounded-[2rem] p-8 group hover:border-white/10 transition-all shadow-xl relative overflow-hidden"
+              className="glass-panel rounded-2xl p-8 group transition-all shadow-xl relative overflow-hidden interactive"
             >
               <div className="flex justify-between items-start mb-12">
                 <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center group-hover:bg-primary/10 group-hover:text-primary transition-all duration-500">
                   <Zap className="w-6 h-6" />
                 </div>
-                <Tooltip text="Measure metric changes before and after a deploy.">
+                <Tooltip text="See how your numbers change after each update.">
                   <div className="text-[9px] text-white/30 tracking-[0.3em] font-black uppercase flex items-center gap-2 cursor-help border-b border-white/10 pb-1">
-                    <Database className="w-3 h-3" /> Impact Analyser
+                    <Database className="w-3 h-3" /> Impact Tracker
                   </div>
                 </Tooltip>
               </div>
@@ -322,7 +322,7 @@ export function Analytics() {
                     transition={{ delay: 1 }}
                     className="bg-primary text-[7px] font-black text-white px-2 py-1 rounded-md tracking-tighter shadow-lg shadow-primary/40 z-20"
                   >
-                    DEPLOY v2.4
+                    UPDATE v2.4
                   </motion.div>
                 </div>
                 {[30, 25, 35, 28, 32, 72, 85, 78, 95, 88].map((val, i) => (
@@ -349,7 +349,7 @@ export function Analytics() {
               whileInView="visible"
               viewport={{ once: true }}
               variants={{ ...fadeInUp, visible: { ...fadeInUp.visible, transition: { delay: 0.2, ...fadeInUp.visible.transition } } }}
-              className="bg-[#1C1D20] border border-white/5 rounded-[2rem] p-8 flex flex-col justify-between group hover:border-white/10 transition-all border-l-primary/10 border-l-2 shadow-xl"
+              className="glass-panel rounded-2xl p-8 flex flex-col justify-between group transition-all border-l-primary/10 border-l-2 shadow-xl interactive"
             >
               <div className="flex justify-between items-start">
                 <div>
@@ -364,10 +364,10 @@ export function Analytics() {
               <div className="bg-[#121214] rounded-2xl p-5 border border-white/5 relative group/alert mt-8 transform hover:scale-[1.02] transition-transform shadow-2xl">
                 <div className="flex items-center gap-2 mb-3">
                   <Bell className="w-3.5 h-3.5 text-white/30" />
-                  <span className="text-[10px] font-mono text-white/30 uppercase font-black">#infra-shuttle</span>
+                  <span className="text-[10px] font-mono text-white/30 uppercase font-black">#site-monitoring</span>
                 </div>
                 <p className="text-[11px] font-mono text-red-400 leading-relaxed pl-4 border-l-2 border-red-500">
-                  Warning: Edge timeouts detected on v2.4.1. Spike in 502 errors at 02:14 UTC.
+                  Warning: Some visitors experienced slow loading after the latest update at 02:14 UTC.
                 </p>
                 <div className="mt-5 flex gap-2">
                   <motion.button
@@ -387,7 +387,7 @@ export function Analytics() {
                 </div>
               </div>
 
-              <p className="text-[9px] text-white/20 mt-6 italic font-bold text-center">System & Email automation active for downtime/spikes.</p>
+              <p className="text-[9px] text-white/20 mt-6 italic font-bold text-center">Automatic alerts active — you'll be notified of any issues.</p>
             </motion.div>
 
           </div>
@@ -399,7 +399,7 @@ export function Analytics() {
             <div className="flex items-center gap-4 mb-6 justify-center md:justify-start">
               <Database className="w-6 h-6 text-white/20" />
               <div className="h-[1px] w-8 bg-white/10" />
-              <div className="text-[10px] text-white/20 uppercase tracking-[0.4em] font-black">Data-Audit.v2.0</div>
+              <div className="text-[10px] text-white/20 uppercase tracking-[0.4em] font-black">Your Data Insights</div>
             </div>
             <p className="text-white/40 text-sm leading-relaxed italic font-medium">
               We surface and explain the product signals that drive ROI. For advanced financial modeling, tax-compliant auditing, or multi-year forecasting, we’ll connect you directly to our global specialist partners.
@@ -413,10 +413,10 @@ export function Analytics() {
           >
             <a
               href="#contact"
-              className="group relative inline-flex items-center gap-8 bg-white/5 hover:bg-white/10 border border-white/10 px-12 py-7 rounded-[2.5rem] transition-all duration-700 overflow-hidden w-full md:w-auto justify-center shadow-2xl shadow-primary/5"
+              className="group relative inline-flex items-center gap-8 glass-panel rounded-full px-12 py-7 transition-all overflow-hidden w-full md:w-auto justify-center shadow-2xl interactive"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-              <span className="text-white font-black text-xl tracking-tight relative z-10 uppercase">Launch Metrics Demo</span>
+              <span className="text-white font-black text-xl tracking-tight relative z-10 uppercase">See a Live Demo</span>
               <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white group-hover:rotate-45 transition-transform duration-700 relative z-10 shadow-xl shadow-primary/40">
                 <ArrowUpRight className="w-6 h-6" />
               </div>

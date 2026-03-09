@@ -91,11 +91,11 @@
   }
 
   .glass-panel {
-    @apply bg-[#0A0A0B]/80 backdrop-blur-xl border border-white/5;
+    @apply bg-white/[0.02] backdrop-blur-xl border border-white/5 shadow-2xl;
   }
 
   .interactive {
-    @apply hover:scale-[1.02] active:scale-[0.98] transition-all duration-300;
+    @apply hover:scale-[1.02] active:scale-[0.98] transition-all duration-500 ease-out;
   }
 
   /* Mobile Optimizations */

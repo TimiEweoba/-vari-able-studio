@@ -23,43 +23,43 @@ export function FAQ() {
   const faqs = [
     {
       q: "What exactly is veri—able?",
-      a: "veri—able is a digital product studio that ships production-ready, bespoke web products fast. We combine internal foundations, Stripe billing, deployment automation, and clean handovers so you can start charging customers in days, not months.",
+      a: "veri—able Studio builds professional, custom websites and apps — fast. We handle everything: design, payments, hosting, and hand everything over to you when it's done. Think of it as your one-stop shop for going from idea to a real, working product in under 2 weeks.",
     },
     {
       q: "How does veri—able's launch process work?",
       a: "We follow a 4-step process: Discover & Align → Build & Brand → QA & Demo → Launch & Transfer. Typical pilot timeline: 7–14 days. We include a 30-day priority patch window after launch.",
     },
     {
-      q: "How long does implementation take?",
-      a: "Most starter pilots finish in 7–14 days. Custom scopes or extra integrations can extend timelines — we’ll tell you up front in the SOW.",
+      q: "How long does it take?",
+      a: "Most projects are delivered in 7–14 days from the moment we agree on the plan and receive your deposit. Bigger projects or extra features may take longer — we'll be upfront about the timeline before we start.",
     },
     {
       q: "What’s included in a launch package?",
-      a: "Architecture customization, Stripe integration, auth & admin, staging URL, deployment scripts, documentation, and 30 days of priority support. Final code + database ownership is handed over after final payment.",
+      a: "After paying a deposit, you get: a custom design, payment setup, login system, admin dashboard, a preview link, hosting setup, documentation, and 30 days of priority fixes.",
     },
     {
-      q: "Do I really own the code?",
-      a: "Yes. After you pay the final invoice, we transfer the full source code, a database export (if applicable), and deployment scripts. No vendor lock-ins.",
+      q: "Do I really own everything?",
+      a: "Yes. After final payment, we hand over everything — the website files, your data, and hosting setup. No strings attached. You can move, modify, or host it anywhere you wish.",
     },
     {
       q: "What’s the deposit and refund policy?",
       a: "A $500 refundable deposit reserves your slot. It’s refundable if we decline the project, if you cancel before development begins, or if you request a refund within 5 business days after onboarding and before development starts.",
     },
     {
-      q: "Can you integrate with our existing tools?",
-      a: "Yes. We handle common integrations (Stripe, HubSpot, Postgres/Supabase, analytics tools). Complex or bespoke integrations are scoped and priced separately.",
+      q: "Can you connect with our existing tools?",
+      a: "Absolutely. We connect with popular tools like payment processors, email platforms, databases, and analytics. If it has a way to connect, we can make it work.",
     },
     {
-      q: "Is veri—able secure?",
-      a: "We follow practical security hygiene: HTTPS, secure cookie settings, input validation, and monitoring hooks. For higher-risk projects we recommend (and can scope) third-party audits.",
+      q: "Is my website safe and secure?",
+      a: "Every project includes encryption, secure login, data protection, and real-time monitoring. For projects needing stricter compliance, we can add extra security layers.",
     },
     {
       q: "What if we need custom features after launch?",
       a: "Post-launch work is billed either via a retainer or per-ticket. We offer three support tiers to cover small fixes through dedicated engineering time.",
     },
     {
-      q: "Can we scale this beyond the 14-day launch?",
-      a: "Absolutely. We build on an industrial-grade stack (Next.js/React/Node) designed to scale. After handover, you can continue with our support plans or hand the keys to your internal team/contractors.",
+      q: "Can my website grow as my business grows?",
+      a: "We build on modern, battle-tested technology that's designed to grow with you. Whether you're serving 100 users or 100,000, your site will perform. If you ever outgrow your current setup, we can help you upgrade.",
     },
     {
       q: "What support do you provide?",
@@ -67,7 +67,7 @@ export function FAQ() {
     },
     {
       q: "How do you handle refunds or disputes?",
-      a: "We encourage clear SOWs and acceptance criteria. If a dispute arises, we pause deliverables, run a quick mediation call, and follow the SOW and signed terms. Deposit and refund policies are stated in the SOW.",
+      a: "We believe in clear agreements upfront. If any issue arises, we pause work, have a quick call to sort things out, and follow the terms we both agreed to. Deposit and refund policies are always stated clearly before we begin.",
     },
     {
       q: "Can you show references or case studies?",
@@ -76,7 +76,7 @@ export function FAQ() {
   ];
 
   return (
-    <section id="faq" className="py-24 bg-[#161719] text-[#E3DBD8]">
+    <section id="faq" className="py-24 md:py-32 bg-[#161719] text-[#E3DBD8]">
       <div className="container mx-auto px-4 md:px-6">
 
         {/* Header Section */}
@@ -120,7 +120,7 @@ export function FAQ() {
                 whileInView="visible"
                 viewport={{ once: true, margin: "-50px" }}
                 variants={{ ...fadeInUp, visible: { ...fadeInUp.visible, transition: { delay: idx * 0.05, ...fadeInUp.visible.transition } } }}
-                className="border border-white/5 bg-[#1C1D20] rounded-2xl overflow-hidden"
+                className="glass-panel rounded-2xl overflow-hidden"
               >
                 <motion.div
                   onClick={() => toggleFAQ(idx)}
@@ -194,7 +194,7 @@ export function FAQ() {
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={{ ...fadeInUp, visible: { ...fadeInUp.visible, transition: { delay: 0.2, ...fadeInUp.visible.transition } } }}
-                className="bg-[#1C1D20] border border-white/5 rounded-[2.5rem] p-10 lg:p-12 relative overflow-hidden shadow-2xl"
+                className="glass-panel rounded-3xl p-10 lg:p-12 relative overflow-hidden shadow-2xl"
               >
                 {/* Visual Accent */}
                 <div className="absolute -top-12 -right-12 w-40 h-40 bg-primary/5 blur-[80px] rounded-full" />
@@ -204,25 +204,32 @@ export function FAQ() {
                   Every team's needs are different. Let's cover your specific technical requirements and timeline in a short discovery call.
                 </p>
 
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+                <button
                   onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="w-full h-16 flex items-center justify-center gap-3 bg-primary hover:bg-primary/90 text-white rounded-2xl font-bold text-base transition-all group shadow-xl shadow-primary/30"
+                  className="group relative inline-flex items-center gap-6 glass-panel rounded-full px-8 py-4 md:py-5 transition-all overflow-hidden w-full justify-center shadow-2xl interactive cursor-pointer border-none"
                 >
-                  Inquire Us Directly
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </motion.button>
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                  <span className="text-white font-black text-sm md:text-lg tracking-tight relative z-10 uppercase">
+                    Chat With Us
+                  </span>
+                  <div className="w-10 h-10 shrink-0 bg-primary rounded-full flex items-center justify-center text-white group-hover:translate-x-1 transition-transform duration-500 relative z-10 shadow-xl shadow-primary/40">
+                    <ArrowRight className="w-5 h-5 leading-none" />
+                  </div>
+                </button>
 
                 <div className="mt-8 pt-8 border-t border-white/5 flex items-center gap-4">
                   <div className="flex -space-x-2">
-                    {[1, 2, 3].map(i => (
+                    {[
+                      "https://images.unsplash.com/photo-1507152832244-10d45c7eda57?q=80&w=100&h=100&auto=format&fit=crop", // black man
+                      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=100&h=100&auto=format&fit=crop", // black woman
+                      "https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?q=80&w=100&h=100&auto=format&fit=crop", // black man
+                    ].map((src, i) => (
                       <div key={i} className="w-8 h-8 rounded-full border-2 border-[#1C1D20] bg-white/10 overflow-hidden">
-                        <img src={`https://i.pravatar.cc/100?img=${i + 10}`} alt="avatar" className="w-full h-full object-cover grayscale" />
+                        <img src={src} alt="founder" className="w-full h-full object-cover grayscale" />
                       </div>
                     ))}
                   </div>
-                  <span className="text-[10px] text-white/20 uppercase tracking-widest font-black">Join 50+ founders</span>
+                  <span className="text-[10px] text-white/20 uppercase tracking-[0.2em] font-black">Join 50+ founders</span>
                 </div>
               </motion.div>
             </div>
@@ -231,6 +238,6 @@ export function FAQ() {
         </div>
 
       </div>
-    </section>
+    </section >
   );
 }

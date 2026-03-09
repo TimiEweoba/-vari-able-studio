@@ -1,3 +1,0 @@
-{
-  "/api/payments/verify/[txRef]/route": "app/api/payments/verify/[txRef]/route.js"
-}
