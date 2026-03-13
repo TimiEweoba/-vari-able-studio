@@ -2,6 +2,7 @@ import { Link } from "wouter";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Linkedin, Twitter, Instagram, Youtube, MessageCircle, ChevronDown, Rocket, CheckCircle2, Loader2, Facebook } from "lucide-react";
+import { useState as useNewsletterState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { insertContactSchema, type InsertContactRequest } from "@shared/schema";
@@ -11,6 +12,29 @@ import { useToast } from "@/hooks/use-toast";
 
 export function CTA() {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [newsletterName, setNewsletterName] = useNewsletterState("");
+  const [newsletterEmail, setNewsletterEmail] = useNewsletterState("");
+  const [newsletterLoading, setNewsletterLoading] = useNewsletterState(false);
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setNewsletterLoading(true);
+    try {
+      const res = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: newsletterName, email: newsletterEmail }),
+      });
+      if (!res.ok) throw new Error("Failed to subscribe");
+      toast({ title: "You're on the list!", description: "Check your inbox for a welcome email from us." });
+      setNewsletterName("");
+      setNewsletterEmail("");
+    } catch (err) {
+      toast({ title: "Error", description: "Something went wrong. Please try again.", variant: "destructive" });
+    } finally {
+      setNewsletterLoading(false);
+    }
+  };
   const { toast } = useToast();
 
   const form = useForm<InsertContactRequest>({
@@ -363,38 +387,38 @@ export function CTA() {
                 <h3 className="text-2xl font-medium text-white mb-3">Insights for builders and founders</h3>
                 <p className="text-white/50 text-sm mb-6">Join our newsletter and get launch playbooks and technical deep-dives.</p>
 
-                <form onSubmit={(e) => {
-                  e.preventDefault();
-                  toast({
-                    title: "Subscription Received",
-                    description: "Your interest has been routed to contact@veriable.xyz",
-                  });
-                  // Reset fields ideally, but for now just show toast
-                }} className="space-y-4">
+                <form onSubmit={handleNewsletterSubmit} className="space-y-4">
                   <input
                     type="text"
                     placeholder="Your Name"
                     required
-                    className="w-full bg-transparent border-b border-white/10 pb-3 text-white placeholder:text-white/30 focus:outline-none focus:border-primary transition-colors"
+                    value={newsletterName}
+                    onChange={(e) => setNewsletterName(e.target.value)}
+                    disabled={newsletterLoading}
+                    className="w-full bg-transparent border-b border-white/10 pb-3 text-white placeholder:text-white/30 focus:outline-none focus:border-primary transition-colors disabled:opacity-50"
                   />
                   <div className="flex gap-3">
                     <input
                       type="email"
                       placeholder="Your Email"
                       required
-                      className="flex-1 bg-transparent border-b border-white/10 pb-3 text-white placeholder:text-white/30 focus:outline-none focus:border-primary transition-colors"
+                      value={newsletterEmail}
+                      onChange={(e) => setNewsletterEmail(e.target.value)}
+                      disabled={newsletterLoading}
+                      className="flex-1 bg-transparent border-b border-white/10 pb-3 text-white placeholder:text-white/30 focus:outline-none focus:border-primary transition-colors disabled:opacity-50"
                     />
                     <motion.button
                       type="submit"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                      className="w-12 h-12 bg-primary hover:bg-primary/90 rounded-2xl flex items-center justify-center transition-colors interactive shadow-lg shadow-primary/30"
+                      disabled={newsletterLoading}
+                      whileHover={{ scale: newsletterLoading ? 1 : 1.1 }}
+                      whileTap={{ scale: newsletterLoading ? 1 : 0.9 }}
+                      className="w-12 h-12 bg-primary hover:bg-primary/90 rounded-2xl flex items-center justify-center transition-colors interactive shadow-lg shadow-primary/30 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      <ArrowRight className="w-5 h-5 text-white" />
+                      {newsletterLoading ? <Loader2 className="w-5 h-5 text-white animate-spin" /> : <ArrowRight className="w-5 h-5 text-white" />}
                     </motion.button>
                   </div>
                   <p className="text-xs text-white/40">
-                    By submitting, you agree to our <Link href="/terms" className="text-primary hover:underline">Terms & Service</Link>. Insights are routed to contact@veriable.xyz for review.
+                    By submitting, you agree to our <Link href="/terms" className="text-primary hover:underline">Terms &amp; Service</Link>. No spam, ever.
                   </p>
                 </form>
               </div>

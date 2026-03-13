@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { storage } from '@lib/storage';
 import { initializePayment } from '@lib/flutterwave';
+import { sendPaymentReservationNotification } from '@lib/email';
 import crypto from "crypto";
 
 export async function POST(req: Request) {
@@ -12,12 +13,7 @@ export async function POST(req: Request) {
         }
 
         const tx_ref = `VS-${crypto.randomUUID()}`;
-        // Using simple environment variable or defaulting to URL origin if possible, strictly mostly ENV in serverless
-        const clientUrl = process.env.CLIENT_URL || process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000";
-        // NOTE: dev is typically localhost:3000 in Next.js, but vite was 5173. 
-        // We will run nextjs on 3000 usually. We need to check if user wants to keep 5173 or not. 
-        // Next.js defaults to 3000. I'll stick to dynamic 3000 default or env.
-
+        const clientUrl = process.env.CLIENT_URL || (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
         const callback_url = `${clientUrl}/payment/callback`;
 
         // Save to storage
@@ -28,6 +24,17 @@ export async function POST(req: Request) {
             currency: currency || "USD",
             status: "pending",
             data: JSON.stringify({ name, description, packageName }),
+        });
+
+        // Send reservation notification emails
+        await sendPaymentReservationNotification({
+            name,
+            email,
+            packageName: packageName || "Unknown Package",
+            amount,
+            currency: currency || "USD",
+            txRef: tx_ref,
+            description,
         });
 
         const result = await initializePayment({

@@ -46,14 +46,14 @@ export default function PromoPage() {
     };
 
     const requestMutation = useMutation({
-        mutationFn: async (data: { name: string; email: string; message: string; company: string }) => {
-            const res = await apiRequest("POST", "/api/contact", data);
+        mutationFn: async (data: { name: string; email: string; projectDesc: string }) => {
+            const res = await apiRequest("POST", "/api/promo", data);
             return res.json();
         },
         onSuccess: () => {
             toast({
                 title: "Request Received!",
-                description: "Your free preview request has been routed to contact@veriable.xyz.",
+                description: "Check your inbox — we've sent a confirmation to your email.",
             });
             setName("");
             setEmail("");
@@ -73,8 +73,7 @@ export default function PromoPage() {
         requestMutation.mutate({
             name,
             email,
-            message: `Free Preview Request: ${projectDesc}`,
-            company: "Promo Page"
+            projectDesc,
         });
     };
 
