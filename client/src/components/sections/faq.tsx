@@ -1,4 +1,5 @@
-import { Link } from "wouter";
+"use client";
+import Link from "next/link";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Plus, Minus } from "lucide-react";
@@ -241,3 +242,6 @@ export function FAQ() {
     </section >
   );
 }
+
+
+

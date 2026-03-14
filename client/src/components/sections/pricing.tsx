@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 import { Check, ArrowRight, Globe, Loader2, Mail, Gift } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -476,3 +477,6 @@ export function Pricing() {
     </>
   );
 }
+
+
+

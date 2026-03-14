@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
-import "@/index.css"; // Ensure this path is correct relative to aliases or move css
+import "@/index.css";
+import { Providers } from './providers';
 
 export const metadata: Metadata = {
+    metadataBase: new URL('https://veriable.xyz'),
     title: 'veri—able studio',
     description: 'Design & Development Studio',
     icons: {
@@ -16,7 +18,11 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-            <body>{children}</body>
+            <body>
+                <Providers>
+                    {children}
+                </Providers>
+            </body>
         </html>
     );
 }

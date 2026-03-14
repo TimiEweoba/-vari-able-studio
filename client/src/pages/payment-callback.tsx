@@ -1,13 +1,15 @@
+"use client";
 
 import { useEffect, useState } from "react";
-import { useLocation } from "wouter";
+import { usePathname, useRouter } from "next/navigation";
 import { Loader2, XCircle, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 
 export default function PaymentCallback() {
-    const [, setLocation] = useLocation();
+    const router = useRouter();
+  const setLocation = router.push;
     const { toast } = useToast();
     const [status, setStatus] = useState<"loading" | "success" | "failed" | "cancelled">("loading");
     const [message, setMessage] = useState("Verifying payment...");
@@ -167,3 +169,6 @@ export default function PaymentCallback() {
         </div>
     );
 }
+
+
+

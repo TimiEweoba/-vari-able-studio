@@ -1,3 +1,4 @@
+"use client";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Settings2, Palette, Terminal as TerminalIcon, X } from "lucide-react";
@@ -107,3 +108,6 @@ export function ThemeSettings() {
         </div>
     );
 }
+
+
+

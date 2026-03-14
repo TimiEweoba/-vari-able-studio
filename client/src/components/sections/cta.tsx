@@ -1,4 +1,5 @@
-import { Link } from "wouter";
+"use client";
+import Link from "next/link";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Linkedin, Twitter, Instagram, Youtube, MessageCircle, ChevronDown, Rocket, CheckCircle2, Loader2, Facebook } from "lucide-react";
@@ -497,3 +498,6 @@ export function CTA() {
     </section>
   );
 }
+
+
+

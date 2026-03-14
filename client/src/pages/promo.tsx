@@ -1,3 +1,4 @@
+"use client";
 import { motion } from "framer-motion";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
@@ -10,9 +11,11 @@ import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
-import { ParticleBackground } from "@/components/ui/particle-background";
-import { Meta } from "@/components/ui/meta";
+import dynamic from 'next/dynamic';
+const ParticleBackground = dynamic(() => import('@/components/ui/particle-background').then(mod => mod.ParticleBackground), { ssr: false });;
+
 import { CheckoutDialog } from "@/components/sections/checkout-dialog";
+import { cn } from "@/lib/utils";
 
 export default function PromoPage() {
     const [name, setName] = useState("");
@@ -21,6 +24,7 @@ export default function PromoPage() {
     const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
     const [selectedPlan, setSelectedPlan] = useState<{ name: string; price: number; currency: "USD" | "NGN" } | null>(null);
     const [currency, setCurrency] = useState<"USD" | "NGN">("USD");
+    const [isSubmitted, setIsSubmitted] = useState(false);
     const { toast } = useToast();
 
     const PROMO_PRICES = {
@@ -51,6 +55,7 @@ export default function PromoPage() {
             return res.json();
         },
         onSuccess: () => {
+            setIsSubmitted(true);
             toast({
                 title: "Request Received!",
                 description: "Check your inbox — we've sent a confirmation to your email.",
@@ -94,10 +99,7 @@ export default function PromoPage() {
 
     return (
         <div className="min-h-screen bg-[#0A0A0B] text-[#E3DBD8] font-sans relative selection:bg-primary/30">
-            <Meta
-                title="Free Preview Promo"
-                description="Get a free preview of your product. If you like it, you keep it. Simple hosting and domain plans."
-            />
+            
             <ParticleBackground />
             <Navbar />
 
@@ -136,7 +138,7 @@ export default function PromoPage() {
                         </motion.p>
                     </div>
 
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start max-w-6xl mx-auto">
+                    <div className={cn("grid grid-cols-1 gap-12 items-start mx-auto transition-all duration-700", isSubmitted ? "lg:grid-cols-2 max-w-6xl" : "max-w-2xl")}>
                         {/* Information & Form */}
                         <motion.div
                             initial="hidden"
@@ -178,178 +180,210 @@ export default function PromoPage() {
                                 </div>
                             </div>
 
-                            <Card className="bg-white/[0.02] border-white/10 rounded-[2rem] overflow-hidden">
-                                <CardContent className="p-8">
-                                    <h3 className="text-2xl font-bold text-white mb-6">Request Your Free Preview</h3>
-                                    <form onSubmit={handleRequestSubmit} className="space-y-6">
-                                        <div className="space-y-2">
-                                            <Label className="text-white/60">Full Name</Label>
-                                            <Input
-                                                className="bg-white/5 border-white/10 text-white rounded-xl h-12"
-                                                placeholder="John Doe"
-                                                required
-                                                value={name}
-                                                onChange={(e) => setName(e.target.value)}
-                                            />
-                                        </div>
-                                        <div className="space-y-2">
-                                            <Label className="text-white/60">Email Address</Label>
-                                            <Input
-                                                className="bg-white/5 border-white/10 text-white rounded-xl h-12"
-                                                type="email"
-                                                placeholder="john@example.com"
-                                                required
-                                                value={email}
-                                                onChange={(e) => setEmail(e.target.value)}
-                                            />
-                                        </div>
-                                        <div className="space-y-2">
-                                            <Label className="text-white/60">Your Project Brief</Label>
-                                            <textarea
-                                                className="w-full bg-white/5 border border-white/10 rounded-xl p-3 text-white outline-none focus:border-primary transition-colors text-sm min-h-[120px]"
-                                                placeholder="Tell us about the product you want to build..."
-                                                required
-                                                value={projectDesc}
-                                                onChange={(e) => setProjectDesc(e.target.value)}
-                                            />
-                                        </div>
-                                        <Button
-                                            type="submit"
-                                            className="w-full h-14 text-base font-bold rounded-xl"
-                                            disabled={requestMutation.isPending}
-                                        >
-                                            {requestMutation.isPending ? (
-                                                <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                                            ) : (
-                                                "Submit Request"
-                                            )}
-                                        </Button>
-                                    </form>
-                                </CardContent>
-                            </Card>
+                            {!isSubmitted ? (
+                                <Card className="bg-white/[0.02] border-white/10 rounded-[2rem] overflow-hidden">
+                                    <CardContent className="p-8 md:p-10">
+                                        <h3 className="text-2xl font-bold text-white mb-2">Request Your Free Preview</h3>
+                                        <p className="text-white/40 text-sm mb-8 leading-relaxed">
+                                            Scoped to <strong className="text-white/80">landing pages, minimum viable products (MVPs),</strong> and proofs-of-concept under 40 hours. Best for rapid prototyping.
+                                        </p>
+                                        <form onSubmit={handleRequestSubmit} className="space-y-6">
+                                            <div className="space-y-2">
+                                                <Label className="text-white/60">Full Name</Label>
+                                                <Input
+                                                    className="bg-white/5 border-white/10 text-white rounded-xl h-12"
+                                                    placeholder="John Doe"
+                                                    required
+                                                    value={name}
+                                                    onChange={(e) => setName(e.target.value)}
+                                                />
+                                            </div>
+                                            <div className="space-y-2">
+                                                <Label className="text-white/60">Email Address</Label>
+                                                <Input
+                                                    className="bg-white/5 border-white/10 text-white rounded-xl h-12"
+                                                    type="email"
+                                                    placeholder="john@example.com"
+                                                    required
+                                                    value={email}
+                                                    onChange={(e) => setEmail(e.target.value)}
+                                                />
+                                            </div>
+                                            <div className="space-y-2">
+                                                <Label className="text-white/60">Your Project Brief</Label>
+                                                <textarea
+                                                    className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white outline-none focus:border-primary transition-colors text-sm min-h-[120px]"
+                                                    placeholder="Briefly tell us about the product you want to build..."
+                                                    required
+                                                    value={projectDesc}
+                                                    onChange={(e) => setProjectDesc(e.target.value)}
+                                                />
+                                            </div>
+                                            <div className="pt-2">
+                                                <Button
+                                                    type="submit"
+                                                    className="w-full h-14 text-base font-bold rounded-xl"
+                                                    disabled={requestMutation.isPending}
+                                                >
+                                                    {requestMutation.isPending ? (
+                                                        <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                                                    ) : (
+                                                        "Submit Request"
+                                                    )}
+                                                </Button>
+                                                <p className="text-center text-[11px] text-white/40 mt-4 flex justify-center items-center gap-1.5 font-medium tracking-wide">
+                                                    <Check size={12} className="text-primary" /> No credit card. No commitment. We'll reply in 24h.
+                                                </p>
+                                            </div>
+                                        </form>
+                                    </CardContent>
+                                </Card>
+                            ) : (
+                                <motion.div
+                                    initial={{ scale: 0.95, opacity: 0 }}
+                                    animate={{ scale: 1, opacity: 1 }}
+                                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                                >
+                                    <Card className="bg-primary/5 border-primary/20 rounded-[2rem] overflow-hidden text-center relative max-w-lg mx-auto lg:mx-0">
+                                        <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[80px] -z-10" />
+                                        <CardContent className="p-10 flex flex-col items-center justify-center min-h-[400px]">
+                                            <div className="w-20 h-20 bg-primary/20 text-primary rounded-full flex items-center justify-center mb-6 ring-4 ring-primary/10">
+                                                <Check size={40} className="drop-shadow-[0_0_15px_rgba(250,110,67,0.5)]" />
+                                            </div>
+                                            <h3 className="text-3xl font-bold text-white mb-4 tracking-tight">Got it!</h3>
+                                            <p className="text-white/60 mb-2 leading-relaxed">
+                                                We're currently reviewing your brief. Our team evaluates preview requests daily and will reply within <strong>24 hours</strong>.
+                                            </p>
+                                            <p className="text-primary/80 text-sm mt-8 border border-primary/20 bg-primary/5 px-6 py-3 rounded-full">
+                                                Check your infrastructure options →
+                                            </p>
+                                        </CardContent>
+                                    </Card>
+                                </motion.div>
+                            )}
                         </motion.div>
 
                         {/* Pricing Plans */}
-                        <motion.div
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true }}
-                            variants={fadeInUp}
-                            transition={{ delay: 0.1 }}
-                            className="space-y-8"
-                        >
-                            <div className="space-y-4 mb-12">
-                                <h2 className="text-3xl font-bold text-white tracking-tight">Post-Preview Plans</h2>
-                                <p className="text-white/40">Once your product is ready, choose a plan to keep it live and secure.</p>
+                        {isSubmitted && (
+                            <motion.div
+                                initial={{ opacity: 0, x: 20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ duration: 0.8, delay: 0.2, type: "spring", stiffness: 100 }}
+                                className="space-y-8"
+                            >
+                                <div className="space-y-4 mb-12">
+                                    <h2 className="text-3xl font-bold text-white tracking-tight">Post-Preview Plans</h2>
+                                    <p className="text-white/40">Once your product is ready, choose a plan to keep it live and secure.</p>
 
-                                {/* Currency Toggle */}
-                                <div className="flex items-center gap-3 bg-white/5 p-1.5 rounded-full border border-white/10 w-fit">
-                                    <button
-                                        onClick={() => setCurrency("USD")}
-                                        className={`px-6 py-2 rounded-full text-xs font-bold transition-all ${currency === "USD" ? "bg-primary text-white" : "text-white/40 hover:text-white"
-                                            }`}
-                                    >
-                                        USD
-                                    </button>
-                                    <button
-                                        onClick={() => setCurrency("NGN")}
-                                        className={`px-6 py-2 rounded-full text-xs font-bold transition-all ${currency === "NGN" ? "bg-primary text-white" : "text-white/40 hover:text-white"
-                                            }`}
-                                    >
-                                        NGN
-                                    </button>
+                                    {/* Currency Toggle */}
+                                    <div className="flex items-center gap-3 bg-white/5 p-1.5 rounded-full border border-white/10 w-fit">
+                                        <button
+                                            onClick={() => setCurrency("USD")}
+                                            className={`px-6 py-2 rounded-full text-xs font-bold transition-all ${currency === "USD" ? "bg-primary text-white" : "text-white/40 hover:text-white"
+                                                }`}
+                                        >
+                                            USD
+                                        </button>
+                                        <button
+                                            onClick={() => setCurrency("NGN")}
+                                            className={`px-6 py-2 rounded-full text-xs font-bold transition-all ${currency === "NGN" ? "bg-primary text-white" : "text-white/40 hover:text-white"
+                                                }`}
+                                        >
+                                            NGN
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div className="grid grid-cols-1 gap-6">
-                                {/* Monthly Plan */}
-                                <Card className="bg-[#141415] border-white/5 hover:border-primary/50 transition-all rounded-[2rem] overflow-hidden group">
-                                    <CardContent className="p-10">
-                                        <div className="flex justify-between items-start mb-8">
-                                            <div>
-                                                <h4 className="text-xl font-bold text-white mb-2">Monthly Hosting</h4>
-                                                <p className="text-white/40 text-sm">Flexible, cancel anytime.</p>
+                                <div className="grid grid-cols-1 gap-6">
+                                    {/* Monthly Plan */}
+                                    <Card className="bg-[#141415] border-white/5 hover:border-primary/50 transition-all rounded-[2rem] overflow-hidden group">
+                                        <CardContent className="p-10">
+                                            <div className="flex justify-between items-start mb-8">
+                                                <div>
+                                                    <h4 className="text-xl font-bold text-white mb-2">Monthly Hosting</h4>
+                                                    <p className="text-white/40 text-sm">Flexible, cancel anytime.</p>
+                                                </div>
+                                                <div className="text-right">
+                                                    <div className="text-3xl font-bold text-primary">{formatPrice("monthly")}</div>
+                                                    <div className="text-[10px] text-white/20 uppercase tracking-widest font-black mt-1">Per Month</div>
+                                                </div>
                                             </div>
-                                            <div className="text-right">
-                                                <div className="text-3xl font-bold text-primary">{formatPrice("monthly")}</div>
-                                                <div className="text-[10px] text-white/20 uppercase tracking-widest font-black mt-1">Per Month</div>
+
+                                            <ul className="space-y-4 mb-10">
+                                                <li className="flex gap-3 items-center text-sm text-white/60">
+                                                    <Check size={18} className="text-primary" />
+                                                    <span>Custom Domain (.com, .xyz, etc)</span>
+                                                </li>
+                                                <li className="flex gap-3 items-center text-sm text-white/60">
+                                                    <Check size={18} className="text-primary" />
+                                                    <span>Managed Cloud Hosting</span>
+                                                </li>
+                                                <li className="flex gap-3 items-center text-sm text-white/60">
+                                                    <Check size={18} className="text-primary" />
+                                                    <span>SSL Certificate & Security</span>
+                                                </li>
+                                                <li className="flex gap-3 items-center text-sm text-white/60">
+                                                    <Check size={18} className="text-primary" />
+                                                    <span>Email Support</span>
+                                                </li>
+                                            </ul>
+
+                                            <Button
+                                                onClick={() => handleSubscribe("monthly")}
+                                                className="w-full h-14 rounded-xl bg-white/[0.03] hover:bg-primary border border-white/10 hover:border-primary text-white font-bold transition-all group/btn"
+                                            >
+                                                Subscribe Monthly
+                                                <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                                            </Button>
+                                        </CardContent>
+                                    </Card>
+
+                                    {/* Annual Plan */}
+                                    <Card className="bg-[#141415] border-white/5 border-primary/20 shadow-xl shadow-primary/5 hover:border-primary transition-all rounded-[2rem] overflow-hidden relative group">
+                                        <div className="absolute top-0 right-0 bg-primary text-white text-[10px] font-black px-6 py-2 rounded-bl-2xl tracking-widest uppercase">Best Value</div>
+                                        <CardContent className="p-10">
+                                            <div className="flex justify-between items-start mb-8">
+                                                <div>
+                                                    <h4 className="text-xl font-bold text-white mb-2">Annual Hosting</h4>
+                                                    <p className="text-white/40 text-sm">Save {currency === "USD" ? "$20" : "₦30,000"} annually.</p>
+                                                </div>
+                                                <div className="text-right">
+                                                    <div className="text-3xl font-bold text-primary">{formatPrice("annual")}</div>
+                                                    <div className="text-[10px] text-white/20 uppercase tracking-widest font-black mt-1">Per Year</div>
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <ul className="space-y-4 mb-10">
-                                            <li className="flex gap-3 items-center text-sm text-white/60">
-                                                <Check size={18} className="text-primary" />
-                                                <span>Custom Domain (.com, .xyz, etc)</span>
-                                            </li>
-                                            <li className="flex gap-3 items-center text-sm text-white/60">
-                                                <Check size={18} className="text-primary" />
-                                                <span>Managed Cloud Hosting</span>
-                                            </li>
-                                            <li className="flex gap-3 items-center text-sm text-white/60">
-                                                <Check size={18} className="text-primary" />
-                                                <span>SSL Certificate & Security</span>
-                                            </li>
-                                            <li className="flex gap-3 items-center text-sm text-white/60">
-                                                <Check size={18} className="text-primary" />
-                                                <span>Email Support</span>
-                                            </li>
-                                        </ul>
+                                            <ul className="space-y-4 mb-10 text-sm">
+                                                <li className="flex gap-3 items-center text-white/80">
+                                                    <Check size={18} className="text-primary" />
+                                                    <span>Everything in Monthly plan</span>
+                                                </li>
+                                                <li className="flex gap-3 items-center text-white/80">
+                                                    <Check size={18} className="text-primary" />
+                                                    <span>2 Months Free</span>
+                                                </li>
+                                                <li className="flex gap-3 items-center text-white/80">
+                                                    <Check size={18} className="text-primary" />
+                                                    <span>Priority 24/7 Support</span>
+                                                </li>
+                                                <li className="flex gap-3 items-center text-white/80">
+                                                    <Check size={18} className="text-primary" />
+                                                    <span>Quarterly Technical Audit</span>
+                                                </li>
+                                            </ul>
 
-                                        <Button
-                                            onClick={() => handleSubscribe("monthly")}
-                                            className="w-full h-14 rounded-xl bg-white/[0.03] hover:bg-primary border border-white/10 hover:border-primary text-white font-bold transition-all group/btn"
-                                        >
-                                            Subscribe Monthly
-                                            <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                                        </Button>
-                                    </CardContent>
-                                </Card>
-
-                                {/* Annual Plan */}
-                                <Card className="bg-[#141415] border-white/5 border-primary/20 shadow-xl shadow-primary/5 hover:border-primary transition-all rounded-[2rem] overflow-hidden relative group">
-                                    <div className="absolute top-0 right-0 bg-primary text-white text-[10px] font-black px-6 py-2 rounded-bl-2xl tracking-widest uppercase">Best Value</div>
-                                    <CardContent className="p-10">
-                                        <div className="flex justify-between items-start mb-8">
-                                            <div>
-                                                <h4 className="text-xl font-bold text-white mb-2">Annual Hosting</h4>
-                                                <p className="text-white/40 text-sm">Save {currency === "USD" ? "$20" : "₦30,000"} annually.</p>
-                                            </div>
-                                            <div className="text-right">
-                                                <div className="text-3xl font-bold text-primary">{formatPrice("annual")}</div>
-                                                <div className="text-[10px] text-white/20 uppercase tracking-widest font-black mt-1">Per Year</div>
-                                            </div>
-                                        </div>
-
-                                        <ul className="space-y-4 mb-10 text-sm">
-                                            <li className="flex gap-3 items-center text-white/80">
-                                                <Check size={18} className="text-primary" />
-                                                <span>Everything in Monthly plan</span>
-                                            </li>
-                                            <li className="flex gap-3 items-center text-white/80">
-                                                <Check size={18} className="text-primary" />
-                                                <span>2 Months Free</span>
-                                            </li>
-                                            <li className="flex gap-3 items-center text-white/80">
-                                                <Check size={18} className="text-primary" />
-                                                <span>Priority 24/7 Support</span>
-                                            </li>
-                                            <li className="flex gap-3 items-center text-white/80">
-                                                <Check size={18} className="text-primary" />
-                                                <span>Quarterly Technical Audit</span>
-                                            </li>
-                                        </ul>
-
-                                        <Button
-                                            onClick={() => handleSubscribe("annual")}
-                                            className="w-full h-14 rounded-xl bg-primary hover:bg-primary/90 text-white font-bold shadow-lg shadow-primary/20 transition-all group/btn"
-                                        >
-                                            Subscribe Annually
-                                            <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                                        </Button>
-                                    </CardContent>
-                                </Card>
-                            </div>
-                        </motion.div>
+                                            <Button
+                                                onClick={() => handleSubscribe("annual")}
+                                                className="w-full h-14 rounded-xl bg-primary hover:bg-primary/90 text-white font-bold shadow-lg shadow-primary/20 transition-all group/btn"
+                                            >
+                                                Subscribe Annually
+                                                <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                                            </Button>
+                                        </CardContent>
+                                    </Card>
+                                </div>
+                            </motion.div>
+                        )}
                     </div>
                 </div>
             </main>
@@ -368,3 +402,7 @@ export default function PromoPage() {
         </div>
     );
 }
+
+
+
+

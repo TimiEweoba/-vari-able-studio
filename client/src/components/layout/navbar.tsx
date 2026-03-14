@@ -1,8 +1,9 @@
-import { Link } from "wouter";
+"use client";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Menu, X, ArrowRight, Instagram, Twitter, Linkedin } from "lucide-react";
 import { useState, useEffect } from "react";
-import { useLocation } from "wouter";
+import { usePathname, useRouter } from "next/navigation";
 import { useToast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
@@ -20,7 +21,9 @@ export function Navbar() {
   }, []);
 
   const { toast } = useToast();
-  const [location, setLocation] = useLocation();
+  const location = usePathname();
+  const router = useRouter();
+  const setLocation = router.push;
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (href.startsWith("/#")) {
@@ -234,7 +237,7 @@ export function Navbar() {
               <div className="p-10 bg-[#0D0D0E]/50 border-t border-white/5 mt-auto">
                 <div className="flex justify-between items-center">
                   <div className="flex gap-4">
-                    <a href="#" className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-white/40 hover:text-white hover:bg-white/10 transition-all ring-1 ring-white/5"><Twitter size={20} /></a>
+                    <a href="https://x.com/veriable_xyz" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-white/40 hover:text-white hover:bg-white/10 transition-all ring-1 ring-white/5"><Twitter size={20} /></a>
                     <a href="#" className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-white/40 hover:text-white hover:bg-white/10 transition-all ring-1 ring-white/5"><Instagram size={20} /></a>
                     <a href="#" className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-white/40 hover:text-white hover:bg-white/10 transition-all ring-1 ring-white/5"><Linkedin size={20} /></a>
                   </div>
@@ -251,4 +254,7 @@ export function Navbar() {
     </nav>
   );
 }
+
+
+
 

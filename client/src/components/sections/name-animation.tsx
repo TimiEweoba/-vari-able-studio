@@ -1,3 +1,4 @@
+"use client";
 import { motion } from "framer-motion";
 import { isMobile } from "@/lib/animations";
 
@@ -80,3 +81,6 @@ export function NameAnimation() {
         </>
     );
 }
+
+
+

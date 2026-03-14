@@ -1,9 +1,11 @@
+"use client";
 import { motion } from "framer-motion";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { Link } from "wouter";
-import { ParticleBackground } from "@/components/ui/particle-background";
+import Link from "next/link";
+import dynamic from 'next/dynamic';
+const ParticleBackground = dynamic(() => import('@/components/ui/particle-background').then(mod => mod.ParticleBackground), { ssr: false });;
 
 export default function CompliancePage() {
     const fadeInUp = {
@@ -134,3 +136,7 @@ export default function CompliancePage() {
         </div>
     );
 }
+
+
+
+

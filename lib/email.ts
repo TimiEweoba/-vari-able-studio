@@ -1,6 +1,7 @@
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Initialize only if key exists to prevent local dev server crashes
+const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 const STUDIO_EMAIL = 'contact@veriable.xyz';
 const FROM_NAME = 'veri—able Studio';
 // Resend requires your FROM address to be on a verified domain.
@@ -16,6 +17,11 @@ export async function sendContactNotification(data: {
     company?: string | null;
     message: string;
 }) {
+    if (!resend) {
+        console.log("No RESEND_API_KEY found, skipping sendContactNotification");
+        return;
+    }
+
     const { name, email, company, message } = data;
 
     // 1a. Notify the studio
@@ -79,6 +85,11 @@ export async function sendPaymentReservationNotification(data: {
     txRef: string;
     description?: string;
 }) {
+    if (!resend) {
+        console.log("No RESEND_API_KEY found, skipping sendPaymentReservationNotification");
+        return;
+    }
+
     const { name, email, packageName, amount, currency, txRef, description } = data;
 
     // Notify studio
@@ -137,6 +148,11 @@ export async function sendPromoRequestNotification(data: {
     email: string;
     projectDesc: string;
 }) {
+    if (!resend) {
+        console.log("No RESEND_API_KEY found, skipping sendPromoRequestNotification");
+        return;
+    }
+
     const { name, email, projectDesc } = data;
 
     // Notify studio with a distinct "Promo Request" subject
@@ -195,6 +211,11 @@ export async function sendPromoRequestNotification(data: {
    4. NEWSLETTER — notify studio of new subscriber
 ───────────────────────────────────────────────────────────────────────────── */
 export async function sendNewsletterNotification(data: { name: string; email: string }) {
+    if (!resend) {
+        console.log("No RESEND_API_KEY found, skipping sendNewsletterNotification");
+        return;
+    }
+
     const { name, email } = data;
 
     await resend.emails.send({

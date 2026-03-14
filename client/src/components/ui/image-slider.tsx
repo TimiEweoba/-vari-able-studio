@@ -1,3 +1,4 @@
+"use client";
 import React, { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -80,3 +81,6 @@ export function ImageSlider({ images }: ImageSliderProps) {
         </div>
     );
 }
+
+
+

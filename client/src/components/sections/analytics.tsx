@@ -1,3 +1,4 @@
+"use client";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, Zap, Activity, CreditCard, Bell, Info, ArrowDown, ArrowUp, Database, MousePointer2 } from "lucide-react";
 import { useEffect, useState, useRef } from "react";
@@ -428,3 +429,6 @@ export function Analytics() {
     </section>
   );
 }
+
+
+

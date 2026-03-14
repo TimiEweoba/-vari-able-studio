@@ -1,9 +1,12 @@
+"use client";
 import { motion } from "framer-motion";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import Image from "next/image";
 import { ArrowLeft, ArrowRight, Monitor, Smartphone, PenTool, Video, Zap } from "lucide-react";
-import { Link } from "wouter";
-import { ParticleBackground } from "@/components/ui/particle-background";
+import Link from "next/link";
+import dynamic from 'next/dynamic';
+const ParticleBackground = dynamic(() => import('@/components/ui/particle-background').then(mod => mod.ParticleBackground), { ssr: false });;
 
 const techStacks = [
     {
@@ -11,7 +14,13 @@ const techStacks = [
         title: "Full-Stack Web Engineering",
         description: "We don't just build sites; we architect digital platforms. Utilizing component-driven frontends and highly secure backends to guarantee unmatched speed, scalability, and SEO dominance.",
         image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2670&auto=format&fit=crop",
-        tags: ["React", "Next.js", "Node.js", "PostgreSQL"],
+        tags: [
+            { name: "React", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/react.svg" },
+            { name: "Next.js", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/nextdotjs.svg" },
+            { name: "Node.js", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/nodedotjs.svg" },
+            { name: "PostgreSQL", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/postgresql.svg" },
+            { name: "Tailwind", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/tailwindcss.svg" }
+        ],
         icon: <Monitor className="w-6 h-6" />
     },
     {
@@ -19,7 +28,13 @@ const techStacks = [
         title: "Native & Cross-Platform Mobile",
         description: "Delivering iOS and Android experiences that feel incredibly fluid and native. We focus on battery efficiency, low latency, and offline-first capabilities to keep users hooked.",
         image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=2670&auto=format&fit=crop",
-        tags: ["React Native", "Swift", "Kotlin", "Firebase"],
+        tags: [
+            { name: "React Native", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/react.svg" },
+            { name: "Swift", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/swift.svg" },
+            { name: "Kotlin", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/kotlin.svg" },
+            { name: "Firebase", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/firebase.svg" },
+            { name: "Flutter", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/flutter.svg" }
+        ],
         icon: <Smartphone className="w-6 h-6" />
     },
     {
@@ -27,7 +42,12 @@ const techStacks = [
         title: "UI/UX & Product Design",
         description: "A product is only as good as its interface. We conduct deep UX research and design world-class, premium UI systems that are intuitive, beautiful, and strictly aligned with your brand.",
         image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=2000&auto=format&fit=crop",
-        tags: ["Figma", "Spline", "Adobe CC", "Research"],
+        tags: [
+            { name: "Figma", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/figma.svg" },
+            { name: "Framer", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/framer.svg" },
+            { name: "Spline", icon: "/icons/spline.svg" },
+            { name: "Adobe CC", icon: "/icons/cc.svg" }
+        ],
         icon: <PenTool className="w-6 h-6" />
     },
     {
@@ -35,20 +55,22 @@ const techStacks = [
         title: "2D & 3D Motion Graphics",
         description: "Static is boring. We breathe life into your brand through custom 3D models, smooth web micro-interactions, and narrative-driven motion graphics that leave a lasting impression.",
         image: "https://images.unsplash.com/photo-1620121692029-d088224ddc74?q=80&w=2532&auto=format&fit=crop",
-        tags: ["Blender", "Cinema 4D", "After Effects", "Lottie"],
+        tags: [
+            { name: "Blender", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/blender.svg" },
+            { name: "Cinema 4D", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/cinema4d.svg" },
+            { name: "After Effects", icon: "/icons/ae.svg" },
+            { name: "Lottie", icon: "/icons/lottiefiles.svg" }
+        ],
         icon: <Video className="w-6 h-6" />
     }
 ];
 
-import { Meta } from "@/components/ui/meta";
+
 
 export default function TechStackPage() {
     return (
         <div className="min-h-screen bg-[#0A0A0B] text-[#E3DBD8] font-sans relative">
-            <Meta
-                title="What We Build"
-                description="Our services include full-stack websites, mobile apps, UI/UX design, and 2D/3D animations."
-            />
+
             <ParticleBackground />
             <Navbar />
 
@@ -99,17 +121,21 @@ export default function TechStackPage() {
                             >
                                 <div className="flex-1 w-full">
                                     <div className="aspect-[16/10] rounded-[2rem] overflow-hidden border border-white/5 shadow-2xl relative group">
-                                        <img
+                                        <Image
                                             src={stack.image}
                                             alt={stack.title}
-                                            className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                                            fill
+                                            className="object-cover transition-transform duration-1000 group-hover:scale-110"
                                         />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                                        <div className="absolute bottom-10 left-10 flex gap-3">
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                                        <div className="absolute bottom-6 md:bottom-10 left-6 md:left-10 pr-6 flex flex-wrap gap-2 md:gap-3">
                                             {stack.tags.map(tag => (
-                                                <span key={tag} className="px-4 py-2 bg-white/10 backdrop-blur-md rounded-full text-[10px] font-bold text-white/80 uppercase tracking-widest border border-white/10">
-                                                    {tag}
-                                                </span>
+                                                <div key={tag.name} className="flex items-center gap-1.5 md:gap-2 px-3 flex-shrink-0 md:px-4 py-1.5 md:py-2 bg-black/50 backdrop-blur-md rounded-full border border-white/10 group/tag hover:bg-white/10 transition-colors">
+                                                    <img src={tag.icon} alt={tag.name} className="w-3 h-3 md:w-3.5 md:h-3.5 opacity-70 group-hover/tag:opacity-100 transition-opacity invert brightness-0" />
+                                                    <span className="text-[9px] md:text-[10px] whitespace-nowrap font-bold text-white/80 uppercase tracking-widest leading-none">
+                                                        {tag.name}
+                                                    </span>
+                                                </div>
                                             ))}
                                         </div>
                                     </div>
@@ -120,7 +146,7 @@ export default function TechStackPage() {
                                         <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary border border-primary/20">
                                             {stack.icon}
                                         </div>
-                                        <span className="text-sm font-bold text-primary tracking-[0.3em]">ENGINE — {stack.id}</span>
+                                        <span className="text-sm font-bold text-primary tracking-[0.3em]">SERVICE — {stack.id}</span>
                                     </div>
                                     <h3 className="text-4xl md:text-5xl font-bold text-white mb-8 tracking-tighter leading-none">
                                         {stack.title}
@@ -156,3 +182,7 @@ export default function TechStackPage() {
         </div>
     );
 }
+
+
+
+

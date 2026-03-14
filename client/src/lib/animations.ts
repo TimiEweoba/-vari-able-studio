@@ -1,3 +1,4 @@
+"use client";
 export const isMobile = typeof window !== 'undefined' ? (window.innerWidth < 768 || 'ontouchstart' in window) : false;
 
 export const fadeInUp = {
@@ -35,3 +36,4 @@ export const simpleFade = {
         }
     }
 };
+

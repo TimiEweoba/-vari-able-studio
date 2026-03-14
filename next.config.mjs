@@ -10,6 +10,12 @@ const nextConfig = {
         // we might need to adjust if there are many errors during migration
         ignoreBuildErrors: true,
     },
+    images: {
+        remotePatterns: [
+            { protocol: 'https', hostname: 'images.unsplash.com' },
+            { protocol: 'https', hostname: 'cdn.jsdelivr.net' }
+        ],
+    },
 };
 
 export default nextConfig;

@@ -1,5 +1,7 @@
-import { Link } from "wouter";
+"use client";
+import Link from "next/link";
 import { useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Linkedin, Twitter, Instagram, Facebook, Github, ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -41,7 +43,7 @@ export function Team() {
         { icon: Github, href: "https://github.com/arawaeleojo" },
         { icon: WhatsApp, href: "https://wa.me/2348087087083" }
       ],
-      experienceLink: "#"
+      experienceLink: "https://eleojoarawa.vercel.app/"
     },
     {
       name: "Dennis Okpandu",
@@ -167,12 +169,13 @@ export function Team() {
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 className="absolute inset-0 z-0"
               >
-                <img
+                <Image
                   src={team[activeMember].image}
                   alt={team[activeMember].name}
                   loading="lazy"
+                  fill
                   className={cn(
-                    "w-full h-full object-cover transition-all duration-1000",
+                    "object-cover transition-all duration-1000",
                     team[activeMember].image.endsWith(".jpg") ?
                       "brightness-[0.8] contrast-[1.2] grayscale-[30%]" :
                       "brightness-[1.1] contrast-[1.1]"
@@ -208,7 +211,11 @@ export function Team() {
             <motion.div
               key={idx}
               whileHover={{ y: -10 }}
+              role="button"
+              aria-label={`View ${member.name}'s profile`}
+              tabIndex={0}
               onClick={() => setActiveMember(idx)}
+              onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { setActiveMember(idx); } }}
               className={cn(
                 "group relative w-24 h-32 md:w-32 md:h-44 shrink-0 rounded-2xl overflow-hidden cursor-pointer transition-all duration-700 border-2",
                 idx === activeMember
@@ -216,10 +223,11 @@ export function Team() {
                   : "border-white/5 opacity-50 grayscale hover:opacity-100 hover:grayscale-0 hover:border-white/20"
               )}
             >
-              <img
+              <Image
                 src={member.image}
                 alt={member.name}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
               />
               <div className={cn(
                 "absolute inset-0 transition-opacity bg-primary/20",
@@ -233,3 +241,7 @@ export function Team() {
     </section >
   );
 }
+
+
+
+

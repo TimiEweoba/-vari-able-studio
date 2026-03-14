@@ -1,9 +1,10 @@
+"use client";
 import { useEffect, ReactNode, useRef } from "react";
 import Lenis from "lenis";
-import { useLocation } from "wouter";
+import { usePathname, useRouter } from "next/navigation";
 
 export function SmoothScroll({ children }: { children: ReactNode }) {
-    const [location] = useLocation();
+    const location = usePathname();
     const lenisRef = useRef<Lenis | null>(null);
     const rafIdRef = useRef<number | null>(null);
 
@@ -82,3 +83,6 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
 
     return <>{children}</>;
 }
+
+
+

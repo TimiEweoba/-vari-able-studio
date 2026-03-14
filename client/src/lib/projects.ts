@@ -1,3 +1,4 @@
+"use client";
 export interface Project {
     id: string;
     title: string;
@@ -37,3 +38,4 @@ export const projects: Project[] = [
         featured: "false",
     }
 ];
+

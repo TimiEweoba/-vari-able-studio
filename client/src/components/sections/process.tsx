@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, ArrowLeft, CheckCircle2, User, FileText, Code2, ShieldCheck, Calendar, Sparkles, Target, Layers, Zap } from "lucide-react";
@@ -508,3 +509,6 @@ export function Process() {
     </section>
   );
 }
+
+
+

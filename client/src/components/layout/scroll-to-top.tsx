@@ -1,8 +1,9 @@
+"use client";
 import { useEffect } from "react";
-import { useLocation } from "wouter";
+import { usePathname, useRouter } from "next/navigation";
 
 export function ScrollToTop() {
-    const [location] = useLocation();
+    const location = usePathname();
 
     useEffect(() => {
         // Always reset scroll to top on route change
@@ -29,3 +30,6 @@ export function ScrollToTop() {
 
     return null;
 }
+
+
+

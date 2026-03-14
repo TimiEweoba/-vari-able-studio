@@ -1,6 +1,8 @@
+"use client";
 import { ArrowRight, Lock, LayoutDashboard, CreditCard, Loader2, ArrowUpRight } from "lucide-react";
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { useLocation } from "wouter";
+import { usePathname, useRouter } from "next/navigation";
 import { projects, type Project } from "@/lib/projects";
 import { fadeInUp, isMobile } from "@/lib/animations";
 
@@ -25,12 +27,7 @@ const ProjectCard = ({ project, fadeInUp, index, setLocation }: WorkCardProps) =
       onClick={() => setLocation("/work")}
     >
       <div className="w-full aspect-[16/10] overflow-hidden bg-black/50 relative">
-        <img
-          src={project.imageUrl}
-          alt={project.title}
-          loading="lazy"
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-        />
+        <Image src={project.imageUrl} alt={project.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
         <div className="absolute top-6 left-6 z-10">
           <span className="text-[10px] font-black text-white/90 tracking-[0.3em] uppercase bg-primary/80 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10">{project.category}</span>
         </div>
@@ -77,13 +74,8 @@ const ProjectCard = ({ project, fadeInUp, index, setLocation }: WorkCardProps) =
       data-cursor="Review"
       onClick={() => setLocation("/work")}
     >
-      <div className="w-full aspect-[16/10] overflow-hidden bg-black/50">
-        <img
-          src={project.imageUrl}
-          alt={project.title}
-          loading="lazy"
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-        />
+      <div className="w-full aspect-[16/10] overflow-hidden bg-black/50 relative">
+        <Image src={project.imageUrl} alt={project.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
       </div>
 
       <div className="p-8 flex flex-col gap-4">
@@ -125,7 +117,9 @@ const ProjectCard = ({ project, fadeInUp, index, setLocation }: WorkCardProps) =
 };
 
 export function Work() {
-  const [location, setLocation] = useLocation();
+  const location = usePathname();
+  const router = useRouter();
+  const setLocation = router.push;
 
   const featuredProjects = projects.filter(p => p.featured === "true");
   const otherProjects = projects.filter(p => p.featured !== "true").slice(0, 5 - featuredProjects.length);
@@ -217,3 +211,7 @@ export function Work() {
     </section>
   );
 }
+
+
+
+

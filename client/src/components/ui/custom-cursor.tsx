@@ -1,6 +1,7 @@
+"use client";
 import { useEffect, useState, useRef } from "react";
 import { motion, useSpring, useMotionValue } from "framer-motion";
-import { useLocation } from "wouter";
+import { usePathname, useRouter } from "next/navigation";
 
 export function CustomCursor() {
     const [isHovered, setIsHovered] = useState(false);
@@ -13,7 +14,7 @@ export function CustomCursor() {
     const springConfig = { damping: 25, stiffness: 200 };
     const cursorX = useSpring(mouseX, springConfig);
     const cursorY = useSpring(mouseY, springConfig);
-    const [location] = useLocation();
+    const location = usePathname();
     const lastMousePos = useRef({ x: 0, y: 0 });
 
     // Function to update cursor state based on element at coordinates
@@ -104,3 +105,6 @@ export function CustomCursor() {
         </motion.div >
     );
 }
+
+
+

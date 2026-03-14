@@ -1,3 +1,4 @@
+"use client";
 import { motion } from "framer-motion";
 import { Navbar } from "@/components/layout/navbar";
 import { Hero } from "@/components/sections/hero";
@@ -14,17 +15,15 @@ import { NameAnimation } from "@/components/sections/name-animation";
 import { CTA } from "@/components/sections/cta";
 import { Marquee } from "@/components/ui/marquee";
 
-import { ParticleBackground } from "@/components/ui/particle-background";
+import dynamic from 'next/dynamic';
+const ParticleBackground = dynamic(() => import('@/components/ui/particle-background').then(mod => mod.ParticleBackground), { ssr: false });
 
-import { Meta } from "@/components/ui/meta";
+
 
 export default function Home() {
   return (
     <div className="min-h-screen text-foreground font-sans selection:bg-primary/30 relative">
-      <Meta
-        title="Launch Fast"
-        description="We build, launch, and scale production-ready digital products in 7–14 days. Full source code ownership."
-      />
+
       <ParticleBackground />
       <Navbar />
       <main>
@@ -56,3 +55,6 @@ export default function Home() {
     </div>
   );
 }
+
+
+

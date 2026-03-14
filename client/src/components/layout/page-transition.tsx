@@ -1,9 +1,10 @@
+"use client";
 import { motion, AnimatePresence } from "framer-motion";
-import { useLocation } from "wouter";
+import { usePathname, useRouter } from "next/navigation";
 import { ReactNode } from "react";
 
 export function PageTransition({ children }: { children: ReactNode }) {
-    const [location] = useLocation();
+    const location = usePathname();
 
     return (
         <AnimatePresence mode="popLayout">
@@ -19,3 +20,6 @@ export function PageTransition({ children }: { children: ReactNode }) {
         </AnimatePresence>
     );
 }
+
+
+

@@ -1,3 +1,4 @@
+"use client";
 import { QueryClient, QueryFunction } from "@tanstack/react-query";
 
 async function throwIfResNotOk(res: Response) {
@@ -55,3 +56,4 @@ export const queryClient = new QueryClient({
     },
   },
 });
+

@@ -1,3 +1,4 @@
+"use client";
 import { motion } from "framer-motion";
 
 interface MarqueeItem {
@@ -49,3 +50,6 @@ export function Marquee({ items, direction = "left", speed = 40 }: MarqueeProps)
         </div>
     );
 }
+
+
+

@@ -1,11 +1,13 @@
+"use client";
 import { useEffect, useState } from "react";
-import { useLocation } from "wouter";
+import { usePathname, useRouter } from "next/navigation";
 import { CheckCircle2, ArrowRight, Calendar, UserPlus, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Success() {
-    const [, setLocation] = useLocation();
+    const router = useRouter();
+  const setLocation = router.push;
     const searchParams = new URLSearchParams(window.location.search);
     const checkoutId = searchParams.get("reference") || searchParams.get("tx_ref") || searchParams.get("checkout_id");
     const [status, setStatus] = useState<"loading" | "success" | "failed">("loading");
@@ -129,3 +131,6 @@ export default function Success() {
         </div>
     );
 }
+
+
+

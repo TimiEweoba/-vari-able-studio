@@ -1,11 +1,13 @@
+"use client";
 import { motion, AnimatePresence } from "framer-motion";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { useMutation } from "@tanstack/react-query";
 import { projects, type Project } from "@/lib/projects";
 import { ArrowRight, Loader2, ArrowLeft, Plus, CheckCircle2 } from "lucide-react";
-import { ParticleBackground } from "@/components/ui/particle-background";
-import { Link } from "wouter";
+import dynamic from 'next/dynamic';
+const ParticleBackground = dynamic(() => import('@/components/ui/particle-background').then(mod => mod.ParticleBackground), { ssr: false });;
+import Link from "next/link";
 import { useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -15,7 +17,7 @@ import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import { LabsReader } from "@/components/ui/labs-reader";
 
-import { Meta } from "@/components/ui/meta";
+
 
 const xPlusArticle = {
     author: "Timi Eweoba",
@@ -182,10 +184,7 @@ export default function CaseStudiesPage() {
 
     return (
         <div className="min-h-screen bg-[#0A0A0B] text-[#E3DBD8] font-sans relative selection:bg-primary/30">
-            <Meta
-                title="Selected Work"
-                description="Explore our portfolio of high-performance digital products and technical infrastructure."
-            />
+            
             <ParticleBackground />
             <Navbar />
 
@@ -415,3 +414,7 @@ export default function CaseStudiesPage() {
         </div>
     );
 }
+
+
+
+

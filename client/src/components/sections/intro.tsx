@@ -1,3 +1,4 @@
+"use client";
 import { useRef, useState } from "react";
 import { useScroll, useMotionValueEvent, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -35,7 +36,7 @@ export function Intro() {
                     <div className="lg:col-span-7 space-y-8 pb-4">
                         <div className="space-y-6">
                             {/* Animated Text replacing "See veri-able in action" */}
-                            <p className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tighter leading-[1.2] flex flex-wrap gap-x-[0.2em] gap-y-1 mb-6">
+                            <p className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tighter leading-[1.2] flex flex-wrap gap-x-[0.2em] gap-y-1 mb-6">
                                 {words.map((word, wordIndex) => {
                                     const wordChars = word.split("");
                                     const isEmphasized = emphasizedWords.includes(word.replace(/[,.]/g, ""));
@@ -67,9 +68,6 @@ export function Intro() {
                                 })}
                             </p>
 
-                            <p className="text-muted-foreground max-w-2xl text-lg leading-relaxed mb-8">
-                                Take a look around and see what we can build for you. We turn your ideas into real products you can sell — complete with payments, hosting, and 30 days of hands-on support.
-                            </p>
 
                             <div className="flex flex-col sm:flex-row gap-4 mt-8">
                                 <button
@@ -126,3 +124,6 @@ export function Intro() {
         </section >
     );
 }
+
+
+

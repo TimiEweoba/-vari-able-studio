@@ -1,5 +1,6 @@
-import { Link } from "wouter";
-import { Facebook, Instagram, MessageCircle } from "lucide-react";
+"use client";
+import Link from "next/link";
+import { Facebook, Instagram, MessageCircle, Twitter } from "lucide-react";
 import { motion } from "framer-motion";
 
 export function Footer() {
@@ -63,6 +64,15 @@ export function Footer() {
                 <Facebook size={18} />
               </motion.a>
               <motion.a
+                href="https://x.com/veriable_xyz"
+                target="_blank"
+                whileHover={{ scale: 1.1, color: "var(--color-primary)" }}
+                className="text-muted-foreground transition-colors"
+                aria-label="X (Twitter)"
+              >
+                <Twitter size={18} />
+              </motion.a>
+              <motion.a
                 href="#"
                 whileHover={{ scale: 1.1, color: "var(--color-primary)" }}
                 className="text-muted-foreground transition-colors"
@@ -91,3 +101,6 @@ export function Footer() {
     </footer>
   );
 }
+
+
+

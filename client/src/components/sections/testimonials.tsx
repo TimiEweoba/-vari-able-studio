@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ArrowRight, Quote, ArrowUp } from "lucide-react";
@@ -12,7 +13,7 @@ export function Testimonials() {
       name: "Amina Okoro",
       role: "Operations Head",
       company: "XPlus",
-      quote: "veri—able Studio transformed our vision for XPlus into a high-performance reality in just 7 days. Their ongoing maintenance and rapid feature deployment have been instrumental in our growth. They don't just build software; they build businesses.",
+      quote: "Honestly, I didn't think a 14-day turnaround was possible for something this complex, but the veri—able guys just... got it. No endless meetings, no 'corporate' fluff—just pure execution. Our platform handled 500+ users on launch day without a hitch. It's rare to find a team that actually ships exactly what they promise on day one.",
       image: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=2574&auto=format&fit=crop"
     },
     {
@@ -173,3 +174,6 @@ export function Testimonials() {
     </section>
   );
 }
+
+
+

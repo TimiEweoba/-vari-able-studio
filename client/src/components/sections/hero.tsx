@@ -1,6 +1,8 @@
+"use client";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Link } from "wouter";
+import Image from "next/image";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Calendar, Activity, Zap, Gift, Lightbulb, PhoneCall, FastForward, CheckCircle2, TrendingUp } from "lucide-react";
 import { fadeInUp } from "@/lib/animations";
@@ -160,11 +162,7 @@ export function Hero() {
     return (
         <section className="relative min-h-screen flex flex-col justify-center pt-32 pb-16 md:pt-48 md:pb-32 overflow-hidden">
             {/* Preload workflow images out of sight to avoid blink during animation */}
-            <div className="hidden">
-                {workflowSteps.map((step, idx) => (
-                    <img key={idx} src={step.image} alt="preload" fetchPriority="high" loading="eager" />
-                ))}
-            </div>
+            {/* Next.js Image component handles optimization automatically. */}
 
             <div className="container mx-auto px-4 md:px-6 relative z-10">
 
@@ -203,18 +201,22 @@ export function Hero() {
                             {/* Slide Background Image */}
                             <div className="absolute inset-0 z-0 bg-[#0A0A0B]">
                                 <AnimatePresence mode="popLayout">
-                                    <motion.img
+                                    <motion.div
                                         key={currentStep}
-                                        src={workflowSteps[currentStep].image}
-                                        alt="Slide Background"
-                                        fetchPriority="high"
-                                        loading="eager"
                                         initial={{ opacity: 0, scale: 1.1 }}
                                         animate={{ opacity: 0.8, scale: 1 }}
                                         exit={{ opacity: 0, scale: 0.95 }}
                                         transition={{ duration: 0.8, ease: "easeInOut" }}
-                                        className="absolute inset-0 w-full h-full object-cover"
-                                    />
+                                        className="absolute inset-0 w-full h-full"
+                                    >
+                                        <Image
+                                            src={workflowSteps[currentStep].image}
+                                            alt="Slide Background"
+                                            fill
+                                            priority
+                                            className="object-cover"
+                                        />
+                                    </motion.div>
                                 </AnimatePresence>
                                 <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0B]/95 via-[#0A0A0B]/50 to-[#0A0A0B]/20 mix-blend-multiply" />
                                 <div className="absolute inset-0 bg-black/20" />
@@ -288,3 +290,7 @@ export function Hero() {
         </section>
     );
 }
+
+
+
+

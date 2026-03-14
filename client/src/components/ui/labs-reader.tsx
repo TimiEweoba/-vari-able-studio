@@ -1,3 +1,4 @@
+"use client";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Clock, User, Share2, Bookmark, Check } from "lucide-react";
 import { useState, useRef } from "react";
@@ -208,3 +209,6 @@ export function LabsReader({ isOpen, onClose, article }: LabsReaderProps) {
         </AnimatePresence>
     );
 }
+
+
+

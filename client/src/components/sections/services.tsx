@@ -1,5 +1,7 @@
+"use client";
 import { useState } from "react";
-import { Link } from "wouter";
+import Image from "next/image";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, ArrowDown, ArrowRight, Monitor, Smartphone, PenTool, Video } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -7,7 +9,7 @@ import { isMobile } from "@/lib/animations";
 
 const services = [
   {
-    id: "01",
+    id: "v.01",
     label: "Web Development",
     title: "Full-Stack Websites",
     description: "High-performance, scalable web applications built from front to back. We combine beautiful, reactive frontends with robust, secure backend architectures tailored to your business needs.",
@@ -15,7 +17,7 @@ const services = [
     icon: <Monitor className="w-6 h-6" />
   },
   {
-    id: "02",
+    id: "v.02",
     label: "App Development",
     title: "Mobile Apps",
     description: "Cross-platform mobile applications designed for seamless user experiences. We deliver fast, intuitive, and feature-rich apps for both iOS and Android ecosystems.",
@@ -23,7 +25,7 @@ const services = [
     icon: <Smartphone className="w-6 h-6" />
   },
   {
-    id: "03",
+    id: "v.03",
     label: "Product Design",
     title: "UI/UX Designs",
     description: "World-class interface design and user experience research. We craft intuitive, accessible, and stunning visuals that convert visitors into loyal customers.",
@@ -31,7 +33,7 @@ const services = [
     icon: <PenTool className="w-6 h-6" />
   },
   {
-    id: "04",
+    id: "v.04",
     label: "Motion & Graphics",
     title: "2D & 3D Animations",
     description: "Captivating motion graphics, product animations, and immersive 3D experiences that elevate your brand narrative and engage your audience.",
@@ -41,7 +43,7 @@ const services = [
 ];
 
 export function Services() {
-  const [activeId, setActiveId] = useState("01");
+  const [activeId, setActiveId] = useState("v.01");
 
   return (
     <section id="services" className="py-24 md:py-32 bg-[#161719] text-[#E3DBD8]">
@@ -131,8 +133,13 @@ export function Services() {
                         </p>
 
                         {/* Card Image */}
-                        <div className="mt-4 rounded-xl overflow-hidden aspect-[4/3] w-full bg-black/20">
-                          <img src={service.image} alt={service.title} className="w-full h-full object-cover" />
+                        <div className="mt-4 rounded-xl overflow-hidden aspect-[4/3] w-full bg-black/20 relative">
+                          <Image
+                            src={service.image}
+                            alt={service.title}
+                            fill
+                            className="object-cover"
+                          />
                         </div>
 
                         {/* Bottom Icon/Label */}
@@ -177,3 +184,6 @@ export function Services() {
     </section>
   );
 }
+
+
+
