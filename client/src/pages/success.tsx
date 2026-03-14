@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { CheckCircle2, ArrowRight, Calendar, UserPlus, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function Success() {
     const router = useRouter();
   const setLocation = router.push;
-    const searchParams = new URLSearchParams(window.location.search);
+    const searchParams = useSearchParams();
     const checkoutId = searchParams.get("reference") || searchParams.get("tx_ref") || searchParams.get("checkout_id");
     const [status, setStatus] = useState<"loading" | "success" | "failed">("loading");
 

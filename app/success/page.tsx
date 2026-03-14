@@ -5,6 +5,12 @@ export const metadata: Metadata = {
     title: "Payment Successful | veri—able studio",
 };
 
+import { Suspense } from "react";
+
 export default function SuccessPage() {
-    return <Success />;
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <Success />
+        </Suspense>
+    );
 }

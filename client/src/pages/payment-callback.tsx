@@ -17,6 +17,7 @@ export default function PaymentCallback() {
     // Check if we are currently in the process of redirecting to a payment gateway.
     // This prevents a "glimpse" of the cancellation UI during history manipulation.
     const [isRedirecting, setIsRedirecting] = useState(() => {
+        if (typeof window === 'undefined') return false;
         const ts = sessionStorage.getItem("payment_redirect_ts");
         if (!ts) return false;
         // If the redirect was initiated less than 5 seconds ago, block the UI

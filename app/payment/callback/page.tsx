@@ -5,6 +5,12 @@ export const metadata: Metadata = {
     title: "Processing Payment | veri—able studio",
 };
 
+import { Suspense } from "react";
+
 export default function CallbackPage() {
-    return <PaymentCallback />;
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <PaymentCallback />
+        </Suspense>
+    );
 }
