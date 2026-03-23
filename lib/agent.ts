@@ -1,8 +1,5 @@
 import Groq from "groq-sdk";
 
-const groq = new Groq({
-    apiKey: process.env.GROQ_API_KEY,
-});
 
 export interface IntakeResult {
     intentScore: number;   // 1–10 how serious/qualified the lead is
@@ -40,6 +37,14 @@ export async function analyzeIntake(
         ]
             .filter(Boolean)
             .join("\n");
+
+        if (!process.env.GROQ_API_KEY) {
+            throw new Error("GROQ_API_KEY is not configured.");
+        }
+
+        const groq = new Groq({
+            apiKey: process.env.GROQ_API_KEY,
+        });
 
         const response = await groq.chat.completions.create({
             model: "llama-3.1-70b-versatile",
