@@ -15,6 +15,8 @@ export const contactRequests = pgTable("contact_requests", {
   email: text("email").notNull(),
   company: text("company"),
   message: text("message").notNull(),
+  intentScore: text("intent_score"),
+  agentSummary: text("agent_summary"),
   createdAt: text("created_at").default(sql`CURRENT_TIMESTAMP`),
 });
 

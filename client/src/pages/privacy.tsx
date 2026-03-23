@@ -21,12 +21,12 @@ export default function PrivacyPage() {
         {
             id: "1",
             title: "Data Collection & Usage",
-            content: "We collect essential contact information (name, email, company) provided through our inquiry forms and reservation portal. This data is used solely for project communication, technical alignment, and providing the services requested. We do not sell or trade your personal information."
+            content: "We collect essential contact information (name, email, company) provided through our inquiry forms and free reservation portal. This data is used solely for project communication, technical alignment, and providing the services requested. We do not sell or trade your personal information."
         },
         {
             id: "2",
-            title: "Reservation & Refund Policy",
-            content: "Reservation deposits ($500 / ₦500,000) are fully refundable if requested within 5 business days after onboarding and before any active development or asset provisioning begins. If veri—able Studio declines a project for any reason, the deposit will be returned in full within 7-10 business days."
+            title: "Free Reservation Policy",
+            content: "Reserving a slot is completely free with no deposit required. You can cancel your reservation at any time before development begins. If veri—able Studio declines a project for any reason, you will be notified promptly."
         },
         {
             id: "3",

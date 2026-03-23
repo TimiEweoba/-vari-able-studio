@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Check, ArrowRight, Globe, Loader2, Mail, Gift } from "lucide-react";
+import { Check, ArrowRight, Globe, Loader2, Mail, Gift, Star, Bot, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -19,23 +19,86 @@ import { apiRequest } from "@/lib/queryClient";
 import { CheckoutDialog } from "./checkout-dialog";
 import { fadeInUp, isMobile } from "@/lib/animations";
 
+type PlanKey = "starter" | "growth" | "studio" | "agent";
+
+const PRICES = {
+  starter: { usd: 1500, ngn: 1800000 },
+  growth: { usd: 3500, ngn: 4200000 },
+  studio: { usd: 6500, ngn: 7800000 },
+  agent: { usd: 1200, ngn: 1500000 },
+  reservation: { usd: 0, ngn: 0 },
+};
+
+const plans: {
+  key: PlanKey;
+  name: string;
+  badge?: string;
+  description: string;
+  delivery: string;
+  features: string[];
+  highlight?: boolean;
+}[] = [
+  {
+    key: "starter",
+    name: "Starter",
+    description: "Landing page or MVP. No agent layer. Ship fast and test your concept.",
+    delivery: "7-day delivery",
+    features: [
+      "Project game plan",
+      "Solid starting template",
+      "Login system & hosting setup",
+      "7 days priority support",
+    ],
+  },
+  {
+    key: "growth",
+    name: "Growth",
+    badge: "★ Flagship",
+    description: "Full-stack build + one embedded autonomous agent. The complete package.",
+    delivery: "14-day delivery",
+    highlight: true,
+    features: [
+      "Tailored design plan",
+      "One embedded AI agent",
+      "Performance tracking",
+      "Priority support",
+      "Launch & walkthrough",
+    ],
+  },
+  {
+    key: "studio",
+    name: "Studio",
+    description: "Full product + multi-agent orchestration + 30-day security monitoring.",
+    delivery: "Custom timeline",
+    features: [
+      "Your own developer",
+      "Multi-agent orchestration",
+      "30-day security audit & monitoring",
+      "Dedicated hosting",
+      "Custom integrations",
+      "Guaranteed support & training",
+    ],
+  },
+  {
+    key: "agent",
+    name: "Agent-Only",
+    description: "Already have a website? Bolt on an autonomous agent. New capability, lower cost.",
+    delivery: "7–10 day delivery",
+    features: [
+      "Agent scoping & brief",
+      "One deployed autonomous agent",
+      "WhatsApp / web integration",
+      "7 days post-launch support",
+    ],
+  },
+];
+
 export function Pricing() {
   const [currency, setCurrency] = useState<"USD" | "NGN">("USD");
-  const [selectedPackage, setSelectedPackage] = useState<"starter" | "scale" | "enterprise">("scale");
-  const [selectedSupport, setSelectedSupport] = useState<"lite" | "pro" | "plus">("pro");
+  const [selectedPlan, setSelectedPlan] = useState<PlanKey>("growth");
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
-  const [activePackage, setActivePackage] = useState<{ name: string, price: number } | null>(null);
+  const [activePackage, setActivePackage] = useState<{ name: string; price: number } | null>(null);
   const { toast } = useToast();
-
-  // NGN Prices as requested
-  const PRICES = {
-    starter: { usd: 2500, ngn: 1500000 },
-    scale: { usd: 7500, ngn: 5000000 },
-    reservation: { usd: 500, ngn: 500000 },
-    support_lite: { usd: 200, ngn: 200000 },
-    support_pro: { usd: 500, ngn: 500000 },
-    support_plus: { usd: 1200, ngn: 1200000 },
-  };
 
   const formatPrice = (type: keyof typeof PRICES) => {
     const priceObj = PRICES[type];
@@ -53,7 +116,6 @@ export function Pricing() {
       }).format(priceObj.ngn);
     }
   };
-
 
   return (
     <>
@@ -78,14 +140,13 @@ export function Pricing() {
               </div>
               <div className="md:col-span-6">
                 <h3 className="text-3xl md:text-5xl font-medium tracking-tight text-white leading-tight">
-                  Custom-built quality, delivered fast.
+                  Websites that launch fast. <br />Agents that work 24/7.
                 </h3>
               </div>
               <div className="md:col-span-4 flex flex-col items-end justify-end md:h-full gap-6">
                 <p className="text-white/50 text-right max-w-[280px] text-sm leading-relaxed border-r-2 border-primary/20 pr-6 italic">
-                  Simple, fixed-price packages. Tell us your idea, agree on the plan, and we'll get started.
+                  Fixed-price packages with optional agent capabilities. Tell us your idea, agree on the plan, and we'll ship it.
                 </p>
-
               </div>
             </div>
           </div>
@@ -159,316 +220,109 @@ export function Pricing() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-24">
-            {/* Starter Plan */}
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-50px" }}
-              variants={fadeInUp}
-              onClick={() => setSelectedPackage("starter")}
-              className={cn(
-                "relative rounded-2xl overflow-hidden flex flex-col group h-full glass-panel interactive cursor-pointer",
-                selectedPackage === "starter"
-                  ? "border-primary shadow-2xl shadow-primary/20 bg-primary/5"
-                  : "hover:bg-white/[0.04]"
-              )}
-            >
-              {selectedPackage === "starter" && (
-                <div className="absolute top-0 right-0 bg-primary text-white text-[10px] font-black px-4 py-1.5 rounded-bl-2xl tracking-widest uppercase z-20">SELECTED</div>
-              )}
-              <div className="p-10 flex flex-col h-full">
-                {/* Info */}
-                <div className="mb-8">
-                  <h4 className="text-2xl font-bold text-white mb-3 font-display">Starter</h4>
-                  <p className="text-white/40 text-sm leading-relaxed">Get a polished first version of your product built from your idea. Perfect if you want to test your concept quickly.</p>
-                </div>
-                {/* Price */}
-                <div className="mb-10 p-8 rounded-3xl bg-white/[0.02] border border-white/5 flex flex-col items-center justify-center">
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={currency}
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      className={cn(
-                        "font-bold text-white font-display text-center",
-                        currency === "NGN" ? "text-3xl" : "text-4xl"
-                      )}
-                    >
-                      {formatPrice("starter")}
-                    </motion.div>
-                  </AnimatePresence>
-                  <span className="text-[10px] text-white/20 uppercase tracking-widest font-black mt-2">One-time payment</span>
-                </div>
-                {/* Features */}
-                <div className="flex-1 mb-10">
-                  <ul className="space-y-4 text-sm text-white/50">
-                    <li className="flex gap-3 items-start"><Check className="w-5 h-5 text-primary shrink-0 mt-0.5" /> <span>Project Game Plan</span></li>
-                    <li className="flex gap-3 items-start"><Check className="w-5 h-5 text-primary shrink-0 mt-0.5" /> <span>Solid Starting Template</span></li>
-                    <li className="flex gap-3 items-start"><Check className="w-5 h-5 text-primary shrink-0 mt-0.5" /> <span>Login System & Hosting Setup</span></li>
-                    <li className="flex gap-3 items-start"><Check className="w-5 h-5 text-primary shrink-0 mt-0.5" /> <span>7 days priority support</span></li>
-                  </ul>
-                </div>
-                {/* CTA */}
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setActivePackage({ name: "Starter", price: PRICES.reservation.usd });
-                    setIsCheckoutOpen(true);
-                  }}
-                  className={cn(
-                    "group relative inline-flex items-center gap-6 glass-panel rounded-full px-8 py-5 transition-all overflow-hidden w-full justify-center shadow-2xl interactive cursor-pointer border-none mt-auto",
-                    selectedPackage === "starter" ? "bg-primary/10 border-primary" : "border-white/5"
-                  )}
-                >
-                  <div className="absolute inset-0 bg-primary/5 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-                  <span className={cn(
-                    "text-white font-black tracking-tight relative z-10 uppercase",
-                    currency === "NGN" ? "text-xs" : "text-sm"
-                  )}>
-                    Reserve — {formatPrice("reservation")}
-                  </span>
-                  <div className={cn(
-                    "w-10 h-10 shrink-0 rounded-full flex items-center justify-center text-white transition-all duration-500 relative z-10 shadow-lg",
-                    selectedPackage === "starter" ? "bg-primary shadow-primary/40" : "bg-white/10 group-hover:bg-primary"
-                  )}>
-                    <ArrowRight className="w-5 h-5" />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
+            {plans.map((plan) => (
+              <motion.div
+                key={plan.key}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-50px" }}
+                variants={fadeInUp}
+                whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                animate={selectedPlan === plan.key ? { scale: 1.02, y: -5 } : { scale: 1, y: 0 }}
+                onClick={() => setSelectedPlan(plan.key)}
+                className={cn(
+                  "relative rounded-3xl overflow-hidden flex flex-col group h-full glass-panel interactive cursor-pointer transition-all duration-500",
+                  selectedPlan === plan.key
+                    ? "border-primary border-2 shadow-[0_20px_40px_-15px_rgba(var(--color-primary-rgb),0.3)] bg-primary/5"
+                    : "hover:bg-white/[0.04] border-white/5"
+                )}
+              >
+                {plan.badge && (
+                  <div className="absolute top-0 left-0 right-0 bg-primary text-white text-[10px] font-black px-4 py-2 tracking-[0.2em] uppercase text-center z-20 shadow-lg">
+                    {plan.badge}
                   </div>
-                </button>
-              </div>
-            </motion.div>
-
-            {/* Scale Plan */}
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-50px" }}
-              variants={fadeInUp}
-              onClick={() => setSelectedPackage("scale")}
-              className={cn(
-                "relative rounded-2xl overflow-hidden flex flex-col group h-full glass-panel interactive cursor-pointer",
-                selectedPackage === "scale"
-                  ? "border-primary shadow-2xl shadow-primary/20 bg-primary/5"
-                  : "hover:bg-white/[0.04]"
-              )}
-            >
-              {selectedPackage === "scale" && (
-                <div className="absolute top-0 right-0 bg-primary text-white text-[10px] font-black px-4 py-1.5 rounded-bl-2xl tracking-widest uppercase z-20">SELECTED</div>
-              )}
-              <div className="p-10 flex flex-col h-full">
-                {/* Info */}
-                <div className="mb-8">
-                  <h4 className="text-2xl font-bold text-white mb-3 font-display">Scale</h4>
-                  <p className="text-white/40 text-sm leading-relaxed">For teams ready to attract paying customers and grow.</p>
-                </div>
-                {/* Price */}
-                <div className="mb-10 p-8 rounded-3xl bg-white/[0.02] border border-white/5 flex flex-col items-center justify-center">
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={currency}
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      className={cn(
-                        "font-bold text-white font-display text-center",
-                        currency === "NGN" ? "text-3xl" : "text-4xl"
-                      )}
-                    >
-                      {formatPrice("scale")}
-                    </motion.div>
-                  </AnimatePresence>
-                  <span className="text-[10px] text-white/20 uppercase tracking-widest font-black mt-2">One-time payment</span>
-                </div>
-                {/* Features */}
-                <div className="flex-1 mb-10">
-                  <ul className="space-y-4 text-sm text-white/50">
-                    <li className="flex gap-3 items-start"><Check className="w-5 h-5 text-primary shrink-0 mt-0.5" /> <span>Tailored design plan</span></li>
-                    <li className="flex gap-3 items-start"><Check className="w-5 h-5 text-primary shrink-0 mt-0.5" /> <span>Performance tracking</span></li>
-                    <li className="flex gap-3 items-start"><Check className="w-5 h-5 text-primary shrink-0 mt-0.5" /> <span>Priority support</span></li>
-                    <li className="flex gap-3 items-start"><Check className="w-5 h-5 text-primary shrink-0 mt-0.5" /> <span>14-day delivery</span></li>
-                    <li className="flex gap-3 items-start"><Check className="w-5 h-5 text-primary shrink-0 mt-0.5" /> <span>Launch & Walkthrough</span></li>
-                  </ul>
-                </div>
-                {/* CTA */}
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setActivePackage({ name: "Scale", price: PRICES.reservation.usd });
-                    setIsCheckoutOpen(true);
-                  }}
-                  className={cn(
-                    "group relative inline-flex items-center gap-6 glass-panel rounded-full px-8 py-5 transition-all overflow-hidden w-full justify-center shadow-2xl interactive cursor-pointer border-none mt-auto",
-                    selectedPackage === "scale" ? "bg-primary/10 border-primary" : "border-white/5"
-                  )}
-                >
-                  <div className="absolute inset-0 bg-primary/5 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-                  <span className={cn(
-                    "text-white font-black tracking-tight relative z-10 uppercase",
-                    currency === "NGN" ? "text-xs" : "text-sm"
-                  )}>
-                    Reserve — {formatPrice("reservation")}
-                  </span>
-                  <div className={cn(
-                    "w-10 h-10 shrink-0 rounded-full flex items-center justify-center text-white transition-all duration-500 relative z-10 shadow-lg",
-                    selectedPackage === "scale" ? "bg-primary shadow-primary/40" : "bg-white/10 group-hover:bg-primary"
-                  )}>
-                    <ArrowRight className="w-5 h-5" />
+                )}
+                {selectedPlan === plan.key && !plan.badge && (
+                  <div className="absolute top-0 right-0 bg-primary text-white text-[10px] font-black px-5 py-2 rounded-bl-2xl tracking-[0.2em] uppercase z-20 shadow-lg">SELECTED</div>
+                )}
+                <div className={cn("p-8 flex flex-col h-full", plan.badge ? "pt-12" : "")}>
+                  {/* Info */}
+                  <div className="mb-6">
+                    <h4 className="text-xl font-bold text-white mb-2 font-display">{plan.name}</h4>
+                    <p className="text-white/40 text-sm leading-relaxed">{plan.description}</p>
                   </div>
-                </button>
-              </div>
-            </motion.div>
-
-            {/* Enterprise Plan */}
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-50px" }}
-              variants={fadeInUp}
-              onClick={() => setSelectedPackage("enterprise")}
-              className={cn(
-                "relative rounded-2xl overflow-hidden flex flex-col group h-full glass-panel interactive cursor-pointer",
-                selectedPackage === "enterprise"
-                  ? "border-primary shadow-2xl shadow-primary/20 bg-primary/5"
-                  : "hover:bg-white/[0.04]"
-              )}
-            >
-              {selectedPackage === "enterprise" && (
-                <div className="absolute top-0 right-0 bg-primary text-white text-[10px] font-black px-4 py-1.5 rounded-bl-2xl tracking-widest uppercase z-20">SELECTED</div>
-              )}
-              <div className="p-10 flex flex-col h-full">
-                {/* Info */}
-                <div className="mb-8">
-                  <h4 className="text-2xl font-bold text-white mb-3 font-display">Enterprise</h4>
-                  <p className="text-white/40 text-sm leading-relaxed">For bigger projects with special needs.</p>
-                </div>
-                {/* Price Area */}
-                <div className="mb-10 p-8 rounded-3xl bg-white/[0.02] border border-white/5 flex flex-col items-center justify-center min-h-[110px]">
-                  <div className="text-4xl font-bold text-white font-display">Custom</div>
-                  <span className="text-[10px] text-white/20 uppercase tracking-widest font-black mt-2">Tailored pricing</span>
-                </div>
-                {/* Features */}
-                <div className="flex-1 mb-10">
-                  <ul className="space-y-4 text-sm text-white/50">
-                    <li className="flex gap-3 items-start"><Check className="w-5 h-5 text-primary shrink-0 mt-0.5" /> <span>Your own developer</span></li>
-                    <li className="flex gap-3 items-start"><Check className="w-5 h-5 text-primary shrink-0 mt-0.5" /> <span>Dedicated hosting</span></li>
-                    <li className="flex gap-3 items-start"><Check className="w-5 h-5 text-primary shrink-0 mt-0.5" /> <span>Custom Connections</span></li>
-                    <li className="flex gap-3 items-start"><Check className="w-5 h-5 text-primary shrink-0 mt-0.5" /> <span>Guaranteed support & training</span></li>
-                  </ul>
-                </div>
-                {/* CTA */}
-                <button
-                  onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-                  className={cn(
-                    "group relative inline-flex items-center gap-6 glass-panel rounded-full px-8 py-5 transition-all overflow-hidden w-full justify-center shadow-2xl interactive cursor-pointer border-none mt-auto",
-                    selectedPackage === "enterprise" ? "bg-primary/10 border-primary" : "border-white/5"
-                  )}
-                >
-                  <div className="absolute inset-0 bg-primary/5 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-                  <span className="text-white font-black text-sm tracking-tight relative z-10 uppercase">
-                    Let's Talk
-                  </span>
-                  <div className={cn(
-                    "w-10 h-10 shrink-0 rounded-full flex items-center justify-center text-white transition-all duration-500 relative z-10 shadow-lg",
-                    selectedPackage === "enterprise" ? "bg-primary shadow-primary/40" : "bg-white/10 group-hover:bg-primary"
-                  )}>
-                    <ArrowRight className="w-5 h-5" />
+                  {/* Price */}
+                  <div className="mb-8 p-6 rounded-2xl bg-white/[0.02] border border-white/5 flex flex-col items-center justify-center">
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={currency}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        className={cn(
+                          "font-bold text-white font-display text-center",
+                          currency === "NGN" ? "text-2xl" : "text-3xl"
+                        )}
+                      >
+                        {formatPrice(plan.key)}
+                      </motion.div>
+                    </AnimatePresence>
+                    <span className="text-[10px] text-white/20 uppercase tracking-widest font-black mt-2">One-time · {plan.delivery}</span>
                   </div>
-                </button>
-              </div>
-            </motion.div>
+                  {/* Features */}
+                  <div className="flex-1 mb-8">
+                    <ul className="space-y-3 text-sm text-white/50">
+                      {plan.features.map((f, i) => (
+                        <li key={i} className="flex gap-3 items-start">
+                          <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                          <span>{f}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  {/* CTA */}
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setActivePackage({ name: plan.name, price: 0 });
+                      setIsCheckoutOpen(true);
+                    }}
+                    className={cn(
+                      "group relative inline-flex items-center gap-4 glass-panel rounded-full px-6 py-4 transition-all overflow-hidden w-full justify-center shadow-2xl interactive cursor-pointer border-none mt-auto",
+                      selectedPlan === plan.key ? "bg-primary/10 border-primary" : "border-white/5"
+                    )}
+                  >
+                    <div className="absolute inset-0 bg-primary/5 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+                    <span className={cn(
+                      "text-white font-black tracking-tight relative z-10 uppercase",
+                      "text-xs"
+                    )}>
+                      Reserve Slot
+                    </span>
+                    <div className={cn(
+                      "w-8 h-8 shrink-0 rounded-full flex items-center justify-center text-white transition-all duration-500 relative z-10 shadow-lg",
+                      selectedPlan === plan.key ? "bg-primary shadow-primary/40" : "bg-white/10 group-hover:bg-primary"
+                    )}>
+                      <ArrowRight className="w-4 h-4" />
+                    </div>
+                  </button>
+                </div>
+              </motion.div>
+            ))}
           </div>
-
-          {/* Monthly Support Add-ons */}
-          <div>
-            <h3 className="text-2xl font-medium text-white mb-8 pl-2 border-l-4 border-white/20">Monthly Support <span className="text-muted-foreground text-sm font-normal ml-2">(Optional)</span></h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <motion.div
-                onClick={() => setSelectedSupport("lite")}
-                whileHover={{ y: -5 }}
-                className={cn(
-                  "p-8 rounded-3xl bg-[#141415] border transition-all cursor-pointer group relative",
-                  selectedSupport === "lite" ? "border-primary shadow-lg shadow-primary/5" : "border-white/5"
-                )}
-              >
-                {selectedSupport === "lite" && (
-                  <div className="absolute top-4 right-4 w-2 h-2 rounded-full bg-primary animate-pulse" />
-                )}
-                <h4 className={cn(
-                  "font-bold text-base mb-1 transition-colors",
-                  selectedSupport === "lite" ? "text-white" : "text-white/60 group-hover:text-white"
-                )}>Support Lite</h4>
-                <div className={cn(
-                  "font-bold text-primary mb-4",
-                  currency === "NGN" ? "text-xl" : "text-2xl"
-                )}>
-                  {formatPrice("support_lite")}<span className="text-xs text-muted-foreground font-normal">/mo</span>
-                </div>
-                <p className="text-xs text-white/40 leading-relaxed">Essential fixes, check-ups, and regular updates to keep things running.</p>
-              </motion.div>
-
-              <motion.div
-                onClick={() => setSelectedSupport("pro")}
-                whileHover={{ y: -5 }}
-                className={cn(
-                  "p-8 rounded-3xl bg-[#141415] border transition-all cursor-pointer group relative",
-                  selectedSupport === "pro" ? "border-primary shadow-lg shadow-primary/5" : "border-white/5"
-                )}
-              >
-                {selectedSupport === "pro" && (
-                  <div className="absolute top-4 right-4 w-2 h-2 rounded-full bg-primary animate-pulse" />
-                )}
-                <h4 className={cn(
-                  "font-bold text-base mb-1 transition-colors",
-                  selectedSupport === "pro" ? "text-white" : "text-white/60 group-hover:text-white"
-                )}>Support Pro</h4>
-                <div className={cn(
-                  "font-bold text-primary mb-4",
-                  currency === "NGN" ? "text-xl" : "text-2xl"
-                )}>
-                  {formatPrice("support_pro")}<span className="text-xs text-muted-foreground font-normal">/mo</span>
-                </div>
-                <p className="text-xs text-white/40 leading-relaxed">Faster fixes, regular check-ups, and we respond within 48 hours.</p>
-              </motion.div>
-
-              <motion.div
-                onClick={() => setSelectedSupport("plus")}
-                whileHover={{ y: -5 }}
-                className={cn(
-                  "p-8 rounded-3xl bg-[#141415] border transition-all cursor-pointer group relative",
-                  selectedSupport === "plus" ? "border-primary shadow-lg shadow-primary/5" : "border-white/5"
-                )}
-              >
-                {selectedSupport === "plus" && (
-                  <div className="absolute top-4 right-4 w-2 h-2 rounded-full bg-primary animate-pulse" />
-                )}
-                <h4 className={cn(
-                  "font-bold text-base mb-1 transition-colors",
-                  selectedSupport === "plus" ? "text-white" : "text-white/60 group-hover:text-white"
-                )}>Support Plus</h4>
-                <div className={cn(
-                  "font-bold text-primary mb-4",
-                  currency === "NGN" ? "text-xl" : "text-2xl"
-                )}>
-                  {formatPrice("support_plus")}<span className="text-xs text-muted-foreground font-normal">/mo</span>
-                </div>
-                <p className="text-xs text-white/40 leading-relaxed">Dedicated time with our team, regular reviews, and help as you grow.</p>
-              </motion.div>
-            </div>
-          </div>
-
 
           {/* Reserve Microcopy */}
           <div className="text-center border-t border-white/5 mt-16 pt-12">
             <p className="text-white/60 text-xs max-w-2xl mx-auto leading-relaxed">
-              Reserve your slot with a refundable {formatPrice("reservation")} deposit. Once you make the final payment, everything is yours — the website, the data, the whole thing. Prices include payment processing fees.
+              Reserve your slot for free — no deposit, no commitment. Once you make the final payment, everything is yours — the website, the agent, the whole thing.
             </p>
           </div>
 
           <CheckoutDialog
             isOpen={isCheckoutOpen}
             onClose={() => setIsCheckoutOpen(false)}
-            price={currency === "USD" ? PRICES.reservation.usd : PRICES.reservation.ngn}
+            price={0}
             currency={currency}
             packageName={activePackage?.name || ""}
           />
@@ -477,6 +331,3 @@ export function Pricing() {
     </>
   );
 }
-
-
-

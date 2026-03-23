@@ -3,7 +3,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, ArrowDown, ArrowRight, Monitor, Smartphone, PenTool, Video } from "lucide-react";
+import { ArrowUpRight, ArrowDown, ArrowRight, Monitor, Smartphone, PenTool, Video, Bot } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { isMobile } from "@/lib/animations";
 
@@ -39,6 +39,14 @@ const services = [
     description: "Captivating motion graphics, product animations, and immersive 3D experiences that elevate your brand narrative and engage your audience.",
     image: "https://images.unsplash.com/photo-1620121692029-d088224ddc74?q=80&w=1200&h=800&auto=format&fit=crop",
     icon: <Video className="w-6 h-6" />
+  },
+  {
+    id: "v.05",
+    label: "Autonomous Agents",
+    title: "AI Agents",
+    description: "Deploy autonomous agents that handle customer support, lead qualification, inventory alerts, and payment follow-ups — 24/7, no human intervention. Built with security-first architecture.",
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1200&h=800&auto=format&fit=crop",
+    icon: <Bot className="w-6 h-6" />
   }
 ];
 

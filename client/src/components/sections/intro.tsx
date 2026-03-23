@@ -87,7 +87,7 @@ export function Intro() {
                                     onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })}
                                     className="inline-flex items-center justify-center px-6 py-3 md:py-4 rounded-full border border-white/10 bg-white/5 text-white hover:bg-white/10 hover:text-primary transition-all font-bold text-xs md:text-sm uppercase tracking-tight interactive w-full sm:w-auto"
                                 >
-                                    Reserve a Spot — $500 / ₦500k
+                                    RESERVE SLOT
                                 </button>
                             </div>
                         </div>

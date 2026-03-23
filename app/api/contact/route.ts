@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { storage } from '@lib/storage';
 import { insertContactSchema } from '@shared/schema';
 import { sendContactNotification } from '@lib/email';
+import { analyzeIntake } from '@lib/agent';
 import { z } from 'zod';
 
 export async function POST(req: Request) {
@@ -9,8 +10,20 @@ export async function POST(req: Request) {
         const body = await req.json();
         const data = insertContactSchema.parse(body);
 
-        // Save to database
-        const result = await storage.createContactRequest(data);
+        // Run intake agent analysis (graceful fallback if it fails)
+        const intake = await analyzeIntake(
+            data.name,
+            data.email,
+            data.message,
+            data.company
+        );
+
+        // Save to database with agent analysis
+        const result = await storage.createContactRequest({
+            ...data,
+            intentScore: String(intake.intentScore),
+            agentSummary: `[${intake.suggestedTier.toUpperCase()}] ${intake.summary}`,
+        });
 
         // Send real emails (studio notification + guest confirmation)
         await sendContactNotification({
@@ -19,6 +32,8 @@ export async function POST(req: Request) {
             company: data.company,
             message: data.message,
         });
+
+        console.log(`[IntakeAgent] Lead scored: ${intake.intentScore}/10 → ${intake.suggestedTier} | ${data.email}`);
 
         return NextResponse.json(result);
     } catch (error: any) {

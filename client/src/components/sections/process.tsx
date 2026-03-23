@@ -14,13 +14,13 @@ const steps = [
     details: [
       "What you get: a clear project outline and timeline.",
       "What we need from you: your logo, brand colours, and payment preferences.",
-      "How we start: sign the agreement + $500 deposit."
+      "How we start: sign the agreement and lock your slot — completely free."
     ],
     owner: "You + Timi (Operations)",
     icon: <Target className="w-5 h-5" />,
     image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=2000",
     visualType: "checklist",
-    items: ["Plan confirmed", "Assets received", "Deposit paid"]
+    items: ["Plan confirmed", "Assets received", "Slot reserved"]
   },
   {
     id: "02",
@@ -162,7 +162,7 @@ export function Process() {
                     initial={{ scale: 0.9, opacity: 0, y: 20 }}
                     animate={{ scale: 1, opacity: 1, y: 0 }}
                     transition={{ delay: 0.4, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                    className="relative w-full max-w-[360px] lg:max-w-[400px] aspect-square bg-[#0D0D0E]/80 backdrop-blur-3xl border border-white/10 rounded-[2rem] lg:rounded-[2.5rem] p-6 lg:p-10 flex flex-col items-center justify-center shadow-2xl overflow-hidden group/card"
+                    className="relative w-full max-w-[360px] lg:max-w-[400px] aspect-square bg-[#0D0D0E]/80 backdrop-blur-3xl border border-white/10 rounded-[2rem] lg:rounded-[2.5rem] p-6 lg:p-10 flex flex-col items-center justify-center shadow-2xl group/card"
                   >
                     {/* Floating Glow */}
                     <div className="absolute -top-12 -right-12 w-48 h-48 bg-primary/10 blur-[80px] rounded-full group-hover/card:bg-primary/20 transition-colors duration-1000" />
@@ -228,36 +228,46 @@ export function Process() {
                     )}
 
                     {steps[currentStep].visualType === "audit" && (
-                      <div className="w-full h-full flex flex-col items-center justify-center p-6 relative overflow-hidden">
+                      <div className="w-full h-full flex flex-col items-center justify-center p-4 lg:p-8 relative bg-transparent">
                         {/* High-tech background grid */}
-                        <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
-                          <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
+                        <div className="absolute inset-0 opacity-[0.05] pointer-events-none">
+                          <div className="absolute inset-0" style={{ backgroundImage: 'linear-gradient(to right, #ffffff10 1px, transparent 1px), linear-gradient(to bottom, #ffffff10 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
                         </div>
 
                         {/* Central Hub with Scanning Effect */}
-                        <div className="relative mb-6 lg:mb-8 flex items-center justify-center">
+                        <div className="relative mb-6 lg:mb-10 flex flex-col items-center justify-center">
+                          {/* Outer Pulsing Rings */}
                           <motion.div
-                            className="absolute bg-primary/20 blur-[60px] rounded-full w-48 h-48"
-                            animate={{
-                              scale: [1, 1.1, 1],
-                              opacity: [0.2, 0.4, 0.2]
-                            }}
-                            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                            className="absolute border border-primary/20 rounded-full w-36 h-36 lg:w-48 lg:h-48"
+                            animate={{ scale: [1, 1.2], opacity: [0.5, 0] }}
+                            transition={{ duration: 2, repeat: Infinity, ease: "easeOut" }}
+                          />
+                          <motion.div
+                            className="absolute border border-primary/10 rounded-full w-48 h-48 lg:w-60 lg:h-60"
+                            animate={{ scale: [1, 1.3], opacity: [0.3, 0] }}
+                            transition={{ duration: 3, repeat: Infinity, ease: "easeOut", delay: 0.5 }}
                           />
 
-                          <div className="relative w-24 h-24 lg:w-32 lg:h-32 shrink-0">
-                            <svg className="w-full h-full transform -rotate-90 relative z-10 overflow-visible" viewBox="0 0 100 100">
+                          <div className="relative w-28 h-28 lg:w-36 lg:h-36 flex items-center justify-center">
+                            {/* Scanning Line */}
+                            <motion.div
+                              className="absolute left-0 right-0 h-[2px] bg-primary/40 shadow-[0_0_15px_var(--color-primary)] z-30 pointer-events-none"
+                              animate={{ top: ['10%', '90%', '10%'] }}
+                              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                            />
+
+                            <svg className="w-full h-full transform -rotate-90 relative z-10" viewBox="0 0 100 100">
                               <circle
                                 cx="50"
                                 cy="50"
-                                r="45"
+                                r="46"
                                 className="fill-none stroke-white/5"
-                                strokeWidth="2"
+                                strokeWidth="4"
                               />
                               <motion.circle
                                 cx="50"
                                 cy="50"
-                                r="45"
+                                r="46"
                                 initial={{ pathLength: 0 }}
                                 animate={{ pathLength: 1 }}
                                 transition={{ duration: 2.5, ease: [0.65, 0, 0.35, 1], delay: 0.5 }}
@@ -269,32 +279,26 @@ export function Process() {
 
                             <div className="absolute inset-0 flex flex-col items-center justify-center z-20">
                               <motion.div
-                                initial={{ opacity: 0, scale: 0.9 }}
+                                initial={{ opacity: 0, scale: 0.8 }}
                                 animate={{ opacity: 1, scale: 1 }}
-                                transition={{ delay: 1.2, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                                transition={{ delay: 1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                                 className="text-center"
                               >
-                                <span className="text-4xl lg:text-5xl font-black text-white tracking-tighter block leading-none">
+                                <span className="text-5xl lg:text-7xl font-bold text-white tracking-tighter block leading-none drop-shadow-2xl">
                                   100
                                 </span>
-                                <span className="text-[6px] lg:text-[7px] text-primary font-black uppercase tracking-[0.4em] mt-1 lg:mt-2 block">
-                                  QUALITY SCORE
-                                </span>
                               </motion.div>
-                            </div>
-
-                            {/* Radials and Scanning Lines */}
-                            <motion.div
-                              className="absolute inset-0 border border-white/5 rounded-full z-0"
-                              animate={{ scale: [1, 1.4], opacity: [0.5, 0] }}
-                              transition={{ duration: 2, repeat: Infinity, ease: "easeOut" }}
-                            />
-                            <motion.div
-                              className="absolute top-1/2 left-0 w-full h-[1px] bg-primary/30 blur-[1px] z-30"
-                              animate={{ top: ['10%', '90%', '10%'] }}
-                              transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-                            />
+                                                        </div>
                           </div>
+                          
+                          <motion.span 
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 1.2, duration: 0.8 }}
+                            className="text-[10px] lg:text-xs text-primary font-black uppercase tracking-[0.3em] block whitespace-nowrap mt-4 z-40 relative"
+                          >
+                             Quality Score
+                          </motion.span>
                         </div>
 
                         {/* Metric Grid Display */}
@@ -303,32 +307,25 @@ export function Process() {
                             { label: "Performance", val: "100" },
                             { label: "Security", val: "A+" },
                             { label: "Stability", val: "MAX" },
-                            { label: "Scalability", val: "HIGH" }
+                            { label: "Uptime", val: "99.9%" }
                           ].map((item, i) => (
                             <motion.div
                               key={i}
                               initial={{ opacity: 0, y: 15 }}
                               animate={{ opacity: 1, y: 0 }}
-                              transition={{ delay: 1.8 + (i * 0.1), duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                              whileHover={{ y: -2, backgroundColor: "rgba(255,255,255,0.03)" }}
-                              className="p-3 lg:p-4 bg-white/[0.02] border border-white/5 rounded-xl backdrop-blur-sm transition-colors group"
+                              transition={{ delay: 1.5 + (i * 0.1), duration: 0.6 }}
+                              className="p-3 lg:p-4 bg-white/[0.03] border border-white/5 rounded-xl lg:rounded-2xl backdrop-blur-xl relative group/item overflow-hidden"
                             >
-                              <div className="flex flex-col gap-0.5">
-                                <span className="text-[7px] font-black text-white/30 uppercase tracking-widest">{item.label}</span>
+                              <div className="absolute inset-0 bg-primary/5 translate-x-full group-hover/item:translate-x-0 transition-transform duration-500" />
+                              <div className="relative z-10">
+                                <span className="text-[7px] lg:text-[8px] font-black text-white/30 uppercase tracking-[0.15em] lg:tracking-[0.2em] mb-1 block">{item.label}</span>
                                 <div className="flex items-center justify-between">
-                                  <span className="text-lg lg:text-xl font-bold text-white tracking-tight">{item.val}</span>
-                                  <div className="flex gap-0.5 shrink-0">
-                                    {[1, 2].map((b) => (
-                                      <motion.div
-                                        key={b}
-                                        className="w-1 h-3 rounded-full bg-primary/20"
-                                        animate={{
-                                          backgroundColor: ["rgba(var(--color-primary-rgb), 0.2)", "rgba(var(--color-primary-rgb), 0.8)", "rgba(var(--color-primary-rgb), 0.2)"]
-                                        }}
-                                        transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.2 + b * 0.1 }}
-                                      />
-                                    ))}
-                                  </div>
+                                  <span className="text-xl lg:text-2xl font-bold text-white tracking-tight">{item.val}</span>
+                                  <motion.div
+                                    animate={{ opacity: [1, 0.4, 1] }}
+                                    transition={{ duration: 2, repeat: Infinity, delay: i * 0.5 }}
+                                    className="w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_8px_var(--color-primary)]"
+                                  />
                                 </div>
                               </div>
                             </motion.div>

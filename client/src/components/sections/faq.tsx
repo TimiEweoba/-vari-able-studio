@@ -32,19 +32,19 @@ export function FAQ() {
     },
     {
       q: "How long does it take?",
-      a: "Most projects are delivered in 7–14 days from the moment we agree on the plan and receive your deposit. Bigger projects or extra features may take longer — we'll be upfront about the timeline before we start.",
+      a: "Most projects are delivered in 7–14 days from the moment we agree on the plan and reserve your slot. Bigger projects or extra features may take longer — we'll be upfront about the timeline before we start.",
     },
     {
       q: "What’s included in a launch package?",
-      a: "After paying a deposit, you get: a custom design, payment setup, login system, admin dashboard, a preview link, hosting setup, documentation, and 30 days of priority fixes.",
+      a: "After reserving your slot (completely free), you get: a custom design, payment setup, login system, admin dashboard, a preview link, hosting setup, documentation, and 30 days of priority fixes.",
     },
     {
       q: "Do I really own everything?",
       a: "Yes. After final payment, we hand over everything — the website files, your data, and hosting setup. No strings attached. You can move, modify, or host it anywhere you wish.",
     },
     {
-      q: "What’s the deposit and refund policy?",
-      a: "A $500 refundable deposit reserves your slot. It’s refundable if we decline the project, if you cancel before development begins, or if you request a refund within 5 business days after onboarding and before development starts.",
+      q: "Is there a reservation fee?",
+      a: "No! Reserving your slot is completely free — no deposit required. Simply fill in your details, and we’ll get started. You only pay when you’re happy with the final product.",
     },
     {
       q: "Can you connect with our existing tools?",
@@ -68,7 +68,7 @@ export function FAQ() {
     },
     {
       q: "How do you handle refunds or disputes?",
-      a: "We believe in clear agreements upfront. If any issue arises, we pause work, have a quick call to sort things out, and follow the terms we both agreed to. Deposit and refund policies are always stated clearly before we begin.",
+      a: "We believe in clear agreements upfront. If any issue arises, we pause work, have a quick call to sort things out, and follow the terms we both agreed to. Since reservations are free, there's zero risk to getting started.",
     },
     {
       q: "Can you show references or case studies?",

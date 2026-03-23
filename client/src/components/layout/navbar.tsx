@@ -117,7 +117,7 @@ export function Navbar() {
             >
               <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
               <span className="text-white font-black text-[10px] tracking-widest relative z-10 uppercase">
-                Free Promo
+                RESERVE SLOT
               </span>
               <div className="w-8 h-8 shrink-0 bg-primary rounded-full flex items-center justify-center text-white group-hover:translate-x-1 transition-transform duration-500 relative z-10 shadow-lg shadow-primary/40">
                 <ArrowRight className="w-4 h-4 leading-none" />
@@ -224,7 +224,7 @@ export function Navbar() {
                   >
                     <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                     <span className="text-white font-black text-lg tracking-tight relative z-10 uppercase">
-                      Free Preview Promo
+                      RESERVE SLOT
                     </span>
                     <div className="w-10 h-10 shrink-0 bg-primary rounded-full flex items-center justify-center text-white group-hover:translate-x-1 transition-transform duration-500 relative z-10 shadow-xl shadow-primary/40">
                       <ArrowRight className="w-6 h-6 leading-none" />

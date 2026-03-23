@@ -35,7 +35,8 @@ export function CheckoutDialog({ isOpen, onClose, price, currency, packageName }
 
         setIsLoading(true);
         try {
-            const response = await fetch("/api/payments/initialize", {
+            // Free reservation — submit as a contact/reservation request
+            const response = await fetch("/api/contact", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -43,38 +44,28 @@ export function CheckoutDialog({ isOpen, onClose, price, currency, packageName }
                 body: JSON.stringify({
                     email,
                     name,
-                    amount: price, // Use dynamic price from props
-                    currency: currency,
-                    packageName,
-                    description, // Include project description
+                    message: `[FREE RESERVATION] Package: ${packageName}. Project brief: ${description || 'Not provided'}`,
                 }),
             });
 
             const data = await response.json();
 
             if (!response.ok) {
-                throw new Error(data.message || "Failed to initialize payment");
+                throw new Error(data.message || "Failed to submit reservation");
             }
 
-            // Redirect to Flutterwave checkout
-            // The V4 API returns a link in the data.link property or data.data.link
-            const checkoutUrl = data.link || (data.data && data.data.link);
-            if (checkoutUrl) {
-                // Set a timestamp to prevent the cancellation UI from showing during this redirect window
-                sessionStorage.setItem("payment_redirect_ts", Date.now().toString());
-
-                // Push the cancellation URL to history so the 'Back' button works
-                window.history.pushState(null, "", "/payment/callback?status=cancelled");
-                window.location.href = checkoutUrl;
-            } else {
-                throw new Error("Checkout URL not found in response");
-            }
+            toast({
+                title: "Slot Reserved! 🎉",
+                description: "Your free reservation is confirmed. We'll reach out within 24 hours to kick things off.",
+            });
+            onClose();
         } catch (error: any) {
             toast({
-                title: "Payment Error",
+                title: "Reservation Error",
                 description: error.message || "Something went wrong. Please try again.",
                 variant: "destructive",
             });
+        } finally {
             setIsLoading(false);
         }
     };
@@ -89,7 +80,7 @@ export function CheckoutDialog({ isOpen, onClose, price, currency, packageName }
                         <div className="w-16 h-1 bg-primary/40 rounded-full mb-8" />
                         <DialogTitle className="text-2xl md:text-3xl font-bold tracking-tighter mb-4 uppercase">Secure Your Slot</DialogTitle>
                         <DialogDescription className="text-white/50 text-sm md:text-base leading-relaxed max-w-[320px]">
-                            You're {packageName.toLowerCase().includes("hosting") ? "subscribing to" : "reserving"} the <span className="text-primary font-bold italic">{packageName}</span> package.
+                            Reserve the <span className="text-primary font-bold italic">{packageName}</span> package for free — no deposit required.
                         </DialogDescription>
                     </DialogHeader>
 
@@ -141,11 +132,11 @@ export function CheckoutDialog({ isOpen, onClose, price, currency, packageName }
                                     {isLoading ? (
                                         <>
                                             <Loader2 className="w-4 h-4 animate-spin" />
-                                            Processing...
+                                            Reserving...
                                         </>
                                     ) : (
                                         <>
-                                            Secure Slot — {currency} {price.toLocaleString()}
+                                            RESERVE SLOT
                                         </>
                                     )}
                                 </span>
@@ -161,9 +152,9 @@ export function CheckoutDialog({ isOpen, onClose, price, currency, packageName }
                     <div className="mt-10 pt-8 border-t border-white/5 flex flex-col items-center gap-4">
                         <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-500/10 border border-green-500/20">
                             <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-                            <p className="text-[9px] font-bold text-green-500/80 uppercase tracking-widest">Secure Link Active</p>
+                            <p className="text-[9px] font-bold text-green-500/80 uppercase tracking-widest">Free Reservation</p>
                         </div>
-                        <p className="text-[10px] text-white/20 font-medium font-mono uppercase tracking-widest">Checkout powered by Flutterwave</p>
+                        <p className="text-[10px] text-white/20 font-medium font-mono uppercase tracking-widest">No payment required</p>
                     </div>
                 </div>
             </DialogContent>

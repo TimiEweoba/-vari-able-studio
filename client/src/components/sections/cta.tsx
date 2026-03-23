@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, Linkedin, Twitter, Instagram, Youtube, MessageCircle, ChevronDown, Rocket, CheckCircle2, Loader2, Facebook } from "lucide-react";
+import { ArrowRight, Linkedin, Instagram, Youtube, MessageCircle, ChevronDown, Rocket, CheckCircle2, Loader2, Facebook } from "lucide-react";
 import { useState as useNewsletterState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -127,6 +127,17 @@ export function CTA() {
                       className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center transition-all interactive"
                     >
                       <Facebook className="w-4 h-4" />
+                    </motion.a>
+                    <motion.a
+                      href="https://x.com/veriable_xyz"
+                      target="_blank"
+                      whileHover={{ scale: 1.1, backgroundColor: "rgba(235, 81, 96, 0.1)", borderColor: "var(--color-primary)" }}
+                      whileTap={{ scale: 0.9 }}
+                      className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center transition-all interactive"
+                    >
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                      </svg>
                     </motion.a>
                     <motion.a
                       href="#"
@@ -437,6 +448,17 @@ export function CTA() {
                     className="text-white/30 transition-colors"
                   >
                     <Facebook className="w-4 h-4" />
+                  </motion.a>
+                  <motion.a
+                    href="https://x.com/veriable_xyz"
+                    target="_blank"
+                    whileHover={{ scale: 1.2, color: "var(--color-primary)" }}
+                    whileTap={{ scale: 0.8 }}
+                    className="text-white/30 transition-colors"
+                  >
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                    </svg>
                   </motion.a>
                   <motion.a
                     href="#"

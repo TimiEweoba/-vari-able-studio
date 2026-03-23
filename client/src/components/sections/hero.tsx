@@ -193,6 +193,14 @@ export function Hero() {
                             running in <br />
                             <span className="text-primary">7–14 days.</span>
                         </motion.h1>
+                        <motion.p
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.6, duration: 0.8 }}
+                            className="text-white/40 text-sm md:text-base font-medium tracking-wide mt-4 md:mt-6"
+                        >
+                            Now with autonomous AI agents — your website works for you, even when you don't.
+                        </motion.p>
                     </div>
 
                     {/* Dynamic Visuals Showroom */}

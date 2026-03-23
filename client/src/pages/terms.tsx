@@ -21,12 +21,12 @@ export default function TermsPage() {
         {
             id: "1",
             title: "Engagement Model",
-            content: "veri—able Studio operates on a productized service model. Engagements begin with a technical brief and a reservation deposit. Timelines (7-14 days for Pilots) are estimates based on standard project scopes and prompt client feedback."
+            content: "veri—able Studio operates on a productized service model. Engagements begin with a technical brief and a free reservation. Timelines (7-14 days for Pilots) are estimates based on standard project scopes and prompt client feedback."
         },
         {
             id: "2",
-            title: "Reservation & Refunds",
-            content: "A reservation fee of $500 (or ₦500,000) is required to lock a production slot. This fee is 100% refundable if the client requests it within 5 business days of the initial discovery call, provided no development work has commenced. If we cannot fulfill the scope as agreed, the fee is returned in full."
+            title: "Free Reservation Policy",
+            content: "Reserving a production slot is completely free — no deposit or upfront fee is required. Simply submit your project brief and we'll lock your slot. You only pay once you're satisfied with the final deliverable."
         },
         {
             id: "3",
@@ -36,7 +36,7 @@ export default function TermsPage() {
         {
             id: "4",
             title: "Payment Terms",
-            content: "Payments are structured as a 50% upfront (less the reservation fee) and 50% upon successful demo sign-off. For NGN-based transactions, price protection is applied for 14 days against currency volatility from the date of the technical brief."
+            content: "Payments are structured as a 50% upfront and 50% upon successful demo sign-off. For NGN-based transactions, price protection is applied for 14 days against currency volatility from the date of the technical brief."
         },
         {
             id: "5",
